@@ -25,7 +25,7 @@ class ProvinsiController extends Controller
      */
     public function create()
     {
-        //
+        return view('provinces.create');
     }
 
     /**
@@ -36,7 +36,12 @@ class ProvinsiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $provinsi = new ProvincesModel;
+        $provinsi ->id = $request['id_provinsi'];
+        $provinsi ->name = $request['name_provinsi'];
+        $provinsi->save();
+
+        return redirect(route('provinsi.index'))->with('success','Data Berhasil Disimpan!');
     }
 
     /**
@@ -58,7 +63,8 @@ class ProvinsiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $provinsi = ProvincesModel::find($id);
+        return view('provinces.edit', compact('provinsi', $provinsi));
     }
 
     /**
@@ -70,7 +76,11 @@ class ProvinsiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $provinsi = ProvincesModel::find($id);
+        $provinsi ->name = $request['name_provinsi'];
+        $provinsi->update();
+
+        return redirect(route('provinsi.index'))->with('info','Data Berhasil Diubah!');
     }
 
     /**
@@ -81,6 +91,8 @@ class ProvinsiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $provinsi = ProvincesModel::find($id);
+        $provinsi->delete();
+        return back()->with('warning','Data Berhasil Dihapus!');
     }
 }

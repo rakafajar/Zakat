@@ -8,4 +8,5 @@ class ProvincesModel extends Model
 {
     protected $table = 'provinces';
     protected $primaryKey = 'id';
+    public $timestamps = false;
 }

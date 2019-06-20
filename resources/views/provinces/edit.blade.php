@@ -12,15 +12,11 @@
   <div class="card-header">Form Provinsi</div>
   <div class="card-body">
     <div class="col-md-8">
-      <form action="{{ route('provinsi.store') }}" method="post">
-        {{ csrf_field() }}
-        <div class="form-group">
-          <label for="id">ID Provinsi:</label>
-          <input type="text" class="form-control" id="id_provinsi" name="id_provinsi">
-        </div>
+      <form action="{{ route('provinsi.update', $provinsi->id) }}" method="post">
+        {{ csrf_field() }} {{ method_field('PATCH')}}
         <div class="form-group">
           <label for="nama_provinsi">Nama Provinsi:</label>
-          <input type="text" class="form-control" id="name_provinsi" name="name_provinsi">
+          <input type="text" class="form-control" id="name_provinsi" name="name_provinsi" value="{{ $provinsi->name}}">
         </div>
         <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
         <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>
@@ -30,6 +26,4 @@
   </div>
 </div>
 <br>
-
-
 @endsection

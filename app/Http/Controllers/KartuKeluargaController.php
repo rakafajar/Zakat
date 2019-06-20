@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\KartuKeluargaModel;
-use App\ViewVillagesModel;
 
 
 class KartuKeluargaController extends Controller
@@ -17,8 +16,7 @@ class KartuKeluargaController extends Controller
     public function index()
     {
         $kartukeluarga = KartuKeluargaModel::all();
-        $wilayahindonesia = ViewVillagesModel::all();
-        return view ('kartukeluarga.index', compact('kartukeluarga', 'wilayahindonesia'));
+        return view ('kartukeluarga.index', compact('kartukeluarga'));
     }
 
     /**

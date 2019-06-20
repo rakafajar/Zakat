@@ -11,7 +11,7 @@
         <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">
-            <a href="" class="btn btn-primary btn-sm">
+            <a href="{{ route('provinsi.create') }}" class="btn btn-primary btn-sm" >
               <i class="fas fa-user-plus"></i> Tambah
             </a>
            </div>
@@ -21,6 +21,7 @@
                 <thead>
                   <tr>
                     <th>No.</th>
+                    <th>ID Provinsi</th>
                     <th>Nama Provinsi</th>
                     <th>Aksi</th>
                   </tr>
@@ -31,11 +32,16 @@
                   <?php $no++ ; ?>
                   <tr>
                     <td>{{ $no++ }}</td>
+                    <td>{{ $list->id }}</td>
                     <td>{{ $list->name }}</td>
                     <td style="text-align: center;">
                       <a href="" class="btn btn-info btn-sm"><i class="fas fa-search"></i></a>
-                      <a href="" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                      <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
+                      <a href="{!! route('provinsi.edit', [$list->id]) !!}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                      <form action="{!! route('provinsi.destroy', [$list->id]) !!}" method="post">
+                        {!! csrf_field() !!}
+                        {!! method_field('DELETE') !!} 
+                          <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash-alt"></i></button>
+                      </form>
                     </td>
                   </tr>
                   @endforeach
