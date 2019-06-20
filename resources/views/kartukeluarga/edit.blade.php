@@ -19,10 +19,6 @@
           <input type="text" class="form-control" id="no_kk" name="no_kk" value="{{ $kartukeluarga->no_kk}}">
         </div>
         <div class="form-group">
-          <label for="namakk">Nama KK:</label>
-          <input type="text" class="form-control" id="nama" name="nama" value="{{ $kartukeluarga->nama}}" >
-        </div>
-        <div class="form-group">
           <label for="alamat">Alamat:</label>
           <textarea class="form-control" rows="5" id="alamat" name="alamat" ></textarea>
         </div>
@@ -47,19 +43,19 @@
         </div>
         <div class="form-group">
           <label for="provinsi">Provinsi:</label>
-          <input type="text" id="id_provinces" name="id_provinces" class="form-control" value="{{ $kartukeluarga->id_provinces }}">
+          <input type="text" id="provinces_id" name="provinces_id" class="form-control" value="{{ $kartukeluarga->provinces_id }}">
         </div>
         <div class="form-group">
           <label for="kotakabupaten">Kota/Kabupaten:</label>
-          <input type="text" id="id_cities" name="id_cities" class="form-control" value="{{ $kartukeluarga->id_cities}}">
+          <input type="text" id="cities_id" name="cities_id" class="form-control" value="{{ $kartukeluarga->cities_id}}">
         </div>
         <div class="form-group">
           <label for="kecamatan">Kecamatan:</label>
-          <input type="text" class="form-control" id="id_districts" name="id_districts" value="{{ $kartukeluarga->id_districts }}">
+          <input type="text" class="form-control" id="districts_id" name="districts_id" value="{{ $kartukeluarga->districts_id }}">
         </div>
         <div class="form-group">
           <label for="keluarahandesa">Kelurahan/Desa:</label>
-          <input type="text" class="form-control" id="id_villages" name="id_villages" value="{{ $kartukeluarga->id_villages }}">
+          <input type="text" class="form-control" id="villages_id" name="villages_id" value="{{ $kartukeluarga->villages_id }}">
         </div>
         <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
         <button type="reset" class="btn btn-danger btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>

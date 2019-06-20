@@ -22,7 +22,6 @@
                   <tr>
                     <th width="10">No</th>
                     <th>Nomor KK</th>
-                    <th>Kepala Keluarga</th>
                     <th>Alamat</th>
                     <th>RT / RW</th>
                     <th>Kode Pos</th>
@@ -40,14 +39,13 @@
                   <tr>
                     <td>{{ $no}} </td>
                     <td width="10">{{ $list->no_kk }}</td>
-                    <td width="10">{{ $list->nama}}</td>
                     <td width="10">{{ $list->alamat}}</td>
                     <td width="85">{{ $list->rt }} / {{ $list->rw }}</td>
                     <td width="10">{{ $list->kode_pos}}</td>
-                    <td>{{ $list->id_provinces }}</td>
-                    <td>{{ $list->id_cities }}</td>
-                    <td>{{ $list->id_districts }}</td>
-                    <td>{{ $list->id_villages }}</td>
+                    <td>{{ $list->provinces_id }}</td>
+                    <td>{{ $list->cities_id }}</td>
+                    <td>{{ $list->districts_id }}</td>
+                    <td>{{ $list->villages_id }}</td>
                     <th style="text-align: center;">
                     	<a href="" class="btn btn-info btn-sm"><i class="fas fa-search"></i></a>
                     	<a href="{!! route('kartukeluarga.edit', [$list->id_kk]) !!}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>

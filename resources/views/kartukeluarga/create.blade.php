@@ -20,10 +20,6 @@
             <input type="text" class="form-control" id="no_kk" name="no_kk" required="">
           </div>
           <div class="form-group">
-            <label for="namakk">Nama KK:</label>
-            <input type="text" class="form-control" id="nama" name="nama" required="">
-          </div>
-          <div class="form-group">
             <label for="alamat">Alamat:</label>
             <textarea class="form-control" rows="5" id="alamat" name="alamat" required=""></textarea>
           </div>
@@ -48,19 +44,19 @@
           </div>
           <div class="form-group">
             <label for="provinsi">Provinsi:</label>
-            <input type="text" id="id_provinces" name="id_provinces" class="form-control" required="">
+            <input type="text" id="provinces_id" name="provinces_id" class="form-control" required="">
           </div>
           <div class="form-group">
             <label for="kotakabupaten">Kota/Kabupaten:</label>
-            <input type="text" id="id_cities" name="id_cities" class="form-control" required="">
+            <input type="text" id="cities_id" name="cities_id" class="form-control" required="">
           </div>
           <div class="form-group">
             <label for="kecamatan">Kecamatan:</label>
-            <input type="text" class="form-control" id="id_districts" name="id_districts" required="">
+            <input type="text" class="form-control" id="districts_id" name="districts_id" required="">
           </div>
           <div class="form-group">
             <label for="keluarahandesa">Kelurahan/Desa:</label>
-            <input type="text" class="form-control" id="id_villages" name="id_villages" required="">
+            <input type="text" class="form-control" id="villages_id" name="villages_id" required="">
           </div>
           <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
           <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>

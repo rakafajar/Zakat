@@ -30,11 +30,7 @@ class KartuKeluargaController extends Controller
      */
     public function create()
     {
-        $provinsi = ProvinsiModel::all();
-        $kotakabupaten = KotaKabupatenModel::all();
-        $kecamatan = KecamatanModel::all();
-        $desa = DesaModel::all();
-        return view('kartukeluarga.create', compact( 'provinsi', 'kotakabupaten', 'kecamatan', 'desa'));
+        return view('kartukeluarga.create');
     }
 
     /**
@@ -47,15 +43,14 @@ class KartuKeluargaController extends Controller
     {
         $kartukeluarga = new KartuKeluargaModel;
         $kartukeluarga ->no_kk = $request['no_kk'];
-        $kartukeluarga ->nama = $request['nama'];
         $kartukeluarga ->alamat = $request['alamat'];
         $kartukeluarga ->rt = $request['rt'];
         $kartukeluarga ->rw = $request['rw'];
         $kartukeluarga ->kode_pos = $request['kode_pos'];
-        $kartukeluarga ->id_provinces = $request['id_provinces'];
-        $kartukeluarga ->id_cities = $request['id_cities'];
-        $kartukeluarga ->id_districts = $request['id_districts'];
-        $kartukeluarga ->id_villages = $request['id_villages'];
+        $kartukeluarga ->provinces_id = $request['provinces_id'];
+        $kartukeluarga ->cities_id = $request['cities_id'];
+        $kartukeluarga ->districts_id = $request['districts_id'];
+        $kartukeluarga ->villages_id = $request['villages_id'];
         $kartukeluarga->save();
 
         return redirect(route('kartukeluarga.index'))->with('success','Data Berhasil Disimpan!');
@@ -95,15 +90,14 @@ class KartuKeluargaController extends Controller
     {
         $kartukeluarga = KartuKeluargaModel::find($id);
         $kartukeluarga ->no_kk = $request['no_kk'];
-        $kartukeluarga ->nama = $request['nama'];
         $kartukeluarga ->alamat = $request['alamat'];
         $kartukeluarga ->rt = $request['rt'];
         $kartukeluarga ->rw = $request['rw'];
         $kartukeluarga ->kode_pos = $request['kode_pos'];
-        $kartukeluarga ->id_provinces = $request['id_provinces'];
-        $kartukeluarga ->id_cities = $request['id_cities'];
-        $kartukeluarga ->id_districts = $request['id_districts'];
-        $kartukeluarga ->id_villages = $request['id_villages']; 
+        $kartukeluarga ->provinces_id = $request['provinces_id'];
+        $kartukeluarga ->cities_id = $request['cities_id'];
+        $kartukeluarga ->districts_id = $request['districts_id'];
+        $kartukeluarga ->villages_id= $request['villages_id']; 
         $kartukeluarga->update();
 
         return redirect(route('kartukeluarga.index'))->with('info','Data Berhasil Diubah!');

@@ -12,18 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('welcome');
 });
-
 
 // Untuk Controller dan View KartuKeluarga
 Route::resource('kartukeluarga', 'KartuKeluargaController');
 
 // Untuk Controller dan View AnggotaKeluarga
 Route::resource('anggotakeluarga', 'AnggotaKeluargaController');
-
-// Untuk Controller dan View Muzzaki
-Route::resource('muzzaki', 'MuzzakiController');
 
 // Untuk Controller dan View Zakat Fitrah
 Route::resource('zakatfitrah', 'ZakatFitrahController');
@@ -39,3 +35,15 @@ Route::resource('infaqshodaqoh', 'InfaqShodaqohController');
 
 // Untuk Controller dan View Fidyah
 Route::resource('fidyah', 'FidyahController');
+
+// Untuk Controller dan View Provinsi
+Route::resource('provinsi', 'ProvinsiController');
+
+// Untuk Controller dan View Kota/Kabupaten
+Route::resource('kotakabupaten', 'KotaKabupatenController');
+
+// Untuk Controller dan View Kecamatan
+Route::resource('kecamatan', 'KecamatanController');
+
+// Untuk Controller dan View Kelurahan
+Route::resource('kelurahan', 'KelurahanController');
