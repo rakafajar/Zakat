@@ -42,10 +42,10 @@
                     <td width="10">{{ $list->alamat}}</td>
                     <td width="85">{{ $list->rt }} / {{ $list->rw }}</td>
                     <td width="10">{{ $list->kode_pos}}</td>
-                    <td>{{ $list->provinces_id }}</td>
-                    <td>{{ $list->cities_id }}</td>
-                    <td>{{ $list->districts_id }}</td>
-                    <td>{{ $list->villages_id }}</td>
+                    <td>{{ $list->name_provinces }}</td>
+                    <td>{{ $list->name_cities }}</td>
+                    <td>{{ $list->name_district }}</td>
+                    <td>{{ $list->name_villages }}</td>
                     <th style="text-align: center;">
                     	<a href="" class="btn btn-info btn-sm"><i class="fas fa-search"></i></a>
                     	<a href="{!! route('kartukeluarga.edit', [$list->id_kk]) !!}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>

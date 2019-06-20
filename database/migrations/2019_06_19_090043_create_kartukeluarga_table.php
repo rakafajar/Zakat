@@ -20,14 +20,8 @@ class CreateKartukeluargaTable extends Migration
             $table->string('rt', 10);
             $table->string('rw', 10);
             $table->string('kode_pos',10);
-            $table->char('provinces_id');
-            $table->char('cities_id');
-            $table->char('districts_id');
             $table->char('villages_id');
             // Relasi 
-            $table->foreign('provinces_id')->references('id')->on('provinces')->onDelete('RESTRICT')->onUpdate('CASCADE');
-            $table->foreign('cities_id')->references('id')->on('cities')->onDelete('RESTRICT')->onUpdate('CASCADE');
-            $table->foreign('districts_id')->references('id')->on('districts')->onDelete('RESTRICT')->onUpdate('CASCADE');
             $table->foreign('villages_id')->references('id')->on('villages')->onDelete('RESTRICT')->onUpdate('CASCADE');
             $table->timestamps();
 

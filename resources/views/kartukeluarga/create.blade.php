@@ -43,18 +43,6 @@
             <input type="text" class="form-control" id="kode_pos" name="kode_pos" required="">
           </div>
           <div class="form-group">
-            <label for="provinsi">Provinsi:</label>
-            <input type="text" id="provinces_id" name="provinces_id" class="form-control" required="">
-          </div>
-          <div class="form-group">
-            <label for="kotakabupaten">Kota/Kabupaten:</label>
-            <input type="text" id="cities_id" name="cities_id" class="form-control" required="">
-          </div>
-          <div class="form-group">
-            <label for="kecamatan">Kecamatan:</label>
-            <input type="text" class="form-control" id="districts_id" name="districts_id" required="">
-          </div>
-          <div class="form-group">
             <label for="keluarahandesa">Kelurahan/Desa:</label>
             <input type="text" class="form-control" id="villages_id" name="villages_id" required="">
           </div>
