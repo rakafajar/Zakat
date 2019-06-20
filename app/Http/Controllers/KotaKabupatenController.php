@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\DesaModel;
+use App\KotaKabupatenModel;
+use App\ProvincesModel;
 
-class DesaController extends Controller
+class KotaKabupatenController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class DesaController extends Controller
      */
     public function index()
     {
-        $desa = DesaModel::all();
-        return view('desa.index', compact('desa'));
+        $kotakabupaten = KotaKabupatenModel::all();
+        return view('cities.index', compact('kotakabupaten'));
     }
 
     /**
@@ -25,7 +26,8 @@ class DesaController extends Controller
      */
     public function create()
     {
-        return view('desa.create');
+        $lihatprovinsi = ProvincesModel::all();
+        return view('cities.create', compact('lihatprovinsi'));
     }
 
     /**
@@ -36,7 +38,13 @@ class DesaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $kotakabupaten = new KotaKabupatenModel;
+        $kotakabupaten ->id = $request['id_kota'];
+        $kotakabupaten ->province_id = $request['province_id'];
+        $kotakabupaten ->name = $request['name_kotakabupaten'];
+        $kotakabupaten->save();
+
+        return redirect(route('kotakabupaten.index'))->with('success','Data Berhasil Disimpan!');
     }
 
     /**
@@ -58,7 +66,9 @@ class DesaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $lihatprovinsi = ProvincesModel::all();
+        $kotakabupaten = KotaKabupatenModel::find($id);
+        return view('cities.edit', compact('kotakabupaten', $kotakabupaten, 'lihatprovinsi', $lihatprovinsi));    
     }
 
     /**
@@ -70,7 +80,11 @@ class DesaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $kotakabupaten = KotaKabupatenModel::find($id);
+        $kotakabupaten ->name = $request['name_kotakabupaten'];
+        $kotakabupaten->update();
+
+        return redirect(route('kotakabupaten.index'))->with('info','Data Berhasil Diubah!');
     }
 
     /**
@@ -81,6 +95,8 @@ class DesaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $kotakabupaten = KotaKabupatenModel::find($id);
+        $kotakabupaten->delete();
+        return back()->with('warning','Data Berhasil Dihapus!');
     }
 }

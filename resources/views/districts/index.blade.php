@@ -11,7 +11,7 @@
         <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">
-            <a href="" class="btn btn-primary btn-sm">
+            <a href="{{ route('kecamatan.create') }}" class="btn btn-primary btn-sm">
               <i class="fas fa-user-plus"></i> Tambah
             </a>
            </div>
@@ -21,22 +21,32 @@
                 <thead>
                   <tr>
                     <th>No.</th>
-                    <th>Nama Kota/Kabupaten</th>
+                    <th>ID Kecamatan</th>
+                    <th>ID Kota/Kabupaten</th>
                     <th>Nama Kecamatan</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
+                  <?php $no = 0; ?>
+                  @foreach($kecamatan as $list)
+                  <?php $no++ ; ?>
                   <tr>
-                    <td>1</td>
-                    <td>Kota Bandung</td>
-                    <td>Kecamatan Cibiru</td>
+                    <td>{{ $no++ }}</td>
+                    <td>{{ $list->id }}</td>
+                    <td>{{ $list->city_id }}</td>
+                    <td>{{ $list->name }}</td>
                     <td style="text-align: center;">
                       <a href="" class="btn btn-info btn-sm"><i class="fas fa-search"></i></a>
-                      <a href="" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                      <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
+                      <a href="{!! route('kecamatan.edit', [$list->id]) !!}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                      <form action="{!! route('kecamatan.destroy', [$list->id]) !!}" method="post">
+                        {!! csrf_field() !!}
+                        {!! method_field('DELETE') !!} 
+                          <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash-alt"></i></button>
+                      </form>
                     </td>
                   </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>

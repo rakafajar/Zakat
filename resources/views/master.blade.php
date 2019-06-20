@@ -100,9 +100,9 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <a class="dropdown-item" href="{{ route('provinsi.index') }}">Data Provinsi</a>
-          <a class="dropdown-item" href="#">Data Kota/Kabupaten</a>
-          <a class="dropdown-item" href="#">Data Kecamatan</a>
-          <a class="dropdown-item" href="#">Data Desa</a>
+          <a class="dropdown-item" href="{{ route('kotakabupaten.index')}}">Data Kota/Kabupaten</a>
+          <a class="dropdown-item" href="{{ route('kecamatan.index') }}">Data Kecamatan</a>
+          <a class="dropdown-item" href="{{ route('kelurahan.index') }}">Data Desa</a>
 
         </div>
       </li>
