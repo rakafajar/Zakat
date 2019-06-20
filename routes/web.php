@@ -48,3 +48,18 @@ Route::resource('kecamatan', 'KecamatanController');
 
 // Untuk Controller dan View Kelurahan
 Route::resource('kelurahan', 'KelurahanController');
+
+// Untuk Controller dan View Agama
+Route::resource('agama', 'AgamaController');
+
+// Untuk Controller dan View HubunganKeluarga
+Route::resource('hubungankeluarga', 'HubunganKeluargaController');
+
+// Untuk Controller dan View JenisPendidikan
+Route::resource('jenispekerjaan', 'JenisPekerjaanController');
+
+// Untuk Controller dan View Pendidkan
+Route::resource('pendidikan', 'PendidikanController');
+
+// Untuk Controller dan View StatusPerkawinan
+Route::resource('perkawinan', 'PerkawinanController');
