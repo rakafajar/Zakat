@@ -73,7 +73,10 @@ class KartuKeluargaController extends Controller
     public function edit($id)
     {
         $kartukeluarga = KartuKeluargaModel::find($id);
-        return view('kartukeluarga.edit', compact('kartukeluarga', $kartukeluarga));
+        $dropdown_wilayah = DB::table('view_villages')
+                            ->groupBy('id_villages')
+                            ->get();
+        return view('kartukeluarga.edit', compact('kartukeluarga', $kartukeluarga))->with('dropdown_wilayah', $dropdown_wilayah);
     }
 
     /**
@@ -91,9 +94,6 @@ class KartuKeluargaController extends Controller
         $kartukeluarga ->rt = $request['rt'];
         $kartukeluarga ->rw = $request['rw'];
         $kartukeluarga ->kode_pos = $request['kode_pos'];
-        $kartukeluarga ->provinces_id = $request['provinces_id'];
-        $kartukeluarga ->cities_id = $request['cities_id'];
-        $kartukeluarga ->districts_id = $request['districts_id'];
         $kartukeluarga ->villages_id= $request['villages_id']; 
         $kartukeluarga->update();
 
@@ -122,7 +122,7 @@ class KartuKeluargaController extends Controller
                 ->where($select, $value)
                 ->groupBy($dependent)
                 ->get();
-        $output = '<option value="">Select '.ucfirst($dependent).'</option>';
+        $output = '<option value="">Pilih '.ucfirst($dependent).'</option>';
         foreach ($data as $row) {
             $output .= '<option value="'.$row->$dependent.'">
                 '.$row->$dependent.'</option>';
