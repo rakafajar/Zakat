@@ -76,7 +76,7 @@
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <a class="dropdown-item" href="{{ route('kartukeluarga.index') }}">Kartu Keluarga</a>
           <a class="dropdown-item" href="{{ route('anggotakeluarga.index') }}">Anggota Keluarga</a>
-          <a class="dropdown-item" href="{{ route('muzzaki.index') }}">Muzakki</a>
+          <a class="dropdown-item" href="#">Muzakki</a>
           <a class="dropdown-item" href="">Mustahiq</a>
         </div>
       </li>
@@ -99,7 +99,7 @@
           <span>Master</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <a class="dropdown-item" href="#">Data Provinsi</a>
+          <a class="dropdown-item" href="{{ route('provinsi.index') }}">Data Provinsi</a>
           <a class="dropdown-item" href="#">Data Kota/Kabupaten</a>
           <a class="dropdown-item" href="#">Data Kecamatan</a>
           <a class="dropdown-item" href="#">Data Desa</a>

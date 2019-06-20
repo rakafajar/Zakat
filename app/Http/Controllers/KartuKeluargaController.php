@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\KartuKeluargaModel;
-use App\ProvinsiModel;
-use App\KotaKabupatenModel;
-use App\KecamatanModel;
-use App\DesaModel;
+use App\ViewVillagesModel;
 
 
 class KartuKeluargaController extends Controller
@@ -20,7 +17,8 @@ class KartuKeluargaController extends Controller
     public function index()
     {
         $kartukeluarga = KartuKeluargaModel::all();
-        return view ('kartukeluarga.index', compact('kartukeluarga'));
+        $wilayahindonesia = ViewVillagesModel::all();
+        return view ('kartukeluarga.index', compact('kartukeluarga', 'wilayahindonesia'));
     }
 
     /**

@@ -26,15 +26,19 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <?php $no = 0; ?>
+                  @foreach($provinsi as $list)
+                  <?php $no++ ; ?>
                   <tr>
-                    <td>1</td>
-                    <td>Jawa Barat</td>
+                    <td>{{ $no++ }}</td>
+                    <td>{{ $list->name }}</td>
                     <td style="text-align: center;">
                       <a href="" class="btn btn-info btn-sm"><i class="fas fa-search"></i></a>
                       <a href="" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                       <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
                     </td>
                   </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>
