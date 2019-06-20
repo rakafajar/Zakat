@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\KartuKeluargaModel;
 use App\ViewKartuKeluargaModel;
+use DB;
 
 class KartuKeluargaController extends Controller
 {
@@ -26,7 +27,10 @@ class KartuKeluargaController extends Controller
      */
     public function create()
     {
-        return view('kartukeluarga.create');
+        $dropdown_wilayah = DB::table('view_villages')
+                            ->groupBy('name_provinces')
+                            ->get();
+        return view('kartukeluarga.create')->with('dropdown_wilayah', $dropdown_wilayah);
     }
 
     /**
@@ -107,5 +111,22 @@ class KartuKeluargaController extends Controller
         $kartukeluarga = KartuKeluargaModel::find($id);
         $kartukeluarga->delete();
         return back()->with('warning','Data Berhasil Dihapus!');
+    }
+
+    function fetch(Request $request)
+    {
+        $select = $request->get('select');
+        $value = $request->get('value');
+        $dependent = $request->get('dependent');
+        $data = DB::table('view_villages')
+                ->where($select, $value)
+                ->groupBy($dependent)
+                ->get();
+        $output = '<option value="">Select '.ucfirst($dependent).'</option>';
+        foreach ($data as $row) {
+            $output .= '<option value="'.$row->$dependent.'">
+                '.$row->$dependent.'</option>';
+        }
+        echo $output;
     } 
 }

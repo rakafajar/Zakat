@@ -43,9 +43,29 @@
             <input type="text" class="form-control" id="kode_pos" name="kode_pos" required="">
           </div>
           <div class="form-group">
-            <label for="keluarahandesa">Kelurahan/Desa:</label>
-            <input type="text" class="form-control" id="villages_id" name="villages_id" required="">
+            <select name="name_provinces" id="name_provinces" class="form-control input-lg dynamic" data-dependent="name_cities">
+              <option value="">-- Pilih Provinsi --</option>
+              @foreach($dropdown_wilayah as $provinsi)
+                <option value="{{$provinsi->name_provinces}}">{{$provinsi->name_provinces}}</option>
+              @endforeach
+            </select>
           </div>
+          <div class="form-group">
+            <select name="name_cities" id="name_cities" class="form-control input-lg dynamic" data-dependent="name_district">
+              <option value="">-- Pilih Kota --</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select name="name_district" id="name_district" class="form-control input-lg dynamic" data-dependent="name_villages">
+              <option>-- Pilih Kecamatan --</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select name="name_villages" id="name_villages" class="form-control input-lg">
+              <option>-- Pilih Kecamatan --</option>
+            </select>
+          </div>
+          {{ csrf_field() }}
           <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
           <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>
           <a href="{{ route('kartukeluarga.index') }}" class="btn btn-danger btn-sm"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
@@ -54,6 +74,31 @@
     </div>
   </div>
 <br>
+@endsection
 
+@section('script')
+<script>
+  $(document).ready(function(){
+    $('.dynamic').change(function(){
+      if($(this).val() != '')
+        {
+            var select = $(this).attr("id");
+            var value = $(this).val();
+            var dependent = $(this).data('dependent');
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+              url:"{{ route('kartukeluarga.fetch')}}",
+              method:"POST",
+              data:{select:select, value:value, _token:_token, dependent:dependent},
+              success:function(result)
+              {
+                $('#'+dependent).html(result);
+              }
+            })
+        }
+    });
+  
 
+  });
+</script>
 @endsection
