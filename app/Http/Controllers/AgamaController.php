@@ -25,7 +25,7 @@ class AgamaController extends Controller
      */
     public function create()
     {
-        //
+        return view('agama.create');
     }
 
     /**
@@ -36,7 +36,11 @@ class AgamaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $agama = new AgamaModel;
+        $agama->agama = $request['nama_agama'];
+        $agama->save();
+
+        return redirect(route('agama.index'))->with('success','Data Berhasil Disimpan!');
     }
 
     /**
@@ -58,7 +62,8 @@ class AgamaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $agama = AgamaModel::find($id);
+        return view('agama.edit', compact('agama', $agama));
     }
 
     /**
@@ -70,7 +75,11 @@ class AgamaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $agama = AgamaModel::find($id);
+        $agama->agama = $request['nama_agama'];
+        $agama->update();
+
+        return redirect(route('agama.index'))->with('info','Data Berhasil Diubah!');
     }
 
     /**
@@ -81,6 +90,9 @@ class AgamaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $agama = AgamaModel::find($id);
+        $agama->delete();
+
+        return redirect()->back()->with('warning','Data Berhasil Dihapus!');
     }
 }

@@ -11,7 +11,7 @@
 <!-- DataTables Example -->
 <div class="card mb-3">
     <div class="card-header">
-    <a href="#" class="btn btn-primary btn-sm">
+    <a href="{{ route('agama.create') }}" class="btn btn-primary btn-sm">
         <i class="fas fa-user-plus"></i> Tambah
     </a>
     </div>
@@ -33,8 +33,8 @@
             <td>{{ $no }}</td>
             <td>{{ $list->agama }}</td>
             <th style="text-align: center;">
-                <a href="#" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                <form action="#" method="POST">
+                <a href="{{ route('agama.edit', $list->id_agama )}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                <form action="{{ route('agama.destroy', $list->id_agama)}}" method="POST">
                 {!! csrf_field() !!}
                 {!! method_field('DELETE') !!}
                 <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
