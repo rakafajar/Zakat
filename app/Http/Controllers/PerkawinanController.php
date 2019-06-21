@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\StatusPerkawinanModel;
 
 class PerkawinanController extends Controller
 {
@@ -13,7 +14,8 @@ class PerkawinanController extends Controller
      */
     public function index()
     {
-        //
+        $status_perkawinan = StatusPerkawinanModel::all();
+        return view('perkawinan.index', compact('status_perkawinan', $status_perkawinan));
     }
 
     /**
@@ -23,7 +25,7 @@ class PerkawinanController extends Controller
      */
     public function create()
     {
-        //
+        return view('perkawinan.create');
     }
 
     /**
@@ -34,7 +36,11 @@ class PerkawinanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $status_perkawinan = new StatusPerkawinanModel;
+        $status_perkawinan->nama_status = $request['nama_status'];
+        $status_perkawinan->save();
+
+        return redirect(route('perkawinan.index'))->with('success','Data Berhasil Disimpan!');
     }
 
     /**
@@ -56,7 +62,8 @@ class PerkawinanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $status_perkawinan = StatusPerkawinanModel::find($id);
+        return view('perkawinan.edit',compact('status_perkawinan', $status_perkawinan));     
     }
 
     /**
@@ -68,7 +75,10 @@ class PerkawinanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $status_perkawinan = StatusPerkawinanModel::find($id);
+        $status_perkawinan->nama_status = $request['nama_status'];
+        $status_perkawinan->update();
+        return redirect(route('perkawinan.index'))->with('info','Data Berhasil Diubah!');
     }
 
     /**
@@ -79,6 +89,9 @@ class PerkawinanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $status_perkawinan = StatusPerkawinanModel::find($id);
+        $status_perkawinan->delete();
+
+        return back()->with('warning', 'Data Berhasil Dihapus!');
     }
 }

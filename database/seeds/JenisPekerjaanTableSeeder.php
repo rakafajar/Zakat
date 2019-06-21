@@ -2,14 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class JenisPekerejaanTableSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+class JenisPekerjaanTableSeeder extends Seeder
     {
         DB::table('tb_jenispekerjaan')->insert(array(
         	[
