@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\JenisPekerjaanModel;
 
 class JenisPekerjaanController extends Controller
 {
@@ -13,7 +14,8 @@ class JenisPekerjaanController extends Controller
      */
     public function index()
     {
-        //
+        $jenis_pekerjaan = JenisPekerjaanModel::all();
+        return view('pekerjaan.index', compact('jenis_pekerjaan', $jenis_pekerjaan));
     }
 
     /**
@@ -23,7 +25,7 @@ class JenisPekerjaanController extends Controller
      */
     public function create()
     {
-        //
+        return view('pekerjaan.create');
     }
 
     /**
@@ -34,7 +36,12 @@ class JenisPekerjaanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $jenis_pekerjaan = new JenisPekerjaanModel;
+        $jenis_pekerjaan->nama_pekerjaan = $request['nama_pekerjaan'];
+        $jenis_pekerjaan->save();
+
+        return redirect(route('jenispekerjaan.index'))->with('success','Data Berhasil Disimpan!'); 
+        
     }
 
     /**
@@ -56,7 +63,8 @@ class JenisPekerjaanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $jenis_pekerjaan = JenisPekerjaanModel::find($id);
+        return view('pekerjaan.edit', compact('jenis_pekerjaan', $jenis_pekerjaan));
     }
 
     /**
@@ -68,7 +76,11 @@ class JenisPekerjaanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $jenis_pekerjaan = JenisPekerjaanModel::find($id);
+        $jenis_pekerjaan->nama_pekerjaan = $request['nama_pekerjaan'];
+        $jenis_pekerjaan->update();
+
+        return redirect(route('jenispekerjaan.index'))->with('info','Data Berhasil Diubah!'); 
     }
 
     /**
@@ -79,6 +91,9 @@ class JenisPekerjaanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $jenis_pekerjaan = JenisPekerjaanModel::find($id);
+        $jenis_pekerjaan->delete();
+
+        return back()->with('warning', 'Data Berhasil Dihapus!');
     }
 }
