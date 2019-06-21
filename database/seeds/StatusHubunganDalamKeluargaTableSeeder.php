@@ -13,37 +13,37 @@ class StatusHubunganDalamKeluargaTableSeeder extends Seeder
     {
         DB::table('tb_hubkeluarga')->insert(array(
         	[
-        		'hubkeluarga' => 'Kepala Keluarga'
+        		'nama_hubkeluarga' => 'Kepala Keluarga'
         	],
         	[
-        		'hubkeluarga' => 'Suami'
+        		'nama_hubkeluarga' => 'Suami'
         	],
         	[
-        		'hubkeluarga' => 'Istri'
+        		'nama_hubkeluarga' => 'Istri'
         	],
         	[
-        		'hubkeluarga' => 'Anak'
+        		'nama_hubkeluarga' => 'Anak'
         	],
         	[
-        		'hubkeluarga' => 'Menantu'
+        		'nama_hubkeluarga' => 'Menantu'
         	],
         	[
-        		'hubkeluarga' => 'Cucu'
+        		'nama_hubkeluarga' => 'Cucu'
         	],
         	[
-        		'hubkeluarga' => 'Orangtua'
+        		'nama_hubkeluarga' => 'Orangtua'
         	],
         	[
-        		'hubkeluarga' => 'Mertua'
+        		'nama_hubkeluarga' => 'Mertua'
         	],
         	[
-        		'hubkeluarga' => 'Famili Lain'
+        		'nama_hubkeluarga' => 'Famili Lain'
         	],
         	[
-        		'hubkeluarga' => 'Pembantu'
+        		'nama_hubkeluarga' => 'Pembantu'
         	],
         	[
-        		'hubkeluarga' => 'Lainnya'
+        		'nama_hubkeluarga' => 'Lainnya'
         	]
         ));
     }

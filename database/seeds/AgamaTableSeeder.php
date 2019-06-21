@@ -13,22 +13,22 @@ class AgamaTableSeeder extends Seeder
     {
         DB::table('tb_agama')->insert(array(
             [
-                'agama' => 'Islam'
+                'nama_agama' => 'Islam'
             ],
             [
-            	'agama' => 'Kristen Protestan'
+            	'nama_agama' => 'Kristen Protestan'
             ],
             [
-            	'agama' => 'Kristen Katolik'
+            	'nama_agama' => 'Kristen Katolik'
             ],
             [
-            	'agama' => 'Hindu'
+            	'nama_agama' => 'Hindu'
             ],
             [
-            	'agama' => 'Buddha'
+            	'nama_agama' => 'Buddha'
             ],
             [
-            	'agama' => 'Konghucu'
+            	'nama_agama' => 'Konghucu'
             ]
 
         ));

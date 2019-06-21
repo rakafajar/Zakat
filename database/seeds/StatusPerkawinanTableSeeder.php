@@ -13,16 +13,16 @@ class StatusPerkawinanTableSeeder extends Seeder
     {
         DB::table('tb_statusperkawinan')->insert(array(
         	[
-        		'status' => 'Belum Kawin'
+        		'nama_status' => 'Belum Kawin'
         	],
         	[
-        		'status' => 'Kawin'
+        		'nama_status' => 'Kawin'
         	],
         	[
-        		'status' => 'Cerai Hidup'
+        		'nama_status' => 'Cerai Hidup'
         	],
         	[
-        		'status' => 'Cerai Mati'
+        		'nama_status' => 'Cerai Mati'
         	]
         ));
     }

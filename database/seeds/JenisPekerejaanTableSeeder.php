@@ -13,91 +13,91 @@ class JenisPekerejaanTableSeeder extends Seeder
     {
         DB::table('tb_jenispekerjaan')->insert(array(
         	[
-        		'pekerjaan' => 'Belum/Tidak Bekerja'
+        		'nama_pekerjaan' => 'Belum/Tidak Bekerja'
         	],
         	[
-        		'pekerjaan' => 'Mengurus Rumah Tangga'
+        		'nama_pekerjaan' => 'Mengurus Rumah Tangga'
         	],
         	[
-        		'pekerjaan' => 'Pelajar/Mahasiswa'
+        		'nama_pekerjaan' => 'Pelajar/Mahasiswa'
         	],
         	[
-        		'pekerjaan' => 'Pensiunan'
+        		'nama_pekerjaan' => 'Pensiunan'
         	],
         	[
-        		'pekerjaan' => 'Pegawai Negeri Sipil'
+        		'nama_pekerjaan' => 'Pegawai Negeri Sipil'
         	],
         	[
-        		'pekerjaan' => 'TNI'
+        		'nama_pekerjaan' => 'TNI'
         	],
         	[
-        		'pekerjaan' => 'Kepolisian RI'
+        		'nama_pekerjaan' => 'Kepolisian RI'
         	],
         	[
-        		'pekerjaan' => 'Perdagangan'
+        		'nama_pekerjaan' => 'Perdagangan'
         	],
         	[
-        		'pekerjaan' => 'Petani/Pekebun'
+        		'nama_pekerjaan' => 'Petani/Pekebun'
         	],
         	[
-        		'pekerjaan' => 'Peternak'
+        		'nama_pekerjaan' => 'Peternak'
         	],
         	[
-        		'pekerjaan' => 'Nelayan/Perikanan'
+        		'nama_pekerjaan' => 'Nelayan/Perikanan'
         	],
         	[
-        		'pekerjaan' => 'Industri'
+        		'nama_pekerjaan' => 'Industri'
         	],
         	[
-        		'pekerjaan' => 'Konstruksi'
+        		'nama_pekerjaan' => 'Konstruksi'
         	],
         	[
-        		'pekerjaan' => 'Transportasi'
+        		'nama_pekerjaan' => 'Transportasi'
         	],
         	[
-        		'pekerjaan' => 'Karyawan Swasta'
+        		'nama_pekerjaan' => 'Karyawan Swasta'
         	],
         	[
-        		'pekerjaan' => 'Karyawan BUMN'
+        		'nama_pekerjaan' => 'Karyawan BUMN'
         	],
         	[
-        		'pekerjaan' => 'Karyawan BUMD'
+        		'nama_pekerjaan' => 'Karyawan BUMD'
         	],
         	[
-        		'pekerjaan' => 'Pembantu Rumah Tangga'
+        		'nama_pekerjaan' => 'Pembantu Rumah Tangga'
         	],
         	[
-        		'pekerjaan' => 'Seniman'
+        		'nama_pekerjaan' => 'Seniman'
         	],
         	[
-        		'pekerjaan' => 'Wartawan'
+        		'nama_pekerjaan' => 'Wartawan'
         	],
         	[
-        		'pekerjaan' => 'Anggota DPR-RI'
+        		'nama_pekerjaan' => 'Anggota DPR-RI'
         	],
         	[
-        		'pekerjaan' => 'Anggota DPD'
+        		'nama_pekerjaan' => 'Anggota DPD'
         	],
         	[
-        		'pekerjaan' => 'Dosen'
+        		'nama_pekerjaan' => 'Dosen'
         	],
         	[
-        		'pekerjaan' => 'Guru'
+        		'nama_pekerjaan' => 'Guru'
         	],
         	[
-        		'pekerjaan' => 'Pilot'
+        		'nama_pekerjaan' => 'Pilot'
         	],
         	[
-        		'pekerjaan' => 'Pengacara'
+        		'nama_pekerjaan' => 'Pengacara'
         	],
         	[
-        		'pekerjaan' => 'Dokter'
+        		'nama_pekerjaan' => 'Dokter'
         	],
         	[
-        		'pekerjaan' => 'Arsitek'
+        		'nama_pekerjaan' => 'Arsitek'
         	],
         	[
-        		'pekerjaan' => 'Wiraswasta'
+        		'nama_pekerjaan' => 'Wiraswasta'
         	]
         ));
     }

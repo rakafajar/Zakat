@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class PendidikanTableSeeder extends Seeder
+class nama_pendidikanTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,34 +13,34 @@ class PendidikanTableSeeder extends Seeder
     {
         DB::table('tb_pendidikan')->insert(array(
         	[
-        		'pendidikan' => 'Tidak/Belum Sekolah'
+        		'nama_pendidikan' => 'Tidak/Belum Sekolah'
         	],
         	[
-        		'pendidikan' => 'Belum Tamat SD/Sederajat'
+        		'nama_pendidikan' => 'Belum Tamat SD/Sederajat'
         	],
         	[
-        		'pendidikan' => 'Tamat SD/Sederajat'
+        		'nama_pendidikan' => 'Tamat SD/Sederajat'
         	],
         	[
-        		'pendidikan' => 'SLTP/Sederajat'
+        		'nama_pendidikan' => 'SLTP/Sederajat'
         	],
         	[
-        		'pendidikan' => 'SLTA/Sederajat'
+        		'nama_pendidikan' => 'SLTA/Sederajat'
         	],
         	[
-        		'pendidikan' => 'Diploma I/II'
+        		'nama_pendidikan' => 'Diploma I/II'
         	],
         	[
-        		'pendidikan' => 'Akademi/Diploma III/Sarjana Muda'
+        		'nama_pendidikan' => 'Akademi/Diploma III/Sarjana Muda'
         	],
         	[
-        		'pendidikan' => 'Diploma IV/Strata I'
+        		'nama_pendidikan' => 'Diploma IV/Strata I'
         	],
         	[
-        		'pendidikan' => 'Strata II'
+        		'nama_pendidikan' => 'Strata II'
         	],
             [
-                'pendidikan' => 'Strata III'
+                'nama_pendidikan' => 'Strata III'
             ]
         ));
     }
