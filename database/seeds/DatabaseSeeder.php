@@ -15,7 +15,9 @@ class DatabaseSeeder extends Seeder
         $this->call(AgamaTableSeeder::class);
         $this->call(GolonganTableSeeder::class);
         $this->call(PendidikanTableSeeder::class);
+        $this->call(JenisPekerjaanTableSeeder::class);
         $this->call(StatusHubunganDalamKeluargaTableSeeder::class);
         $this->call(StatusPerkawinanTableSeeder::class);
+
     }
 }
