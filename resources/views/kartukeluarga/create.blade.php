@@ -61,7 +61,7 @@
             </select>
           </div>
           <div class="form-group">
-            <select name="name_villages" id="name_villages" class="form-control input-lg">
+            <select name="villages_id" id="name_villages" class="form-control input-lg">
               <option>-- Pilih Kecamatan --</option>
             </select>
           </div>
@@ -97,8 +97,6 @@
             })
         }
     });
-  
-
   });
 </script>
 @endsection

@@ -103,6 +103,7 @@
           <a class="dropdown-item" href="{{ route('kotakabupaten.index')}}">Data Kota/Kabupaten</a>
           <a class="dropdown-item" href="{{ route('kecamatan.index') }}">Data Kecamatan</a>
           <a class="dropdown-item" href="{{ route('kelurahan.index') }}">Data Desa</a>
+          <a class="dropdown-item" href="{{ route('agama.index') }}">Data Agama</a>
 
         </div>
       </li>
