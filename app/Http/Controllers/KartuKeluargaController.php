@@ -47,7 +47,7 @@ class KartuKeluargaController extends Controller
         $kartukeluarga ->rt = $request['rt'];
         $kartukeluarga ->rw = $request['rw'];
         $kartukeluarga ->kode_pos = $request['kode_pos'];
-        $kartukeluarga ->villages_id = $request['villages_id'];
+        $kartukeluarga ->villages_id = $request['id_villages'];
         $kartukeluarga->save();
 
         return redirect(route('kartukeluarga.index'))->with('success','Data Berhasil Disimpan!');
@@ -94,7 +94,7 @@ class KartuKeluargaController extends Controller
         $kartukeluarga ->rt = $request['rt'];
         $kartukeluarga ->rw = $request['rw'];
         $kartukeluarga ->kode_pos = $request['kode_pos'];
-        $kartukeluarga ->villages_id= $request['villages_id']; 
+        $kartukeluarga ->villages_id= $request['id_villages']; 
         $kartukeluarga->update();
 
         return redirect(route('kartukeluarga.index'))->with('info','Data Berhasil Diubah!');
@@ -118,14 +118,17 @@ class KartuKeluargaController extends Controller
         $select = $request->get('select');
         $value = $request->get('value');
         $dependent = $request->get('dependent');
+        $a = explode('+', $dependent);
         $data = DB::table('view_villages')
                 ->where($select, $value)
-                ->groupBy($dependent)
+                ->groupBy($a[0])
                 ->get();
-        $output = '<option value="">Pilih '.ucfirst($dependent).'</option>';
+        $output = "<option value=''>Pilih</option>";
+        $id = $a[0];
+        $nama = $a[1];
         foreach ($data as $row) {
-            $output .= '<option value="'.$row->$dependent.'">
-                '.$row->$dependent.'</option>';
+            $output .= '<option value="'.$row->$id.'">
+                '.$row->$nama.'</option>';
         }
         echo $output;
     } 

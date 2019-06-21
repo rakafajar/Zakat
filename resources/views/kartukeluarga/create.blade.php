@@ -43,25 +43,25 @@
             <input type="text" class="form-control" id="kode_pos" name="kode_pos" required="">
           </div>
           <div class="form-group">
-            <select name="name_provinces" id="name_provinces" class="form-control input-lg dynamic" data-dependent="name_cities">
+            <select name="id_provinces" id="id_provinces" class="form-control input-lg dynamic" data-dependent="id_cities+name_cities">
               <option value="">-- Pilih Provinsi --</option>
               @foreach($dropdown_wilayah as $provinsi)
-                <option value="{{$provinsi->name_provinces}}">{{$provinsi->name_provinces}}</option>
+                <option value="{{$provinsi->id_provinces}}">{{$provinsi->name_provinces}}</option>
               @endforeach
             </select>
           </div>
           <div class="form-group">
-            <select name="name_cities" id="name_cities" class="form-control input-lg dynamic" data-dependent="name_district">
+            <select name="id_cities" id="id_cities" class="form-control input-lg dynamic" data-dependent="district_id+name_district ">
               <option value="">-- Pilih Kota --</option>
             </select>
           </div>
           <div class="form-group">
-            <select name="name_district" id="name_district" class="form-control input-lg dynamic" data-dependent="name_villages">
+            <select name="district_id" id="district_id" class="form-control input-lg dynamic" data-dependent="id_villages+name_villages">
               <option>-- Pilih Kecamatan --</option>
             </select>
           </div>
           <div class="form-group">
-            <select name="villages_id" id="name_villages" class="form-control input-lg">
+            <select name="id_villages" id="id_villages" class="form-control input-lg">
               <option>-- Pilih Kecamatan --</option>
             </select>
           </div>
@@ -92,11 +92,29 @@
               data:{select:select, value:value, _token:_token, dependent:dependent},
               success:function(result)
               {
-                $('#'+dependent).html(result);
+                var a = dependent.split("+");
+                $('#'+a[0]).html(result);
               }
             })
         }
     });
+
+    $('#name_provinces').change(function(){
+      $('#name_cities').val('');
+      $('#name_district').val('');
+      $('#name_villages').val('');
+     });
+    
+     $('#name_cities').change(function(){
+      $('#name_district').val('');
+      $('#name_villages').val('');
+     });
+
+     $('#name_district').change(function(){
+      $('#name_villages').val('');
+     });
+
+
   });
 </script>
 @endsection
