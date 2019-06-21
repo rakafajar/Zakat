@@ -15,7 +15,7 @@ class CreateHubkeluargaTable extends Migration
     {
         Schema::create('tb_hubkeluarga', function (Blueprint $table) {
             $table->increments('id_hubkeluarga');
-            $table->string('hubkeluarga');
+            $table->string('nama_hubkeluarga');
             $table->timestamps();
         });
     }

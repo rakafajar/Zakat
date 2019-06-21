@@ -15,7 +15,7 @@ class CreateJenispekerjaanTable extends Migration
     {
         Schema::create('tb_jenispekerjaan', function (Blueprint $table) {
             $table->increments('id_pekerjaan');
-            $table->string('pekerjaan');
+            $table->string('nama_pekerjaan');
             $table->timestamps();
         });
     }

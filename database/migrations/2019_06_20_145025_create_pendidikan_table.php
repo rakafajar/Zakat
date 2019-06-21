@@ -15,7 +15,7 @@ class CreatePendidikanTable extends Migration
     {
         Schema::create('tb_pendidikan', function (Blueprint $table) {
             $table->increments('id_pendidikan');
-            $table->string('pendidikan');
+            $table->string('nama_pendidikan');
             $table->timestamps();
         });
     }
