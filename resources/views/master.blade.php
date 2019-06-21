@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Admin - Dashboard</title>
+  <title>Admin - Al-Muhajirin</title>
 
   <link rel="icon" href="{{ asset('img/apple-touch-icon.png') }}">
 
@@ -28,9 +28,9 @@
 
 <body id="page-top">
 
-  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+  <nav class="navbar navbar-expand navbar-dark bg-info static-top">
 
-    <a class="navbar-brand mr-1 font1" href="">Al-Muhajirin <img src="{{ asset('img/apple-touch-icon.png') }}" style="width: 30px;" class="img-responsive"></a>
+    <a class="navbar-brand mr-1 font1" href="/">Al-Muhajirin <img src="{{ asset('img/apple-touch-icon.png') }}" style="width: 30px;" class="img-responsive"></a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
@@ -48,9 +48,9 @@
           <i class="fas fa-user-circle fa-fw text-white"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-          <a class="dropdown-item" href="#">Settings</a>
+          {{-- <a class="dropdown-item" href="#">Settings</a>
           <a class="dropdown-item" href="#">Activity Log</a>
-          <div class="dropdown-divider"></div>
+          <div class="dropdown-divider"></div> --}}
           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
         </div>
       </li>
@@ -63,27 +63,37 @@
     <!-- Sidebar -->
      <ul class="sidebar navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="/">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span>
         </a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Menu</span>
+          <i class="fas fa-id-card"></i>
+          <span>Kartu Keluarga</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <a class="dropdown-item" href="{{ route('kartukeluarga.index') }}">Kartu Keluarga</a>
           <a class="dropdown-item" href="{{ route('anggotakeluarga.index') }}">Anggota Keluarga</a>
-          <a class="dropdown-item" href="#">Muzakki</a>
-          <a class="dropdown-item" href="">Mustahiq</a>
         </div>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="">
+          <i class="fas fa-users"></i>
+          <span>Muzzaki</span>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="">
+          <i class="fas fa-users"></i>
+          <span>Mustahiq</span>
+        </a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Data Zakat</span>
+          <i class="fas fa-wallet"></i>
+          <span>Zakat</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <a class="dropdown-item" href="{{ route('zakatfitrah.index') }}">Zakat Fitrah</a>
@@ -106,7 +116,6 @@
           <a class="dropdown-item" href="{{ route('agama.index') }}">Data Agama</a>
           <a class="dropdown-item" href="{{ route('pendidikan.index') }}">Data Pendidikan</a>
           <a class="dropdown-item" href="{{ route('jenispekerjaan.index') }}">Data Pekerjaan</a>
-
         </div>
       </li>
     </ul>
