@@ -93,6 +93,6 @@ class AgamaController extends Controller
         $agama = AgamaModel::find($id);
         $agama->delete();
 
-        return redirect()->back()->with('warning','Data Berhasil Dihapus!');
+        return back()->with('warning','Data Berhasil Dihapus!');
     }
 }

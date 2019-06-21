@@ -104,6 +104,7 @@
           <a class="dropdown-item" href="{{ route('kecamatan.index') }}">Data Kecamatan</a>
           <a class="dropdown-item" href="{{ route('kelurahan.index') }}">Data Desa</a>
           <a class="dropdown-item" href="{{ route('agama.index') }}">Data Agama</a>
+          <a class="dropdown-item" href="{{ route('pendidikan.index') }}">Data Pendidikan</a>
 
         </div>
       </li>

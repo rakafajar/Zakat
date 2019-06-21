@@ -11,7 +11,7 @@
 <!-- DataTables Example -->
 <div class="card mb-3">
     <div class="card-header">
-    <a href="{{ route('agama.create') }}" class="btn btn-primary btn-sm">
+    <a href="{{ route('pendidikan.create') }}" class="btn btn-primary btn-sm">
         <i class="fas fa-user-plus"></i> Tambah
     </a>
     </div>
@@ -27,14 +27,14 @@
         </thead>
         <tbody>
             <?php $no = 0; ?>
-            @foreach($agama as $list)
+            @foreach($pendidikan as $list)
             <?php $no++ ?>
             <tr>
             <td>{{ $no }}</td>
-            <td>{{ $list->agama }}</td>
+            <td>{{ $list->pendidikan }}</td>
             <th style="text-align: center;">
-                <a href="{{ route('agama.edit', $list->id_agama )}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                <form action="{{ route('agama.destroy', $list->id_agama)}}" method="POST">
+                <a href="{{ route('pendidikan.edit', $list->id_pendidikan)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                <form action="{{ route('pendidikan.destroy', $list->id_pendidikan) }}" method="POST">
                 {!! csrf_field() !!}
                 {!! method_field('DELETE') !!}
                 <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>

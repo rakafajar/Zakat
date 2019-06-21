@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\PendidikanModel;
 
 class PendidikanController extends Controller
 {
@@ -13,7 +14,8 @@ class PendidikanController extends Controller
      */
     public function index()
     {
-        //
+        $pendidikan = PendidikanModel::all();
+        return view('pendidikan.index', compact('pendidikan', $pendidikan));
     }
 
     /**
@@ -23,7 +25,7 @@ class PendidikanController extends Controller
      */
     public function create()
     {
-        //
+        return view('pendidikan.create');
     }
 
     /**
@@ -34,7 +36,11 @@ class PendidikanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pendidikan = new PendidikanModel;
+        $pendidikan->pendidikan = $request['nama_pendidikan'];
+        $pendidikan->save();
+
+        return redirect()->route('pendidikan.index')->with('success', 'Data Berhasil Disimpan!');
     }
 
     /**
@@ -56,7 +62,9 @@ class PendidikanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pendidikan = PendidikanModel::find($id);
+        return view('pendidikan.edit', compact('pendidikan', $pendidikan));
+
     }
 
     /**
@@ -68,7 +76,12 @@ class PendidikanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pendidikan = PendidikanModel::find($id);
+        $pendidikan->pendidikan = $request['nama_pendidikan'];
+        $pendidikan->update();
+
+        return redirect()->route('pendidikan.index')->with('info', 'Data Berhasil Disimpan!');
+        
     }
 
     /**
@@ -79,6 +92,9 @@ class PendidikanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pendidikan = PendidikanModel::find($id);
+        $pendidikan->delete();
+
+        return back()->with('warning','Data Berhasil Dihapus!');
     }
 }
