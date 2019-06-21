@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\HubunganKeluargaModel;
 
 class HubunganKeluargaController extends Controller
 {
@@ -13,7 +14,8 @@ class HubunganKeluargaController extends Controller
      */
     public function index()
     {
-        //
+        $hub_keluarga = HubunganKeluargaModel::all();
+        return view('hubungankeluarga.index', compact('hub_keluarga', $hub_keluarga));
     }
 
     /**
@@ -23,7 +25,7 @@ class HubunganKeluargaController extends Controller
      */
     public function create()
     {
-        //
+        return view('hubungankeluarga.create');
     }
 
     /**
@@ -34,7 +36,11 @@ class HubunganKeluargaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $hub_keluarga = new HubunganKeluargaModel;
+        $hub_keluarga->nama_hubkeluarga = $request['nama_hubkeluarga'];
+        $hub_keluarga->save();
+
+        return redirect(route('hubungankeluarga.index'))->with('success','Data Berhasil Disimpan!');
     }
 
     /**
@@ -56,7 +62,8 @@ class HubunganKeluargaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $hub_keluarga = HubunganKeluargaModel::find($id);
+        return view('hubungankeluarga.edit', compact('hub_keluarga', $hub_keluarga));
     }
 
     /**
@@ -68,7 +75,10 @@ class HubunganKeluargaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $hub_keluarga = HubunganKeluargaModel::find($id);
+        $hub_keluarga->nama_hubkeluarga = $request['nama_hubkeluarga'];
+        $hub_keluarga->update();
+        return redirect(route('hubungankeluarga.index'))->with('info','Data Berhasil Diubah!');
     }
 
     /**
@@ -79,6 +89,9 @@ class HubunganKeluargaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $hub_keluarga = HubunganKeluargaModel::find($id);
+        $hub_keluarga->delete();
+
+        return back()->with('warning','Data Berhasil Dihapus!');
     }
 }

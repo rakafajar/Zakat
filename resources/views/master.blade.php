@@ -116,6 +116,7 @@
           <a class="dropdown-item" href="{{ route('agama.index') }}">Data Agama</a>
           <a class="dropdown-item" href="{{ route('pendidikan.index') }}">Data Pendidikan</a>
           <a class="dropdown-item" href="{{ route('perkawinan.index') }}">Data Perkawinan</a>
+          <a class="dropdown-item" href="{{ route('hubungankeluarga.index') }}">Hubungan Keluarga</a>
         </div>
       </li>
     </ul>
