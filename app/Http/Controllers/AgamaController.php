@@ -37,7 +37,7 @@ class AgamaController extends Controller
     public function store(Request $request)
     {
         $agama = new AgamaModel;
-        $agama->agama = $request['nama_agama'];
+        $agama->nama_agama = $request['nama_agama'];
         $agama->save();
 
         return redirect(route('agama.index'))->with('success','Data Berhasil Disimpan!');
@@ -76,7 +76,7 @@ class AgamaController extends Controller
     public function update(Request $request, $id)
     {
         $agama = AgamaModel::find($id);
-        $agama->agama = $request['nama_agama'];
+        $agama->nama_agama = $request['nama_agama'];
         $agama->update();
 
         return redirect(route('agama.index'))->with('info','Data Berhasil Diubah!');

@@ -37,7 +37,7 @@ class PendidikanController extends Controller
     public function store(Request $request)
     {
         $pendidikan = new PendidikanModel;
-        $pendidikan->pendidikan = $request['nama_pendidikan'];
+        $pendidikan->nama_pendidikan = $request['nama_pendidikan'];
         $pendidikan->save();
 
         return redirect()->route('pendidikan.index')->with('success', 'Data Berhasil Disimpan!');
@@ -77,7 +77,7 @@ class PendidikanController extends Controller
     public function update(Request $request, $id)
     {
         $pendidikan = PendidikanModel::find($id);
-        $pendidikan->pendidikan = $request['nama_pendidikan'];
+        $pendidikan->nama_pendidikan = $request['nama_pendidikan'];
         $pendidikan->update();
 
         return redirect()->route('pendidikan.index')->with('info', 'Data Berhasil Disimpan!');

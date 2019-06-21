@@ -31,7 +31,7 @@
             <?php $no++ ?>
             <tr>
             <td>{{ $no }}</td>
-            <td>{{ $list->agama }}</td>
+            <td>{{ $list->nama_agama }}</td>
             <th style="text-align: center;">
                 <a href="{{ route('agama.edit', $list->id_agama )}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                 <form action="{{ route('agama.destroy', $list->id_agama)}}" method="POST">

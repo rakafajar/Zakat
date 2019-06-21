@@ -5,7 +5,7 @@
 	<li class="breadcrumb-item">
 		<a href="#">Dashboard</a>
 	</li>
-	<li class="breadcrumb-item active">Agama</li>
+	<li class="breadcrumb-item active">Pendidikan</li>
 </ol>
 
 <!-- DataTables Example -->
@@ -21,7 +21,7 @@
         <thead>
             <tr>
             <th width="10">No</th>
-            <th>Nama Agama</th>
+            <th>Nama Pendidikan</th>
             <th>Aksi</th>
             </tr>
         </thead>
@@ -31,7 +31,7 @@
             <?php $no++ ?>
             <tr>
             <td>{{ $no }}</td>
-            <td>{{ $list->pendidikan }}</td>
+            <td>{{ $list->nama_pendidikan }}</td>
             <th style="text-align: center;">
                 <a href="{{ route('pendidikan.edit', $list->id_pendidikan)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                 <form action="{{ route('pendidikan.destroy', $list->id_pendidikan) }}" method="POST">

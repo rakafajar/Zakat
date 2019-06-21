@@ -16,7 +16,7 @@
         {{ csrf_field() }} {{ method_field('PATCH') }}
             <div class="form-group">
             <label for="pendidikan">Nama Pendidikan:</label>
-            <input type="text" class="form-control" id="nama_pendidikan" name="nama_pendidikan" value="{{ $pendidikan->pendidikan}}">
+            <input type="text" class="form-control" id="nama_pendidikan" name="nama_pendidikan" value="{{ $pendidikan->nama_pendidikan}}">
             </div>
             <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
             <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>
