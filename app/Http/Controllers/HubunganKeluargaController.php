@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\HubunganKeluargaModel;
+use DB;
 
 class HubunganKeluargaController extends Controller
 {
@@ -89,9 +90,7 @@ class HubunganKeluargaController extends Controller
      */
     public function destroy($id)
     {
-        $hub_keluarga = HubunganKeluargaModel::find($id);
-        $hub_keluarga->delete();
-
-        return back()->with('warning','Data Berhasil Dihapus!');
+        DB::table('tb_hubkeluarga')->where('id_hubkeluarga', '=', $id)->delete();
+        return back()->with('warning', 'Data Berhasil Dihapus!');
     }
 }

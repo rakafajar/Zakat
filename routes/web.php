@@ -54,15 +54,20 @@ Route::resource('kelurahan', 'KelurahanController');
 
 // Untuk Controller dan View Agama
 Route::resource('agama', 'AgamaController');
-
-// Untuk Controller dan View HubunganKeluarga
-Route::resource('hubungankeluarga', 'HubunganKeluargaController');
-
-// Untuk Controller dan View JenisPendidikan
-Route::resource('jenispekerjaan', 'JenisPekerjaanController');
+Route::get('agama/destroy/{id}','AgamaController@destroy');
 
 // Untuk Controller dan View Pendidkan
 Route::resource('pendidikan', 'PendidikanController');
+Route::get('pendidikan/destroy/{id}','PendidikanController@destroy');
+
+// Untuk Controller dan View JenisPendidikan
+Route::resource('jenispekerjaan', 'JenisPekerjaanController');
+Route::get('jenispekerjaan/destroy/{id}','JenisPekerjaanController@destroy');
 
 // Untuk Controller dan View StatusPerkawinan
 Route::resource('perkawinan', 'PerkawinanController');
+Route::get('perkawinan/destroy/{id}','PerkawinanController@destroy');
+
+// Untuk Controller dan View HubunganKeluarga
+Route::resource('hubungankeluarga', 'HubunganKeluargaController');
+Route::get('hubungankeluarga/destroy/{id}','HubunganKeluargaController@destroy');

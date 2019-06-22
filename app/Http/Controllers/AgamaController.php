@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\AgamaModel;
+use DB;
 
 class AgamaController extends Controller
 {
@@ -90,9 +91,7 @@ class AgamaController extends Controller
      */
     public function destroy($id)
     {
-        $agama = AgamaModel::find($id);
-        $agama->delete();
-
+        DB::table('tb_agama')->where('id_agama', '=', $id)->delete();
         return back()->with('warning','Data Berhasil Dihapus!');
     }
 }

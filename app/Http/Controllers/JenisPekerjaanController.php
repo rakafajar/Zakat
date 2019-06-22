@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\JenisPekerjaanModel;
+use DB;
 
 class JenisPekerjaanController extends Controller
 {
@@ -91,9 +92,7 @@ class JenisPekerjaanController extends Controller
      */
     public function destroy($id)
     {
-        $jenis_pekerjaan = JenisPekerjaanModel::find($id);
-        $jenis_pekerjaan->delete();
-
+        DB::table('tb_jenispekerjaan')->where('id_pekerjaan', '=', $id)->delete();
         return back()->with('warning', 'Data Berhasil Dihapus!');
     }
 }

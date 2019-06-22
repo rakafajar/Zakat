@@ -34,11 +34,7 @@
             <td>{{ $list->nama_pekerjaan }}</td>
             <th style="text-align: center;">
                 <a href="{{ route('jenispekerjaan.edit', $list->id_pekerjaan) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                <form action="{{ route('jenispekerjaan.destroy', $list->id_pekerjaan) }}" method="POST">
-                {!! csrf_field() !!}
-                {!! method_field('DELETE') !!}
-                <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
-                </form>
+                <a href="{{ URL::to('jenispekerjaan/destroy/'.$list->id_pekerjaan) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
             </th>
             </tr>
             @endforeach

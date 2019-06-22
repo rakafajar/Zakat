@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\StatusPerkawinanModel;
+use DB;
 
 class PerkawinanController extends Controller
 {
@@ -89,8 +90,8 @@ class PerkawinanController extends Controller
      */
     public function destroy($id)
     {
-        $status_perkawinan = StatusPerkawinanModel::find($id);
-        $status_perkawinan->delete();
+         DB::table('tb_statusperkawinan')->where('id_status', '=', $id)->delete();
+        return back()->with('warning', 'Data Berhasil Dihapus!');
 
         return back()->with('warning', 'Data Berhasil Dihapus!');
     }

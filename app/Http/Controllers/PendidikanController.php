@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\PendidikanModel;
+use DB;
 
 class PendidikanController extends Controller
 {
@@ -92,9 +93,7 @@ class PendidikanController extends Controller
      */
     public function destroy($id)
     {
-        $pendidikan = PendidikanModel::find($id);
-        $pendidikan->delete();
-
+        DB::table('tb_pendidikan')->where('id_pendidikan', '=', $id)->delete();
         return back()->with('warning','Data Berhasil Dihapus!');
     }
 }

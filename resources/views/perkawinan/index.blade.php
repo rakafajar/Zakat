@@ -34,11 +34,7 @@
             <td>{{ $list->nama_status }}</td>
             <th style="text-align: center;">
                 <a href="{{ route('perkawinan.edit', $list->id_status) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                <form action="{{ route('perkawinan.destroy', $list->id_status)}}" method="POST">
-                {!! csrf_field() !!}
-                {!! method_field('DELETE') !!}
-                <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
-                </form>
+                <a href="{{ URL::to('perkawinan/destroy/'.$list->id_status) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
             </th>
             </tr>
             @endforeach

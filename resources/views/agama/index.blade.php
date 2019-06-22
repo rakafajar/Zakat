@@ -34,11 +34,7 @@
             <td>{{ $list->nama_agama }}</td>
             <th style="text-align: center;">
                 <a href="{{ route('agama.edit', $list->id_agama )}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                <form action="{{ route('agama.destroy', $list->id_agama)}}" method="POST">
-                {!! csrf_field() !!}
-                {!! method_field('DELETE') !!}
-                <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
-                </form>
+                <a href="{{ URL::to('agama/destroy/'.$list->id_agama) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
             </th>
             </tr>
             @endforeach
