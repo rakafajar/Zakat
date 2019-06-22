@@ -22,6 +22,9 @@ Route::post('kartukeluarga/fetch', 'KartuKeluargaController@fetch')->name('kartu
 // Untuk Controller dan View AnggotaKeluarga
 Route::resource('anggotakeluarga', 'AnggotaKeluargaController');
 
+// Untuk Controller Golongan dan View Mustahiq
+Route::resource('golongan', 'GolonganController');
+
 // Untuk Controller dan View Zakat Fitrah
 Route::resource('zakatfitrah', 'ZakatFitrahController');
 
