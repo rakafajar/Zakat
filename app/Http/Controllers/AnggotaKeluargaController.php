@@ -92,8 +92,13 @@ class AnggotaKeluargaController extends Controller
     public function edit($id)
     {
         $kartukeluarga = KartuKeluargaModel::all();
-        $anggotakeluarga = AnggotaKeluargaModel::find($id);
-        return view('anggotakeluarga.edit', compact('anggotakeluarga', 'kartukeluarga'));
+        $agama = AgamaModel::all();
+        $pendidikan = PendidikanModel::all();
+        $hubkeluarga = HubunganKeluargaModel::all();
+        $status = StatusPerkawinanModel::all();
+        $pekerjaan = JenisPekerjaanModel::all();
+        $anggotakeluarga = AnggotaKKModel::find($id);
+        return view ('anggotakeluarga.edit', compact('kartukeluarga', 'agama', 'pendidikan', 'hubkeluarga', 'status', 'pekerjaan', 'anggotakeluarga'));
     }
 
     /**
@@ -105,23 +110,23 @@ class AnggotaKeluargaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $anggotakeluarga = AnggotaKeluargaModel::find($id);
-        $anggotakeluarga ->kk_id = $request['kk'];
-        $anggotakeluarga ->nama = $request['nama'];
-        $anggotakeluarga ->nik = $request['nik'];
-        $anggotakeluarga ->jenis_kelamin = $request['jenis_kelamin'];
-        $anggotakeluarga ->tempat_lahir = $request['tempat_lahir'];
-        $anggotakeluarga ->tanggal_lahir = $request['tanggal_lahir'];
-        $anggotakeluarga ->agama = $request['agama'];
-        $anggotakeluarga ->pendidikan = $request['pendidikan'];
-        $anggotakeluarga ->pekerjaan = $request['pekerjaan'];
-        $anggotakeluarga ->status_kawin = $request['status_kawin'];
-        $anggotakeluarga ->hubungan_keluarga = $request['hubungan_keluarga'];
-        $anggotakeluarga ->kewarga = $request['kewarga'];
-        $anggotakeluarga ->no_paspor = $request['no_paspor'];
-        $anggotakeluarga ->no_kitap = $request['no_kitap'];
-        $anggotakeluarga ->nama_ayah = $request['nama_ayah'];
-        $anggotakeluarga ->nama_ibu = $request['nama_ibu'];
+        $anggotakeluarga = AnggotaKKModel::find($id);
+        $anggotakeluarga -> nama_lengkap = $request['nama_lengkap'];
+        $anggotakeluarga -> nik = $request['nik'];
+        $anggotakeluarga -> id_kk = $request['id_kk'];
+        $anggotakeluarga -> jk = $request['jk'];
+        $anggotakeluarga -> tmp_lahir = $request['tmp_lahir'];
+        $anggotakeluarga -> tgl_lahir = $request['tgl_lahir'];
+        $anggotakeluarga -> id_agama = $request['id_agama'];
+        $anggotakeluarga -> id_pendidikan = $request['id_pendidikan'];
+        $anggotakeluarga -> id_pekerjaan = $request['id_pekerjaan'];
+        $anggotakeluarga -> id_status_kawin = $request['id_status_kawin'];
+        $anggotakeluarga -> id_status_hubkel = $request['id_status_hubkel'];
+        $anggotakeluarga -> kewarganegaraan = $request['kewarganegaraan'];
+        $anggotakeluarga -> no_paspor = $request['no_paspor'];
+        $anggotakeluarga -> no_kitap = $request['no_kitap'];
+        $anggotakeluarga -> ayah = $request['ayah'];
+        $anggotakeluarga -> ibu = $request['ibu'];
         $anggotakeluarga->update();
 
         return redirect(route('anggotakeluarga.index'))->with('info','Data Berhasil Diubah!');
