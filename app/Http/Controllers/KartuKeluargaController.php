@@ -108,8 +108,7 @@ class KartuKeluargaController extends Controller
      */
     public function destroy($id)
     {
-        $kartukeluarga = KartuKeluargaModel::find($id);
-        $kartukeluarga->delete();
+        DB::table('tb_kartukeluarga')->where('id_kk', '=', $id)->delete();
         return back()->with('warning','Data Berhasil Dihapus!');
     }
 
