@@ -19,8 +19,8 @@ class GolonganController extends Controller
      */
     public function index()
     {
-        $mustahiq = GolonganModel::all();
-        return view('mustahiq.index', compact('mustahiq', $mustahiq));
+        $golongan = GolonganModel::all();
+        return view('golongan.index', compact('golongan', $golongan));
     }
 
     /**
@@ -30,7 +30,7 @@ class GolonganController extends Controller
      */
     public function create()
     {
-        return view('mustahiq.create');
+        return view('golongan.create');
     }
 
     /**
@@ -41,9 +41,9 @@ class GolonganController extends Controller
      */
     public function store(Request $request)
     {
-        $mustahiq = new GolonganModel;
-        $mustahiq->nama_golongan = $request['nama_golongan'];
-        $mustahiq->save();
+        $golongan = new GolonganModel;
+        $golongan->nama_golongan = $request['nama_golongan'];
+        $golongan->save();
 
 
         return redirect(route('golongan.index'))->with('success', 'Data Berhasil Disimpan!');
@@ -69,8 +69,8 @@ class GolonganController extends Controller
      */
     public function edit($id)
     {
-        $mustahiq = GolonganModel::find($id);
-        return view('mustahiq.edit', compact($mustahiq, 'mustahiq'));
+        $golongan = GolonganModel::find($id);
+        return view('golongan.edit', compact($golongan, 'golongan'));
     }
 
     /**
@@ -82,9 +82,9 @@ class GolonganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $mustahiq = GolonganModel::find($id);
-        $mustahiq->nama_golongan = $request['nama_golongan'];
-        $mustahiq->update();
+        $golongan = GolonganModel::find($id);
+        $golongan->nama_golongan = $request['nama_golongan'];
+        $golongan->update();
 
         return redirect(route('golongan.index'))->with('info', 'Data Berhasil Diubah!');
     }

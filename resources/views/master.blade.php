@@ -89,7 +89,7 @@
         </a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="{{ route('golongan.index') }}">
+        <a class="nav-link" href="#">
           <i class="fas fa-users"></i>
           <span>Mustahiq</span>
         </a>
@@ -118,6 +118,7 @@
           <a class="dropdown-item" href="{{ route('jenispekerjaan.index') }}">Data Pekerjaan</a>
           <a class="dropdown-item" href="{{ route('perkawinan.index') }}">Data Perkawinan</a>
           <a class="dropdown-item" href="{{ route('hubungankeluarga.index') }}">Hubungan Keluarga</a>
+          <a class="dropdown-item" href="{{ route('golongan.index') }}">Golongan Mustahiq</a>
         </div>
       </li>
     </ul>

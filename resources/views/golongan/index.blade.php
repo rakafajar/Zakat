@@ -27,14 +27,14 @@
         </thead>
         <tbody>
             <?php $no = 0; ?>
-            @foreach($mustahiq as $list)
+            @foreach($golongan as $list)
             <?php $no++ ?>
             <tr>
             <td>{{ $no }}</td>
             <td>{{ $list->nama_golongan }}</td>
             <th style="text-align: center;">
                 <a href="{{ route('golongan.edit', $list->id_golongan )}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                <a href="{{ URL::to('mustahiq/destroy/'.$list->id_golongan) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                <a href="{{ URL::to('golongan/destroy/'.$list->id_golongan) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
             </th>
             </tr>
             @endforeach

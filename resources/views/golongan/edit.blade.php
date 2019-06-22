@@ -12,11 +12,11 @@
   <div class="card-header">Form Mustahiq</div>
   <div class="card-body">
     <div class="col-md-8">
-      <form action="{{ route('golongan.update', $mustahiq->id_golongan) }}" method="POST">
+      <form action="{{ route('golongan.update', $golongan->id_golongan) }}" method="POST">
         {{ csrf_field() }} {{ method_field('PATCH')}}
         <div class="form-group">
           <label for="Mustahiq">Nama Golongan Mustahiq:</label>
-          <input type="text" class="form-control" id="nama_golongan" name="nama_golongan" value="{{ $mustahiq->nama_golongan}}">
+          <input type="text" class="form-control" id="nama_golongan" name="nama_golongan" value="{{ $golongan->nama_golongan}}">
         </div>
         <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
         <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>
