@@ -29,7 +29,7 @@ Route::get('kartukeluarga/destroy/{id}','KartuKeluargaController@destroy');
 Route::resource('anggotakeluarga', 'AnggotaKeluargaController');
 Route::get('anggotakeluarga/destroy/{id}','AnggotaKeluargaController@destroy');
 
-// Untuk Controller Golongan dan View Mustahiq
+// Untuk Controller Golongan dan View Golongan
 Route::resource('golongan', 'GolonganController');
 Route::get('golongan/destroy/{id}','GolonganController@destroy');
 
@@ -79,5 +79,10 @@ Route::get('perkawinan/destroy/{id}','PerkawinanController@destroy');
 // Untuk Controller dan View HubunganKeluarga
 Route::resource('hubungankeluarga', 'HubunganKeluargaController');
 Route::get('hubungankeluarga/destroy/{id}','HubunganKeluargaController@destroy');
+
+// Untuk Controller mustahiq dan View mustahiq
+Route::resource('mustahiq', 'mustahiqController');
+Route::get('mustahiq/destroy/{id}','mustahiqController@destroy');
+
 
 Auth::routes();
