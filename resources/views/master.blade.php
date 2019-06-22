@@ -30,7 +30,7 @@
 
   <nav class="navbar navbar-expand navbar-dark bg-info static-top">
 
-    <a class="navbar-brand mr-1 font1" href="/">Al-Muhajirin <img src="{{ asset('img/apple-touch-icon.png') }}" style="width: 30px;" class="img-responsive"></a>
+    <a class="navbar-brand mr-1 font1" href="{{route('dashboard.index')}}">Al-Muhajirin <img src="{{ asset('img/apple-touch-icon.png') }}" style="width: 30px;" class="img-responsive"></a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
@@ -63,7 +63,7 @@
     <!-- Sidebar -->
      <ul class="sidebar navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="/">
+        <a class="nav-link" href="{{route('dashboard.index')}}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span>
         </a>

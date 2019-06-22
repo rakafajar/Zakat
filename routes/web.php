@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
+
+// Untuk Halaman Awal Tampil
+Route::resource('dashboard', 'DashboardController');
+
+
 // Untuk Controller dan View KartuKeluarga
 Route::resource('kartukeluarga', 'KartuKeluargaController');
 Route::post('kartukeluarga/fetch', 'KartuKeluargaController@fetch')->name('kartukeluarga.fetch');
