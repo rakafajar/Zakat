@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\GolonganModel;
+use DB;
 
 class GolonganController extends Controller
 {
@@ -92,9 +93,7 @@ class GolonganController extends Controller
      */
     public function destroy($id)
     {
-        $mustahiq = GolonganModel::find($id);
-        $mustahiq->delete();
-
+        DB::table('tb_golongan')->where('id_golongan', '=', $id)->delete();
         return back()->with('warning', 'Data Berhasil Dihapus!');
     }
 }

@@ -24,6 +24,7 @@ Route::resource('anggotakeluarga', 'AnggotaKeluargaController');
 
 // Untuk Controller Golongan dan View Mustahiq
 Route::resource('golongan', 'GolonganController');
+Route::get('mustahiq/destroy/{id}','GolonganController@destroy');
 
 // Untuk Controller dan View Zakat Fitrah
 Route::resource('zakatfitrah', 'ZakatFitrahController');
