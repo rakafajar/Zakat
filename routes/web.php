@@ -21,6 +21,7 @@ Route::post('kartukeluarga/fetch', 'KartuKeluargaController@fetch')->name('kartu
 
 // Untuk Controller dan View AnggotaKeluarga
 Route::resource('anggotakeluarga', 'AnggotaKeluargaController');
+Route::get('anggotakeluarga/destroy/{id}','AnggotaKeluargaController@destroy');
 
 // Untuk Controller Golongan dan View Mustahiq
 Route::resource('golongan', 'GolonganController');

@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\AnggotaKeluargaModel;
+use App\AnggotaKKModel;
 use App\KartuKeluargaModel;
-use App\ViewKartuKeluargaModel;
+use App\AgamaModel;
+use App\JenisPekerjaanModel;
+use App\HubunganKeluargaModel;
+use App\PendidikanModel;
+use App\StatusPerkawinanModel;
+use App\ViewAnggotakkModel;
+use DB;
 
 class AnggotaKeluargaController extends Controller
 {
@@ -16,7 +22,7 @@ class AnggotaKeluargaController extends Controller
      */
     public function index()
     {
-        $anggotakeluarga = ViewKartuKeluargaModel::all();
+        $anggotakeluarga = ViewAnggotakkModel::all();
         return view('anggotakeluarga.index', compact('anggotakeluarga'));
     }
 
@@ -28,7 +34,12 @@ class AnggotaKeluargaController extends Controller
     public function create()
     {
         $kartukeluarga = KartuKeluargaModel::all();
-        return view ('anggotakeluarga.create', compact('kartukeluarga'));
+        $agama = AgamaModel::all();
+        $pendidikan = PendidikanModel::all();
+        $hubkeluarga = HubunganKeluargaModel::all();
+        $status = StatusPerkawinanModel::all();
+        $pekerjaan = JenisPekerjaanModel::all();
+        return view ('anggotakeluarga.create', compact('kartukeluarga', 'agama', 'pendidikan', 'hubkeluarga', 'status', 'pekerjaan'));
     }
 
     /**
@@ -39,23 +50,23 @@ class AnggotaKeluargaController extends Controller
      */
     public function store(Request $request)
     {
-        $anggotakeluarga = new AnggotaKeluargaModel;
-        $anggotakeluarga ->kk_id = $request['kk_id'];
-        $anggotakeluarga ->nama = $request['nama'];
-        $anggotakeluarga ->nik = $request['nik'];
-        $anggotakeluarga ->jenis_kelamin = $request['jenis_kelamin'];
-        $anggotakeluarga ->tempat_lahir = $request['tempat_lahir'];
-        $anggotakeluarga ->tanggal_lahir = $request['tanggal_lahir'];
-        $anggotakeluarga ->agama = $request['agama'];
-        $anggotakeluarga ->pendidikan = $request['pendidikan'];
-        $anggotakeluarga ->pekerjaan = $request['pekerjaan'];
-        $anggotakeluarga ->status_kawin = $request['status_kawin'];
-        $anggotakeluarga ->hubungan_keluarga = $request['hubungan_keluarga'];
-        $anggotakeluarga ->kewarga = $request['kewarga'];
-        $anggotakeluarga ->no_paspor = $request['no_paspor'];
-        $anggotakeluarga ->no_kitap = $request['no_kitap'];
-        $anggotakeluarga ->nama_ayah = $request['nama_ayah'];
-        $anggotakeluarga ->nama_ibu = $request['nama_ibu'];
+        $anggotakeluarga = new AnggotaKKModel;
+        $anggotakeluarga -> nama_lengkap = $request['nama_lengkap'];
+        $anggotakeluarga -> nik = $request['nik'];
+        $anggotakeluarga -> id_kk = $request['id_kk'];
+        $anggotakeluarga -> jk = $request['jk'];
+        $anggotakeluarga -> tmp_lahir = $request['tmp_lahir'];
+        $anggotakeluarga -> tgl_lahir = $request['tgl_lahir'];
+        $anggotakeluarga -> id_agama = $request['id_agama'];
+        $anggotakeluarga -> id_pendidikan = $request['id_pendidikan'];
+        $anggotakeluarga -> id_pekerjaan = $request['id_pekerjaan'];
+        $anggotakeluarga -> id_status_kawin = $request['id_status_kawin'];
+        $anggotakeluarga -> id_status_hubkel = $request['id_status_hubkel'];
+        $anggotakeluarga -> kewarganegaraan = $request['kewarganegaraan'];
+        $anggotakeluarga -> no_paspor = $request['no_paspor'];
+        $anggotakeluarga -> no_kitap = $request['no_kitap'];
+        $anggotakeluarga -> ayah = $request['ayah'];
+        $anggotakeluarga -> ibu = $request['ibu'];
         $anggotakeluarga->save();
 
         return redirect(route('anggotakeluarga.index'))->with('success','Data Berhasil Disimpan!');
@@ -124,8 +135,7 @@ class AnggotaKeluargaController extends Controller
      */
     public function destroy($id)
     {
-        $anggotakeluarga = AnggotaKeluargaModel::find($id);
-        $anggotakeluarga->delete();
-        return back()->with('warning','Data Berhasil Dihapus!');
+        DB::table('tb_anggotakk')->where('id_anggotakk', '=', $id)->delete();
+        return back()->with('warning', 'Data Berhasil Dihapus!');
     }
 }
