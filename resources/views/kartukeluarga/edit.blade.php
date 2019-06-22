@@ -42,27 +42,79 @@
           <input type="text" class="form-control" id="kode_pos" name="kode_pos" value="{{ $kartukeluarga->kode_pos}}">
         </div>
         <div class="form-group">
-          <label for="provinsi">Provinsi:</label>
-          <input type="text" id="provinces_id" name="provinces_id" class="form-control" value="{{ $kartukeluarga->provinces_id }}">
-        </div>
-        <div class="form-group">
-          <label for="kotakabupaten">Kota/Kabupaten:</label>
-          <input type="text" id="cities_id" name="cities_id" class="form-control" value="{{ $kartukeluarga->cities_id}}">
-        </div>
-        <div class="form-group">
-          <label for="kecamatan">Kecamatan:</label>
-          <input type="text" class="form-control" id="districts_id" name="districts_id" value="{{ $kartukeluarga->districts_id }}">
-        </div>
-        <div class="form-group">
-          <label for="keluarahandesa">Kelurahan/Desa:</label>
-          <input type="text" class="form-control" id="villages_id" name="villages_id" value="{{ $kartukeluarga->villages_id }}">
-        </div>
-        <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
-        <button type="reset" class="btn btn-danger btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>
-      </div>
+            <select name="id_provinces" id="id_provinces" class="form-control input-lg dynamic" data-dependent="id_cities+name_cities">
+              <option value="">-- Pilih Provinsi --</option>
+              @foreach($dropdown_wilayah as $provinsi)
+                <option value="{{$provinsi->id_provinces}}">{{$provinsi->name_provinces}}</option>
+              @endforeach
+            </select>
+          </div>
+          <div class="form-group">
+            <select name="id_cities" id="id_cities" class="form-control input-lg dynamic" data-dependent="district_id+name_district ">
+              <option value="">-- Pilih Kota --</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select name="district_id" id="district_id" class="form-control input-lg dynamic" data-dependent="id_villages+name_villages">
+              <option>-- Pilih Kecamatan --</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select name="id_villages" id="id_villages" class="form-control input-lg">
+              <option>-- Pilih Kecamatan --</option>
+            </select>
+          </div>
+          {{ csrf_field() }}
+          <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
+          <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>
+          <a href="{{ route('kartukeluarga.index') }}" class="btn btn-danger btn-sm"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
+        </form>
+      </div>    
     </div>
   </div>
-</form>
 <br>
-
 @endsection
+
+@section('script')
+<script>
+  $(document).ready(function(){
+    $('.dynamic').change(function(){
+      if($(this).val() != '')
+        {
+            var select = $(this).attr("id");
+            var value = $(this).val();
+            var dependent = $(this).data('dependent');
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+              url:"{{ route('kartukeluarga.fetch')}}",
+              method:"POST",
+              data:{select:select, value:value, _token:_token, dependent:dependent},
+              success:function(result)
+              {
+                var a = dependent.split("+");
+                $('#'+a[0]).html(result);
+              }
+            })
+        }
+    });
+
+    $('#name_provinces').change(function(){
+      $('#name_cities').val('');
+      $('#name_district').val('');
+      $('#name_villages').val('');
+     });
+    
+     $('#name_cities').change(function(){
+      $('#name_district').val('');
+      $('#name_villages').val('');
+     });
+
+     $('#name_district').change(function(){
+      $('#name_villages').val('');
+     });
+
+
+  });
+</script>
+@endsection
+

@@ -74,7 +74,7 @@ class KartuKeluargaController extends Controller
     {
         $kartukeluarga = KartuKeluargaModel::find($id);
         $dropdown_wilayah = DB::table('view_villages')
-                            ->groupBy('id_villages')
+                            ->groupBy('name_provinces')
                             ->get();
         return view('kartukeluarga.edit', compact('kartukeluarga', $kartukeluarga))->with('dropdown_wilayah', $dropdown_wilayah);
     }
