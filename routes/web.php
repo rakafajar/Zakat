@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('auth.login');
 });
 
 
@@ -79,3 +79,5 @@ Route::get('perkawinan/destroy/{id}','PerkawinanController@destroy');
 // Untuk Controller dan View HubunganKeluarga
 Route::resource('hubungankeluarga', 'HubunganKeluargaController');
 Route::get('hubungankeluarga/destroy/{id}','HubunganKeluargaController@destroy');
+
+Auth::routes();

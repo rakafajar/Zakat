@@ -7,6 +7,10 @@ use App\ProvincesModel;
 
 class ProvinsiController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
