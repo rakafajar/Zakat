@@ -5,11 +5,11 @@
 	<li class="breadcrumb-item">
 		<a href="#">Dashboard</a>
 	</li>
-	<li class="breadcrumb-item active">Mustahiq</li>
+	<li class="breadcrumb-item active">Golongan</li>
 </ol>
 
 <div class="card">
-  <div class="card-header">Form Mustahiq</div>
+  <div class="card-header">Form Golongan</div>
   <div class="card-body">
     <div class="col-md-8">
       <form action="{{ route('golongan.store') }}" method="POST">
