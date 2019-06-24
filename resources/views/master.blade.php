@@ -49,8 +49,8 @@
       </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{{ route('logout') }}"
-                 onclick="event.preventDefault();
-                               document.getElementById('logout-form').submit();">
+                onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();">
                   {{ __('Logout') }}
               </a>
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -65,7 +65,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-     <ul class="sidebar navbar-nav">
+    <ul class="sidebar navbar-nav">
       <li class="nav-item active">
         <a class="nav-link" href="{{route('dashboard.index')}}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -83,13 +83,13 @@
         </div>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{ route('muzakki.index') }}">
           <i class="fas fa-users"></i>
-          <span>Muzzaki</span>
+          <span>Muzakki</span>
         </a>
       </li>
       <li class="nav-item active">
-      <a class="nav-link" href="{{ route('mustahiq.index') }}">
+        <a class="nav-link" href="{{ route('mustahiq.index') }}">
           <i class="fas fa-users"></i>
           <span>Mustahiq</span>
         </a>

@@ -103,16 +103,16 @@
       $('#name_cities').val('');
       $('#name_district').val('');
       $('#name_villages').val('');
-     });
+    });
     
-     $('#name_cities').change(function(){
+    $('#name_cities').change(function(){
       $('#name_district').val('');
       $('#name_villages').val('');
-     });
+    });
 
-     $('#name_district').change(function(){
+    $('#name_district').change(function(){
       $('#name_villages').val('');
-     });
+    });
 
 
   });
