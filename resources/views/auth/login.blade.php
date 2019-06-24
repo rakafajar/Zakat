@@ -3,7 +3,7 @@
 <head>
 <title></title>
 <link rel="icon" href="{{ asset('img/apple-touch-icon.png') }}">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('https://fonts.googleapis.com/css?family=Allerta') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css') }}">
 <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js') }}"></script>
