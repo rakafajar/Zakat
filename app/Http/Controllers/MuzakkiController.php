@@ -33,8 +33,8 @@ class MuzakkiController extends Controller
     public function create()
     {
         $view_anggotakk = DB::table('view_anggotakk')
-                            ->groupBy('no_kk')
-                            ->get();
+            ->groupBy('id_kk')
+            ->get();
         return view('muzakki.create', compact('view_anggotakk'));
     }
 
@@ -50,7 +50,7 @@ class MuzakkiController extends Controller
         $muzakki->id_anggotakk = $request['id_anggotakk'];
         $muzakki->save();
 
-        return redirect(route('muzakki.index'))->with('success','Data Berhasil Disimpan!');
+        return redirect(route('muzakki.index'))->with('success', 'Data Berhasil Disimpan!');
     }
 
     /**
@@ -90,7 +90,7 @@ class MuzakkiController extends Controller
         $muzakki->id_anggotakk = $request['id_anggotakk'];
         $muzakki->update();
 
-        return redirect(route('muzakki.index'))->with('info','Data Berhasil Diubah!');
+        return redirect(route('muzakki.index'))->with('info', 'Data Berhasil Diubah!');
     }
 
     /**
@@ -102,7 +102,7 @@ class MuzakkiController extends Controller
     public function destroy($id)
     {
         DB::table('tb_muzakki')->where('id_muzakki', '=', $id)->delete();
-        return back()->with('warning','Data Berhasil Dihapus!');
+        return back()->with('warning', 'Data Berhasil Dihapus!');
     }
 
     function fetch(Request $request)
@@ -112,16 +112,16 @@ class MuzakkiController extends Controller
         $dependent = $request->get('dependent');
         $a = explode('+', $dependent);
         $data = DB::table('view_anggotakk')
-                ->where($select, $value)
-                ->groupBy($a[0])
-                ->get();
+            ->where($select, $value)
+            ->groupBy($a[0])
+            ->get();
         $output = "<option value=''>Pilih</option>";
         $id = $a[0];
         $nama = $a[1];
         foreach ($data as $row) {
-            $output .= '<option value="'.$row->$id.'">
-                '.$row->$nama.'</option>';
+            $output .= '<option value="' . $row->$id . '">
+                ' . $row->$nama . '</option>';
         }
         echo $output;
-    } 
+    }
 }

@@ -14,7 +14,7 @@
       <form action="{{ route('muzakki.store') }}" method="POST">
         {{ csrf_field() }}
         <div class="form-group">
-          <select name="id_kk" id="id_kk" class="form-control input-lg dynamic" data-dependent="id_kk+no_kk">
+          <select name="id_kk" id="id_kk" class="form-control input-lg dynamic" data-dependent="id_anggotakk+nama_lengkap">
             <option value="">-- Pilih No KK --</option>
             @foreach($view_anggotakk as $list)
               <option value="{{$list->id_kk}}">{{$list->no_kk}}</option>
@@ -22,7 +22,7 @@
           </select>
         </div>
         <div class="form-group">
-          <select name="id_anggotakk" id="id_anggotakk" class="form-control input-lg dynamic" data-dependent="id_anggotakk+nik ">
+            <select name="id_anggotakk" id="id_anggotakk" class="form-control input-lg">
             <option value="">-- Pilih NIK --</option>
           </select>
         </div>
@@ -59,9 +59,11 @@
             })
         }
     });
-    
-    $('#no_kk').change(function(){
-      $('#nik').val('');
-    });  
+
+    $('#').change(function(){
+      $('#no_kk').val('');
+      $('#nama_lengkap').val('');
+    });
+  });
 </script>
 @endsection
