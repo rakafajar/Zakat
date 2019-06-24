@@ -16,21 +16,20 @@ class AgamaTableSeeder extends Seeder
                 'nama_agama' => 'Islam'
             ],
             [
-            	'nama_agama' => 'Kristen Protestan'
+                'nama_agama' => 'Kristen Protestan'
             ],
             [
-            	'nama_agama' => 'Kristen Katolik'
+                'nama_agama' => 'Kristen Katolik'
             ],
             [
-            	'nama_agama' => 'Hindu'
+                'nama_agama' => 'Hindu'
             ],
             [
-            	'nama_agama' => 'Buddha'
+                'nama_agama' => 'Buddha'
             ],
             [
-            	'nama_agama' => 'Konghucu'
+                'nama_agama' => 'Konghucu'
             ]
-
         ));
     }
 }

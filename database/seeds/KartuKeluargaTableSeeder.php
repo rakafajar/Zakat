@@ -13,28 +13,52 @@ class KartuKeluargaTableSeeder extends Seeder
     {
         DB::table('tb_kartukeluarga')->insert(array(
             [
-                'no_kk' => '1147050132',
+                'no_kk' => '3240111504',
                 'alamat' => 'Komplek Pasir Jati B.131',
                 'rt' => '02',
                 'rw' => '06',
                 'kode_pos' => '40611',
-                'villages_id' => '1101010005'
+                'villages_id' => '1101010001'
             ],
             [
-                'no_kk' => '1147050135',
+                'no_kk' => '3240111344',
                 'alamat' => 'Komplek Pasir Jambu',
                 'rt' => '03',
                 'rw' => '03',
                 'kode_pos' => '40611',
-                'villages_id' => '1101010006'
+                'villages_id' => '1101020027'
             ],
             [
-                'no_kk' => '1147050136',
-                'alamat' => 'Komplek Aja',
+                'no_kk' => '3240111504',
+                'alamat' => 'Jl. Ujung Berung Bandung',
                 'rt' => '03',
                 'rw' => '03',
                 'kode_pos' => '40611',
-                'villages_id' => '1103060016'
+                'villages_id' => '1103031006'
+            ],
+            [
+                'no_kk' => '32320111504',
+                'alamat' => 'Jl. Manisi Raya',
+                'rt' => '02',
+                'rw' => '06',
+                'kode_pos' => '40651',
+                'villages_id' => '1103040004'
+            ],
+            [
+                'no_kk' => '3240132344',
+                'alamat' => 'Komplek Cibiru View 1',
+                'rt' => '03',
+                'rw' => '03',
+                'kode_pos' => '40111',
+                'villages_id' => '1103041019'
+            ],
+            [
+                'no_kk' => '3254311504',
+                'alamat' => 'Jl. Cibiru Hilir No.56',
+                'rt' => '03',
+                'rw' => '03',
+                'kode_pos' => '40611',
+                'villages_id' => '1103042003'
             ]
         ));
     }
