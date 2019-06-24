@@ -43,10 +43,12 @@ Route::resource('zakatmaal', 'ZakatMaalController');
 Route::resource('waqaf', 'WaqafController');
 
 // Untuk Controller dan View Infaq & Shodaqoh
-Route::resource('infaqshodaqoh', 'InfaqShodaqohController');
+Route::resource('infaqshadaqah', 'InfaqShadaqahController');
+Route::get('infaqshadaqah/destroy/{id}','InfaqShadaqahController@destroy');
 
 // Untuk Controller dan View Fidyah
 Route::resource('fidyah', 'FidyahController');
+Route::get('fidyah/destroy/{id}','FidyahController@destroy');
 
 // Untuk Controller dan View Provinsi
 Route::resource('provinsi', 'ProvinsiController');

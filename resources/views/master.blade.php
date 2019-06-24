@@ -103,7 +103,7 @@
           <a class="dropdown-item" href="{{ route('zakatfitrah.index') }}">Zakat Fitrah</a>
           <a class="dropdown-item" href="{{ route('zakatmaal.index') }}">Zakat Maal</a>
           <a class="dropdown-item" href="{{ route('waqaf.index') }}">Waqaf</a>
-          <a class="dropdown-item" href="{{ route('infaqshodaqoh.index') }}">Infaq & Shodaqoh</a>
+          <a class="dropdown-item" href="{{ route('infaqshadaqah.index') }}">Infaq & Shodaqoh</a>
           <a class="dropdown-item" href="{{ route('fidyah.index') }}">Fidyah</a>
         </div>
       </li>

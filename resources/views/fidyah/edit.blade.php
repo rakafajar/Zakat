@@ -2,25 +2,25 @@
 @section('content')
 <!-- Breadcrumbs-->
 <ol class="breadcrumb">
-  <li class="breadcrumb-item">
-    <a href="#">Dashboard</a>
-  </li>
-  <li class="breadcrumb-item active">Fidyah</li>
+	<li class="breadcrumb-item">
+		<a href="#">Dashboard</a>
+	</li>
+	<li class="breadcrumb-item active">Fidyah</li>
 </ol>
 
 <div class="card">
   <div class="card-header">Form Fidyah</div>
   <div class="card-body">
     <div class="col-md-8">
-      <form action="{{ route('fidyah.store') }}" method="POST">
-        {{ csrf_field() }}
+      <form action="{{ route('fidyah.update', $fidyah->id_fidyah) }}" method="POST">
+        {{ csrf_field() }} {{ method_field('PATCH')}}
         <div class="form-group">
           <label for="nama">Nama:</label>
-          <input type="text" class="form-control" name="nama_fidyah" placeholder="Contoh : Hamba Allah">
+          <input type="text" class="form-control" name="nama_fidyah" value="{{ $fidyah->nama_fidyah }}">
         </div>
         <div class="form-group">
           <label for="nominal">Nominal:</label>
-          <input type="text" class="form-control" name="nominal_fidyah" placeholder="Rp.">
+          <input type="text" class="form-control" name="nominal_fidyah" value="{{ $fidyah->nominal_fidyah }}">
         </div>      
         <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
         <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>
