@@ -51,7 +51,9 @@
                     <td>{{ $list->nama_lengkap }}</td>
                     <td>{{ $list->jk }}</td>
                     <td>{{ $list->tmp_lahir }}</td>
-                    <td>{{ $list->tgl_lahir }}</td>
+                    <td>
+                        <?php echo tanggal_indonesia($list->tgl_lahir); ?>
+                    </td>
                     <td>{{ $list->nama_agama }}</td>
                     <td>{{ $list->nama_pendidikan }}</td>
                     <td>{{ $list->nama_pekerjaan }}</td>

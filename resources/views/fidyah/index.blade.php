@@ -14,7 +14,7 @@
             <a href="{{ route('fidyah.create') }}" class="btn btn-primary btn-sm">
               <i class="fas fa-coins"></i> Bayar Fidyah
             </a>            
-           </div>
+          </div>
           <br>
           <div class="col-sm-6">
             <div class="input-group mb-3">
@@ -22,7 +22,7 @@
                 <span class="input-group-text bg-light">Total Kas</span>
               </div>
               @foreach($view_tot_fidyah as $list)
-              <input type="text" class="form-control" value="Rp. {{ $list->total_kas_fidyah }}" disabled>
+              <input type="text" class="form-control" value="Rp. <?php echo format_uang($list->total_kas_fidyah); ?>" disabled>
               @endforeach
             </div>
           </div>
