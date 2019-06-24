@@ -22,7 +22,7 @@
                 <span class="input-group-text bg-light">Total Kas</span>
               </div>
               @foreach($view_tot_insha as $list)
-              <input type="text" class="form-control" value="Rp. {{ $list->total_kas_insha }}" disabled>
+              <input type="text" class="form-control" value="Rp. <?php echo format_uang($list->total_kas_insha) ?>" disabled>
               @endforeach
             </div>
           </div>
@@ -44,7 +44,11 @@
                   <tr>
                     <td>{{ $no }}</td>
                     <td>{{ $list->nama_insha }}</td>
-                    <td>{{ $list->nominal_insha }}</td>
+                    <td>
+                      <?php
+                        echo format_uang($list->nominal_insha);
+                      ?>
+                    </td>
                     <th style="text-align: center;">
                     	<a href="" class="btn btn-info btn-sm"><i class="fas fa-search"></i></a>
                     	<a href="{{ route('infaqshadaqah.edit', $list->id_insha) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>

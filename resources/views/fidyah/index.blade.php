@@ -44,7 +44,9 @@
                   <tr>
                     <td>{{ $no }}</td>
                     <td>{{ $list->nama_fidyah }}</td>
-                    <td>{{ $list->nominal_fidyah }}</td>
+                    <td>
+                      <?php echo format_uang($list->nominal_fidyah); ?>
+                    </td>
                     <th style="text-align: center;">
                       <a href="" class="btn btn-info btn-sm"><i class="fas fa-search"></i></a>
                       <a href="{{ route('fidyah.edit', $list->id_fidyah) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
