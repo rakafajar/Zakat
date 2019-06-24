@@ -33,7 +33,7 @@ class MuzakkiController extends Controller
     public function create()
     {
         $view_anggotakk = DB::table('view_anggotakk')
-            ->groupBy('id_kk')
+            ->groupBy('no_kk')
             ->get();
         return view('muzakki.create', compact('view_anggotakk'));
     }
@@ -72,8 +72,11 @@ class MuzakkiController extends Controller
      */
     public function edit($id)
     {
+        $view_anggotakk = DB::table('view_anggotakk')
+            ->groupBy('no_kk')
+            ->get();
         $muzakki = MuzakkiModel::find($id);
-        return view('muzakki.edit', compact('muzakki'));
+        return view('muzakki.edit', compact('muzakki', 'view_anggotakk'));
     }
 
     /**
@@ -86,7 +89,6 @@ class MuzakkiController extends Controller
     public function update(Request $request, $id)
     {
         $muzakki = MuzakkiModel::find($id);
-        $muzakki->id_kk = $request['id_kk'];
         $muzakki->id_anggotakk = $request['id_anggotakk'];
         $muzakki->update();
 
