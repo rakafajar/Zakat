@@ -11,94 +11,94 @@ class JenisPekerjaanTableSeeder extends Seeder
      */
     public function run()
     {
-    	DB::table('tb_jenispekerjaan')->insert(array(
-    		[
-    		  'nama_pekerjaan' => 'Belum/Tidak Bekerja'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Mengurus Rumah Tangga'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Pelajar/Mahasiswa'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Pensiunan'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Pegawai Negeri Sipil'
-    		],
-    		[
-    			'nama_pekerjaan' => 'TNI'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Kepolisian RI'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Perdagangan'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Petani/Pekebun'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Peternak'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Nelayan/Perikanan'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Industri'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Konstruksi'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Transportasi'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Karyawan Swasta'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Karyawan BUMN'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Karyawan BUMD'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Karyawan Honorer'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Buruh Harian Lepas'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Buruh Tani / Perkebunan'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Buruh Nelayan / Perikanan'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Buruh Peternakan'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Pembantu Rumah Tangga'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Tukang Cukur'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Tukang Listrik'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Tukang Batu'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Tukang Kayu'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Tukang Sol Sepatu'
-    		],
-    		[
-    			'nama_pekerjaan' => 'Tukang Las / Pandai Besi'
-    		],
+        DB::table('tb_jenispekerjaan')->insert(array(
+            [
+                'nama_pekerjaan' => 'Belum/Tidak Bekerja'
+            ],
+            [
+                'nama_pekerjaan' => 'Mengurus Rumah Tangga'
+            ],
+            [
+                'nama_pekerjaan' => 'Pelajar/Mahasiswa'
+            ],
+            [
+                'nama_pekerjaan' => 'Pensiunan'
+            ],
+            [
+                'nama_pekerjaan' => 'Pegawai Negeri Sipil'
+            ],
+            [
+                'nama_pekerjaan' => 'TNI'
+            ],
+            [
+                'nama_pekerjaan' => 'Kepolisian RI'
+            ],
+            [
+                'nama_pekerjaan' => 'Perdagangan'
+            ],
+            [
+                'nama_pekerjaan' => 'Petani/Pekebun'
+            ],
+            [
+                'nama_pekerjaan' => 'Peternak'
+            ],
+            [
+                'nama_pekerjaan' => 'Nelayan/Perikanan'
+            ],
+            [
+                'nama_pekerjaan' => 'Industri'
+            ],
+            [
+                'nama_pekerjaan' => 'Konstruksi'
+            ],
+            [
+                'nama_pekerjaan' => 'Transportasi'
+            ],
+            [
+                'nama_pekerjaan' => 'Karyawan Swasta'
+            ],
+            [
+                'nama_pekerjaan' => 'Karyawan BUMN'
+            ],
+            [
+                'nama_pekerjaan' => 'Karyawan BUMD'
+            ],
+            [
+                'nama_pekerjaan' => 'Karyawan Honorer'
+            ],
+            [
+                'nama_pekerjaan' => 'Buruh Harian Lepas'
+            ],
+            [
+                'nama_pekerjaan' => 'Buruh Tani / Perkebunan'
+            ],
+            [
+                'nama_pekerjaan' => 'Buruh Nelayan / Perikanan'
+            ],
+            [
+                'nama_pekerjaan' => 'Buruh Peternakan'
+            ],
+            [
+                'nama_pekerjaan' => 'Pembantu Rumah Tangga'
+            ],
+            [
+                'nama_pekerjaan' => 'Tukang Cukur'
+            ],
+            [
+                'nama_pekerjaan' => 'Tukang Listrik'
+            ],
+            [
+                'nama_pekerjaan' => 'Tukang Batu'
+            ],
+            [
+                'nama_pekerjaan' => 'Tukang Kayu'
+            ],
+            [
+                'nama_pekerjaan' => 'Tukang Sol Sepatu'
+            ],
+            [
+                'nama_pekerjaan' => 'Tukang Las / Pandai Besi'
+            ],
             [
                 'nama_pekerjaan' => 'Tukang Jahit'
             ],
@@ -191,13 +191,13 @@ class JenisPekerjaanTableSeeder extends Seeder
             ],
             [
                 'nama_pekerjaan' => 'Walikota'
-            ],            
+            ],
             [
                 'nama_pekerjaan' => 'Wakil Walikota'
             ],
             [
                 'nama_pekerjaan' => 'Anggota DPRD Propinsi'
-            ],  
+            ],
             [
                 'nama_pekerjaan' => 'Anggota DPRD Kabupaten / Kota'
             ],
@@ -276,6 +276,6 @@ class JenisPekerjaanTableSeeder extends Seeder
             [
                 'nama_pekerjaan' => 'Wiraswasta'
             ]
-    	));
+        ));
     }
 }
