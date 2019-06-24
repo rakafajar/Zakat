@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2019 at 04:30 PM
+-- Generation Time: Jun 24, 2019 at 08:58 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -77,7 +77,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (12, '2019_06_20_150142_create_hubkeluarga_table', 1),
 (13, '2019_06_20_163738_create_anggotakk_table', 1),
 (14, '2019_06_21_092323_create_golongan_table', 1),
-(15, '2019_06_22_133245_create_mustahiq_table', 1);
+(15, '2019_06_22_133245_create_mustahiq_table', 1),
+(16, '2019_06_24_045816_create_muzakki_table', 1),
+(17, '2019_06_24_054830_create_insha_table', 1),
+(18, '2019_06_24_055217_create_fidyah_table', 1),
+(19, '2019_06_24_055452_create_waqaf_table', 1);
 
 -- --------------------------------------------------------
 
@@ -146,6 +150,20 @@ CREATE TABLE `tb_anggotakk` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_fidyah`
+--
+
+CREATE TABLE `tb_fidyah` (
+  `id_fidyah` int(10) UNSIGNED NOT NULL,
+  `nama_fidyah` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nominal_fidyah` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_golongan`
 --
 
@@ -165,6 +183,20 @@ CREATE TABLE `tb_golongan` (
 CREATE TABLE `tb_hubkeluarga` (
   `id_hubkeluarga` int(10) UNSIGNED NOT NULL,
   `nama_hubkeluarga` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_insha`
+--
+
+CREATE TABLE `tb_insha` (
+  `id_insha` int(10) UNSIGNED NOT NULL,
+  `nama_insha` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nominal_insha` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -218,6 +250,20 @@ CREATE TABLE `tb_mustahiq` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_muzakki`
+--
+
+CREATE TABLE `tb_muzakki` (
+  `id_muzakki` int(10) UNSIGNED NOT NULL,
+  `id_kk` int(10) UNSIGNED NOT NULL,
+  `id_anggotakk` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_pendidikan`
 --
 
@@ -237,6 +283,20 @@ CREATE TABLE `tb_pendidikan` (
 CREATE TABLE `tb_statusperkawinan` (
   `id_status` int(10) UNSIGNED NOT NULL,
   `nama_status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_waqaf`
+--
+
+CREATE TABLE `tb_waqaf` (
+  `id_waqaf` int(10) UNSIGNED NOT NULL,
+  `nama_waqaf` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nominal_waqaf` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -399,6 +459,51 @@ CREATE TABLE `view_mustahiq` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `view_muzakki`
+-- (See below for the actual view)
+--
+CREATE TABLE `view_muzakki` (
+`id_muzakki` int(10) unsigned
+,`nama_lengkap` varchar(191)
+,`id_kk` int(10) unsigned
+,`no_kk` varchar(20)
+,`id_anggotakk` int(10) unsigned
+,`nik` char(191)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `view_total_kas_fidyah`
+-- (See below for the actual view)
+--
+CREATE TABLE `view_total_kas_fidyah` (
+`total_kas_fidyah` decimal(32,0)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `view_total_kas_insha`
+-- (See below for the actual view)
+--
+CREATE TABLE `view_total_kas_insha` (
+`total_kas_insha` decimal(32,0)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `view_total_kas_waqaf`
+-- (See below for the actual view)
+--
+CREATE TABLE `view_total_kas_waqaf` (
+`total_kas_waqaf` decimal(32,0)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `view_villages`
 -- (See below for the actual view)
 --
@@ -485,6 +590,42 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- Structure for view `view_muzakki`
+--
+DROP TABLE IF EXISTS `view_muzakki`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_muzakki`  AS  select `a`.`id_muzakki` AS `id_muzakki`,`b`.`nama_lengkap` AS `nama_lengkap`,`b`.`id_kk` AS `id_kk`,`b`.`no_kk` AS `no_kk`,`b`.`id_anggotakk` AS `id_anggotakk`,`b`.`nik` AS `nik` from (`tb_muzakki` `a` join `view_anggotakk` `b`) where (`a`.`id_anggotakk` = `b`.`id_anggotakk`) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_total_kas_fidyah`
+--
+DROP TABLE IF EXISTS `view_total_kas_fidyah`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_total_kas_fidyah`  AS  select sum(`a`.`nominal_fidyah`) AS `total_kas_fidyah` from `tb_fidyah` `a` ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_total_kas_insha`
+--
+DROP TABLE IF EXISTS `view_total_kas_insha`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_total_kas_insha`  AS  select sum(`a`.`nominal_insha`) AS `total_kas_insha` from `tb_insha` `a` ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_total_kas_waqaf`
+--
+DROP TABLE IF EXISTS `view_total_kas_waqaf`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_total_kas_waqaf`  AS  select sum(`a`.`nominal_waqaf`) AS `total_kas_waqaf` from `tb_waqaf` `a` ;
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `view_villages`
 --
 DROP TABLE IF EXISTS `view_villages`;
@@ -546,6 +687,12 @@ ALTER TABLE `tb_anggotakk`
   ADD KEY `tb_anggotakk_id_status_hubkel_foreign` (`id_status_hubkel`);
 
 --
+-- Indexes for table `tb_fidyah`
+--
+ALTER TABLE `tb_fidyah`
+  ADD PRIMARY KEY (`id_fidyah`);
+
+--
 -- Indexes for table `tb_golongan`
 --
 ALTER TABLE `tb_golongan`
@@ -556,6 +703,12 @@ ALTER TABLE `tb_golongan`
 --
 ALTER TABLE `tb_hubkeluarga`
   ADD PRIMARY KEY (`id_hubkeluarga`);
+
+--
+-- Indexes for table `tb_insha`
+--
+ALTER TABLE `tb_insha`
+  ADD PRIMARY KEY (`id_insha`);
 
 --
 -- Indexes for table `tb_jenispekerjaan`
@@ -579,6 +732,14 @@ ALTER TABLE `tb_mustahiq`
   ADD KEY `tb_mustahiq_id_golongan_foreign` (`id_golongan`);
 
 --
+-- Indexes for table `tb_muzakki`
+--
+ALTER TABLE `tb_muzakki`
+  ADD PRIMARY KEY (`id_muzakki`),
+  ADD KEY `tb_muzakki_id_kk_foreign` (`id_kk`),
+  ADD KEY `tb_muzakki_id_anggotakk_foreign` (`id_anggotakk`);
+
+--
 -- Indexes for table `tb_pendidikan`
 --
 ALTER TABLE `tb_pendidikan`
@@ -589,6 +750,12 @@ ALTER TABLE `tb_pendidikan`
 --
 ALTER TABLE `tb_statusperkawinan`
   ADD PRIMARY KEY (`id_status`);
+
+--
+-- Indexes for table `tb_waqaf`
+--
+ALTER TABLE `tb_waqaf`
+  ADD PRIMARY KEY (`id_waqaf`);
 
 --
 -- Indexes for table `users`
@@ -612,7 +779,7 @@ ALTER TABLE `villages`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tb_agama`
@@ -627,6 +794,12 @@ ALTER TABLE `tb_anggotakk`
   MODIFY `id_anggotakk` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `tb_fidyah`
+--
+ALTER TABLE `tb_fidyah`
+  MODIFY `id_fidyah` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `tb_golongan`
 --
 ALTER TABLE `tb_golongan`
@@ -637,6 +810,12 @@ ALTER TABLE `tb_golongan`
 --
 ALTER TABLE `tb_hubkeluarga`
   MODIFY `id_hubkeluarga` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_insha`
+--
+ALTER TABLE `tb_insha`
+  MODIFY `id_insha` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_jenispekerjaan`
@@ -657,6 +836,12 @@ ALTER TABLE `tb_mustahiq`
   MODIFY `id_mustahiq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `tb_muzakki`
+--
+ALTER TABLE `tb_muzakki`
+  MODIFY `id_muzakki` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tb_pendidikan`
 --
 ALTER TABLE `tb_pendidikan`
@@ -667,6 +852,12 @@ ALTER TABLE `tb_pendidikan`
 --
 ALTER TABLE `tb_statusperkawinan`
   MODIFY `id_status` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_waqaf`
+--
+ALTER TABLE `tb_waqaf`
+  MODIFY `id_waqaf` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -713,6 +904,13 @@ ALTER TABLE `tb_kartukeluarga`
 ALTER TABLE `tb_mustahiq`
   ADD CONSTRAINT `tb_mustahiq_id_anggotakk_foreign` FOREIGN KEY (`id_anggotakk`) REFERENCES `tb_anggotakk` (`id_anggotakk`) ON UPDATE CASCADE,
   ADD CONSTRAINT `tb_mustahiq_id_golongan_foreign` FOREIGN KEY (`id_golongan`) REFERENCES `tb_golongan` (`id_golongan`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tb_muzakki`
+--
+ALTER TABLE `tb_muzakki`
+  ADD CONSTRAINT `tb_muzakki_id_anggotakk_foreign` FOREIGN KEY (`id_anggotakk`) REFERENCES `tb_anggotakk` (`id_anggotakk`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tb_muzakki_id_kk_foreign` FOREIGN KEY (`id_kk`) REFERENCES `tb_kartukeluarga` (`id_kk`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `villages`
