@@ -14,19 +14,25 @@
     <div class="col-md-8">
       <form action="{{ route('muzakki.update', $muzakki->id_muzakki) }}" method="POST">
         {{ csrf_field() }} {{ method_field('PATCH') }}
-        <div class="form-group">
-            <select name="id_kk" id="id_kk" class="form-control input-lg dynamic" data-dependent="id_anggotakk+nama_lengkap">
-              <option value="">-- Pilih No KK --</option>
-              @foreach($view_anggotakk as $list)
-                <option value="{{$list->id_kk}}">{{$list->no_kk}}</option>
-              @endforeach
-            </select>
-          </div>
-          <div class="form-group">
-              <select name="id_anggotakk" id="id_anggotakk" class="form-control input-lg">
-              <option value="">-- Pilih NIK --</option>
-            </select>
-          </div>
+        <div class="form-group{{$errors->has('id_kk') ? ' has-error' : ''}}">
+          <select name="id_kk" id="id_kk" class="form-control input-lg dynamic" data-dependent="id_anggotakk+nama_lengkap">
+            <option value="">-- Pilih No KK --</option>
+            @foreach($view_anggotakk as $list)
+              <option value="{{$list->id_kk}}">{{$list->no_kk}}</option>
+            @endforeach
+          </select>
+          @if($errors->has('id_kk'))
+          <span class="help-block">{{$errors->first('id_kk')}}</span>
+          @endif
+        </div>
+        <div class="form-group{{$errors->has('id_anggotakk') ? ' has-error' : ''}}">
+            <select name="id_anggotakk" id="id_anggotakk" class="form-control input-lg">
+            <option value="">-- Pilih NIK --</option>
+          </select>
+          @if($errors->has('id_anggotakk'))
+          <span class="help-block">{{$errors->first('id_anggotakk')}}</span>
+          @endif
+        </div>
           {{ csrf_field() }}
           <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
           <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>

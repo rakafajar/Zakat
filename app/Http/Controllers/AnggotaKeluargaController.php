@@ -54,6 +54,18 @@ class AnggotaKeluargaController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'id_agama' => 'required',
+            'id_pendidikan' => 'required',
+            'id_pekerjaan' => 'required',
+            'id_status_kawin' => 'required',
+            'id_pekerjaan' => 'required',
+            'id_status_hubkel' => 'required',
+            'kewarganegaraan' => 'required',
+            'id_kk' => 'required',
+            'jk' => 'required'
+        ]);
+
         $anggotakeluarga = new AnggotaKKModel;
         $anggotakeluarga -> nama_lengkap = $request['nama_lengkap'];
         $anggotakeluarga -> nik = $request['nik'];
@@ -95,6 +107,7 @@ class AnggotaKeluargaController extends Controller
      */
     public function edit($id)
     {
+
         $kartukeluarga = KartuKeluargaModel::all();
         $agama = AgamaModel::all();
         $pendidikan = PendidikanModel::all();
@@ -114,6 +127,17 @@ class AnggotaKeluargaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'id_agama' => 'required',
+            'id_pendidikan' => 'required',
+            'id_pekerjaan' => 'required',
+            'id_status_kawin' => 'required',
+            'id_pekerjaan' => 'required',
+            'id_status_hubkel' => 'required',
+            'kewarganegaraan' => 'required',
+            'id_kk' => 'required',
+            'jk' => 'required'
+        ]);
         $anggotakeluarga = AnggotaKKModel::find($id);
         $anggotakeluarga -> nama_lengkap = $request['nama_lengkap'];
         $anggotakeluarga -> nik = $request['nik'];

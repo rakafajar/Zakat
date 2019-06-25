@@ -46,6 +46,10 @@ class MuzakkiController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'id_kk' => 'required',
+            'id_anggotakk' => 'required',
+        ]);
         $muzakki = new MuzakkiModel;
         $muzakki->id_anggotakk = $request['id_anggotakk'];
         $muzakki->save();
@@ -88,6 +92,10 @@ class MuzakkiController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'id_kk' => 'required',
+            'id_anggotakk' => 'required',
+        ]);
         $muzakki = MuzakkiModel::find($id);
         $muzakki->id_anggotakk = $request['id_anggotakk'];
         $muzakki->update();
