@@ -45,6 +45,13 @@ class KartuKeluargaController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'id_villages' => 'required',
+            'district_id' => 'required',
+            'id_cities' => 'required',
+            'id_provinces' => 'required'
+        ]);
+
         $kartukeluarga = new KartuKeluargaModel;
         $kartukeluarga ->no_kk = $request['no_kk'];
         $kartukeluarga ->alamat = $request['alamat'];
@@ -92,6 +99,12 @@ class KartuKeluargaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'id_villages' => 'required',
+            'district_id' => 'required',
+            'id_cities' => 'required',
+            'id_provinces' => 'required'
+        ]);
         $kartukeluarga = KartuKeluargaModel::find($id);
         $kartukeluarga ->no_kk = $request['no_kk'];
         $kartukeluarga ->alamat = $request['alamat'];

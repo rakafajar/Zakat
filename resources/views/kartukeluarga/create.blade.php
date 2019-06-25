@@ -42,28 +42,40 @@
             <label for="kodepos">Kode Pos:</label>
             <input type="text" class="form-control" id="kode_pos" name="kode_pos" required="">
           </div>
-          <div class="form-group">
+          <div class="form-group{{$errors->has('id_provinces') ? ' has-error' : ''}}">
             <select name="id_provinces" id="id_provinces" class="form-control input-lg dynamic" data-dependent="id_cities+name_cities">
               <option value="">-- Pilih Provinsi --</option>
               @foreach($dropdown_wilayah as $provinsi)
                 <option value="{{$provinsi->id_provinces}}">{{$provinsi->name_provinces}}</option>
               @endforeach
             </select>
+            @if($errors->has('id_provinces'))
+            <span class="help-block">{{$errors->first('id_provinces')}}</span>
+            @endif
           </div>
-          <div class="form-group">
+          <div class="form-group{{$errors->has('id_cities') ? ' has-error' : ''}}">
             <select name="id_cities" id="id_cities" class="form-control input-lg dynamic" data-dependent="district_id+name_district ">
               <option value="">-- Pilih Kota --</option>
             </select>
+            @if($errors->has('id_cities'))
+            <span class="help-block">{{$errors->first('id_cities')}}</span>
+            @endif
           </div>
-          <div class="form-group">
+          <div class="form-group{{$errors->has('district_id') ? ' has-error' : ''}}">
             <select name="district_id" id="district_id" class="form-control input-lg dynamic" data-dependent="id_villages+name_villages">
               <option>-- Pilih Kecamatan --</option>
             </select>
+            @if($errors->has('district_id'))
+            <span class="help-block">{{$errors->first('district_id')}}</span>
+            @endif
           </div>
-          <div class="form-group">
+        <div class="form-group{{$errors->has('id_villages') ? ' has-error' : ''}}">
             <select name="id_villages" id="id_villages" class="form-control input-lg">
               <option>-- Pilih Kecamatan --</option>
             </select>
+            @if($errors->has('id_villages'))
+            <span class="help-block">{{$errors->first('id_villages')}}</span>
+            @endif
           </div>
           {{ csrf_field() }}
           <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
