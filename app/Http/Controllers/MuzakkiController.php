@@ -48,7 +48,7 @@ class MuzakkiController extends Controller
     {
         $this->validate($request,[
             'id_kk' => 'required',
-            'id_anggotakk' => 'required',
+            'id_anggotakk' => 'required'
         ]);
         $muzakki = new MuzakkiModel;
         $muzakki->id_anggotakk = $request['id_anggotakk'];

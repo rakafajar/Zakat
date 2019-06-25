@@ -47,6 +47,11 @@ class MustahiqController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'id_anggotakk' => 'required',
+            'id_golongan' => 'required',
+            'wilayah' => 'required'
+        ]);
         $mustahiq = new MustahiqModel;
         $mustahiq->id_anggotakk = $request['id_anggotakk'];
         $mustahiq->id_golongan = $request['id_golongan'];
@@ -91,6 +96,11 @@ class MustahiqController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'id_anggotakk' => 'required',
+            'id_golongan' => 'required',
+            'wilayah' => 'required'
+        ]);
         $mustahiq = MustahiqModel::find($id);
         $mustahiq->id_anggotakk = $request['id_anggotakk'];
         $mustahiq->id_golongan = $request['id_golongan'];
