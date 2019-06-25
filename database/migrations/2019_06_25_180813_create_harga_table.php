@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWaqafTable extends Migration
+class CreateHargaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateWaqafTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_waqaf', function (Blueprint $table) {
-            $table->increments('id_waqaf');
-            $table->string('nama_waqaf');
-            $table->integer('nominal_waqaf');
+        Schema::create('tb_harga', function (Blueprint $table) {
+            $table->increments('id_harga');
+            $table->integer('harga_beras');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateWaqafTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_waqaf');
+        Schema::dropIfExists('tb_harga');
     }
 }
