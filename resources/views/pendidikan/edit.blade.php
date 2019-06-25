@@ -9,14 +9,14 @@
 </ol>
 
 <div class="card">
-  <div class="card-header">Form Pendidikan</div>
+  <div class="card-header">Form Edit Pendidikan</div>
   <div class="card-body">
     <div class="col-md-8">
         <form action="{{ route('pendidikan.update', $pendidikan->id_pendidikan) }}" method="POST">
         {{ csrf_field() }} {{ method_field('PATCH') }}
             <div class="form-group">
             <label for="pendidikan">Nama Pendidikan:</label>
-            <input type="text" class="form-control" id="nama_pendidikan" name="nama_pendidikan" value="{{ $pendidikan->nama_pendidikan}}">
+            <input type="text" class="form-control" id="nama_pendidikan" name="nama_pendidikan" value="{{ $pendidikan->nama_pendidikan}}" required>
             </div>
             <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
             <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>

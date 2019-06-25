@@ -16,7 +16,7 @@
         {{ csrf_field() }}
         <div class="form-group">
           <label for="pekerjaan">Nama Pekerjaan:</label>
-          <input type="text" class="form-control" id="nama_pekerjaan" name="nama_pekerjaan">
+          <input type="text" class="form-control" id="nama_pekerjaan" name="nama_pekerjaan" required>
         </div>
         <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
         <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>

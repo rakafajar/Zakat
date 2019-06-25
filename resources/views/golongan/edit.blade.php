@@ -16,7 +16,7 @@
         {{ csrf_field() }} {{ method_field('PATCH')}}
         <div class="form-group">
           <label for="Mustahiq">Nama Golongan Mustahiq:</label>
-          <input type="text" class="form-control" id="nama_golongan" name="nama_golongan" value="{{ $golongan->nama_golongan}}">
+          <input type="text" class="form-control" id="nama_golongan" name="nama_golongan" value="{{ $golongan->nama_golongan}}" required>
         </div>
         <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
         <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>
