@@ -28,6 +28,7 @@ Route::get('kartukeluarga/destroy/{id}','KartuKeluargaController@destroy');
 // Untuk Controller dan View AnggotaKeluarga
 Route::resource('anggotakeluarga', 'AnggotaKeluargaController');
 Route::get('anggotakeluarga/destroy/{id}','AnggotaKeluargaController@destroy');
+Route::get('anggotakeluarga/show/{id}', 'AnggotaKeluargaController@show');
 
 // Untuk Controller Golongan dan View Golongan
 Route::resource('golongan', 'GolonganController');
