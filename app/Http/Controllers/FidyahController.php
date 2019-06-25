@@ -86,7 +86,7 @@ class FidyahController extends Controller
         $fidyah->nominal_fidyah = $request['nominal_fidyah'];
         $fidyah->save();
 
-        return redirect(route('fidyah.index'))->with('info','Data Berhasil Diubah!');
+        return redirect(route('fidyah.index'))->with('info', 'Data Berhasil Diubah!');
     }
 
     /**
@@ -99,5 +99,11 @@ class FidyahController extends Controller
     {
         DB::table('tb_fidyah')->where('id_fidyah', '=', $id)->delete();
         return back()->with('warning', 'Data Berhasil Dihapus!');
+    }
+    public function cetak_fidyah()
+    {
+        $fidyah = FidyahModel::all();
+        $pdf = PDF::loadview('fidyah_pdf', ['fidyah' => $fidyah]);
+        return $pdf->download('laporan-fidyah-pdf');
     }
 }

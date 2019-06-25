@@ -23,16 +23,16 @@ Route::resource('dashboard', 'DashboardController');
 // Untuk Controller dan View KartuKeluarga
 Route::resource('kartukeluarga', 'KartuKeluargaController');
 Route::post('kartukeluarga/fetch', 'KartuKeluargaController@fetch')->name('kartukeluarga.fetch');
-Route::get('kartukeluarga/destroy/{id}','KartuKeluargaController@destroy');
+Route::get('kartukeluarga/destroy/{id}', 'KartuKeluargaController@destroy');
 
 // Untuk Controller dan View AnggotaKeluarga
 Route::resource('anggotakeluarga', 'AnggotaKeluargaController');
-Route::get('anggotakeluarga/destroy/{id}','AnggotaKeluargaController@destroy');
+Route::get('anggotakeluarga/destroy/{id}', 'AnggotaKeluargaController@destroy');
 Route::get('anggotakeluarga/show/{id}', 'AnggotaKeluargaController@show');
 
 // Untuk Controller Golongan dan View Golongan
 Route::resource('golongan', 'GolonganController');
-Route::get('golongan/destroy/{id}','GolonganController@destroy');
+Route::get('golongan/destroy/{id}', 'GolonganController@destroy');
 
 // Untuk Controller dan View Zakat Fitrah
 Route::resource('zakatfitrah', 'ZakatFitrahController');
@@ -45,12 +45,12 @@ Route::resource('waqaf', 'WaqafController');
 
 // Untuk Controller dan View Infaq & Shodaqoh
 Route::resource('infaqshadaqah', 'InfaqShadaqahController');
-Route::get('infaqshadaqah/destroy/{id}','InfaqShadaqahController@destroy');
+Route::get('infaqshadaqah/destroy/{id}', 'InfaqShadaqahController@destroy');
 
 // Untuk Controller dan View Fidyah
 Route::resource('fidyah', 'FidyahController');
-Route::get('fidyah/destroy/{id}','FidyahController@destroy');
-
+Route::get('fidyah/destroy/{id}', 'FidyahController@destroy');
+Route::get('/fidyah/cetak_pdf', 'FidyahController@cetak_pdf');
 // Untuk Controller dan View Provinsi
 Route::resource('provinsi', 'ProvinsiController');
 
@@ -65,31 +65,31 @@ Route::resource('kelurahan', 'KelurahanController');
 
 // Untuk Controller dan View Agama
 Route::resource('agama', 'AgamaController');
-Route::get('agama/destroy/{id}','AgamaController@destroy');
+Route::get('agama/destroy/{id}', 'AgamaController@destroy');
 
 // Untuk Controller dan View Pendidkan
 Route::resource('pendidikan', 'PendidikanController');
-Route::get('pendidikan/destroy/{id}','PendidikanController@destroy');
+Route::get('pendidikan/destroy/{id}', 'PendidikanController@destroy');
 
 // Untuk Controller dan View JenisPendidikan
 Route::resource('jenispekerjaan', 'JenisPekerjaanController');
-Route::get('jenispekerjaan/destroy/{id}','JenisPekerjaanController@destroy');
+Route::get('jenispekerjaan/destroy/{id}', 'JenisPekerjaanController@destroy');
 
 // Untuk Controller dan View StatusPerkawinan
 Route::resource('perkawinan', 'PerkawinanController');
-Route::get('perkawinan/destroy/{id}','PerkawinanController@destroy');
+Route::get('perkawinan/destroy/{id}', 'PerkawinanController@destroy');
 
 // Untuk Controller dan View HubunganKeluarga
 Route::resource('hubungankeluarga', 'HubunganKeluargaController');
-Route::get('hubungankeluarga/destroy/{id}','HubunganKeluargaController@destroy');
+Route::get('hubungankeluarga/destroy/{id}', 'HubunganKeluargaController@destroy');
 
 // Untuk Controller mustahiq dan View mustahiq
 Route::resource('mustahiq', 'MustahiqController');
-Route::get('mustahiq/destroy/{id}','mustahiqController@destroy');
+Route::get('mustahiq/destroy/{id}', 'mustahiqController@destroy');
 
 // Untuk Controller muzakki dan View muzakki
 Route::resource('muzakki', 'MuzakkiController');
-Route::get('muzakki/destroy/{id}','MuzakkiController@destroy');
+Route::get('muzakki/destroy/{id}', 'MuzakkiController@destroy');
 Route::post('muzakki/fetch', 'MuzakkiController@fetch')->name('muzakki.fetch');
 
 
