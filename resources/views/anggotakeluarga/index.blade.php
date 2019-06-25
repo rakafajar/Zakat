@@ -39,7 +39,7 @@
                     <td>{{ $list->nama_lengkap }}</td>
                     <td>{{ $list->nama_hubkeluarga }}</td>
                     <th style="text-align: center;" width="100">
-                      <a href="" class="btn btn-info btn-sm"><i class="fas fa-search"></i></a>
+                      <a href="{{ route('anggotakeluarga.show', $list->id_anggotakk)}}" class="btn btn-info btn-sm"><i class="fas fa-search"></i></a>
                       <a href="{{ route('anggotakeluarga.edit', $list->id_anggotakk)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                       <a href="{{ URL::to('anggotakeluarga/destroy/'.$list->id_anggotakk)}}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                     </th>
