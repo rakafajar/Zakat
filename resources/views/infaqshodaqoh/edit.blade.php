@@ -16,11 +16,11 @@
         {{ csrf_field() }} {{ method_field('PATCH')}}
         <div class="form-group">
           <label for="nama">Nama:</label>
-          <input type="text" class="form-control" name="nama_insha" value="{{ $insha->nama_insha }}">
+          <input type="text" class="form-control" name="nama_insha" value="{{ $insha->nama_insha }}" required>
         </div>
         <div class="form-group">
           <label for="nominal">Nominal:</label>
-          <input type="text" class="form-control" name="nominal_insha" value="{{ $insha->nominal_insha }}">
+          <input type="text" class="form-control" name="nominal_insha" value="{{ $insha->nominal_insha }}" required>
         </div>      
         <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
         <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>

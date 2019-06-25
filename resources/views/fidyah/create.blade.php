@@ -16,11 +16,11 @@
         {{ csrf_field() }}
         <div class="form-group">
           <label for="nama">Nama:</label>
-          <input type="text" class="form-control" name="nama_fidyah" placeholder="Contoh : Hamba Allah">
+          <input type="text" class="form-control" name="nama_fidyah" placeholder="Contoh : Hamba Allah" required>
         </div>
         <div class="form-group">
           <label for="nominal">Nominal:</label>
-          <input type="text" class="form-control" name="nominal_fidyah" placeholder="Rp.">
+          <input type="text" class="form-control" name="nominal_fidyah" placeholder="Rp." required>
         </div>      
         <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
         <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>
