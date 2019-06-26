@@ -19,7 +19,7 @@ class CreateWakafTable extends Migration
             $table->integer('id_jeniswakaf')->unsigned();
             $table->integer('nominal_wakaf');
             //Relasi
-            $table->foreign('id_jeniswakaf')->references('id_jeniswakaf')->on('tb_jenis_wakaf')->onDelete('
+            $table->foreign('id_jeniswakaf')->references('id_jeniswakaf')->on('tb_jeniswakaf')->onDelete('
                 RESTRICT')->onUpdate('CASCADE');
             $table->timestamps();
         });
