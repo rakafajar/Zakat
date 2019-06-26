@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\InfaqShadaqahModel;
 use App\ViewTotalKasInshaModel;
 use DB;
+use PDF;
 
 class InfaqShadaqahController extends Controller
 {
@@ -97,5 +98,16 @@ class InfaqShadaqahController extends Controller
     {
         DB::table('tb_insha')->where('id_insha', '=', $id)->delete();
         return back()->with('warning', 'Data Berhasil Dihapus!');
+    }
+
+    public function makePDF()
+    {
+        $insha = InfaqShadaqahModel::all();
+        $view_tot_insha = ViewTotalKasInshaModel::all();
+        $no = 0;
+        $pdf = PDF::loadView('infaqshodaqoh.pdf', compact('insha', 'no', 'view_tot_insha'));
+        $pdf->setPaper('a4','potrait');
+
+        return $pdf->stream();
     }
 }

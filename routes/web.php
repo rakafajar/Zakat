@@ -46,6 +46,7 @@ Route::resource('zakatmaal', 'ZakatMaalController');
 // Untuk Controller dan View Infaq & Shodaqoh
 Route::resource('infaqshadaqah', 'InfaqShadaqahController');
 Route::get('infaqshadaqah/destroy/{id}', 'InfaqShadaqahController@destroy');
+Route::get('pdfinsa', 'InfaqShadaqahController@makePDF');
 
 // Untuk Controller dan View Fidyah
 Route::resource('fidyah', 'FidyahController');

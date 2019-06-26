@@ -13,8 +13,11 @@
           <div class="card-header">
           	<a href="{{ route('infaqshadaqah.create') }}" class="btn btn-primary btn-sm">
           		<i class="fas fa-coins"></i> Bayar Infaq & Shadaqah
-          	</a>            
-           </div>
+            </a> 
+            <a href="/Zakat/public/pdfinsa" class="btn btn-primary btn-sm" target="_blank">
+              <i class="fas fa-print"></i> Cetak
+            </a>             
+          </div>
           <br>
           <div class="col-sm-6">
             <div class="input-group mb-3">

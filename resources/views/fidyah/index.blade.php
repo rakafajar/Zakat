@@ -15,7 +15,7 @@
               <i class="fas fa-coins"></i> Bayar Fidyah
             </a>
             <a href="/Zakat/public/pdffidyah" class="btn btn-primary btn-sm" target="_blank">
-              <i class="fas fa-print"></i> Bayar Fidyah
+              <i class="fas fa-print"></i> Cetak
             </a>            
           </div>
           <br>
