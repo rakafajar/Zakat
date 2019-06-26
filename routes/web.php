@@ -50,7 +50,7 @@ Route::get('infaqshadaqah/destroy/{id}', 'InfaqShadaqahController@destroy');
 // Untuk Controller dan View Fidyah
 Route::resource('fidyah', 'FidyahController');
 Route::get('fidyah/destroy/{id}', 'FidyahController@destroy');
-Route::get('/fidyah/cetak_pdf', 'FidyahController@cetak_pdf');
+Route::get('pdffidyah', 'FidyahController@makePDF');
 // Untuk Controller dan View Provinsi
 Route::resource('provinsi', 'ProvinsiController');
 

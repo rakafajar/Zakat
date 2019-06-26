@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\FidyahModel;
 use App\ViewTotalKasFidyahModel;
 use DB;
+use PDF;
 
 class FidyahController extends Controller
 {
@@ -100,10 +101,13 @@ class FidyahController extends Controller
         DB::table('tb_fidyah')->where('id_fidyah', '=', $id)->delete();
         return back()->with('warning', 'Data Berhasil Dihapus!');
     }
-    public function cetak_fidyah()
+    public function makePDF()
     {
         $fidyah = FidyahModel::all();
-        $pdf = PDF::loadview('fidyah_pdf', ['fidyah' => $fidyah]);
-        return $pdf->download('laporan-fidyah-pdf');
+        $no = 0;
+        $pdf = PDF::loadView('fidyah.pdf', compact('fidyah', 'no'));
+        $pdf->setPaper('a4','potrait');
+
+        return $pdf->stream();
     }
 }
