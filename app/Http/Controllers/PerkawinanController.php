@@ -94,9 +94,7 @@ class PerkawinanController extends Controller
      */
     public function destroy($id)
     {
-         DB::table('tb_statusperkawinan')->where('id_status', '=', $id)->delete();
-        return back()->with('warning', 'Data Berhasil Dihapus!');
-
+        DB::table('tb_statusperkawinan')->where('id_status', '=', $id)->delete();
         return back()->with('warning', 'Data Berhasil Dihapus!');
     }
 }

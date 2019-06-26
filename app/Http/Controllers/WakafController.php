@@ -69,7 +69,9 @@ class WakafController extends Controller
      */
     public function edit($id)
     {
-        //
+        $wakaf = WakafModel::find($id);
+        $jenis_wakaf = JenisWakafModel::all();
+        return view('wakaf.edit', compact('jenis_wakaf', 'wakaf'));
     }
 
     /**
@@ -81,7 +83,13 @@ class WakafController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $wakaf = WakafModel::find($id);
+        $wakaf->nama_wakaf = $request['nama_wakaf'];
+        $wakaf->id_jeniswakaf = $request['id_jeniswakaf'];
+        $wakaf->nominal_wakaf = $request['nominal_wakaf'];
+        $wakaf->update();
+
+        return redirect(route('wakaf.index'))->with('info','Data Berhasil Diubah!');
     }
 
     /**
@@ -92,6 +100,7 @@ class WakafController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('tb_wakaf')->where('id_wakaf', '=', $id)->delete();
+        return back()->with('warning', 'Data Berhasil Dihapus!');
     }
 }
