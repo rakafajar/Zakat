@@ -14,7 +14,7 @@
             <a href="{{ route('fidyah.create') }}" class="btn btn-primary btn-sm">
               <i class="fas fa-coins"></i> Bayar Fidyah
             </a>
-            <a href="/Zakat/public/pdffidyah" class="btn btn-success btn-sm" target="_blank">
+            <a href="/Zakat/public/laporanfidyah" class="btn btn-success btn-sm" target="_blank">
               <i class="fas fa-print"></i> Cetak
             </a>            
           </div>
@@ -48,10 +48,10 @@
                     <td>{{ $no }}</td>
                     <td>{{ $list->nama_fidyah }}</td>
                     <td>
-                      <?php echo format_uang($list->nominal_fidyah); ?>
+                      Rp. <?php echo format_uang($list->nominal_fidyah); ?>
                     </td>
                     <th style="text-align: center;">
-                      <a href="{{ URL::to('fidyah/print/'.$list->id_fidyah) }}" class="btn btn-success btn-sm"><i class="fas fa-print"></i></a>
+                      <a href="{{ URL::to('fidyah/invoice/'.$list->id_fidyah) }}" class="btn btn-success btn-sm"><i class="fas fa-print"></i></a>
                       <a href="" class="btn btn-info btn-sm"><i class="fas fa-search"></i></a>
                       <a href="{{ route('fidyah.edit', $list->id_fidyah) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                       <a href="{{ URL::to('fidyah/destroy/'.$list->id_fidyah) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>

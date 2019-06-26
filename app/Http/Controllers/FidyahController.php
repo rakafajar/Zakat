@@ -101,12 +101,12 @@ class FidyahController extends Controller
         DB::table('tb_fidyah')->where('id_fidyah', '=', $id)->delete();
         return back()->with('warning', 'Data Berhasil Dihapus!');
     }
-    public function makePDF()
+    public function laporanFidyah()
     {
         $fidyah = FidyahModel::all();
         $view_tot_fidyah = ViewTotalKasFidyahModel::all();
         $no = 0;
-        $pdf = PDF::loadView('fidyah.pdf', compact('fidyah', 'no', 'view_tot_fidyah'));
+        $pdf = PDF::loadView('fidyah.laporan', compact('fidyah', 'no', 'view_tot_fidyah'));
         $pdf->setPaper('a4','potrait');
 
         return $pdf->stream();
@@ -117,7 +117,7 @@ class FidyahController extends Controller
     $fidyah = FidyahModel::find($id);
     //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
     //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
-    $pdf = PDF::loadView('fidyah.print', compact('fidyah'))->setPaper('a4', 'landscape');
+    $pdf = PDF::loadView('fidyah.invoice', compact('fidyah'))->setPaper('a4', 'landscape');
     return $pdf->stream();
     }
 }
