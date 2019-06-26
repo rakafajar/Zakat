@@ -50,7 +50,8 @@ Route::get('jeniswakaf/destroy/{id}', 'JenisWakafController@destroy');
 // Untuk Controller dan View Infaq & Shodaqoh
 Route::resource('infaqshadaqah', 'InfaqShadaqahController');
 Route::get('infaqshadaqah/destroy/{id}', 'InfaqShadaqahController@destroy');
-Route::get('pdfinsa', 'InfaqShadaqahController@makePDF');
+Route::get('laporaninsa', 'InfaqShadaqahController@laporanInsa');
+Route::get('infaqshadaqah/invoice/{id}', 'FidyahController@buktiBayar');
 
 
 // Untuk Controller dan View Fidyah

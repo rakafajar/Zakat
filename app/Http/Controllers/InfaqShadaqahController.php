@@ -100,14 +100,23 @@ class InfaqShadaqahController extends Controller
         return back()->with('warning', 'Data Berhasil Dihapus!');
     }
 
-    public function makePDF()
+    public function laporanInsa()
     {
         $insha = InfaqShadaqahModel::all();
         $view_tot_insha = ViewTotalKasInshaModel::all();
         $no = 0;
-        $pdf = PDF::loadView('infaqshodaqoh.pdf', compact('insha', 'no', 'view_tot_insha'));
+        $pdf = PDF::loadView('infaqshodaqoh.laporan', compact('insha', 'no', 'view_tot_insha'));
         $pdf->setPaper('a4','potrait');
 
+        return $pdf->stream();
+    }
+    public function buktiBayar($id)
+    {
+        //GET DATA BERDASARKAN ID
+        $insha = InfaqShadaqahModel::find($id);
+        //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
+        //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
+        $pdf = PDF::loadView('insha.invoice', compact('insha'))->setPaper('a4', 'landscape');
         return $pdf->stream();
     }
 }
