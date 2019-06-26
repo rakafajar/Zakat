@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2019 at 08:58 AM
+-- Generation Time: Jun 26, 2019 at 09:00 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -81,7 +81,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (16, '2019_06_24_045816_create_muzakki_table', 1),
 (17, '2019_06_24_054830_create_insha_table', 1),
 (18, '2019_06_24_055217_create_fidyah_table', 1),
-(19, '2019_06_24_055452_create_waqaf_table', 1);
+(19, '2019_06_25_180813_create_harga_table', 1),
+(20, '2019_06_25_181219_create_jenis_wakaf_table', 1),
+(21, '2019_06_25_181240_create_wakaf_table', 1);
 
 -- --------------------------------------------------------
 
@@ -177,6 +179,19 @@ CREATE TABLE `tb_golongan` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_harga`
+--
+
+CREATE TABLE `tb_harga` (
+  `id_harga` int(10) UNSIGNED NOT NULL,
+  `harga_beras` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_hubkeluarga`
 --
 
@@ -210,6 +225,19 @@ CREATE TABLE `tb_insha` (
 CREATE TABLE `tb_jenispekerjaan` (
   `id_pekerjaan` int(10) UNSIGNED NOT NULL,
   `nama_pekerjaan` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_jeniswakaf`
+--
+
+CREATE TABLE `tb_jeniswakaf` (
+  `id_jeniswakaf` int(10) UNSIGNED NOT NULL,
+  `jenis_wakaf` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -255,7 +283,6 @@ CREATE TABLE `tb_mustahiq` (
 
 CREATE TABLE `tb_muzakki` (
   `id_muzakki` int(10) UNSIGNED NOT NULL,
-  `id_kk` int(10) UNSIGNED NOT NULL,
   `id_anggotakk` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -290,13 +317,14 @@ CREATE TABLE `tb_statusperkawinan` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_waqaf`
+-- Table structure for table `tb_wakaf`
 --
 
-CREATE TABLE `tb_waqaf` (
-  `id_waqaf` int(10) UNSIGNED NOT NULL,
-  `nama_waqaf` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nominal_waqaf` int(11) NOT NULL,
+CREATE TABLE `tb_wakaf` (
+  `id_wakaf` int(10) UNSIGNED NOT NULL,
+  `nama_wakaf` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_jeniswakaf` int(10) UNSIGNED NOT NULL,
+  `nominal_wakaf` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -494,16 +522,6 @@ CREATE TABLE `view_total_kas_insha` (
 -- --------------------------------------------------------
 
 --
--- Stand-in structure for view `view_total_kas_waqaf`
--- (See below for the actual view)
---
-CREATE TABLE `view_total_kas_waqaf` (
-`total_kas_waqaf` decimal(32,0)
-);
-
--- --------------------------------------------------------
-
---
 -- Stand-in structure for view `view_villages`
 -- (See below for the actual view)
 --
@@ -519,6 +537,22 @@ CREATE TABLE `view_villages` (
 ,`id_district` char(7)
 ,`city_id` char(4)
 ,`name_district` varchar(255)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `view_wakaf`
+-- (See below for the actual view)
+--
+CREATE TABLE `view_wakaf` (
+`id_wakaf` int(10) unsigned
+,`nama_wakaf` varchar(191)
+,`id_jeniswakaf` int(10) unsigned
+,`jenis_wakaf` varchar(191)
+,`nominal_wakaf` int(11)
+,`created_at` timestamp
+,`updated_at` timestamp
 );
 
 -- --------------------------------------------------------
@@ -617,20 +651,20 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Structure for view `view_total_kas_waqaf`
---
-DROP TABLE IF EXISTS `view_total_kas_waqaf`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_total_kas_waqaf`  AS  select sum(`a`.`nominal_waqaf`) AS `total_kas_waqaf` from `tb_waqaf` `a` ;
-
--- --------------------------------------------------------
-
---
 -- Structure for view `view_villages`
 --
 DROP TABLE IF EXISTS `view_villages`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_villages`  AS  select `a`.`id` AS `id_villages`,`a`.`district_id` AS `district_id`,`a`.`name` AS `name_villages`,`b`.`id_cities` AS `id_cities`,`b`.`province_id` AS `province_id`,`b`.`name_cities` AS `name_cities`,`b`.`id_provinces` AS `id_provinces`,`b`.`name_provinces` AS `name_provinces`,`b`.`id_district` AS `id_district`,`b`.`city_id` AS `city_id`,`b`.`name_district` AS `name_district` from (`villages` `a` join `view_districts` `b`) where (`a`.`district_id` = `b`.`id_district`) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_wakaf`
+--
+DROP TABLE IF EXISTS `view_wakaf`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_wakaf`  AS  select `a`.`id_wakaf` AS `id_wakaf`,`a`.`nama_wakaf` AS `nama_wakaf`,`b`.`id_jeniswakaf` AS `id_jeniswakaf`,`b`.`jenis_wakaf` AS `jenis_wakaf`,`a`.`nominal_wakaf` AS `nominal_wakaf`,`a`.`created_at` AS `created_at`,`a`.`updated_at` AS `updated_at` from (`tb_wakaf` `a` join `tb_jeniswakaf` `b`) where (`a`.`id_jeniswakaf` = `b`.`id_jeniswakaf`) ;
 
 --
 -- Indexes for dumped tables
@@ -699,6 +733,12 @@ ALTER TABLE `tb_golongan`
   ADD PRIMARY KEY (`id_golongan`);
 
 --
+-- Indexes for table `tb_harga`
+--
+ALTER TABLE `tb_harga`
+  ADD PRIMARY KEY (`id_harga`);
+
+--
 -- Indexes for table `tb_hubkeluarga`
 --
 ALTER TABLE `tb_hubkeluarga`
@@ -715,6 +755,12 @@ ALTER TABLE `tb_insha`
 --
 ALTER TABLE `tb_jenispekerjaan`
   ADD PRIMARY KEY (`id_pekerjaan`);
+
+--
+-- Indexes for table `tb_jeniswakaf`
+--
+ALTER TABLE `tb_jeniswakaf`
+  ADD PRIMARY KEY (`id_jeniswakaf`);
 
 --
 -- Indexes for table `tb_kartukeluarga`
@@ -736,7 +782,6 @@ ALTER TABLE `tb_mustahiq`
 --
 ALTER TABLE `tb_muzakki`
   ADD PRIMARY KEY (`id_muzakki`),
-  ADD KEY `tb_muzakki_id_kk_foreign` (`id_kk`),
   ADD KEY `tb_muzakki_id_anggotakk_foreign` (`id_anggotakk`);
 
 --
@@ -752,10 +797,11 @@ ALTER TABLE `tb_statusperkawinan`
   ADD PRIMARY KEY (`id_status`);
 
 --
--- Indexes for table `tb_waqaf`
+-- Indexes for table `tb_wakaf`
 --
-ALTER TABLE `tb_waqaf`
-  ADD PRIMARY KEY (`id_waqaf`);
+ALTER TABLE `tb_wakaf`
+  ADD PRIMARY KEY (`id_wakaf`),
+  ADD KEY `tb_wakaf_id_jeniswakaf_foreign` (`id_jeniswakaf`);
 
 --
 -- Indexes for table `users`
@@ -779,7 +825,7 @@ ALTER TABLE `villages`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tb_agama`
@@ -797,13 +843,19 @@ ALTER TABLE `tb_anggotakk`
 -- AUTO_INCREMENT for table `tb_fidyah`
 --
 ALTER TABLE `tb_fidyah`
-  MODIFY `id_fidyah` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_fidyah` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_golongan`
 --
 ALTER TABLE `tb_golongan`
   MODIFY `id_golongan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_harga`
+--
+ALTER TABLE `tb_harga`
+  MODIFY `id_harga` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_hubkeluarga`
@@ -822,6 +874,12 @@ ALTER TABLE `tb_insha`
 --
 ALTER TABLE `tb_jenispekerjaan`
   MODIFY `id_pekerjaan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_jeniswakaf`
+--
+ALTER TABLE `tb_jeniswakaf`
+  MODIFY `id_jeniswakaf` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_kartukeluarga`
@@ -854,10 +912,10 @@ ALTER TABLE `tb_statusperkawinan`
   MODIFY `id_status` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tb_waqaf`
+-- AUTO_INCREMENT for table `tb_wakaf`
 --
-ALTER TABLE `tb_waqaf`
-  MODIFY `id_waqaf` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tb_wakaf`
+  MODIFY `id_wakaf` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -909,8 +967,13 @@ ALTER TABLE `tb_mustahiq`
 -- Constraints for table `tb_muzakki`
 --
 ALTER TABLE `tb_muzakki`
-  ADD CONSTRAINT `tb_muzakki_id_anggotakk_foreign` FOREIGN KEY (`id_anggotakk`) REFERENCES `tb_anggotakk` (`id_anggotakk`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `tb_muzakki_id_kk_foreign` FOREIGN KEY (`id_kk`) REFERENCES `tb_kartukeluarga` (`id_kk`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `tb_muzakki_id_anggotakk_foreign` FOREIGN KEY (`id_anggotakk`) REFERENCES `tb_anggotakk` (`id_anggotakk`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tb_wakaf`
+--
+ALTER TABLE `tb_wakaf`
+  ADD CONSTRAINT `tb_wakaf_id_jeniswakaf_foreign` FOREIGN KEY (`id_jeniswakaf`) REFERENCES `tb_jeniswakaf` (`id_jeniswakaf`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `villages`
