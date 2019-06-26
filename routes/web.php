@@ -43,6 +43,9 @@ Route::resource('zakatmaal', 'ZakatMaalController');
 // Untuk Controller dan View Waqaf
 Route::resource('wakaf', 'WakafController');
 
+// Untuk Controller dan View Jenis Wakaf
+Route::resource('jeniswakaf', 'JenisWakafController');
+
 // Untuk Controller dan View Infaq & Shodaqoh
 Route::resource('infaqshadaqah', 'InfaqShadaqahController');
 Route::get('infaqshadaqah/destroy/{id}', 'InfaqShadaqahController@destroy');
