@@ -52,10 +52,12 @@ Route::resource('infaqshadaqah', 'InfaqShadaqahController');
 Route::get('infaqshadaqah/destroy/{id}', 'InfaqShadaqahController@destroy');
 Route::get('pdfinsa', 'InfaqShadaqahController@makePDF');
 
+
 // Untuk Controller dan View Fidyah
 Route::resource('fidyah', 'FidyahController');
 Route::get('fidyah/destroy/{id}', 'FidyahController@destroy');
 Route::get('pdffidyah', 'FidyahController@makePDF');
+Route::get('fidyah/print/{id}', 'FidyahController@buktiBayar');
 // Untuk Controller dan View Provinsi
 Route::resource('provinsi', 'ProvinsiController');
 

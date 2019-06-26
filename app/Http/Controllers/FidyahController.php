@@ -111,4 +111,13 @@ class FidyahController extends Controller
 
         return $pdf->stream();
     }
+    public function buktiBayar($id)
+    {
+    //GET DATA BERDASARKAN ID
+    $fidyah = FidyahModel::find($id);
+    //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
+    //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
+    $pdf = PDF::loadView('fidyah.print', compact('fidyah'))->setPaper('a4', 'landscape');
+    return $pdf->stream();
+    }
 }
