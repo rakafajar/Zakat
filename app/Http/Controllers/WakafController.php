@@ -113,4 +113,14 @@ class WakafController extends Controller
 
         return $pdf->stream();
     }
+
+    public function buktiBayar($id)
+    {
+        //GET DATA BERDASARKAN ID
+        $wakaf = WakafModel::find($id);
+        //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
+        //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
+        $pdf = PDF::loadView('wakaf.invoice', compact('wakaf'))->setPaper('a4', 'landscape');
+        return $pdf->stream();
+    }
 }

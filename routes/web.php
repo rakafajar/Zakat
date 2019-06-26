@@ -44,6 +44,7 @@ Route::resource('zakatmaal', 'ZakatMaalController');
 Route::resource('wakaf', 'WakafController');
 Route::get('wakaf/destroy/{id}', 'WakafController@destroy');
 Route::get('laporanwakaf', 'WakafController@laporanWakaf');
+Route::get('wakaf/invoice/{id}', 'WakafController@buktiBayar');
 
 // Untuk Controller dan View Jenis Wakaf
 Route::resource('jeniswakaf', 'JenisWakafController');
