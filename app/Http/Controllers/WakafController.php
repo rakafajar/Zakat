@@ -7,6 +7,7 @@ use App\WakafModel;
 use App\ViewWakafModel;
 use App\JenisWakafModel;
 use DB;
+use PDF;
 
 class WakafController extends Controller
 {
@@ -102,5 +103,14 @@ class WakafController extends Controller
     {
         DB::table('tb_wakaf')->where('id_wakaf', '=', $id)->delete();
         return back()->with('warning', 'Data Berhasil Dihapus!');
+    }
+    public function laporanWakaf()
+    {
+        $wakaf = ViewWakafModel::all();
+        $no = 0;
+        $pdf = PDF::loadView('wakaf.laporan', compact('wakaf', 'no'));
+        $pdf->setPaper('a4','potrait');
+
+        return $pdf->stream();
     }
 }

@@ -14,6 +14,9 @@
             <a href="{{ route('wakaf.create') }}" class="btn btn-primary btn-sm">
           	  <i class="fas fa-user-plus"></i> Tambah
             </a>
+            <a href="/Zakat/public/laporanwakaf" class="btn btn-success btn-sm" target="_blank">
+              <i class="fas fa-print"></i> Cetak
+            </a>
           </div>
           <div class="card-body">
             <div class="table-responsive">
