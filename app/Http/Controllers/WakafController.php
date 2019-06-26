@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\WakafModel;
 use App\ViewWakafModel;
+use App\JenisWakafModel;
 use DB;
 
 class WakafController extends Controller
@@ -28,7 +29,8 @@ class WakafController extends Controller
      */
     public function create()
     {
-        return view('wakaf.create');
+        $jenis_wakaf = JenisWakafModel::all();
+        return view('wakaf.create', compact('jenis_wakaf'));
     }
 
     /**
@@ -39,7 +41,13 @@ class WakafController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $wakaf = new WakafModel;
+        $wakaf->nama_wakaf = $request['nama_wakaf'];
+        $wakaf->id_jeniswakaf = $request['id_jeniswakaf'];
+        $wakaf->nominal_wakaf = $request['nominal_wakaf'];
+        $wakaf->save();
+
+        return redirect(route('wakaf.index'))->with('success','Data Berhasil Disimpan');
     }
 
     /**

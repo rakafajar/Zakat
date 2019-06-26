@@ -21,22 +21,28 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>NIK</th>
-                    <th>Nama</th>
+                    <th>Nama Pewakaf</th>
+                    <th>Jenis Wakaf</th>
+                    <th>Nominal Wakaf</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
+                  <?php $no = 0; ?>
+                  @foreach($view_wakaf as $list)
+                  <?php $no++ ?>
                   <tr>
-                    <td>Donna Snider</td>
-                    <td>Customer Support</td>
-                    <td>New York</td>
+                    <td>{{$no}}</td>
+                    <td>{{$list->nama_wakaf}}</td>
+                    <td>{{$list->jenis_wakaf}}</td>
+                    <td>{{$list->nominal_wakaf}}</td>
                     <th style="text-align: center;">
                       <a href="" class="btn btn-info btn-sm"><i class="fas fa-search"></i></a>
                       <a href="" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                       <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
                     </th>
                   </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>
