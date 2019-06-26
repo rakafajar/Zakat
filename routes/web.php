@@ -41,7 +41,7 @@ Route::resource('zakatfitrah', 'ZakatFitrahController');
 Route::resource('zakatmaal', 'ZakatMaalController');
 
 // Untuk Controller dan View Waqaf
-// Route::resource('waqaf', 'WaqafController');
+Route::resource('wakaf', 'WakafController');
 
 // Untuk Controller dan View Infaq & Shodaqoh
 Route::resource('infaqshadaqah', 'InfaqShadaqahController');
