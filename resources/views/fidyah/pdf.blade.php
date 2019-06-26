@@ -12,8 +12,7 @@
 		}
 	</style>
 	<center>
-		<h5>Membuat Laporan PDF Dengan DOMPDF Laravel</h4>
-		<h6><a target="_blank" href="https://www.malasngoding.com/membuat-laporan-…n-dompdf-laravel/">www.malasngoding.com</a></h5>
+		<h5>Laporan Khas Fidyah</h4>
 	</center>
 
 	<table class='table table-bordered'>
@@ -21,6 +20,7 @@
 			<tr>
 				<th>No</th>
 				<th>Nama</th>
+				<th>Nominal</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -29,10 +29,14 @@
 			<tr>
 				<td>{{ $i++ }}</td>
 				<td>{{$p->nama_fidyah}}</td>
+				<td>{{$p->nominal_fidyah}}</td>
 			</tr>
 			@endforeach
 		</tbody>
 	</table>
+	@foreach($view_tot_fidyah as $list)
+		<p align="right">Total : Rp. <?php echo format_uang($list->total_kas_fidyah); ?></p>
+	@endforeach
 
 </body>
 </html>

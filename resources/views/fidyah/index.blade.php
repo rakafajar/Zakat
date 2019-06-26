@@ -14,7 +14,7 @@
             <a href="{{ route('fidyah.create') }}" class="btn btn-primary btn-sm">
               <i class="fas fa-coins"></i> Bayar Fidyah
             </a>
-            <a href="/fidyah/cetak_pdf" class="btn btn-primary btn-sm" target="_blank">
+            <a href="/Zakat/public/pdffidyah" class="btn btn-primary btn-sm" target="_blank">
               <i class="fas fa-print"></i> Bayar Fidyah
             </a>            
           </div>

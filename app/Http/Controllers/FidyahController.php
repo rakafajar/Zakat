@@ -104,8 +104,9 @@ class FidyahController extends Controller
     public function makePDF()
     {
         $fidyah = FidyahModel::all();
+        $view_tot_fidyah = ViewTotalKasFidyahModel::all();
         $no = 0;
-        $pdf = PDF::loadView('fidyah.pdf', compact('fidyah', 'no'));
+        $pdf = PDF::loadView('fidyah.pdf', compact('fidyah', 'no', 'view_tot_fidyah'));
         $pdf->setPaper('a4','potrait');
 
         return $pdf->stream();
