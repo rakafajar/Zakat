@@ -96,12 +96,15 @@ Route::get('hubungankeluarga/destroy/{id}', 'HubunganKeluargaController@destroy'
 
 // Untuk Controller mustahiq dan View mustahiq
 Route::resource('mustahiq', 'MustahiqController');
-Route::get('mustahiq/destroy/{id}', 'mustahiqController@destroy');
+Route::get('mustahiq/destroy/{id}', 'MustahiqController@destroy');
 
 // Untuk Controller muzakki dan View muzakki
 Route::resource('muzakki', 'MuzakkiController');
 Route::get('muzakki/destroy/{id}', 'MuzakkiController@destroy');
 Route::post('muzakki/fetch', 'MuzakkiController@fetch')->name('muzakki.fetch');
 
+// Untuk Controller mustahiq dan View mustahiq
+Route::resource('harga', 'HargaController');
+Route::get('harga/destroy/{id}', 'mustahiqController@destroy');
 
 Auth::routes();

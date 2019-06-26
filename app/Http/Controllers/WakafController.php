@@ -19,7 +19,6 @@ class WakafController extends Controller
     public function index()
     {
         $view_wakaf = ViewWakafModel::all();
-
         return view('wakaf.index', compact('view_wakaf'));
     }
 
@@ -48,7 +47,7 @@ class WakafController extends Controller
         $wakaf->nominal_wakaf = $request['nominal_wakaf'];
         $wakaf->save();
 
-        return redirect(route('wakaf.index'))->with('success','Data Berhasil Disimpan');
+        return redirect(route('wakaf.index'))->with('success', 'Data Berhasil Disimpan');
     }
 
     /**
@@ -90,7 +89,7 @@ class WakafController extends Controller
         $wakaf->nominal_wakaf = $request['nominal_wakaf'];
         $wakaf->update();
 
-        return redirect(route('wakaf.index'))->with('info','Data Berhasil Diubah!');
+        return redirect(route('wakaf.index'))->with('info', 'Data Berhasil Diubah!');
     }
 
     /**
@@ -109,7 +108,7 @@ class WakafController extends Controller
         $wakaf = ViewWakafModel::all();
         $no = 0;
         $pdf = PDF::loadView('wakaf.laporan', compact('wakaf', 'no'));
-        $pdf->setPaper('a4','potrait');
+        $pdf->setPaper('a4', 'potrait');
 
         return $pdf->stream();
     }

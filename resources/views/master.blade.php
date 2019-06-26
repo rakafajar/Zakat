@@ -120,6 +120,7 @@
           <a class="dropdown-item" href="{{ route('hubungankeluarga.index') }}">Hubungan Keluarga</a>
           <a class="dropdown-item" href="{{ route('golongan.index') }}">Golongan Mustahiq</a>
           <a class="dropdown-item" href="{{ route('jeniswakaf.index') }}">Jenis Wakaf</a>
+          <a class="dropdown-item" href="{{ route('harga.index') }}">Harga Beras</a>
         </div>
       </li>
     </ul>

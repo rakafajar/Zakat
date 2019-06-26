@@ -37,5 +37,6 @@ class WakafTableSeeder extends Seeder
                 'id_jeniswakaf' => '5',
                 'nominal_wakaf' => '3800000'
             ]
+        ));
     }
 }
