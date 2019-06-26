@@ -15,7 +15,7 @@ class CreateJenisWakafTable extends Migration
     {
         Schema::create('tb_jeniswakaf', function (Blueprint $table) {
             $table->increments('id_jeniswakaf');
-            $table->integer('jenis_wakaf');
+            $table->string('jenis_wakaf');
             $table->timestamps();
         });
     }

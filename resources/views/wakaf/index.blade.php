@@ -11,10 +11,10 @@
         <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">
-          	<a href="{{ route('waqaf.create') }}" class="btn btn-primary btn-sm">
-          		<i class="fas fa-user-plus"></i> Tambah
-          	</a>
-           </div>
+            <a href="{{ route('wakaf.create') }}" class="btn btn-primary btn-sm">
+          	  <i class="fas fa-user-plus"></i> Tambah
+            </a>
+          </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -32,9 +32,9 @@
                     <td>Customer Support</td>
                     <td>New York</td>
                     <th style="text-align: center;">
-                    	<a href="" class="btn btn-info btn-sm"><i class="fas fa-search"></i></a>
-                    	<a href="" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                    	<a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
+                      <a href="" class="btn btn-info btn-sm"><i class="fas fa-search"></i></a>
+                      <a href="" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                      <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
                     </th>
                   </tr>
                 </tbody>
@@ -42,6 +42,5 @@
             </div>
           </div>
         </div>
-
 
 @endsection

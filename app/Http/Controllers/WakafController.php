@@ -28,7 +28,7 @@ class WakafController extends Controller
      */
     public function create()
     {
-        
+        return view('wakaf.create');
     }
 
     /**
