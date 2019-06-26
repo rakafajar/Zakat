@@ -12,7 +12,7 @@
 		}
 	</style>
 	<center>
-		<h5>Laporan Khas Fidyah</h4>
+		<h5>Laporan Khas Wakaf</h4>
 	</center>
 
 	<table class='table table-bordered'>
@@ -36,6 +36,9 @@
 			@endforeach
 		</tbody>
 	</table>
+	@foreach($view_tot_wakaf as $list)
+	<p align="right">Total : Rp. <?php echo format_uang($list->total_kas_wakaf); ?></p>
+	@endforeach
 
 </body>
 </html>

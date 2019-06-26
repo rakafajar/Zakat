@@ -14,7 +14,7 @@
           	<a href="{{ route('infaqshadaqah.create') }}" class="btn btn-primary btn-sm">
           		<i class="fas fa-coins"></i> Bayar Infaq & Shadaqah
             </a> 
-            <a href="/Zakat/public/laporaninsa" class="btn btn-primary btn-sm" target="_blank">
+            <a href="/Zakat/public/laporaninsa" class="btn btn-success btn-sm" target="_blank">
               <i class="fas fa-print"></i> Cetak
             </a>             
           </div>

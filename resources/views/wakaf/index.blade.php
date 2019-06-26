@@ -18,6 +18,17 @@
               <i class="fas fa-print"></i> Cetak
             </a>
           </div>
+          <br>
+          <div class="col-sm-6">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text bg-light">Total Kas</span>
+              </div>
+              @foreach($view_tot_wakaf as $list)
+              <input type="text" class="form-control" value="Rp. <?php echo format_uang($list->total_kas_wakaf); ?>" disabled>
+              @endforeach
+            </div>
+          </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

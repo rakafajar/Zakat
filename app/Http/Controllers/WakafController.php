@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\WakafModel;
 use App\ViewWakafModel;
 use App\JenisWakafModel;
+use App\ViewTotalKasWakafModel;
 use DB;
 use PDF;
 
@@ -19,7 +20,8 @@ class WakafController extends Controller
     public function index()
     {
         $view_wakaf = ViewWakafModel::all();
-        return view('wakaf.index', compact('view_wakaf'));
+        $view_tot_wakaf = ViewTotalKasWakafModel::all();
+        return view('wakaf.index', compact('view_wakaf', 'view_tot_wakaf'));
     }
 
     /**
@@ -106,8 +108,9 @@ class WakafController extends Controller
     public function laporanWakaf()
     {
         $wakaf = ViewWakafModel::all();
+        $view_tot_wakaf = ViewTotalKasWakafModel::all();
         $no = 0;
-        $pdf = PDF::loadView('wakaf.laporan', compact('wakaf', 'no'));
+        $pdf = PDF::loadView('wakaf.laporan', compact('wakaf', 'no', 'view_tot_wakaf'));
         $pdf->setPaper('a4', 'potrait');
 
         return $pdf->stream();
