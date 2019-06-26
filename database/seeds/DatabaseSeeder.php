@@ -21,5 +21,10 @@ class DatabaseSeeder extends Seeder
         $this->call(AnggotaKKTableSeeder::class);
         $this->call(MuzakkiTableSeeder::class);
         $this->call(MustahiqTableSeeder::class);
+        $this->call(HargaBerasSeeder::class);
+        $this->call(JenisWakafTableSeeder::class);
+        $this->call(FidyahTableSeeder::class);
+        $this->call(InfaqShadaqahTableSeeder::class);
+        $this->call(WakafTableSeeder::class);
     }
 }
