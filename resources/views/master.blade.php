@@ -119,6 +119,7 @@
           <a class="dropdown-item" href="{{ route('perkawinan.index') }}">Data Perkawinan</a>
           <a class="dropdown-item" href="{{ route('hubungankeluarga.index') }}">Hubungan Keluarga</a>
           <a class="dropdown-item" href="{{ route('golongan.index') }}">Golongan Mustahiq</a>
+          <a class="dropdown-item" href="{{ route('jeniswakaf.index') }}">Jenis Wakaf</a>
         </div>
       </li>
     </ul>
