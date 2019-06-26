@@ -13,7 +13,7 @@ class CreateJenisWakafTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_jenis_wakaf', function (Blueprint $table) {
+        Schema::create('tb_jeniswakaf', function (Blueprint $table) {
             $table->increments('id_jeniswakaf');
             $table->integer('jenis_wakaf');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateJenisWakafTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_jenis_wakaf');
+        Schema::dropIfExists('tb_jeniswakaf');
     }
 }
