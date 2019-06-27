@@ -2,7 +2,7 @@
 <html>
 <head>
 <title></title>
-<link rel="icon" href="{{ asset('img/apple-touch-icon.png') }}">
+<link rel="icon" href="{{ asset('img/logo.png') }}">
 <link rel="stylesheet" href="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('https://fonts.googleapis.com/css?family=Allerta') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css') }}">
@@ -15,20 +15,18 @@
     <div class="container login-container">
     <div class="row">
         <div class="col-md-6 ads">
-        <h1 style="text-align: center;"><span id="fl">Masjid</span></h1>
-        <h6 style="text-align: center;"><span id="fl">Al-Muhajirin</span></h6>
+        <h1 style="text-align: center;"><span id="fl">Aplikasi</span></h1>
+        <h6 style="text-align: center;"><span id="fl">ZISWAF</span></h6>
         <hr>
-        <div id="my-content">
-            <span id="kl"><i class="fa fa-envelope-o"></i> almuhajirin@gmail.com</span><br>
-            <span id="kl"><i class="fa fa-phone-square"></i> 022 724561</span><br>
-            <span id="kl"><i class="fa fa-home"></i> Komplek Griya Mitra Posindo, Cinunuk, Cileunyi, Kabupaten Bandung</span>            
+        <div id="my-content" style="text-align: center;">
+            <h6><span id="sl">(Zakat, Infaq, Shodaqoh, Wakaf & Fidyah)</span></h6>         
         </div>
         </div>
         <div class="col-md-6 login-form">
         <div class="profile-img" id="my-content">
-            <img src="{{ asset('img/favicon.png')}}" alt="profile_img" height="140px" width="140px;" class="img img-responsive">
+            <img src="{{ asset('img/logo.png')}}" alt="profile_img" height="140px" width="140px;" class="img img-responsive">
         </div>
-        <h3 id="fl">Login Dashboard</h3>
+        <h3 id="fl">Login Admin</h3>
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div class="form-group row">
