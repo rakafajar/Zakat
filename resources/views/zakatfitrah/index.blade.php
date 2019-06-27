@@ -13,8 +13,22 @@
           <div class="card-header">
           	<a href="{{ route('zakatfitrah.create') }}" class="btn btn-primary btn-sm">
           		<i class="fas fa-coins"></i> Bayar Zakat Fitrah
-          	</a>
-           </div>
+            </a>
+            <a href="/Zakat/public/laporanzakatfitrah" class="btn btn-success btn-sm" target="_blank">
+              <i class="fas fa-print"></i> Cetak
+            </a>
+          </div>
+          <br>
+          <div class="col-sm-6">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text bg-light">Total Kas</span>
+                </div>
+                @foreach($view_tot_zakat_fitrah as $list)
+                  <input type="text" class="form-control" value="Rp. <?php echo format_uang($list->total_kas_zakat_fitrah); ?>" disabled>
+                @endforeach
+              </div>
+          </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
