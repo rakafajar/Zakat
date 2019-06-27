@@ -38,6 +38,7 @@ Route::get('golongan/destroy/{id}', 'GolonganController@destroy');
 Route::resource('zakatfitrah', 'ZakatFitrahController');
 Route::get('zakatfitrah/destroy/{id}', 'ZakatFitrahController@destroy');
 Route::get('laporanzakatfitrah', 'ZakatFitrahController@laporanzakatFitrah');
+Route::get('zakatfitrah/invoice/{id}', 'ZakatFitrahController@buktiBayar');
 
 
 // Untuk Controller dan View Zakat MAal

@@ -129,4 +129,14 @@ class ZakatFitrahController extends Controller
 
         return $pdf->stream();
     }
+
+    public function buktiBayar($id)
+    {
+        //GET DATA BERDASARKAN ID
+        $zakatfitrah = ZakatFitrahModel::find($id);
+        //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
+        //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
+        $pdf = PDF::loadView('zakatfitrah.invoice', compact('zakatfitrah'))->setPaper('a4', 'landscape');
+        return $pdf->stream();
+    }
 }
