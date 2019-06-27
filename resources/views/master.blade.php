@@ -123,6 +123,12 @@
           <a class="dropdown-item" href="{{ route('harga.index') }}">Harga Beras</a>
         </div>
       </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ route('user.index') }}">
+          <i class="fas fa-users"></i>
+          <span>User</span>
+        </a>
+      </li>
     </ul>
 
     <div id="content-wrapper">
