@@ -41,6 +41,10 @@ class FidyahController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nama_fidyah' => 'required',
+            'nominal_fidyah' => 'required',
+        ]);
         $fidyah = new FidyahModel;
         $fidyah->nama_fidyah = $request['nama_fidyah'];
         $fidyah->nominal_fidyah = $request['nominal_fidyah'];
@@ -82,6 +86,10 @@ class FidyahController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'nama_fidyah' => 'required',
+            'nominal_fidyah' => 'required',
+        ]);
         $fidyah = FidyahModel::find($id);
         $fidyah->nama_fidyah = $request['nama_fidyah'];
         $fidyah->nominal_fidyah = $request['nominal_fidyah'];

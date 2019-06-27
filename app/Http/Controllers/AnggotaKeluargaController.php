@@ -55,29 +55,36 @@ class AnggotaKeluargaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'id_agama' => 'required',
-            'id_pendidikan' => 'required',
-            'id_pekerjaan' => 'required',
-            'id_status_kawin' => 'required',
-            'id_pekerjaan' => 'required',
-            'id_status_hubkel' => 'required',
+            'nama_lengkap' => 'required',
+            'nomor_nik' => 'required|numeric',
+            'nomor_kk' => 'required',
+            'jenis_kelamin' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'nama_agama' => 'required',
+            'pendidikan' => 'required',
+            'pekerjaan' => 'required',
+            'status_kawin' => 'required',
             'kewarganegaraan' => 'required',
-            'id_kk' => 'required',
-            'jk' => 'required'
+            'hubungan_keluarga' => 'required',
+            'no_paspor' => 'required|numeric',
+            'no_kitap' => 'required|numeric',
+            'ayah' => 'required',
+            'ibu' => 'required',
         ]);
 
         $anggotakeluarga = new AnggotaKKModel;
         $anggotakeluarga->nama_lengkap = $request['nama_lengkap'];
-        $anggotakeluarga->nik = $request['nik'];
-        $anggotakeluarga->id_kk = $request['id_kk'];
-        $anggotakeluarga->jk = $request['jk'];
-        $anggotakeluarga->tmp_lahir = $request['tmp_lahir'];
-        $anggotakeluarga->tgl_lahir = $request['tgl_lahir'];
-        $anggotakeluarga->id_agama = $request['id_agama'];
-        $anggotakeluarga->id_pendidikan = $request['id_pendidikan'];
-        $anggotakeluarga->id_pekerjaan = $request['id_pekerjaan'];
-        $anggotakeluarga->id_status_kawin = $request['id_status_kawin'];
-        $anggotakeluarga->id_status_hubkel = $request['id_status_hubkel'];
+        $anggotakeluarga->nik = $request['nomor_nik'];
+        $anggotakeluarga->id_kk = $request['nomor_kk'];
+        $anggotakeluarga->jk = $request['jenis_kelamin'];
+        $anggotakeluarga->tmp_lahir = $request['tempat_lahir'];
+        $anggotakeluarga->tgl_lahir = $request['tanggal_lahir'];
+        $anggotakeluarga->id_agama = $request['nama_agama'];
+        $anggotakeluarga->id_pendidikan = $request['pendidikan'];
+        $anggotakeluarga->id_pekerjaan = $request['pekerjaan'];
+        $anggotakeluarga->id_status_kawin = $request['status_kawin'];
+        $anggotakeluarga->id_status_hubkel = $request['hubungan_keluarga'];
         $anggotakeluarga->kewarganegaraan = $request['kewarganegaraan'];
         $anggotakeluarga->no_paspor = $request['no_paspor'];
         $anggotakeluarga->no_kitap = $request['no_kitap'];
@@ -130,28 +137,35 @@ class AnggotaKeluargaController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'id_agama' => 'required',
-            'id_pendidikan' => 'required',
-            'id_pekerjaan' => 'required',
-            'id_status_kawin' => 'required',
-            'id_pekerjaan' => 'required',
-            'id_status_hubkel' => 'required',
+            'nama_lengkap' => 'required',
+            'nomor_nik' => 'required|numeric',
+            'nomor_kk' => 'required',
+            'jenis_kelamin' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'nama_agama' => 'required',
+            'pendidikan' => 'required',
+            'pekerjaan' => 'required',
+            'status_kawin' => 'required',
             'kewarganegaraan' => 'required',
-            'id_kk' => 'required',
-            'jk' => 'required'
+            'hubungan_keluarga' => 'required',
+            'no_paspor' => 'required|numeric',
+            'no_kitap' => 'required|numeric',
+            'ayah' => 'required',
+            'ibu' => 'required',
         ]);
         $anggotakeluarga = AnggotaKKModel::find($id);
         $anggotakeluarga->nama_lengkap = $request['nama_lengkap'];
-        $anggotakeluarga->nik = $request['nik'];
-        $anggotakeluarga->id_kk = $request['id_kk'];
-        $anggotakeluarga->jk = $request['jk'];
-        $anggotakeluarga->tmp_lahir = $request['tmp_lahir'];
-        $anggotakeluarga->tgl_lahir = $request['tgl_lahir'];
-        $anggotakeluarga->id_agama = $request['id_agama'];
-        $anggotakeluarga->id_pendidikan = $request['id_pendidikan'];
-        $anggotakeluarga->id_pekerjaan = $request['id_pekerjaan'];
-        $anggotakeluarga->id_status_kawin = $request['id_status_kawin'];
-        $anggotakeluarga->id_status_hubkel = $request['id_status_hubkel'];
+        $anggotakeluarga->nik = $request['nomor_nik'];
+        $anggotakeluarga->id_kk = $request['nomor_kk'];
+        $anggotakeluarga->jk = $request['jenis_kelamin'];
+        $anggotakeluarga->tmp_lahir = $request['tempat_lahir'];
+        $anggotakeluarga->tgl_lahir = $request['tanggal_lahir'];
+        $anggotakeluarga->id_agama = $request['nama_agama'];
+        $anggotakeluarga->id_pendidikan = $request['pendidikan'];
+        $anggotakeluarga->id_pekerjaan = $request['pekerjaan'];
+        $anggotakeluarga->id_status_kawin = $request['status_kawin'];
+        $anggotakeluarga->id_status_hubkel = $request['hubungan_keluarga'];
         $anggotakeluarga->kewarganegaraan = $request['kewarganegaraan'];
         $anggotakeluarga->no_paspor = $request['no_paspor'];
         $anggotakeluarga->no_kitap = $request['no_kitap'];

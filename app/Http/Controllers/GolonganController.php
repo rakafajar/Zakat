@@ -41,6 +41,9 @@ class GolonganController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nama_golongan' => 'required',
+        ]);
         $golongan = new GolonganModel;
         $golongan->nama_golongan = $request['nama_golongan'];
         $golongan->save();
@@ -82,6 +85,9 @@ class GolonganController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'nama_golongan' => 'required',
+        ]);
         $golongan = GolonganModel::find($id);
         $golongan->nama_golongan = $request['nama_golongan'];
         $golongan->update();

@@ -42,6 +42,9 @@ class AgamaController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'nama_agama' => 'required'
+        ]);
         $agama = new AgamaModel;
         $agama->nama_agama = $request['nama_agama'];
         $agama->save();
@@ -81,6 +84,9 @@ class AgamaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'nama_agama' => 'required'
+        ]);
         $agama = AgamaModel::find($id);
         $agama->nama_agama = $request['nama_agama'];
         $agama->update();
