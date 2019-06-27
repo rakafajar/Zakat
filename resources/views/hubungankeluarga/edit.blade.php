@@ -12,11 +12,20 @@
   <div class="card-header">Form Edit Hubungan Keluarga</div>
   <div class="card-body">
     <div class="col-md-8">
+        @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
       <form action="{{ route('hubungankeluarga.update', $hub_keluarga->id_hubkeluarga) }}" method="POST">
         {{ csrf_field() }} {{ method_field('PATCH')}}
         <div class="form-group">
           <label for="hubkeluarga">Hubungan Keluarga:</label>
-          <input type="text" class="form-control" id="nama_hubkeluarga" name="nama_hubkeluarga" value="{{ $hub_keluarga->nama_hubkeluarga}}" required>
+          <input type="text" class="form-control" id="hubungan_keluarga" name="hubungan_keluarga" value="{{ $hub_keluarga->nama_hubkeluarga}}">
         </div>
         <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
         <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>

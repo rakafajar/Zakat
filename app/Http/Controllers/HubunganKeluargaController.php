@@ -42,10 +42,10 @@ class HubunganKeluargaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama_hubkeluarga' => 'required',
+            'hubungan_keluarga' => 'required',
         ]);
         $hub_keluarga = new HubunganKeluargaModel;
-        $hub_keluarga->nama_hubkeluarga = $request['nama_hubkeluarga'];
+        $hub_keluarga->nama_hubkeluarga = $request['hubungan_keluarga'];
         $hub_keluarga->save();
 
         return redirect(route('hubungankeluarga.index'))->with('success','Data Berhasil Disimpan!');
@@ -84,10 +84,10 @@ class HubunganKeluargaController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nama_hubkeluarga' => 'required',
+            'hubungan_keluarga' => 'required',
         ]);
         $hub_keluarga = HubunganKeluargaModel::find($id);
-        $hub_keluarga->nama_hubkeluarga = $request['nama_hubkeluarga'];
+        $hub_keluarga->nama_hubkeluarga = $request['hubungan_keluarga'];
         $hub_keluarga->update();
         return redirect(route('hubungankeluarga.index'))->with('info','Data Berhasil Diubah!');
     }
