@@ -8,12 +8,21 @@
 	<li class="breadcrumb-item active">Kartu Keluarga</li>
 </ol>
 
-<form action="{{ route('kartukeluarga.update', $kartukeluarga->id_kk) }}" method="POST">
-  {{ csrf_field() }} {{ method_field('PATCH')}}
   <div class="card">
     <div class="card-header">Form Edit Kartu Keluarga</div>
     <div class="card-body">
       <div class="col-md-8">
+          @if (count($errors) > 0)
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+          @endif
+        <form action="{{ route('kartukeluarga.update', $kartukeluarga->id_kk) }}" method="POST">
+              {{ csrf_field() }} {{ method_field('PATCH')}}
         <div class="form-group">
           <label for="nokk">Nomor KK:</label>
           <input type="text" class="form-control" id="no_kk" name="no_kk" value="{{ $kartukeluarga->no_kk}}">

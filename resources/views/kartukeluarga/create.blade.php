@@ -7,14 +7,21 @@
 	</li>
 	<li class="breadcrumb-item active">Kartu Keluarga</li>
 </ol>
-
-<form action="{{ route('kartukeluarga.store') }}" method="POST">
-  {{ csrf_field() }}
   <div class="card">
     <div class="card-header">Form Kartu Keluarga</div>
     <div class="card-body">
       <div class="col-md-8">
-        <form>
+          @if (count($errors) > 0)
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+          @endif
+          <form action="{{ route('kartukeluarga.store') }}" method="POST">
+              {{ csrf_field() }}
           <div class="form-group">
             <label for="nokk">Nomor KK:</label>
             <input type="text" class="form-control" id="no_kk" name="no_kk" required="">
