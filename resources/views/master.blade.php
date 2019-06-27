@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Admin - Al-Muhajirin</title>
+  <title>Admin - ZISWAF</title>
 
   <link rel="icon" href="{{ asset('img/apple-touch-icon.png') }}">
 
@@ -30,7 +30,7 @@
 
   <nav class="navbar navbar-expand navbar-dark bg-info static-top">
 
-    <a class="navbar-brand mr-1 font1" href="{{route('dashboard.index')}}">Al-Muhajirin <img src="{{ asset('img/apple-touch-icon.png') }}" style="width: 30px;" class="img-responsive"></a>
+    <a class="navbar-brand mr-1 font1" href="{{route('dashboard.index')}}">Aplikasi ZISWAF <img src="{{ asset('img/apple-touch-icon.png') }}" style="width: 30px;" class="img-responsive"></a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
