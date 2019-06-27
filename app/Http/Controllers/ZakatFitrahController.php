@@ -77,7 +77,9 @@ class ZakatFitrahController extends Controller
     public function edit($id)
     {
         $zakatfitrah = ZakatFitrahModel::find($id);
-        return view('zakatfitrah.edit', compact('zakatfitrah', $zakatfitrah));
+        $muzakki = ViewMuzakkiModel::all();
+        $harga_beras = HargaModel::all();
+        return view('zakatfitrah.edit', compact('zakatfitrah', $zakatfitrah,'muzakki', $muzakki, 'harga_beras',$harga_beras));
     }
 
     /**
@@ -90,9 +92,9 @@ class ZakatFitrahController extends Controller
     public function update(Request $request, $id)
     {
         $zakatfitrah = ZakatFitrahModel::find($id);
-        $zakatfitrah ->muzakki_id = $request['muzakki'];
-        $zakatfitrah ->hargaberas = $request['hargaberas'];
-        $zakatfitrah ->nominal = $request['nominal'];
+        $muzakki = $zakatfitrah->id_muzakki = $request['id_muzakki'];
+        $harga_beras = $zakatfitrah->harga_beras = $request['harga_beras'];
+        $nominal = $zakatfitrah->nominal = 2.5 * $harga_beras;
         $zakatfitrah->update();
 
         return redirect(route('zakatfitrah.index'))->with('info', 'Data Berhasil Diubah!');

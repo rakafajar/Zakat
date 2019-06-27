@@ -41,7 +41,8 @@
                       <?php echo "Rp. ".format_uang($list->nominal) ?>
                     </td>
                     <th style="text-align: center;">
-                    	<a href="" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                        <a href="{{route('zakatfitrah.edit', $list->id_zfitrah)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                        <a href="{{ URL::to('zakatfitrah/destroy/'.$list->id_zfitrah) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                     </th>
                   </tr>
                   @endforeach
@@ -50,6 +51,4 @@
             </div>
           </div>
         </div>
-
-
 @endsection
