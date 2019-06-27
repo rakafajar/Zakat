@@ -43,7 +43,7 @@ class FidyahController extends Controller
     {
         $this->validate($request, [
             'nama_fidyah' => 'required',
-            'nominal_fidyah' => 'required',
+            'nominal_fidyah' => 'required|numeric',
         ]);
         $fidyah = new FidyahModel;
         $fidyah->nama_fidyah = $request['nama_fidyah'];
@@ -88,7 +88,7 @@ class FidyahController extends Controller
     {
         $this->validate($request, [
             'nama_fidyah' => 'required',
-            'nominal_fidyah' => 'required',
+            'nominal_fidyah' => 'required|numeric',
         ]);
         $fidyah = FidyahModel::find($id);
         $fidyah->nama_fidyah = $request['nama_fidyah'];

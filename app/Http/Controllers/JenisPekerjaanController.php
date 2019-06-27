@@ -41,6 +41,9 @@ class JenisPekerjaanController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nama_pekerjaan' => 'required',
+        ]);
         $jenis_pekerjaan = new JenisPekerjaanModel;
         $jenis_pekerjaan->nama_pekerjaan = $request['nama_pekerjaan'];
         $jenis_pekerjaan->save();
@@ -81,6 +84,9 @@ class JenisPekerjaanController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'nama_pekerjaan' => 'required',
+        ]);
         $jenis_pekerjaan = JenisPekerjaanModel::find($id);
         $jenis_pekerjaan->nama_pekerjaan = $request['nama_pekerjaan'];
         $jenis_pekerjaan->update();

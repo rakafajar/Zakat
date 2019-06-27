@@ -40,6 +40,10 @@ class InfaqShadaqahController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nama_insha' => 'required',
+            'nominal_insha' => 'required|numeric',
+        ]);
         $insha = new InfaqShadaqahModel;
         $insha->nama_insha = $request['nama_insha'];
         $insha->nominal_insha = $request['nominal_insha'];
@@ -80,6 +84,10 @@ class InfaqShadaqahController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'nama_insha' => 'required',
+            'nominal_insha' => 'required|numeric',
+        ]);
         $insha = InfaqShadaqahModel::find($id);
         $insha->nama_insha = $request['nama_insha'];
         $insha->nominal_insha = $request['nominal_insha'];
