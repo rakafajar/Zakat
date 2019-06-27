@@ -5,11 +5,11 @@
 	<li class="breadcrumb-item">
 		<a href="#">Dashboard</a>
 	</li>
-	<li class="breadcrumb-item active">Mustahiq</li>
+	<li class="breadcrumb-item active">Mustahik</li>
 </ol>
 
 <div class="card">
-  <div class="card-header">Form Edit Mustahiq</div>
+  <div class="card-header">Form Edit Mustahik</div>
   <div class="card-body">
     <div class="col-md-8">
       @if (count($errors) > 0)
