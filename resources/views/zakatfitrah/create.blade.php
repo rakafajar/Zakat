@@ -12,6 +12,15 @@
   <div class="card-header">Form Zakat Fitrah</div>
   <div class="card-body">
     <div class="col-md-8">
+      @if (count($errors) > 0)
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+      @endif
       <form action="{{ route('zakatfitrah.store') }}" method="POST">
         {{ csrf_field() }}
         <div class="form-group">

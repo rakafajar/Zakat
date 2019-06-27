@@ -47,6 +47,10 @@ class ZakatFitrahController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'id_muzakki' => 'required',
+            'harga_beras' => 'required|numeric',
+        ]);
         $zakatfitrah = new ZakatFitrahModel();
         $muzakki = $zakatfitrah->id_muzakki = $request['id_muzakki'];
         $harga_beras = $zakatfitrah->harga_beras = $request['harga_beras'];
@@ -91,6 +95,10 @@ class ZakatFitrahController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'id_muzakki' => 'required',
+            'harga_beras' => 'required|numeric',
+        ]);
         $zakatfitrah = ZakatFitrahModel::find($id);
         $muzakki = $zakatfitrah->id_muzakki = $request['id_muzakki'];
         $harga_beras = $zakatfitrah->harga_beras = $request['harga_beras'];
