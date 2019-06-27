@@ -12,7 +12,7 @@
 <div class="card mb-3">
     <div class="card-header">
     <a href="{{ route('jenispekerjaan.create') }}" class="btn btn-primary btn-sm">
-        <i class="fas fa-user-plus"></i> Tambah
+        <i class="fas fa-plus"></i> Tambah
     </a>
     </div>
     <div class="card-body">
