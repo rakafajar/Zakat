@@ -42,6 +42,9 @@ class JenisWakafController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'jenis_wakaf' => 'required',
+        ]);
         $jenis_wakaf = new JenisWakafModel();
         $jenis_wakaf->jenis_wakaf = $request['jenis_wakaf'];
         $jenis_wakaf->save();
@@ -81,6 +84,9 @@ class JenisWakafController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'jenis_wakaf' => 'required',
+        ]);
         $jenis_wakaf = JenisWakafModel::find($id);
         $jenis_wakaf->jenis_wakaf = $request['jenis_wakaf'];
         $jenis_wakaf->update();
