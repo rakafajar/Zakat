@@ -31,7 +31,9 @@
             <?php $no++ ?>
             <tr>
             <td>{{ $no }}</td>
-            <td>{{ $list->harga_beras }}</td>
+            <td>
+                Rp. <?php echo format_uang($list->harga_beras); ?>
+            </td>
             <th style="text-align: center;">
                 <a href="{{ route('harga.edit', $list->id_harga )}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                 <a href="{{ URL::to('harga/destroy/'.$list->id_harga) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>

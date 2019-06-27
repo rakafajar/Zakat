@@ -49,7 +49,9 @@
                     <td>{{$no}}</td>
                     <td>{{$list->nama_wakaf}}</td>
                     <td>{{$list->jenis_wakaf}}</td>
-                    <td>{{$list->nominal_wakaf}}</td>
+                    <td>
+                        Rp. <?php echo format_uang($list->nominal_wakaf); ?>
+                    </td>
                     <th style="text-align: center;">
                         <a href="{{ URL::to('wakaf/invoice/'.$list->id_wakaf) }}" class="btn btn-success btn-sm"><i class="fas fa-print"></i></a>
                       <a href="" class="btn btn-info btn-sm"><i class="fas fa-search"></i></a>

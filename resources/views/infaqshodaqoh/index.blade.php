@@ -48,6 +48,7 @@
                     <td>{{ $no }}</td>
                     <td>{{ $list->nama_insha }}</td>
                     <td>
+                      Rp. 
                       <?php
                         echo format_uang($list->nominal_insha);
                       ?>
