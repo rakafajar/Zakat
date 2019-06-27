@@ -15,17 +15,27 @@
       <form action="{{ route('zakatfitrah.store') }}" method="POST">
         {{ csrf_field() }}
         <div class="form-group">
-          <label for="muzakki">Muzakki:</label>
-          <input type="text" class="form-control" id="muzakki" name="muzakki">
+          <label for="sel1">Pilih Muzakki:</label>
+          <select class="form-control" name="id_muzakki">
+            <option>-- Pilih Muzakki --</option>
+            @foreach($muzakki as $list)
+            <option value="{{ $list->id_muzakki }}">NIK : {{ $list->nik }} - {{ $list->nama_lengkap }}</option>
+            @endforeach
+          </select>
         </div>
         <div class="form-group">
-          <label for="hargaberas">Harga Beras:</label>
-          <input type="text" class="form-control" id="hargaberas" name="hargaberas" placeholder="Rp.">
+          <label for="sel1">Harga Beras:</label>
+          <select class="form-control" name="harga_beras">
+            <option>-- Pilih Harga Beras --</option>
+            @foreach($harga_beras as $list)
+            <option value="{{ $list->harga_beras }}">Rp. <?php echo format_uang($list->harga_beras) ?></option>
+            @endforeach
+          </select>
         </div>
-        <div class="form-group">
+{{--         <div class="form-group">
           <label for="nominal">Nominal:</label>
           <input type="text" class="form-control" id="nominal" name="nominal" placeholder="Rp.">
-        </div>
+        </div> --}}
         <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
         <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>
         <a href="{{ route('zakatfitrah.index') }}" class="btn btn-danger btn-sm"><i class="fas fa-arrow-circle-left"></i> Kembali</a>

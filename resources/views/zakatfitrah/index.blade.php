@@ -12,7 +12,7 @@
         <div class="card mb-3">
           <div class="card-header">
           	<a href="{{ route('zakatfitrah.create') }}" class="btn btn-primary btn-sm">
-          		<i class="fas fa-user-plus"></i> Tambah
+          		<i class="fas fa-coins"></i> Bayar Zakat Fitrah
           	</a>
            </div>
           <div class="card-body">
@@ -23,7 +23,7 @@
                     <th width="10">No</th>
                     <th>Muzakki</th>
                     <th>Harga Beras</th>
-                    <th>Nominal Rupiah</th>
+                    <th>Nominal</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -33,20 +33,15 @@
                   <?php $no++ ?>
                   <tr>
                     <td>{{ $no }}</td>
-                    <td>{{ $list->muzakki_id }}</td>
+                    <td>{{ $list->nama_lengkap }}</td>
                     <td>
-                      <?php echo "Rp. ".format_uang($list->hargaberas) ?>
+                      <?php echo "Rp. ".format_uang($list->harga_beras) ?>
                     </td>
                     <td>
                       <?php echo "Rp. ".format_uang($list->nominal) ?>
                     </td>
                     <th style="text-align: center;">
-                    	<a href="{!! route('zakatfitrah.edit', [$list->id_zakatfitrah] )!!}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                      <form action="{!! route('zakatfitrah.destroy', [$list->id_zakatfitrah]) !!}" method="POST">
-                        {!! csrf_field() !!}
-                        {!! method_field('DELETE') !!}
-                        <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
-                      </form>
+                    	<a href="" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                     </th>
                   </tr>
                   @endforeach

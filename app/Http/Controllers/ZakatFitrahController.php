@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ZakatFitrahModel;
+use App\HargaModel;
+use App\ViewZakatFitrahModel;
+use App\ViewMuzakkiModel;
+use DB;
 
 class ZakatFitrahController extends Controller
 {
@@ -18,8 +22,8 @@ class ZakatFitrahController extends Controller
      */
     public function index()
     {
-        $zakatfitrah = ZakatFitrahModel::all();
-        return view('zakatfitrah/index', compact('zakatfitrah'));
+        $zakatfitrah = ViewZakatFitrahModel::all();
+        return view('zakatfitrah.index', compact('zakatfitrah'));
     }
 
     /**
@@ -29,7 +33,10 @@ class ZakatFitrahController extends Controller
      */
     public function create()
     {
-        return view('zakatfitrah/create');
+        $muzakki = ViewMuzakkiModel::all();
+        $harga_beras = HargaModel::all();
+
+        return view('zakatfitrah.create', compact('harga_beras', 'muzakki'));
     }
 
     /**
@@ -40,13 +47,14 @@ class ZakatFitrahController extends Controller
      */
     public function store(Request $request)
     {
-        $zakatfitrah = new ZakatFitrahModel;
-        $zakatfitrah ->muzakki_id = $request['muzakki'];
-        $zakatfitrah ->hargaberas = $request['hargaberas'];
-        $zakatfitrah ->nominal = $request['nominal'];
+        $zakatfitrah = new ZakatFitrahModel();
+        $muzakki = $zakatfitrah->id_muzakki = $request['id_muzakki'];
+        $harga_beras = $zakatfitrah->harga_beras = $request['harga_beras'];
+        $nominal = $zakatfitrah->nominal = 2.5 * $harga_beras;
         $zakatfitrah->save();
 
-        return redirect(route('zakatfitrah.index'))->with('success', 'Data Berhasil Disimpan!');
+        return view('zakatfitrah.update', ['harga_beras' => $harga_beras, 'nominal' => $nominal],
+            ['muzakki' => $muzakki]);
     }
 
     /**

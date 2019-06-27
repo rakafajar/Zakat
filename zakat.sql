@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 26, 2019 at 09:00 AM
+-- Generation Time: Jun 27, 2019 at 06:34 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -83,7 +83,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (18, '2019_06_24_055217_create_fidyah_table', 1),
 (19, '2019_06_25_180813_create_harga_table', 1),
 (20, '2019_06_25_181219_create_jenis_wakaf_table', 1),
-(21, '2019_06_25_181240_create_wakaf_table', 1);
+(21, '2019_06_25_181240_create_wakaf_table', 1),
+(22, '2019_06_26_072552_create_zakat_fitrah_table', 1);
 
 -- --------------------------------------------------------
 
@@ -332,6 +333,21 @@ CREATE TABLE `tb_wakaf` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_zakat_fitrah`
+--
+
+CREATE TABLE `tb_zakat_fitrah` (
+  `id_zfitrah` int(10) UNSIGNED NOT NULL,
+  `id_muzakki` int(10) UNSIGNED NOT NULL,
+  `harga_beras` int(11) NOT NULL,
+  `nominal` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -558,6 +574,24 @@ CREATE TABLE `view_wakaf` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `view_zakat_fitrah`
+-- (See below for the actual view)
+--
+CREATE TABLE `view_zakat_fitrah` (
+`id_zfitrah` int(10) unsigned
+,`id_muzakki` int(10) unsigned
+,`nama_lengkap` varchar(191)
+,`id_kk` int(10) unsigned
+,`no_kk` varchar(20)
+,`id_anggotakk` int(10) unsigned
+,`nik` char(191)
+,`harga_beras` int(11)
+,`nominal` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `villages`
 --
 
@@ -665,6 +699,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `view_wakaf`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_wakaf`  AS  select `a`.`id_wakaf` AS `id_wakaf`,`a`.`nama_wakaf` AS `nama_wakaf`,`b`.`id_jeniswakaf` AS `id_jeniswakaf`,`b`.`jenis_wakaf` AS `jenis_wakaf`,`a`.`nominal_wakaf` AS `nominal_wakaf`,`a`.`created_at` AS `created_at`,`a`.`updated_at` AS `updated_at` from (`tb_wakaf` `a` join `tb_jeniswakaf` `b`) where (`a`.`id_jeniswakaf` = `b`.`id_jeniswakaf`) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_zakat_fitrah`
+--
+DROP TABLE IF EXISTS `view_zakat_fitrah`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_zakat_fitrah`  AS  select `a`.`id_zfitrah` AS `id_zfitrah`,`a`.`id_muzakki` AS `id_muzakki`,`b`.`nama_lengkap` AS `nama_lengkap`,`b`.`id_kk` AS `id_kk`,`b`.`no_kk` AS `no_kk`,`b`.`id_anggotakk` AS `id_anggotakk`,`b`.`nik` AS `nik`,`a`.`harga_beras` AS `harga_beras`,`a`.`nominal` AS `nominal` from (`tb_zakat_fitrah` `a` join `view_muzakki` `b`) where (`a`.`id_muzakki` = `b`.`id_muzakki`) ;
 
 --
 -- Indexes for dumped tables
@@ -804,6 +847,13 @@ ALTER TABLE `tb_wakaf`
   ADD KEY `tb_wakaf_id_jeniswakaf_foreign` (`id_jeniswakaf`);
 
 --
+-- Indexes for table `tb_zakat_fitrah`
+--
+ALTER TABLE `tb_zakat_fitrah`
+  ADD PRIMARY KEY (`id_zfitrah`),
+  ADD KEY `tb_zakat_fitrah_id_muzakki_foreign` (`id_muzakki`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -825,7 +875,7 @@ ALTER TABLE `villages`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `tb_agama`
@@ -918,6 +968,12 @@ ALTER TABLE `tb_wakaf`
   MODIFY `id_wakaf` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `tb_zakat_fitrah`
+--
+ALTER TABLE `tb_zakat_fitrah`
+  MODIFY `id_zfitrah` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
@@ -974,6 +1030,12 @@ ALTER TABLE `tb_muzakki`
 --
 ALTER TABLE `tb_wakaf`
   ADD CONSTRAINT `tb_wakaf_id_jeniswakaf_foreign` FOREIGN KEY (`id_jeniswakaf`) REFERENCES `tb_jeniswakaf` (`id_jeniswakaf`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tb_zakat_fitrah`
+--
+ALTER TABLE `tb_zakat_fitrah`
+  ADD CONSTRAINT `tb_zakat_fitrah_id_muzakki_foreign` FOREIGN KEY (`id_muzakki`) REFERENCES `tb_muzakki` (`id_muzakki`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `villages`
