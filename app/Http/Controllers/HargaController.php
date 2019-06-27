@@ -40,6 +40,9 @@ class HargaController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'harga_beras' => 'required|numeric',
+        ]);
         $harga = new HargaModel;
         $harga->harga_beras = $request['harga_beras'];
         $harga->save();
@@ -79,6 +82,9 @@ class HargaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'harga_beras' => 'required|numeric',
+        ]);
         $harga = HargaModel::find($id);
         $harga->harga_beras = $request['harga_beras'];
         $harga->update();

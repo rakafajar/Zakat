@@ -12,11 +12,20 @@
   <div class="card-header">Form Harga Beras</div>
   <div class="card-body">
     <div class="col-md-8">
+      @if (count($errors) > 0)
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+      @endif
       <form action="{{ route('harga.store') }}" method="POST">
         {{ csrf_field() }}
         <div class="form-group">
           <label for="harga">Harga Beras:</label>
-          <input type="text" class="form-control" id="harga_beras" name="harga_beras" required>
+          <input type="number" min="0" class="form-control" id="harga_beras" name="harga_beras">
         </div>
         <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
         <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>

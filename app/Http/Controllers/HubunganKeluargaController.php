@@ -41,6 +41,9 @@ class HubunganKeluargaController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nama_hubkeluarga' => 'required',
+        ]);
         $hub_keluarga = new HubunganKeluargaModel;
         $hub_keluarga->nama_hubkeluarga = $request['nama_hubkeluarga'];
         $hub_keluarga->save();
@@ -80,6 +83,9 @@ class HubunganKeluargaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'nama_hubkeluarga' => 'required',
+        ]);
         $hub_keluarga = HubunganKeluargaModel::find($id);
         $hub_keluarga->nama_hubkeluarga = $request['nama_hubkeluarga'];
         $hub_keluarga->update();
