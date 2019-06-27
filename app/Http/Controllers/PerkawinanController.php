@@ -41,8 +41,11 @@ class PerkawinanController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'status_perkawinan' => 'required',
+        ]);
         $status_perkawinan = new StatusPerkawinanModel;
-        $status_perkawinan->nama_status = $request['nama_status'];
+        $status_perkawinan->nama_status = $request['status_perkawinan'];
         $status_perkawinan->save();
 
         return redirect(route('perkawinan.index'))->with('success','Data Berhasil Disimpan!');
@@ -80,8 +83,11 @@ class PerkawinanController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'status_perkawinan' => 'required',
+        ]);
         $status_perkawinan = StatusPerkawinanModel::find($id);
-        $status_perkawinan->nama_status = $request['nama_status'];
+        $status_perkawinan->nama_status = $request['status_perkawinan'];
         $status_perkawinan->update();
         return redirect(route('perkawinan.index'))->with('info','Data Berhasil Diubah!');
     }

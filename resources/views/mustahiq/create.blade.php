@@ -12,42 +12,42 @@
   <div class="card-header">Form Mustahiq</div>
   <div class="card-body">
     <div class="col-md-8">
+        @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
       <form action="{{ route('mustahiq.store') }}" method="POST">
         {{ csrf_field() }}
-        <div class="form-group{{$errors->has('id_anggotakk') ? ' has-error' : ''}}">
+        <div class="form-group">
             <label for="anggotakk">No. NIK:</label>
-            <select class="form-control" name="id_anggotakk">
+            <select class="form-control" name="nomor_kk">
                 <option value="">-- Pilih No. NIK --</option>
                 @foreach($anggotakk as $list)
                 <option value="{{ $list->id_anggotakk }}">{{ $list->nik}}</option>
                 @endforeach
             </select>
-            @if($errors->has('id_anggotakk'))
-            <span class="help-block">{{$errors->first('id_anggotakk')}}</span>
-            @endif
         </div>
-        <div class="form-group{{$errors->has('id_golongan') ? ' has-error' : ''}}">
+        <div class="form-group">
                 <label for="golongan">Golongan:</label>
-                <select class="form-control" name="id_golongan">
+                <select class="form-control" name="golongan">
                     <option value="">-- Pilih Golongan --</option>
                     @foreach($golongan as $list)
                     <option value="{{ $list->id_golongan }}">{{ $list->nama_golongan}}</option>
                     @endforeach
                 </select>
-                @if($errors->has('id_golongan'))
-                <span class="help-block">{{$errors->first('id_golongan')}}</span>
-                @endif
         </div>
-        <div class="form-group{{$errors->has('wilayah') ? ' has-error' : ''}}">
+        <div class="form-group">
                 <label for="wilayah">Pilih Wilayah:</label>
                 <select class="form-control" name="wilayah">
                   <option value="">-- Pilih Wilayah --</option>
                   <option value="Internal">Internal</option>
                   <option value="Eksternal">Eksternal</option>
                 </select>
-                @if($errors->has('wilayah'))
-                <span class="help-block">{{$errors->first('wilayah')}}</span>
-                @endif
         </div>
         <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
         <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>

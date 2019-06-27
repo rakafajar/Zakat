@@ -43,9 +43,14 @@ class WakafController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'nama_wakaf' => 'required',
+            'jenis_wakaf' => 'required',
+            'nominal_wakaf' => 'required|numeric'
+        ]);
         $wakaf = new WakafModel;
         $wakaf->nama_wakaf = $request['nama_wakaf'];
-        $wakaf->id_jeniswakaf = $request['id_jeniswakaf'];
+        $wakaf->id_jeniswakaf = $request['jenis_wakaf'];
         $wakaf->nominal_wakaf = $request['nominal_wakaf'];
         $wakaf->save();
 
@@ -85,9 +90,14 @@ class WakafController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'nama_wakaf' => 'required',
+            'jenis_wakaf' => 'required',
+            'nominal_wakaf' => 'required|numeric'
+        ]);
         $wakaf = WakafModel::find($id);
         $wakaf->nama_wakaf = $request['nama_wakaf'];
-        $wakaf->id_jeniswakaf = $request['id_jeniswakaf'];
+        $wakaf->id_jeniswakaf = $request['jenis_wakaf'];
         $wakaf->nominal_wakaf = $request['nominal_wakaf'];
         $wakaf->update();
 

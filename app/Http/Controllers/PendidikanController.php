@@ -41,6 +41,9 @@ class PendidikanController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'nama_pendidikan' => 'required',
+        ]);
         $pendidikan = new PendidikanModel;
         $pendidikan->nama_pendidikan = $request['nama_pendidikan'];
         $pendidikan->save();
@@ -81,6 +84,9 @@ class PendidikanController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'nama_pendidikan' => 'required',
+        ]);
         $pendidikan = PendidikanModel::find($id);
         $pendidikan->nama_pendidikan = $request['nama_pendidikan'];
         $pendidikan->update();
