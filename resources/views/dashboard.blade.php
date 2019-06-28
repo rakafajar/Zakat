@@ -22,8 +22,8 @@
                 </div>
                 @endforeach
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">View Details</span>
+              <a class="card-footer text-white clearfix small z-1" href="{{ route('infaqshadaqah.index')}}">
+                <span class="float-left">Lihat Detail</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
                 </span>
@@ -42,8 +42,8 @@
                 </div>
                 @endforeach
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">View Details</span>
+              <a class="card-footer text-white clearfix small z-1" href="{{ route('wakaf.index')}}">
+                <span class="float-left">Lihat Detail</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
                 </span>
@@ -62,8 +62,8 @@
                 </div>
                 @endforeach
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">View Details</span>
+              <a class="card-footer text-white clearfix small z-1" href="{{ route('fidyah.index')}}">
+                <span class="float-left">Lihat Detail</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
                 </span>
@@ -87,7 +87,7 @@
             </div>
           </div>
                     <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-info o-hidden h-100">
+            <div class="card text-white bg-dark o-hidden h-100">
               <div class="card-body">
                 <div class="card-body-icon">
                   <i class="fas fa-money-check"></i>

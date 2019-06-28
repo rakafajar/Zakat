@@ -11,7 +11,7 @@
 
   <title>Admin - ZISWAF</title>
 
-  <link rel="icon" href="{{ asset('img/apple-touch-icon.png') }}">
+  <link rel="icon" href="{{ asset('img/logo.png') }}">
 
   <!-- Custom fonts for this template-->
   <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -30,7 +30,7 @@
 
   <nav class="navbar navbar-expand navbar-dark bg-info static-top">
 
-    <a class="navbar-brand mr-1 font1" href="{{route('dashboard.index')}}">Aplikasi ZISWAF <img src="{{ asset('img/apple-touch-icon.png') }}" style="width: 30px;" class="img-responsive"></a>
+    <a class="navbar-brand mr-1 font1" href="{{route('dashboard.index')}}">Aplikasi ZISWAF <img src="{{ asset('img/logo.png') }}" style="width: 30px;" class="img-responsive"></a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
@@ -91,7 +91,7 @@
       <li class="nav-item active">
         <a class="nav-link" href="{{ route('mustahiq.index') }}">
           <i class="fas fa-users"></i>
-          <span>Mustahiq</span>
+          <span>Mustahik</span>
         </a>
       </li>
       <li class="nav-item dropdown">
@@ -118,10 +118,16 @@
           <a class="dropdown-item" href="{{ route('jenispekerjaan.index') }}">Data Pekerjaan</a>
           <a class="dropdown-item" href="{{ route('perkawinan.index') }}">Data Perkawinan</a>
           <a class="dropdown-item" href="{{ route('hubungankeluarga.index') }}">Hubungan Keluarga</a>
-          <a class="dropdown-item" href="{{ route('golongan.index') }}">Golongan Mustahiq</a>
+          <a class="dropdown-item" href="{{ route('golongan.index') }}">Golongan Mustahik</a>
           <a class="dropdown-item" href="{{ route('jeniswakaf.index') }}">Jenis Wakaf</a>
           <a class="dropdown-item" href="{{ route('harga.index') }}">Harga Beras</a>
         </div>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ route('user.index') }}">
+          <i class="fas fa-users"></i>
+          <span>User</span>
+        </a>
       </li>
     </ul>
 

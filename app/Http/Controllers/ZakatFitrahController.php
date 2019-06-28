@@ -7,6 +7,8 @@ use App\ZakatFitrahModel;
 use App\HargaModel;
 use App\ViewZakatFitrahModel;
 use App\ViewMuzakkiModel;
+use App\ViewTotalKasZakatFitrahModel;
+use PDF;
 use DB;
 
 class ZakatFitrahController extends Controller
@@ -23,7 +25,8 @@ class ZakatFitrahController extends Controller
     public function index()
     {
         $zakatfitrah = ViewZakatFitrahModel::all();
-        return view('zakatfitrah.index', compact('zakatfitrah'));
+        $view_tot_zakat_fitrah = ViewTotalKasZakatFitrahModel::all();
+        return view('zakatfitrah.index', compact('zakatfitrah', 'view_tot_zakat_fitrah'));
     }
 
     /**
@@ -57,8 +60,11 @@ class ZakatFitrahController extends Controller
         $nominal = $zakatfitrah->nominal = 2.5 * $harga_beras;
         $zakatfitrah->save();
 
-        return view('zakatfitrah.update', ['harga_beras' => $harga_beras, 'nominal' => $nominal],
-            ['muzakki' => $muzakki]);
+        return view(
+            'zakatfitrah.update',
+            ['harga_beras' => $harga_beras, 'nominal' => $nominal],
+            ['muzakki' => $muzakki]
+        );
     }
 
     /**
@@ -83,7 +89,7 @@ class ZakatFitrahController extends Controller
         $zakatfitrah = ZakatFitrahModel::find($id);
         $muzakki = ViewMuzakkiModel::all();
         $harga_beras = HargaModel::all();
-        return view('zakatfitrah.edit', compact('zakatfitrah', $zakatfitrah,'muzakki', $muzakki, 'harga_beras',$harga_beras));
+        return view('zakatfitrah.edit', compact('zakatfitrah', $zakatfitrah, 'muzakki', $muzakki, 'harga_beras', $harga_beras));
     }
 
     /**
@@ -119,5 +125,26 @@ class ZakatFitrahController extends Controller
         $zakatfitrah = ZakatFitrahModel::find($id);
         $zakatfitrah->delete();
         return back()->with('warning', 'Data Berhasil Dihapus!');
+    }
+
+    public function laporanzakatFitrah()
+    {
+        $zakatfitrah = ViewZakatFitrahModel::all();
+        $view_tot_zakat_fitrah = ViewTotalKasZakatFitrahModel::all();
+        $no = 0;
+        $pdf = PDF::loadView('zakatfitrah.laporan', compact('zakatfitrah', 'no', 'view_tot_zakat_fitrah'));
+        $pdf->setPaper('a4', 'potrait');
+
+        return $pdf->stream();
+    }
+
+    public function buktiBayar($id)
+    {
+        //GET DATA BERDASARKAN ID
+        $zakatfitrah = ZakatFitrahModel::find($id);
+        //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
+        //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
+        $pdf = PDF::loadView('zakatfitrah.invoice', compact('zakatfitrah'))->setPaper('a4', 'landscape');
+        return $pdf->stream();
     }
 }

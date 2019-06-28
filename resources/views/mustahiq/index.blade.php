@@ -5,7 +5,7 @@
 	<li class="breadcrumb-item">
 		<a href="#">Dashboard</a>
 	</li>
-	<li class="breadcrumb-item active">Mustahiq</li>
+	<li class="breadcrumb-item active">Mustahik</li>
 </ol>
 
 <!-- DataTables Example -->
@@ -22,8 +22,8 @@
             <tr>
             <th width="10">No</th>
             <th>NIK</th>
-            <th>Nama Mustahiq</th>
-            <th>Golongan Mustahiq</th>
+            <th>Nama Mustahik</th>
+            <th>Golongan Mustahik</th>
             <th>Wilayah</th>
             <th>Aksi</th>
             </tr>
