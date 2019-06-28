@@ -112,11 +112,11 @@
           </div>
           <div class="form-group">
             <label for="no_paspor">No. Paspor:</label>
-            <input type="text" class="form-control" id="no_paspor" name="no_paspor" value="{{ old('no_paspor') }}">
+            <input type="number" min="0" class="form-control" id="no_paspor" name="no_paspor" value="{{ old('no_paspor') }}">
           </div>
           <div class="form-group">
             <label for="no_kitap">No. Kitap:</label>
-            <input type="text" class="form-control" id="no_kitap" name="no_kitap" value="{{ old('no_kitap') }}">
+            <input type="number" min="0" class="form-control" id="no_kitap" name="no_kitap" value="{{ old('no_kitap') }}">
           </div>
           <div class="form-group">
             <label for="ayah">Ayah:</label>

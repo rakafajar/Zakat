@@ -105,7 +105,12 @@ class AnggotaKeluargaController extends Controller
     {
         $anggotakeluarga =  AnggotaKKModel::find($id);
         $kk =  KartuKeluargaModel::find($id);
-        return view('anggotakeluarga.show', compact($anggotakeluarga, 'anggotakeluarga', 'kk'));
+        $agama = AgamaModel::find($id);
+        $pendidikan = PendidikanModel::find($id);
+        $jenispekerjaan = JenisPekerjaanModel::find($id);
+        $status = StatusPerkawinanModel::find($id);
+        $hubkeluarga = HubunganKeluargaModel::find($id);
+        return view('anggotakeluarga.show', compact($anggotakeluarga, 'anggotakeluarga', 'kk', 'agama', 'pendidikan','jenispekerjaan','status','hubkeluarga'));
     }
 
     /**
