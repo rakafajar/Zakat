@@ -24,7 +24,7 @@
               {{ csrf_field() }}
           <div class="form-group">
             <label for="nokk">Nomor KK:</label>
-            <input type="text" class="form-control" id="no_kk" name="no_kk" required="">
+            <input type="number" min="0" class="form-control" id="no_kk" name="no_kk">
           </div>
           <div class="form-group">
             <label for="alamat">Alamat:</label>

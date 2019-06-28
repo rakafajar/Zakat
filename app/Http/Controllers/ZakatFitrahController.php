@@ -60,10 +60,9 @@ class ZakatFitrahController extends Controller
         $nominal = $zakatfitrah->nominal = 2.5 * $harga_beras;
         $zakatfitrah->save();
 
-        return view(
-            'zakatfitrah.update',
+        return view('zakatfitrah.update', compact('zakatfitrah'),
             ['harga_beras' => $harga_beras, 'nominal' => $nominal],
-            ['muzakki' => $muzakki]
+            ['muzakki' => $muzakki],
         );
     }
 

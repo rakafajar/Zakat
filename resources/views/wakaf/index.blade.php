@@ -38,6 +38,7 @@
                     <th>Nama Pewakaf</th>
                     <th>Jenis Wakaf</th>
                     <th>Nominal Wakaf</th>
+                    <th>Tanggal Bayar</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -51,6 +52,11 @@
                     <td>{{$list->jenis_wakaf}}</td>
                     <td>
                         Rp. <?php echo format_uang($list->nominal_wakaf); ?>
+                    </td>
+                    <td>
+                      <?php
+                        echo tanggal_indonesia($list->created_at);
+                      ?>
                     </td>
                     <th style="text-align: center;">
                       <a href="{{ URL::to('wakaf/invoice/'.$list->id_wakaf) }}" class="btn btn-success btn-sm"><i class="fas fa-print"></i></a>

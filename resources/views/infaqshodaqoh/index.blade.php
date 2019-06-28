@@ -37,6 +37,7 @@
                     <th>No.</th>
                     <th>Nama</th>
                     <th>Nominal</th>
+                    <th>Tanggal Bayar</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -51,6 +52,11 @@
                       Rp. 
                       <?php
                         echo format_uang($list->nominal_insha);
+                      ?>
+                    </td>
+                    <td>
+                      <?php
+                        echo tanggal_indonesia($list->created_at);
                       ?>
                     </td>
                     <th style="text-align: center;">

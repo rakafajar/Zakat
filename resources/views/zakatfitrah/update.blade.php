@@ -14,7 +14,7 @@
     <div class="col-md-8">
       <p><strong>Harga Beras : Rp. <?php echo format_uang($harga_beras) ?></strong></p>
       <p><strong>Total yang harus dibayar : Rp. <?php echo format_uang($nominal) ?></strong></p>
-      <a href="" class="btn btn-success btn-sm"><i class="fas fa-print"></i> Cetak</a>
+      <a href="{{ URL::to('zakatfitrah/invoice/'.$zakatfitrah->id_zfitrah) }}" class="btn btn-success btn-sm"><i class="fas fa-print"></i> Cetak</a>
       <a href="{{ route('zakatfitrah.index')}}" class="btn btn-danger btn-sm"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
     </div>    
   </div>

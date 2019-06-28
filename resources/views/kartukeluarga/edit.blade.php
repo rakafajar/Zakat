@@ -25,7 +25,7 @@
               {{ csrf_field() }} {{ method_field('PATCH')}}
         <div class="form-group">
           <label for="nokk">Nomor KK:</label>
-          <input type="text" class="form-control" id="no_kk" name="no_kk" value="{{ $kartukeluarga->no_kk}}">
+          <input type="number" min="0" class="form-control" id="no_kk" name="no_kk" value="{{ $kartukeluarga->no_kk}}">
         </div>
         <div class="form-group">
           <label for="alamat">Alamat:</label>

@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
               <label for="nik">NIK:</label>
-              <input type="text" class="form-control" id="nomor_nik" name="nomor_nik" value="{{$anggotakeluarga->nik}}">
+              <input type="number" min="0" class="form-control" id="nomor_nik" name="nomor_nik" value="{{$anggotakeluarga->nik}}">
             </div>
             <div class="form-group">
               <label for="kk">No. Kartu Keluarga:</label>

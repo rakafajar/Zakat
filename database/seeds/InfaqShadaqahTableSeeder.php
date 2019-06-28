@@ -14,23 +14,28 @@ class InfaqShadaqahTableSeeder extends Seeder
         DB::table('tb_insha')->insert(array(
             [
                 'nama_insha' => 'Raka Fajar Salinggih',
-                'nominal_insha' => '500000'
+                'nominal_insha' => '500000',
+                'created_at' => '2019-06-28 05:47:03'
             ],
             [
                 'nama_insha' => 'Hamba Allah',
-                'nominal_insha' => '300000'
+                'nominal_insha' => '300000',
+                'created_at' => '2019-06-28 05:47:03'
             ],
             [
                 'nama_insha' => 'Hamba Allah',
-                'nominal_insha' => '400000'
+                'nominal_insha' => '400000',
+                'created_at' => '2019-06-28 05:47:03'
             ],
             [
                 'nama_insha' => 'Hamba Allah',
-                'nominal_insha' => '3300000'
+                'nominal_insha' => '3300000',
+                'created_at' => '2019-06-28 05:47:03'
             ],
             [
                 'nama_insha' => 'Rika Rahma',
-                'nominal_insha' => '3800000'
+                'nominal_insha' => '3800000',
+                'created_at' => '2019-06-28 05:47:03'
             ]
         ));
     }

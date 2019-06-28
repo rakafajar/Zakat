@@ -37,6 +37,7 @@
                     <th>No.</th>
                     <th>Nama</th>
                     <th>Nominal</th>
+                    <th>Tanggal Pembayaran</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -49,6 +50,11 @@
                     <td>{{ $list->nama_fidyah }}</td>
                     <td>
                       Rp. <?php echo format_uang($list->nominal_fidyah); ?>
+                    </td>
+                    <td>
+                      <?php
+                        echo tanggal_indonesia($list->created_at);
+                      ?>
                     </td>
                     <th style="text-align: center;">
                       <a href="{{ URL::to('fidyah/invoice/'.$list->id_fidyah) }}" class="btn btn-success btn-sm"><i class="fas fa-print"></i></a>

@@ -38,6 +38,7 @@
                     <th>Muzakki</th>
                     <th>Harga Beras</th>
                     <th>Nominal</th>
+                    <th>Tanggal Pembayaran</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -53,6 +54,11 @@
                     </td>
                     <td>
                       <?php echo "Rp. ".format_uang($list->nominal) ?>
+                    </td>
+                    <td>
+                      <?php
+                        echo tanggal_indonesia($list->created_at);
+                      ?>
                     </td>
                     <th style="text-align: center;">
                       <a href="{{ URL::to('zakatfitrah/invoice/'.$list->id_zfitrah) }}" class="btn btn-success btn-sm"><i class="fas fa-print"></i></a>
