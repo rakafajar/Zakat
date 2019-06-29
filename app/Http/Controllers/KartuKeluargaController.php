@@ -73,7 +73,8 @@ class KartuKeluargaController extends Controller
      */
     public function show($id)
     {
-        //
+        $kartukeluarga =  KartuKeluargaModel::find($id);
+        return view('anggotakeluarga.show', compact('kartukeluarga'));
     }
 
     /**
