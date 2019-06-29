@@ -21,7 +21,7 @@
 				<th>No</th>
                 <th>Nama Pewakaf</th>
                 <th>Jenis Wakaf</th>
-				<th>Nominal</th>
+				<th>Nominal Wakaf</th>
 				<th>Tanggal Pembayaran</th>
 			</tr>
 		</thead>

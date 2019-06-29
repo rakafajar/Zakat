@@ -8,4 +8,5 @@ class WakafModel extends Model
 {
     protected $table = 'tb_wakaf';
     protected $primaryKey = 'id_wakaf';
+
 }

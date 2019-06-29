@@ -62,7 +62,7 @@ Route::get('jeniswakaf/destroy/{id}', 'JenisWakafController@destroy');
 Route::resource('infaqshadaqah', 'InfaqShadaqahController');
 Route::get('infaqshadaqah/destroy/{id}', 'InfaqShadaqahController@destroy');
 Route::get('laporaninsa', 'InfaqShadaqahController@laporanInsa');
-Route::get('infaqshadaqah/invoice/{id}', 'FidyahController@buktiBayar');
+Route::get('infaqshadaqah/invoice/{id}', 'InfaqShadaqahController@buktiBayar');
 
 
 // Untuk Controller dan View Fidyah
@@ -70,6 +70,7 @@ Route::resource('fidyah', 'FidyahController');
 Route::get('fidyah/destroy/{id}', 'FidyahController@destroy');
 Route::get('laporanfidyah', 'FidyahController@laporanFidyah');
 Route::get('fidyah/invoice/{id}', 'FidyahController@buktiBayar');
+
 // Untuk Controller dan View Provinsi
 Route::resource('provinsi', 'ProvinsiController');
 

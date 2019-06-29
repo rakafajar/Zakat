@@ -129,7 +129,8 @@ class WakafController extends Controller
     public function buktiBayar($id)
     {
         //GET DATA BERDASARKAN ID
-        $wakaf = WakafModel::find($id);
+        $wakaf = WakafModel::leftJoin('tb_jeniswakaf','tb_jeniswakaf.id_jeniswakaf', '=', 'tb_wakaf.id_jeniswakaf')
+        ->orderBy('tb_jeniswakaf.id_jeniswakaf')->find($id);
         //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
         //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
         $pdf = PDF::loadView('wakaf.invoice', compact('wakaf'))->setPaper('a4', 'landscape');

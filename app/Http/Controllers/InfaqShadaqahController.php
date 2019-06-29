@@ -124,7 +124,7 @@ class InfaqShadaqahController extends Controller
         $insha = InfaqShadaqahModel::find($id);
         //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
         //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
-        $pdf = PDF::loadView('insha.invoice', compact('insha'))->setPaper('a4', 'landscape');
+        $pdf = PDF::loadView('infaqshodaqoh.invoice', compact('insha'))->setPaper('a4', 'landscape');
         return $pdf->stream();
     }
 }

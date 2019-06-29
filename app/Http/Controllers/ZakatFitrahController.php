@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ZakatFitrahModel;
 use App\HargaModel;
+use App\AnggotaKKModel;
+use App\KartuKeluargaModel;
 use App\ViewZakatFitrahModel;
 use App\ViewMuzakkiModel;
 use App\ViewTotalKasZakatFitrahModel;
@@ -140,7 +142,8 @@ class ZakatFitrahController extends Controller
     public function buktiBayar($id)
     {
         //GET DATA BERDASARKAN ID
-        $zakatfitrah = ZakatFitrahModel::find($id);
+        $zakatfitrah = ZakatFitrahModel::leftJoin('tb_muzakki','tb_muzakki.id_muzakki', '=', 'tb_zakat_fitrah.id_muzakki')
+        ->orderBy('tb_zakat_fitrah.id_muzakki')->find($id);
         //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
         //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
         $pdf = PDF::loadView('zakatfitrah.invoice', compact('zakatfitrah'))->setPaper('a4', 'landscape');
