@@ -6,9 +6,14 @@
 </head>
 <body>
     <p align="left">{{$zakatfitrah->no_kk}}</p>
-    <p align="left">{{$zakatfitrah->nik}}</p>
+    <p>{{ $zakatfitrah->nama_lengkap }}</p>
     <p align="left">{{$zakatfitrah->harga_beras}}</p>
     <p align="left">{{$zakatfitrah->nominal}}</p>
+    <p>
+        <?php
+          echo tanggal_indonesia($zakatfitrah->created_at);
+        ?>
+    </p>
 
 
 </body>

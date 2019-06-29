@@ -19,10 +19,10 @@
 		<thead>
 			<tr>
 				<th>No</th>
-                <th>Nomor KK</th>
-                <th>Nomor NIK</th>
-                <th>Nama Pemberi Zakat Fitrah</th>
-				<th>Nominal</th>
+				<th>Nama Pemberi Zakat Fitrah</th>
+				<th>Harga Beras</th>
+				<th>Nominal Pembayaran</th>
+				<th>Tanggal Pembayaran</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -30,10 +30,18 @@
 			@foreach($zakatfitrah as $list)
 			<tr>
                 <td>{{ $i++ }}</td>
-                <td>{{$list->no_kk}}</td>
-                <td>{{$list->nik}}</td>
-				<td>{{$list->nama_lengkap}}</td>
-				<td>{{$list->nominal}}</td>
+				<td>{{ $list->nama_lengkap }}</td>
+				<td>
+				  <?php echo "Rp. ".format_uang($list->harga_beras) ?>
+				</td>
+				<td>
+				  <?php echo "Rp. ".format_uang($list->nominal) ?>
+				</td>
+				<td>
+				  <?php
+					echo tanggal_indonesia($list->created_at);
+				  ?>
+				</td>
 			</tr>
 			@endforeach
 		</tbody>

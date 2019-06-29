@@ -21,6 +21,7 @@
 				<th>No</th>
 				<th>Nama</th>
 				<th>Nominal</th>
+				<th>Tanggal Pembayaran</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -33,7 +34,12 @@
                 <?php
                     echo format_uang($list->nominal_insha);
                 ?>
-                </td>
+				</td>
+				<td>
+					<?php
+					  echo tanggal_indonesia($list->created_at);
+					?>
+				  </td>
 			</tr>
 			@endforeach
 		</tbody>
