@@ -21,6 +21,7 @@
 				<th>No</th>
 				<th>Nama</th>
 				<th>Nominal</th>
+				<th>Tanggal Bayar</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -30,6 +31,11 @@
 				<td>{{ $i++ }}</td>
 				<td>{{$p->nama_fidyah}}</td>
 				<td>{{$p->nominal_fidyah}}</td>
+				<td>
+					<?php
+						echo tanggal_indonesia($p->created_at);
+					?>
+				</td>
 			</tr>
 			@endforeach
 		</tbody>

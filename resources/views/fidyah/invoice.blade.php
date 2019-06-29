@@ -7,6 +7,7 @@
 <body>
 	<p align="left">{{$fidyah->nama_fidyah}}</p>
 	<p align="left">{{$fidyah->nominal_fidyah}}</p>
+	<p align="left">{{$fidyah->created_at}}</p>
 
 
 </body>
