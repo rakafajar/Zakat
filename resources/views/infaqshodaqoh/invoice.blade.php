@@ -7,6 +7,11 @@
 <body>
 	<p align="left">{{$insa->nama_insa}}</p>
 	<p align="left">{{$insa->nominal_insa}}</p>
+	<p>
+		<?php
+		echo tanggal_indonesia($list->created_at);
+		?>
+	</p>
 
 
 </body>

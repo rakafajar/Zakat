@@ -7,6 +7,11 @@
 <body>
 	<p align="left">{{$wakaf->nama_wakaf}}</p>
 	<p align="left">{{$wakaf->nominal_wakaf}}</p>
+	<p>
+		<?php
+		echo tanggal_indonesia($wakaf->created_at);
+		?>
+	</p>
 
 
 </body>

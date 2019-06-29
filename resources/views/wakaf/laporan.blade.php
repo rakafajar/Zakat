@@ -22,6 +22,7 @@
                 <th>Nama Pewakaf</th>
                 <th>Jenis Wakaf</th>
 				<th>Nominal</th>
+				<th>Tanggal Pembayaran</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -32,6 +33,11 @@
                 <td>{{$list->nama_wakaf}}</td>
 				<td>{{$list->jenis_wakaf}}</td>
 				<td>{{$list->nominal_wakaf}}</td>
+				<td>
+					<?php
+					  echo tanggal_indonesia($list->created_at);
+					?>
+				  </td>
 			</tr>
 			@endforeach
 		</tbody>

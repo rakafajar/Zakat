@@ -7,7 +7,11 @@
 <body>
 	<p align="left">{{$fidyah->nama_fidyah}}</p>
 	<p align="left">{{$fidyah->nominal_fidyah}}</p>
-	<p align="left">{{$fidyah->created_at}}</p>
+	<p>
+		<?php
+			echo tanggal_indonesia($fidyah->created_at);
+		?>
+	</p>
 
 
 </body>
