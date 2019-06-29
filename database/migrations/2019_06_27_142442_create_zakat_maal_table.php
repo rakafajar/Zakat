@@ -16,7 +16,9 @@ class CreateZakatMaalTable extends Migration
         Schema::create('tb_zakat_maal', function (Blueprint $table) {
             $table->increments('id_zmaal');
             $table->integer('id_muzakki')->unsigned();
+            $table->integer('jml');
             $table->integer('harga_emas');
+            $table->integer('nisab');
             $table->timestamps();
             //Relasi
             $table->foreign('id_muzakki')->references('id_muzakki')->on('tb_muzakki')->onDelete('RESTRICT')->onUpdate('CASCADE');

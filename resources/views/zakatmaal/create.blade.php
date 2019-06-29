@@ -5,11 +5,11 @@
   <li class="breadcrumb-item">
     <a href="#">Dashboard</a>
   </li>
-  <li class="breadcrumb-item active">Zakat Fitrah</li>
+  <li class="breadcrumb-item active">Zakat Maal</li>
 </ol>
 
 <div class="card">
-  <div class="card-header">Form Zakat Fitrah</div>
+  <div class="card-header">Form Zakat Maal</div>
   <div class="card-body">
     <div class="col-md-8">
       <form action="{{ route('zakatmaal.store')}}" method="POST">
@@ -69,7 +69,7 @@
             </div>
             <div class="form-group">
               <label for="jml"><strong>Jumlah Harta:</strong></label>
-              <input type="text" class="form-control" name="jml" id="jml" disabled="">
+              <input type="text" class="form-control" name="jml" id="jml" value="" readonly="">
             </div>
           </div>
         </div><br>
@@ -83,7 +83,7 @@
             </div>
             <div class="form-group">
               <label for="haul"><strong>Haul:</strong></label>
-              <input type="text" class="form-control" name="haul" id="haul" disabled>
+              <input type="text" class="form-control" name="haul" id="haul" value="" readonly>
             </div>            
           </div>
         </div><br>
@@ -92,13 +92,11 @@
             <strong>Nisab yang Harus Dibayarkan:</strong>
             <hr>
               <div class="form-group">
-                <label for="status"><strong>Wajib Bayar Zakat :</strong></label>
-                <input type="text" class="form-control" name="status" id="status" disabled>
-                <div id="status"></div>
+                <strong>Wajib Bayar Zakat :</strong> <div id="status"></div>
               </div>
               <div class="form-group">
                 <label for="nisab"><strong>Nisab :</strong></label>
-                <input type="text" class="form-control" name="nisab" id="nisab" disabled>
+                <input type="text" class="form-control" name="nisab" id="nisab" value="" readonly>
               </div>
             </div>
           </div>
@@ -121,7 +119,7 @@
     var haul = parseInt(harga_emas) * 85;
 
     if (!isNaN(haul)) {
-      document.getElementById('haul').value ="Rp."+ haul;
+      document.getElementById('haul').value = haul;
     }
 
     var penghasilan = document.getElementById('penghasilan').value;
@@ -139,17 +137,17 @@
     var jml =parseInt(penghasilan) + parseInt(tabungan) + parseInt(logam) + parseInt(surat) + parseInt(properti) + parseInt(kendaraan) + parseInt(koleksi) + parseInt(dagang) + parseInt(lain) - parseInt(hutang);
 
     if (!isNaN(jml)) {
-      document.getElementById('jml').value ="Rp."+ jml;
+      document.getElementById('jml').value = jml;
     }
 
 
     if (jml >= haul) {
-      document.getElementById('status').value = "IYA";
+      document.getElementById('status').innerHTML = "<span class='badge badge-success'>WAJIB!</span>"
       var nisab = 0.025 * jml;
       document.getElementById('nisab').value = nisab;
 
     } else {
-      document.getElementById('status').value = "TIDAK";
+      document.getElementById('status').innerHTML = "<span class='badge badge-danger'>TIDAK!</span>"
       document.getElementById('nisab').value = "-";
     }
   }
