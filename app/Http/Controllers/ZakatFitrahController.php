@@ -142,7 +142,7 @@ class ZakatFitrahController extends Controller
     public function buktiBayar($id)
     {
         //GET DATA BERDASARKAN ID
-        $zakatfitrah = ZakatFitrahModel::leftJoin('tb_muzakki','tb_muzakki.id_muzakki', '=', 'tb_zakat_fitrah.id_muzakki')
+        $zakatfitrah = ZakatFitrahModel::leftJoin('view_muzakki','view_muzakki.id_muzakki', '=', 'tb_zakat_fitrah.id_muzakki')
         ->orderBy('tb_zakat_fitrah.id_muzakki')->find($id);
         //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
         //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
