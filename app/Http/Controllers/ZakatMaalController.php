@@ -39,13 +39,14 @@ class ZakatMaalController extends Controller
      */
     public function store(Request $request)
     {
-        // $zakatmaal = new ZakatMaalModel();
-        // $muzakki = $zakatmaal->id_muzakki = $request['id_muzakki'];
-        // $harga_emas = $zakatmaal->harga_emas = $request['harga_emas'];
-        // $haul = 85 * $harga_emas;
-        // $zakatmaal->save();
+        $zakatmaal = new ZakatMaalModel();
+        $muzakki = $zakatmaal->id_muzakki = $request['id_muzakki'];
+        $jml = $zakatmaal->jml = $request['jml'];
+        $harga_emas = $zakatmaal->harga_emas = $request['harga_emas'];
+        $nisab = $zakatmaal->nisab = $request['nisab'];
+        $zakatmaal->save();
 
-        // return view('zakatmaal.update', ['muzakki' => $muzakki, 'harga_emas' => $harga_emas, 'haul' => $haul]);
+        return view('zakatmaal.update', ['jml' => $jml, 'harga_emas' => $harga_emas, 'nisab' => $nisab]);
     }
 
     /**
