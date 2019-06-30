@@ -25,7 +25,7 @@
         </div>
         <div class="form-group">
           <label for="penghasilan">Penghasilan:</label>
-          <input type="text" class="form-control" name="penghasilan" id="penghasilan" placeholder="Rp.">
+          <input type="number" min="0" class="form-control" name="penghasilan" id="penghasilan" placeholder="Rp.">
         </div>
         <div class="card">
           <div class="card-body">
@@ -33,43 +33,43 @@
             <hr>
             <div class="form-group">
               <label for="tabungan">Harta Dalam Bentuk Tabungan/Giro/Deposito:</label>
-              <input type="text" class="form-control" name="tabungan" id="tabungan" placeholder="Rp." onkeyup="sum();" value="0">
+              <input type="number" min="0" class="form-control" name="tabungan" id="tabungan" placeholder="Rp." onkeyup="sum();" value="0">
             </div>
             <div class="form-group">
               <label for="logam">Harta Dalam Bentuk Logam Mulia (Emas/Perak):</label>
-              <input type="text" class="form-control" name="logam" id="logam" placeholder="Rp." onkeyup="sum();" value="0">
+              <input type="number" min="0" class="form-control" name="logam" id="logam" placeholder="Rp." onkeyup="sum();" value="0">
             </div>
             <div class="form-group">
               <label for="surat">Harta Dalam Bentuk Surat Berharga:</label>
-              <input type="text" class="form-control" name="surat" id="surat" placeholder="Rp." onkeyup="sum();" value="0">
+              <input type="number" min="0" class="form-control" name="surat" id="surat" placeholder="Rp." onkeyup="sum();" value="0">
             </div>
             <div class="form-group">
               <label for="properti">Harta Dalam Bentuk Properti:</label>
-              <input type="text" class="form-control" name="properti" id="properti" placeholder="Rp." onkeyup="sum();" value="0">
+              <input type="number" min="0" class="form-control" name="properti" id="properti" placeholder="Rp." onkeyup="sum();" value="0">
             </div>
             <div class="form-group">
               <label for="kendaraan">Harta Dalam Bentuk Kendaraan:</label>
-              <input type="text" class="form-control" name="kendaraan" id="kendaraan" placeholder="Rp." onkeyup="sum();" value="0">
+              <input type="number" min="0" class="form-control" name="kendaraan" id="kendaraan" placeholder="Rp." onkeyup="sum();" value="0">
             </div>
             <div class="form-group">
               <label for="koleksi">Harta Dalam Bentuk Koleksi Seni & Barang Antik:</label>
-              <input type="text" class="form-control" name="koleksi" id="koleksi" placeholder="Rp." onkeyup="sum();" value="0">
+              <input type="number" min="0" class="form-control" name="koleksi" id="koleksi" placeholder="Rp." onkeyup="sum();" value="0">
             </div>
             <div class="form-group">
               <label for="dagang">Harta Dalam Bentuk Stok Barang Dagangan:</label>
-              <input type="text" class="form-control" name="dagang" id="dagang" placeholder="Rp." onkeyup="sum();" value="0">
+              <input type="number" min="0" class="form-control" name="dagang" id="dagang" placeholder="Rp." onkeyup="sum();" value="0">
             </div>
             <div class="form-group">
               <label for="lain">Harta Dalam Bentuk Lainya:</label>
-              <input type="text" class="form-control" name="lain" id="lain" placeholder="Rp." onkeyup="sum();" value="0">
+              <input type="number" min="0" class="form-control" name="lain" id="lain" placeholder="Rp." onkeyup="sum();" value="0">
             </div>
             <div class="form-group">
               <label for="hutang">Hutang Jatuh Tempo:</label>
-              <input type="text" class="form-control" name="hutang" id="hutang" placeholder="Rp." onkeyup="sum();" value="0">
+              <input type="number" min="0" class="form-control" name="hutang" id="hutang" placeholder="Rp." onkeyup="sum();" value="0">
             </div>
             <div class="form-group">
               <label for="jml"><strong>Jumlah Harta:</strong></label>
-              <input type="text" class="form-control" name="jml" id="jml" value="" readonly="">
+              <input type="number" min="0" class="form-control" name="jml" id="jml" value="" readonly="">
             </div>
           </div>
         </div><br>
@@ -79,11 +79,11 @@
             <hr>
             <div class="form-group">
               <label for="harga_emas">Harga Emas:</label>
-              <input type="text" class="form-control" name="harga_emas" id="harga_emas" placeholder="Rp." onkeyup="sum();">
+              <input type="number" min="0" class="form-control" name="harga_emas" id="harga_emas" placeholder="Rp." onkeyup="sum();">
             </div>
             <div class="form-group">
               <label for="haul"><strong>Haul:</strong></label>
-              <input type="text" class="form-control" name="haul" id="haul" value="" readonly>
+              <input type="number" min="0" class="form-control" name="haul" id="haul" value="" readonly>
             </div>            
           </div>
         </div><br>
@@ -96,7 +96,7 @@
               </div>
               <div class="form-group">
                 <label for="nisab"><strong>Nisab :</strong></label>
-                <input type="text" class="form-control" name="nisab" id="nisab" value="" readonly>
+                <input type="number" min="0" class="form-control" name="nisab" id="nisab" value="" readonly>
               </div>
             </div>
           </div>
