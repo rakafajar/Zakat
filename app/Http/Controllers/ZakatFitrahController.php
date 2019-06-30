@@ -52,7 +52,7 @@ class ZakatFitrahController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'id_muzakki' => 'required',
             'harga_beras' => 'required|numeric',
         ]);
@@ -62,7 +62,9 @@ class ZakatFitrahController extends Controller
         $nominal = $zakatfitrah->nominal = 2.5 * $harga_beras;
         $zakatfitrah->save();
 
-        return view('zakatfitrah.update', compact('zakatfitrah'),
+        return view(
+            'zakatfitrah.update',
+            compact('zakatfitrah'),
             ['harga_beras' => $harga_beras, 'nominal' => $nominal],
             ['muzakki' => $muzakki],
         );
@@ -102,7 +104,7 @@ class ZakatFitrahController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'id_muzakki' => 'required',
             'harga_beras' => 'required|numeric',
         ]);
@@ -142,8 +144,8 @@ class ZakatFitrahController extends Controller
     public function buktiBayar($id)
     {
         //GET DATA BERDASARKAN ID
-        $zakatfitrah = ZakatFitrahModel::leftJoin('view_muzakki','view_muzakki.id_muzakki', '=', 'tb_zakat_fitrah.id_muzakki')
-        ->orderBy('tb_zakat_fitrah.id_muzakki')->find($id);
+        $zakatfitrah = ZakatFitrahModel::leftJoin('view_muzakki', 'view_muzakki.id_muzakki', '=', 'tb_zakat_fitrah.id_muzakki')
+            ->orderBy('tb_zakat_fitrah.id_muzakki')->find($id);
         //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
         //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
         $pdf = PDF::loadView('zakatfitrah.invoice', compact('zakatfitrah'))->setPaper('a4', 'landscape');

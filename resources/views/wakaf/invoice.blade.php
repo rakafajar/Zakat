@@ -6,9 +6,14 @@
 </head>
 <body>
 	<p align="left">Nama Lengkap : {{$wakaf->nama_wakaf}}</p>
-	<p align="left">Nominal Wakaf :{{$wakaf->nominal_wakaf}}</p>
+	<p align="left">Nominal Wakaf :
+			<?php echo "Rp. ".format_uang($wakaf->nominal_wakaf) ?>
 	<p> Jenis Wakaf : {{$wakaf->jenis_wakaf}}</p>
-	<p> Tanggal Pembayaran : {{$wakaf->created_at}}</p>
+	<p> Tanggal Pembayaran :                       
+		<?php
+			echo tanggal_indonesia($wakaf->created_at);
+		?>
+	</p>
 
 
 </body>

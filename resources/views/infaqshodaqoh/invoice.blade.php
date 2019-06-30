@@ -6,10 +6,9 @@
 </head>
 <body>
 	<p>Nama Penginfaq : {{$insha->nama_insha}}</p>
-	<p>Shodaqoh & Infaq yang Dibayar : 		<?php
-		echo format_uang($insha->nominal_insha);
-		?></p>
-	<p>
+	<p>Shodaqoh & Infaq yang Dibayar : 		
+		<?php echo "Rp. ".format_uang($insha->nominal_insha);?></p>
+	<p> Tanggal Bayar : 
 		<?php
 		echo tanggal_indonesia($insha->created_at);
 		?>

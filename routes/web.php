@@ -47,6 +47,7 @@ Route::get('zakatfitrah/invoice/{id}', 'ZakatFitrahController@buktiBayar');
 
 // Untuk Controller dan View Zakat MAal
 Route::resource('zakatmaal', 'ZakatMaalController');
+Route::get('zakatmaal/destroy/{id}', 'ZakatMaalController@destroy');
 
 // Untuk Controller dan View Waqaf
 Route::resource('wakaf', 'WakafController');

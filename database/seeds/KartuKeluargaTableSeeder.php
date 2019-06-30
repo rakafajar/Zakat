@@ -29,7 +29,7 @@ class KartuKeluargaTableSeeder extends Seeder
                 'villages_id' => '1101020027'
             ],
             [
-                'no_kk' => '3240111504',
+                'no_kk' => '324012342',
                 'alamat' => 'Jl. Ujung Berung Bandung',
                 'rt' => '03',
                 'rw' => '03',
@@ -37,28 +37,12 @@ class KartuKeluargaTableSeeder extends Seeder
                 'villages_id' => '1103031006'
             ],
             [
-                'no_kk' => '32320111504',
+                'no_kk' => '512412',
                 'alamat' => 'Jl. Manisi Raya',
                 'rt' => '02',
                 'rw' => '06',
                 'kode_pos' => '40651',
                 'villages_id' => '1103040004'
-            ],
-            [
-                'no_kk' => '3240132344',
-                'alamat' => 'Komplek Cibiru View 1',
-                'rt' => '03',
-                'rw' => '03',
-                'kode_pos' => '40111',
-                'villages_id' => '1103041019'
-            ],
-            [
-                'no_kk' => '3254311504',
-                'alamat' => 'Jl. Cibiru Hilir No.56',
-                'rt' => '03',
-                'rw' => '03',
-                'kode_pos' => '40611',
-                'villages_id' => '1103042003'
             ]
         ));
     }

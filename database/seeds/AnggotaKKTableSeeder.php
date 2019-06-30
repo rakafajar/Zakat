@@ -81,8 +81,8 @@ class AnggotaKKTableSeeder extends Seeder
                 'kewarganegaraan' => 'WNA',
                 'no_paspor' => '443131',
                 'no_kitap' => '113122',
-                'ayah' => 'Rano K',
-                'ibu' => 'Rima S'
+                'ayah' => 'Oom H',
+                'ibu' => 'Aan'
             ]
         ));
     }

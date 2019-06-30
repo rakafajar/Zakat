@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ZakatMaalModel;
 use App\ViewMuzakkiModel;
-use DB;
+use App\ViewZakatMaalModel;
 
 class ZakatMaalController extends Controller
 {
@@ -13,10 +13,11 @@ class ZakatMaalController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
-        return view('zakatmaal.index');
+        $view_zakat_maal = ViewZakatMaalModel::all();
+        return view('zakatmaal.index', compact('view_zakat_maal'));
     }
 
     /**
@@ -26,7 +27,7 @@ class ZakatMaalController extends Controller
      */
     public function create()
     {
-    	$view_muzakki = ViewMuzakkiModel::all();
+        $view_muzakki = ViewMuzakkiModel::all();
 
         return view('zakatmaal.create', compact('view_muzakki'));
     }
@@ -68,7 +69,10 @@ class ZakatMaalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $zakatmaal = ZakatMaalModel::find($id);
+        $view_muzakki = ViewMuzakkiModel::all();
+
+        return view('zakatmaal.edit', compact('zakatmaal', 'view_muzakki'));
     }
 
     /**
@@ -80,7 +84,14 @@ class ZakatMaalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $zakatmaal = ZakatMaalModel::find($id);
+        $muzakki = $zakatmaal->id_muzakki = $request['id_muzakki'];
+        $jml = $zakatmaal->jml = $request['jml'];
+        $harga_emas = $zakatmaal->harga_emas = $request['harga_emas'];
+        $nisab = $zakatmaal->nisab = $request['nisab'];
+        $zakatmaal->update();
+
+        return redirect(route('zakatmaal.index'))->with('info', 'Data Berhasil Diubah!');
     }
 
     /**
@@ -91,6 +102,8 @@ class ZakatMaalController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $zakatmaal = ZakatMaalModel::find($id);
+        $zakatmaal->delete();
+        return back()->with('warning', 'Data Berhasil Dihapus!');
     }
 }

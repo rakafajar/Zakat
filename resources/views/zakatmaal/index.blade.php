@@ -34,29 +34,30 @@
                 <thead>
                   <tr>
                     <th width="10">No</th>
-                    <th>Muzakki</th>
-                    <th>Harga Beras</th>
-                    <th>Nominal</th>
+                    <th>Nama Muzaki</th>
+                    <th>Jumlah Harta</th>
+                    <th>Harga Emas/gram</th>
+                    <th>Nisab/tahun</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
-              
                 <tbody>
+                  <?php $no = 0; ?>
+                  @foreach($view_zakat_maal as $list)
+                  <?php $no++ ?>
                   <tr>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      
-                    </td>
-                    <td>
-                      
-                    </td>
+                    <td>{{ $no }}</td>
+                    <td>{{ $list->nama_lengkap }}</td>
+                    <td><?php echo "Rp. ".format_uang($list->jml) ?></td>
+                    <td><?php echo "Rp. ".format_uang($list->harga_emas) ?></td>
+                    <td><?php echo "Rp. ".format_uang($list->nisab) ?></td>
                     <th style="text-align: center;">
                       <a href="" class="btn btn-success btn-sm"><i class="fas fa-print"></i></a>
-                        <a href="" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                      <a href="{{route('zakatmaal.edit', $list->id_zmaal)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                      <a href="{{ URL::to('zakatmaal/destroy/'.$list->id_zmaal) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                     </th>
                   </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>
