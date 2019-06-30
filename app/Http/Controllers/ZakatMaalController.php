@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\ZakatMaalModel;
 use App\ViewMuzakkiModel;
 use App\ViewZakatMaalModel;
+use App\ViewTotalKasZakatMaalModel;
+use PDF;
 
 class ZakatMaalController extends Controller
 {
@@ -17,7 +19,8 @@ class ZakatMaalController extends Controller
     public function index()
     {
         $view_zakat_maal = ViewZakatMaalModel::all();
-        return view('zakatmaal.index', compact('view_zakat_maal'));
+        $view_tot_kas_zakat_maal = ViewTotalKasZakatMaalModel::all();
+        return view('zakatmaal.index', compact('view_zakat_maal', 'view_tot_kas_zakat_maal'));
     }
 
     /**
@@ -105,5 +108,26 @@ class ZakatMaalController extends Controller
         $zakatmaal = ZakatMaalModel::find($id);
         $zakatmaal->delete();
         return back()->with('warning', 'Data Berhasil Dihapus!');
+    }
+    public function laporanzakatMaal()
+    {
+        $view_zakat_maal = ViewZakatMaalModel::all();
+        $view_tot_kas_zakat_maal = ViewTotalKasZakatMaalModel::all();
+        $no = 0;
+        $pdf = PDF::loadView('zakatmaal.laporan', compact('view_zakat_maal', 'no', 'view_tot_kas_zakat_maal'));
+        $pdf->setPaper('a4', 'potrait');
+
+        return $pdf->stream();
+    }
+
+    public function buktiBayar($id)
+    {
+        //GET DATA BERDASARKAN ID
+        $zakatmaal = ZakatMaalModel::leftJoin('view_muzakki', 'view_muzakki.id_muzakki', '=', 'tb_zakat_maal.id_muzakki')
+            ->orderBy('tb_zakat_maal.id_muzakki')->find($id);
+        //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
+        //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
+        $pdf = PDF::loadView('zakatmaal.invoice', compact('zakatmaal'))->setPaper('a4', 'landscape');
+        return $pdf->stream();
     }
 }

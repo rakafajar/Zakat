@@ -14,7 +14,7 @@
             <a href="{{ route('zakatmaal.create') }}" class="btn btn-primary btn-sm">
               <i class="fas fa-coins"></i> Bayar Zakat Maal
             </a>
-            <a href="/Zakat/public/laporanzakatfitrah" class="btn btn-success btn-sm" target="_blank">
+            <a href="/Zakat/public/laporanzakatmaal" class="btn btn-success btn-sm" target="_blank">
               <i class="fas fa-print"></i> Cetak
             </a>
           </div>
@@ -24,8 +24,9 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text bg-light">Total Kas</span>
                 </div>
-                  <input type="text" class="form-control" value="" disabled>
-
+                @foreach($view_tot_kas_zakat_maal as $list)
+                  <input type="text" class="form-control" value="Rp. <?php echo format_uang($list->total_kas_zakat_maal); ?>" disabled>
+                @endforeach
               </div>
           </div>
           <div class="card-body">
@@ -38,6 +39,7 @@
                     <th>Jumlah Harta</th>
                     <th>Harga Emas/gram</th>
                     <th>Nisab/tahun</th>
+                    <th>Tanggal Pembayaran</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -51,8 +53,9 @@
                     <td><?php echo "Rp. ".format_uang($list->jml) ?></td>
                     <td><?php echo "Rp. ".format_uang($list->harga_emas) ?></td>
                     <td><?php echo "Rp. ".format_uang($list->nisab) ?></td>
+                    <td><?php echo tanggal_indonesia($list->created_at) ?></td>
                     <th style="text-align: center;">
-                      <a href="" class="btn btn-success btn-sm"><i class="fas fa-print"></i></a>
+                        <a href="{{ URL::to('zakatmaal/invoice/'.$list->id_zmaal) }}" class="btn btn-success btn-sm"><i class="fas fa-print"></i></a>
                       <a href="{{route('zakatmaal.edit', $list->id_zmaal)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                       <a href="{{ URL::to('zakatmaal/destroy/'.$list->id_zmaal) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                     </th>
