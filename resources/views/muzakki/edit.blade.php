@@ -15,7 +15,7 @@
       <form action="{{ route('muzakki.update', $muzakki->id_muzakki) }}" method="POST">
         {{ csrf_field() }} {{ method_field('PATCH') }}
         <div class="form-group{{$errors->has('id_kk') ? ' has-error' : ''}}">
-          <select name="id_kk" id="id_kk" class="form-control input-lg dynamic" data-dependent="id_anggotakk+nama_lengkap">
+          <select name="id_kk" id="id_kk" class="form-control input-lg dynamic search" data-dependent="id_anggotakk+nama_lengkap">
             <option value="">-- Pilih No KK --</option>
             @foreach($view_anggotakk as $list)
               <option value="{{$list->id_kk}}">{{$list->no_kk}}</option>
@@ -26,7 +26,7 @@
           @endif
         </div>
         <div class="form-group{{$errors->has('id_anggotakk') ? ' has-error' : ''}}">
-            <select name="id_anggotakk" id="id_anggotakk" class="form-control input-lg">
+            <select name="id_anggotakk" id="id_anggotakk" class="form-control input-lg search">
             <option value="">-- Pilih NIK --</option>
           </select>
           @if($errors->has('id_anggotakk'))
@@ -72,5 +72,10 @@
       $('#nama_lengkap').val('');
     });
   });
+
+    {{-- Java Script Search --}}
+    $(document).ready(function() {
+      $('.search').select2();
+    });
 </script>
 @endsection

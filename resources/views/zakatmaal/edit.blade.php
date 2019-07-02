@@ -16,7 +16,7 @@
         {{ csrf_field() }} {{ method_field('PATCH')}}
         <div class="form-group">
           <label for="sel1">Pilih Muzakki:</label>
-          <select class="form-control" name="id_muzakki">
+          <select class="form-control search" name="id_muzakki">
             <option>-- Pilih Muzakki --</option>
             @foreach($view_muzakki as $list)
             <option value="{{ $list->id_muzakki }}">NIK : {{ $list->nik }} - {{ $list->nama_lengkap }} </option>
@@ -151,5 +151,10 @@
       document.getElementById('nisab').value = "-";
     }
   }
+
+  // In your Javascript (external .js resource or <script> tag)
+$(document).ready(function() {
+  $('.search').select2();
+});
 </script>
 @endsection
