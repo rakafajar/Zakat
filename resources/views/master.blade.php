@@ -24,6 +24,9 @@
   <!-- Custom styles for this template-->
   <link href="{{ asset('css/sb-admin.css ') }}" rel="stylesheet">
 
+  <!-- Custom Search-->
+  <link href="{{ asset('css/select2.min.css ') }}" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -198,6 +201,10 @@
   <!-- Demo scripts for this page-->
   <script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
   <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
+
+  <!-- JS SEARCH-->
+  <script src="{{ asset('js/select2.min.js') }}"></script>
+
   @yield('script')
 
 </body>

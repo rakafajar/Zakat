@@ -34,7 +34,7 @@
           </div>
           <div class="form-group">
             <label for="kk">No. Kartu Keluarga:</label>
-            <select class="form-control" name="nomor_kk">
+            <select class="form-control search" name="nomor_kk">
               <option value="">-- Pilih No. Kartu Keluarga --</option>
               @foreach($kartukeluarga as $list)
                 <option value="{{ $list->id_kk }}">{{ $list->no_kk}}</option>
@@ -134,4 +134,13 @@
     </div>
   </div>
 <br>
+@endsection
+
+@section('script')
+<script>  
+  // In your Javascript (external .js resource or <script> tag)
+$(document).ready(function() {
+  $('.search').select2();
+});
+</script>
 @endsection

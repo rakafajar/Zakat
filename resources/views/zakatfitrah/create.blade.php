@@ -25,7 +25,7 @@
         {{ csrf_field() }}
         <div class="form-group">
           <label for="sel1">Pilih Muzakki:</label>
-          <select class="form-control" name="id_muzakki">
+          <select class="form-control search" name="id_muzakki">
             <option>-- Pilih Muzakki --</option>
             @foreach($muzakki as $list)
             <option value="{{ $list->id_muzakki }}">NIK : {{ $list->nik }} - {{ $list->nama_lengkap }}</option>
@@ -53,6 +53,12 @@
   </div>
 </div>
 <br>
-
-
+@endsection
+@section('script')
+<script>  
+  // In your Javascript (external .js resource or <script> tag)
+$(document).ready(function() {
+  $('.search').select2();
+});
+</script>
 @endsection
