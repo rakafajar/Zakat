@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 29 Jun 2019 pada 06.20
+-- Waktu pembuatan: 03 Jul 2019 pada 00.41
 -- Versi server: 10.1.38-MariaDB
--- Versi PHP: 7.3.2
+-- Versi PHP: 7.3.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -355,7 +355,9 @@ CREATE TABLE `tb_zakat_fitrah` (
 CREATE TABLE `tb_zakat_maal` (
   `id_zmaal` int(10) UNSIGNED NOT NULL,
   `id_muzakki` int(10) UNSIGNED NOT NULL,
+  `jml` int(11) NOT NULL,
   `harga_emas` int(11) NOT NULL,
+  `nisab` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -573,6 +575,16 @@ CREATE TABLE `view_total_kas_zakat_fitrah` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in struktur untuk tampilan `view_total_kas_zakat_maal`
+-- (Lihat di bawah untuk tampilan aktual)
+--
+CREATE TABLE `view_total_kas_zakat_maal` (
+`total_kas_zakat_maal` decimal(32,0)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Stand-in struktur untuk tampilan `view_villages`
 -- (Lihat di bawah untuk tampilan aktual)
 --
@@ -617,6 +629,25 @@ CREATE TABLE `view_zakat_fitrah` (
 ,`id_muzakki` int(10) unsigned
 ,`harga_beras` int(11)
 ,`nominal` int(11)
+,`created_at` timestamp
+,`updated_at` timestamp
+,`nama_lengkap` varchar(191)
+,`no_kk` varchar(20)
+,`nik` char(191)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in struktur untuk tampilan `view_zakat_maal`
+-- (Lihat di bawah untuk tampilan aktual)
+--
+CREATE TABLE `view_zakat_maal` (
+`id_zmaal` int(10) unsigned
+,`id_muzakki` int(10) unsigned
+,`jml` int(11)
+,`harga_emas` int(11)
+,`nisab` int(11)
 ,`created_at` timestamp
 ,`updated_at` timestamp
 ,`nama_lengkap` varchar(191)
@@ -738,6 +769,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- Struktur untuk view `view_total_kas_zakat_maal`
+--
+DROP TABLE IF EXISTS `view_total_kas_zakat_maal`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_total_kas_zakat_maal`  AS  select sum(`tb_zakat_maal`.`nisab`) AS `total_kas_zakat_maal` from `tb_zakat_maal` ;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur untuk view `view_villages`
 --
 DROP TABLE IF EXISTS `view_villages`;
@@ -761,6 +801,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `view_zakat_fitrah`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_zakat_fitrah`  AS  select `a`.`id_zfitrah` AS `id_zfitrah`,`a`.`id_muzakki` AS `id_muzakki`,`a`.`harga_beras` AS `harga_beras`,`a`.`nominal` AS `nominal`,`a`.`created_at` AS `created_at`,`a`.`updated_at` AS `updated_at`,`b`.`nama_lengkap` AS `nama_lengkap`,`b`.`no_kk` AS `no_kk`,`b`.`nik` AS `nik` from (`tb_zakat_fitrah` `a` join `view_muzakki` `b`) where (`a`.`id_muzakki` = `b`.`id_muzakki`) ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur untuk view `view_zakat_maal`
+--
+DROP TABLE IF EXISTS `view_zakat_maal`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_zakat_maal`  AS  select `a`.`id_zmaal` AS `id_zmaal`,`a`.`id_muzakki` AS `id_muzakki`,`a`.`jml` AS `jml`,`a`.`harga_emas` AS `harga_emas`,`a`.`nisab` AS `nisab`,`a`.`created_at` AS `created_at`,`a`.`updated_at` AS `updated_at`,`b`.`nama_lengkap` AS `nama_lengkap`,`b`.`no_kk` AS `no_kk`,`b`.`nik` AS `nik` from (`tb_zakat_maal` `a` join `view_muzakki` `b`) where (`a`.`id_muzakki` = `b`.`id_muzakki`) ;
 
 --
 -- Indexes for dumped tables
