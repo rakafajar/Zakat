@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\ViewTotalKasInshaModel;
 use App\ViewTotalKasFidyahModel;
 use App\ViewTotalKasWakafModel;
+use App\ViewTotalKasZakatFitrahModel;
+use App\ViewTotalKasZakatMaalModel;
 
 class DashboardController extends Controller
 {
@@ -31,7 +33,9 @@ class DashboardController extends Controller
         $view_tot_insha = ViewTotalKasInshaModel::all();
         $view_tot_fidyah = ViewTotalKasFidyahModel::all();
         $view_tot_wakaf = ViewTotalKasWakafModel::all();
+        $view_tot_zfitrah = ViewTotalKasZakatFitrahModel::all();
+        $view_tot_zmaal = ViewTotalKasZakatMaalModel::all();
 
-        return view('dashboard', compact('view_tot_insha', 'view_tot_wakaf', 'view_tot_fidyah'));
+        return view('dashboard', compact('view_tot_insha', 'view_tot_wakaf', 'view_tot_fidyah', 'view_tot_zfitrah', 'view_tot_zmaal'));
     }
 }
