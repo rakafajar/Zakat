@@ -22,7 +22,7 @@
             <tr>
             <th width="10">No</th>
             <th>Nama Pendidikan</th>
-            <th>Aksi</th>
+            <th>Action</th>
             </tr>
         </thead>
         <tbody>

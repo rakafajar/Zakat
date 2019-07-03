@@ -22,7 +22,7 @@
 					<th>Nomor KK</th>
 					<th>NIK</th>
 					<th>Nama Lengkap</th>
-					<th>Aksi</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>

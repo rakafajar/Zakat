@@ -40,7 +40,7 @@
                     <th>Harga Emas/gram</th>
                     <th>Nisab/tahun</th>
                     <th>Tanggal Pembayaran</th>
-                    <th>Aksi</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>

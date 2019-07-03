@@ -39,7 +39,7 @@
                     <th>Harga Beras</th>
                     <th>Nominal</th>
                     <th>Tanggal Pembayaran</th>
-                    <th>Aksi</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>

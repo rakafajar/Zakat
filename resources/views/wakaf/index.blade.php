@@ -39,7 +39,7 @@
                     <th>Jenis Wakaf</th>
                     <th>Nominal Wakaf</th>
                     <th>Tanggal Bayar</th>
-                    <th>Aksi</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>

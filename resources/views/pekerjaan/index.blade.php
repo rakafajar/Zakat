@@ -22,7 +22,7 @@
             <tr>
             <th width="10">No</th>
             <th>Nama Pekerjaan</th>
-            <th>Aksi</th>
+            <th>Action</th>
             </tr>
         </thead>
         <tbody>
