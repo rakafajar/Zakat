@@ -15,8 +15,9 @@ class CreateInshaTable extends Migration
     {
         Schema::create('tb_insha', function (Blueprint $table) {
             $table->increments('id_insha');
-            $table->string('nama_insha');
+            $table->integer('id_anggotakk')->unsigned();
             $table->integer('nominal_insha');
+            $table->foreign('id_anggotakk')->references('id_anggotakk')->on('tb_anggotakk')->onDelete('RESTRICT')->onUpdate('CASCADE');
             $table->timestamps();
         });
     }

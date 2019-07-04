@@ -15,12 +15,13 @@ class CreateWakafTable extends Migration
     {
         Schema::create('tb_wakaf', function (Blueprint $table) {
             $table->increments('id_wakaf');
-            $table->string('nama_wakaf');
+            $table->integer('id_anggotakk')->unsigned();
             $table->integer('id_jeniswakaf')->unsigned();
             $table->integer('nominal_wakaf');
             //Relasi
             $table->foreign('id_jeniswakaf')->references('id_jeniswakaf')->on('tb_jeniswakaf')->onDelete('
                 RESTRICT')->onUpdate('CASCADE');
+            $table->foreign('id_anggotakk')->references('id_anggotakk')->on('tb_anggotakk')->onDelete('RESTRICT')->onUpdate('CASCADE');
             $table->timestamps();
         });
     }

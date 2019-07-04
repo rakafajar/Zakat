@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\FidyahModel;
 use App\ViewFidyahModel;
 use App\ViewTotalKasFidyahModel;
-use App\ViewMuzakkiModel;
+use App\AnggotaKKModel;
+use App\ViewAnggotakkModel;
 use DB;
 use PDF;
 use Illuminate\View\View;
@@ -33,8 +34,8 @@ class FidyahController extends Controller
      */
     public function create()
     {
-        $view_muzakki = ViewMuzakkiModel::all();
-        return view('fidyah.create', compact('view_muzakki'));
+        $anggotakk = AnggotaKKModel::all();
+        return view('fidyah.create', compact('anggotakk'));
     }
 
     /**
@@ -50,7 +51,7 @@ class FidyahController extends Controller
             'nominal_fidyah' => 'required|numeric',
         ]);
         $fidyah = new FidyahModel;
-        $fidyah->id_muzakki = $request['nama_fidyah'];
+        $fidyah->id_anggotakk = $request['nama_fidyah'];
         $fidyah->nominal_fidyah = $request['nominal_fidyah'];
         $fidyah->save();
 
@@ -77,8 +78,8 @@ class FidyahController extends Controller
     public function edit($id)
     {
         $fidyah = FidyahModel::find($id);
-        $view_muzakki = ViewMuzakkiModel::all();
-        return view('fidyah.edit', compact('fidyah', $fidyah, 'view_muzakki'));
+        $anggotakk = AnggotaKKModel::all();
+        return view('fidyah.edit', compact('fidyah', $fidyah, 'anggotakk'));
     }
 
     /**
@@ -95,7 +96,7 @@ class FidyahController extends Controller
             'nominal_fidyah' => 'required|numeric',
         ]);
         $fidyah = FidyahModel::find($id);
-        $fidyah->id_muzakki = $request['nama_fidyah'];
+        $fidyah->id_anggotakk = $request['nama_fidyah'];
         $fidyah->nominal_fidyah = $request['nominal_fidyah'];
         $fidyah->save();
 
@@ -126,8 +127,8 @@ class FidyahController extends Controller
     public function buktiBayar($id)
     {
         //GET DATA BERDASARKAN ID
-        $fidyah = FidyahModel::leftJoin('view_fidyah', 'view_fidyah.id_muzakki', '=', 'tb_fidyah.id_muzakki')
-            ->orderBy('tb_fidyah.id_muzakki')->find($id);
+        $fidyah = FidyahModel::leftJoin('view_anggotakk', 'view_anggotakk.id_anggotakk', '=', 'tb_fidyah.id_anggotakk')
+            ->orderBy('tb_fidyah.id_anggotakk')->find($id);
         //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
         //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
         $pdf = PDF::loadView('fidyah.invoice', compact('fidyah'))->setPaper('a4', 'landscape');

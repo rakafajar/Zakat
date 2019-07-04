@@ -15,8 +15,9 @@ class CreateFidyahTable extends Migration
     {
         Schema::create('tb_fidyah', function (Blueprint $table) {
             $table->increments('id_fidyah');
-            $table->string('nama_fidyah');
+            $table->integer('id_anggotakk')->unsigned();
             $table->integer('nominal_fidyah');
+            $table->foreign('id_anggotakk')->references('id_anggotakk')->on('tb_anggotakk')->onDelete('RESTRICT')->onUpdate('CASCADE');
             $table->timestamps();
         });
     }
