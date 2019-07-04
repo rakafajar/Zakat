@@ -26,7 +26,7 @@
           @endif
         </div>
         <div class="form-group{{$errors->has('id_anggotakk') ? ' has-error' : ''}}">
-            <select name="id_anggotakk" id="id_anggotakk" class="form-control input-lg search">
+            <select name="id_anggotakk" id="id_anggotakk" class="form-control input-lg searchgit ">
             <option value="">-- Pilih NIK --</option>
           </select>
           @if($errors->has('id_anggotakk'))

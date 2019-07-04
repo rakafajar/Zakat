@@ -25,12 +25,17 @@
       <form action="{{ route('fidyah.store') }}" method="POST">
         {{ csrf_field() }}
         <div class="form-group">
-          <label for="nama">Nama:</label>
-          <input type="text" class="form-control" name="nama_fidyah" placeholder="Contoh : Hamba Allah" value="{{ old('nama_fidyah') }}">
+            <label for="sel1">Pilih Nama:</label>
+            <select class="form-control search" name="id_muzakki">
+              <option>-- Pilih Muzakki --</option>
+              @foreach($view_muzakki as $list)
+              <option value="{{ $list->id_muzakki }}">NIK : {{ $list->nik }} - {{ $list->nama_lengkap }} </option>
+              @endforeach
+            </select>
         </div>
         <div class="form-group">
           <label for="nominal">Nominal:</label>
-          <input type="number" min="0" class="form-control" name="nominal_fidyah" placeholder="Rp." value="{{ old('nominal_fidyah') }}"">
+          <input type="number" min="0" class="form-control" name="nominal_fidyah" placeholder="Rp." value="{{ old('nominal_fidyah') }}">
         </div>      
         <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
         <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>
@@ -40,6 +45,12 @@
   </div>
 </div>
 <br>
-
-
+@endsection
+@section('script')
+<script>
+    // In your Javascript (external .js resource or <script> tag)
+    $(document).ready(function() {
+      $('.search').select2();
+    });
+</script>    
 @endsection

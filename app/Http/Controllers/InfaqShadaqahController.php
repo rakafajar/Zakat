@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\InfaqShadaqahModel;
 use App\ViewTotalKasInshaModel;
+use App\ViewMuzakkiModel;
 use DB;
 use PDF;
 
@@ -29,7 +30,8 @@ class InfaqShadaqahController extends Controller
      */
     public function create()
     {
-        return view('infaqshodaqoh.create');
+        $view_muzakki = ViewMuzakkiModel::all();
+        return view('infaqshodaqoh.create', compact('view_muzakki'));
     }
 
     /**
@@ -71,8 +73,9 @@ class InfaqShadaqahController extends Controller
      */
     public function edit($id)
     {
+        $view_muzakki = ViewMuzakkiModel::all();
         $insha = InfaqShadaqahModel::find($id);
-        return view('infaqshodaqoh.edit', compact('insha', $insha));
+        return view('infaqshodaqoh.edit', compact('insha', $insha, 'view_muzakki'));
     }
 
     /**

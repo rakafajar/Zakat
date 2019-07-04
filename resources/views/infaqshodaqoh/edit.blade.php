@@ -24,8 +24,13 @@
       <form action="{{ route('infaqshadaqah.update', $insha->id_insha) }}" method="POST">
         {{ csrf_field() }} {{ method_field('PATCH')}}
         <div class="form-group">
-          <label for="nama">Nama:</label>
-          <input type="text" class="form-control" name="nama_insha" value="{{ $insha->nama_insha }}">
+            <label for="sel1">Pilih Nama:</label>
+            <select class="form-control search" name="id_muzakki">
+              <option>-- Pilih Muzakki --</option>
+              @foreach($view_muzakki as $list)
+              <option value="{{ $list->id_muzakki }}">NIK : {{ $list->nik }} - {{ $list->nama_lengkap }} </option>
+              @endforeach
+            </select>
         </div>
         <div class="form-group">
           <label for="nominal">Nominal:</label>
@@ -39,6 +44,12 @@
   </div>
 </div>
 <br>
-
-
+@endsection
+@section('script')
+<script>
+    // In your Javascript (external .js resource or <script> tag)
+    $(document).ready(function() {
+      $('.search').select2();
+    });
+</script>    
 @endsection

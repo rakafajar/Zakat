@@ -50,7 +50,7 @@ class ZakatMaalController extends Controller
         $nisab = $zakatmaal->nisab = $request['nisab'];
         $zakatmaal->save();
 
-        return view('zakatmaal.update', ['jml' => $jml, 'harga_emas' => $harga_emas, 'nisab' => $nisab]);
+        return view('zakatmaal.update',compact('zakatmaal'), ['jml' => $jml, 'harga_emas' => $harga_emas, 'nisab' => $nisab]);
     }
 
     /**

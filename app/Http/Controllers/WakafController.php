@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\WakafModel;
 use App\ViewWakafModel;
 use App\JenisWakafModel;
+use App\ViewMuzakkiModel;
 use App\ViewTotalKasWakafModel;
 use DB;
 use PDF;
@@ -31,8 +32,9 @@ class WakafController extends Controller
      */
     public function create()
     {
+        $view_muzakki = ViewMuzakkiModel::all();
         $jenis_wakaf = JenisWakafModel::all();
-        return view('wakaf.create', compact('jenis_wakaf'));
+        return view('wakaf.create', compact('jenis_wakaf','view_muzakki'));
     }
 
     /**
@@ -76,9 +78,10 @@ class WakafController extends Controller
      */
     public function edit($id)
     {
+        $view_muzakki = ViewMuzakkiModel::all();
         $wakaf = WakafModel::find($id);
         $jenis_wakaf = JenisWakafModel::all();
-        return view('wakaf.edit', compact('jenis_wakaf', 'wakaf'));
+        return view('wakaf.edit', compact('jenis_wakaf', 'wakaf','view_muzakki'));
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\FidyahModel;
 use App\ViewTotalKasFidyahModel;
+use App\ViewMuzakkiModel;
 use DB;
 use PDF;
 
@@ -30,7 +31,8 @@ class FidyahController extends Controller
      */
     public function create()
     {
-        return view('fidyah.create');
+        $view_muzakki = ViewMuzakkiModel::all();
+        return view('fidyah.create', compact('view_muzakki'));
     }
 
     /**
@@ -73,8 +75,8 @@ class FidyahController extends Controller
     public function edit($id)
     {
         $fidyah = FidyahModel::find($id);
-
-        return view('fidyah.edit', compact('fidyah', $fidyah));
+        $view_muzakki = ViewMuzakkiModel::all();
+        return view('fidyah.edit', compact('fidyah', $fidyah, 'view_muzakki'));
     }
 
     /**
