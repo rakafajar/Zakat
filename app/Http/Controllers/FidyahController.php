@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\FidyahModel;
+use App\ViewFidyahModel;
 use App\ViewTotalKasFidyahModel;
 use App\ViewMuzakkiModel;
 use DB;
 use PDF;
+use Illuminate\View\View;
 
 class FidyahController extends Controller
 {
@@ -18,7 +20,7 @@ class FidyahController extends Controller
 
     public function index()
     {
-        $fidyah = FidyahModel::all();
+        $fidyah = ViewFidyahModel::all();
         $view_tot_fidyah = ViewTotalKasFidyahModel::all();
 
         return view('fidyah.index', compact('fidyah', 'view_tot_fidyah'));
@@ -48,7 +50,7 @@ class FidyahController extends Controller
             'nominal_fidyah' => 'required|numeric',
         ]);
         $fidyah = new FidyahModel;
-        $fidyah->nama_fidyah = $request['nama_fidyah'];
+        $fidyah->id_muzakki = $request['nama_fidyah'];
         $fidyah->nominal_fidyah = $request['nominal_fidyah'];
         $fidyah->save();
 
@@ -93,7 +95,7 @@ class FidyahController extends Controller
             'nominal_fidyah' => 'required|numeric',
         ]);
         $fidyah = FidyahModel::find($id);
-        $fidyah->nama_fidyah = $request['nama_fidyah'];
+        $fidyah->id_muzakki = $request['nama_fidyah'];
         $fidyah->nominal_fidyah = $request['nominal_fidyah'];
         $fidyah->save();
 
@@ -113,21 +115,22 @@ class FidyahController extends Controller
     }
     public function laporanFidyah()
     {
-        $fidyah = FidyahModel::all();
+        $fidyah = ViewFidyahModel::all();
         $view_tot_fidyah = ViewTotalKasFidyahModel::all();
         $no = 0;
         $pdf = PDF::loadView('fidyah.laporan', compact('fidyah', 'no', 'view_tot_fidyah'));
-        $pdf->setPaper('a4','potrait');
+        $pdf->setPaper('a4', 'potrait');
 
         return $pdf->stream();
     }
     public function buktiBayar($id)
     {
-    //GET DATA BERDASARKAN ID
-    $fidyah = FidyahModel::find($id);
-    //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
-    //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
-    $pdf = PDF::loadView('fidyah.invoice', compact('fidyah'))->setPaper('a4', 'landscape');
-    return $pdf->stream();
+        //GET DATA BERDASARKAN ID
+        $fidyah = FidyahModel::leftJoin('view_fidyah', 'view_fidyah.id_muzakki', '=', 'tb_fidyah.id_muzakki')
+            ->orderBy('tb_fidyah.id_muzakki')->find($id);
+        //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
+        //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
+        $pdf = PDF::loadView('fidyah.invoice', compact('fidyah'))->setPaper('a4', 'landscape');
+        return $pdf->stream();
     }
 }

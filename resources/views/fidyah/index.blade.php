@@ -47,7 +47,7 @@
                   <?php $no++; ?>
                   <tr>
                     <td>{{ $no }}</td>
-                    <td>{{ $list->nama_fidyah }}</td>
+                    <td>{{ $list->nama_lengkap }}</td>
                     <td>
                       Rp. <?php echo format_uang($list->nominal_fidyah); ?>
                     </td>

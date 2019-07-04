@@ -25,8 +25,8 @@
         {{ csrf_field() }} {{ method_field('PATCH') }}
         <div class="form-group">
             <label for="sel1">Pilih Pewakaf:</label>
-            <select class="form-control search" name="id_muzakki">
-              <option>-- Pilih Muzakki --</option>
+            <select class="form-control search" name="nama_muzakki" id="nama_muzakki">
+              <option value="">-- Pilih Muzakki --</option>
               @foreach($view_muzakki as $list)
               <option value="{{ $list->id_muzakki }}">NIK : {{ $list->nik }} - {{ $list->nama_lengkap }} </option>
               @endforeach

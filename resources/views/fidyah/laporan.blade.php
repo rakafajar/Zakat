@@ -24,7 +24,7 @@
 			@foreach($fidyah as $p)
 			<tr>
 				<td>{{ $i++ }}</td>
-				<td>{{$p->nama_fidyah}}</td>
+				<td>{{$p->nama_lengkap}}</td>
 				<td>{{$p->nominal_fidyah}}</td>
 				<td>
 					<?php

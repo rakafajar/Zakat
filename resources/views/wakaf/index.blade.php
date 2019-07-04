@@ -48,7 +48,7 @@
                   <?php $no++ ?>
                   <tr>
                     <td>{{$no}}</td>
-                    <td>{{$list->nama_wakaf}}</td>
+                    <td>{{$list->nama_lengkap}}</td>
                     <td>{{$list->jenis_wakaf}}</td>
                     <td>
                         Rp. <?php echo format_uang($list->nominal_wakaf); ?>

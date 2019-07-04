@@ -7,7 +7,7 @@
 <body>
 	<h1>ZISWAF</h1>
 	<hr>
-	<p align="left">Nama Lengkap : {{$wakaf->nama_wakaf}}</p>
+	<p align="left">Nama Lengkap : {{$wakaf->nama_lengkap}}</p>
 	<p align="left">Nominal Wakaf :
 			<?php echo "Rp. ".format_uang($wakaf->nominal_wakaf) ?>
 	<p> Jenis Wakaf : {{$wakaf->jenis_wakaf}}</p>

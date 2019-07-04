@@ -8,7 +8,7 @@
 	<h1>ZISWAF</h1>
 	<hr>
 	<h3>Invoice Fidyah</h3>
-	<p align="left">Nama Lengkap : {{$fidyah->nama_fidyah}}</p>
+	<p align="left">Nama Lengkap : {{$fidyah->nama_lengkap}}</p>
 	<p align="left">Fidyah yang Dibayar : {{$fidyah->nominal_fidyah}}</p>
 	<p>
 		<?php

@@ -25,9 +25,10 @@
 			@foreach($wakaf as $list)
 			<tr>
                 <td>{{ $i++ }}</td>
-                <td>{{$list->nama_wakaf}}</td>
+                <td>{{$list->nama_lengkap}}</td>
 				<td>{{$list->jenis_wakaf}}</td>
-				<td>{{$list->nominal_wakaf}}</td>
+				<td>
+					<?php echo "Rp. ".format_uang($list->nominal_wakaf) ?>
 				<td>
 					<?php
 					  echo tanggal_indonesia($list->created_at);
