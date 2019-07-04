@@ -66,7 +66,7 @@ class ZakatFitrahController extends Controller
             'zakatfitrah.update',
             compact('zakatfitrah'),
             ['harga_beras' => $harga_beras, 'nominal' => $nominal],
-            ['muzakki' => $muzakki],
+            ['muzakki' => $muzakki]
         );
     }
 
