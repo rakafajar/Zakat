@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Jul 2019 pada 00.41
+-- Waktu pembuatan: 05 Jul 2019 pada 01.21
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.4
 
@@ -159,7 +159,7 @@ CREATE TABLE `tb_anggotakk` (
 
 CREATE TABLE `tb_fidyah` (
   `id_fidyah` int(10) UNSIGNED NOT NULL,
-  `nama_fidyah` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_anggotakk` int(10) UNSIGNED NOT NULL,
   `nominal_fidyah` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -212,7 +212,7 @@ CREATE TABLE `tb_hubkeluarga` (
 
 CREATE TABLE `tb_insha` (
   `id_insha` int(10) UNSIGNED NOT NULL,
-  `nama_insha` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_anggotakk` int(10) UNSIGNED NOT NULL,
   `nominal_insha` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -324,7 +324,7 @@ CREATE TABLE `tb_statusperkawinan` (
 
 CREATE TABLE `tb_wakaf` (
   `id_wakaf` int(10) UNSIGNED NOT NULL,
-  `nama_wakaf` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_anggotakk` int(10) UNSIGNED NOT NULL,
   `id_jeniswakaf` int(10) UNSIGNED NOT NULL,
   `nominal_wakaf` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -414,38 +414,6 @@ CREATE TABLE `view_anggotakk` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_anggotakk_alter`
--- (Lihat di bawah untuk tampilan aktual)
---
-CREATE TABLE `view_anggotakk_alter` (
-`id_anggotakk` int(10) unsigned
-,`nama_lengkap` varchar(191)
-,`nik` char(191)
-,`id_kk` int(10) unsigned
-,`no_kk` varchar(20)
-,`jk` enum('Laki-laki','Perempuan')
-,`tmp_lahir` varchar(191)
-,`tgl_lahir` date
-,`id_agama` int(10) unsigned
-,`nama_agama` varchar(191)
-,`id_pendidikan` int(10) unsigned
-,`nama_pendidikan` varchar(191)
-,`id_pekerjaan` int(10) unsigned
-,`nama_pekerjaan` varchar(191)
-,`id_status_kawin` int(10) unsigned
-,`nama_status` varchar(191)
-,`id_status_hubkel` int(10) unsigned
-,`nama_hubkeluarga` varchar(191)
-,`kewarganegaraan` enum('WNI','WNA')
-,`no_paspor` char(191)
-,`no_kitap` char(191)
-,`ayah` varchar(191)
-,`ibu` varchar(191)
-);
-
--- --------------------------------------------------------
-
---
 -- Stand-in struktur untuk tampilan `view_cities`
 -- (Lihat di bawah untuk tampilan aktual)
 --
@@ -472,6 +440,36 @@ CREATE TABLE `view_districts` (
 ,`id_district` char(7)
 ,`city_id` char(4)
 ,`name_district` varchar(255)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in struktur untuk tampilan `view_fidyah`
+-- (Lihat di bawah untuk tampilan aktual)
+--
+CREATE TABLE `view_fidyah` (
+`id_fidyah` int(10) unsigned
+,`id_anggotakk` int(10) unsigned
+,`nominal_fidyah` int(11)
+,`created_at` timestamp
+,`updated_at` timestamp
+,`nama_lengkap` varchar(191)
+,`nik` char(191)
+,`no_kk` varchar(20)
+,`jk` enum('Laki-laki','Perempuan')
+,`tmp_lahir` varchar(191)
+,`tgl_lahir` date
+,`nama_agama` varchar(191)
+,`nama_pendidikan` varchar(191)
+,`nama_pekerjaan` varchar(191)
+,`nama_status` varchar(191)
+,`nama_hubkeluarga` varchar(191)
+,`kewarganegaraan` enum('WNI','WNA')
+,`no_paspor` char(191)
+,`no_kitap` char(191)
+,`ayah` varchar(191)
+,`ibu` varchar(191)
 );
 
 -- --------------------------------------------------------
@@ -609,13 +607,15 @@ CREATE TABLE `view_villages` (
 -- (Lihat di bawah untuk tampilan aktual)
 --
 CREATE TABLE `view_wakaf` (
-`id_wakaf` int(10) unsigned
-,`nama_wakaf` varchar(191)
-,`id_jeniswakaf` int(10) unsigned
-,`jenis_wakaf` varchar(191)
-,`nominal_wakaf` int(11)
-,`created_at` timestamp
-,`updated_at` timestamp
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in struktur untuk tampilan `view_wakaf_to_muzakki`
+-- (Lihat di bawah untuk tampilan aktual)
+--
+CREATE TABLE `view_wakaf_to_muzakki` (
 );
 
 -- --------------------------------------------------------
@@ -679,15 +679,6 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_anggotakk_alter`
---
-DROP TABLE IF EXISTS `view_anggotakk_alter`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_anggotakk_alter`  AS  select `a`.`id_anggotakk` AS `id_anggotakk`,`a`.`nama_lengkap` AS `nama_lengkap`,`a`.`nik` AS `nik`,`a`.`id_kk` AS `id_kk`,`b`.`no_kk` AS `no_kk`,`a`.`jk` AS `jk`,`a`.`tmp_lahir` AS `tmp_lahir`,`a`.`tgl_lahir` AS `tgl_lahir`,`a`.`id_agama` AS `id_agama`,`c`.`nama_agama` AS `nama_agama`,`a`.`id_pendidikan` AS `id_pendidikan`,`d`.`nama_pendidikan` AS `nama_pendidikan`,`a`.`id_pekerjaan` AS `id_pekerjaan`,`e`.`nama_pekerjaan` AS `nama_pekerjaan`,`a`.`id_status_kawin` AS `id_status_kawin`,`f`.`nama_status` AS `nama_status`,`a`.`id_status_hubkel` AS `id_status_hubkel`,`g`.`nama_hubkeluarga` AS `nama_hubkeluarga`,`a`.`kewarganegaraan` AS `kewarganegaraan`,`a`.`no_paspor` AS `no_paspor`,`a`.`no_kitap` AS `no_kitap`,`a`.`ayah` AS `ayah`,`a`.`ibu` AS `ibu` from ((((((`tb_anggotakk` `a` join `tb_kartukeluarga` `b`) join `tb_agama` `c`) join `tb_pendidikan` `d`) join `tb_jenispekerjaan` `e`) join `tb_statusperkawinan` `f`) join `tb_hubkeluarga` `g`) where ((`a`.`id_kk` = `b`.`id_kk`) and (`a`.`id_agama` = `c`.`id_agama`) and (`a`.`id_pendidikan` = `d`.`id_pendidikan`) and (`a`.`id_pekerjaan` = `e`.`id_pekerjaan`) and (`a`.`id_status_kawin` = `f`.`id_status`) and (`a`.`id_status_hubkel` = `g`.`id_hubkeluarga`)) ;
-
--- --------------------------------------------------------
-
---
 -- Struktur untuk view `view_cities`
 --
 DROP TABLE IF EXISTS `view_cities`;
@@ -702,6 +693,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `view_districts`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_districts`  AS  select `a`.`id_cities` AS `id_cities`,`a`.`province_id` AS `province_id`,`a`.`name_cities` AS `name_cities`,`a`.`id_provinces` AS `id_provinces`,`a`.`name_provinces` AS `name_provinces`,`b`.`id` AS `id_district`,`b`.`city_id` AS `city_id`,`b`.`name` AS `name_district` from (`view_cities` `a` join `districts` `b`) where (`a`.`id_cities` = `b`.`city_id`) ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur untuk view `view_fidyah`
+--
+DROP TABLE IF EXISTS `view_fidyah`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_fidyah`  AS  select `a`.`id_fidyah` AS `id_fidyah`,`a`.`id_anggotakk` AS `id_anggotakk`,`a`.`nominal_fidyah` AS `nominal_fidyah`,`a`.`created_at` AS `created_at`,`a`.`updated_at` AS `updated_at`,`b`.`nama_lengkap` AS `nama_lengkap`,`b`.`nik` AS `nik`,`b`.`no_kk` AS `no_kk`,`b`.`jk` AS `jk`,`b`.`tmp_lahir` AS `tmp_lahir`,`b`.`tgl_lahir` AS `tgl_lahir`,`b`.`nama_agama` AS `nama_agama`,`b`.`nama_pendidikan` AS `nama_pendidikan`,`b`.`nama_pekerjaan` AS `nama_pekerjaan`,`b`.`nama_status` AS `nama_status`,`b`.`nama_hubkeluarga` AS `nama_hubkeluarga`,`b`.`kewarganegaraan` AS `kewarganegaraan`,`b`.`no_paspor` AS `no_paspor`,`b`.`no_kitap` AS `no_kitap`,`b`.`ayah` AS `ayah`,`b`.`ibu` AS `ibu` from (`tb_fidyah` `a` join `view_anggotakk` `b`) where (`a`.`id_anggotakk` = `b`.`id_anggotakk`) ;
 
 -- --------------------------------------------------------
 
@@ -791,7 +791,16 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_wakaf`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_wakaf`  AS  select `a`.`id_wakaf` AS `id_wakaf`,`a`.`nama_wakaf` AS `nama_wakaf`,`b`.`id_jeniswakaf` AS `id_jeniswakaf`,`b`.`jenis_wakaf` AS `jenis_wakaf`,`a`.`nominal_wakaf` AS `nominal_wakaf`,`a`.`created_at` AS `created_at`,`a`.`updated_at` AS `updated_at` from (`tb_wakaf` `a` join `tb_jeniswakaf` `b`) where (`a`.`id_jeniswakaf` = `b`.`id_jeniswakaf`) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_wakaf`  AS  select `a`.`jenis_wakaf` AS `jenis_wakaf`,`b`.`id_wakaf` AS `id_wakaf`,`b`.`id_muzakki` AS `id_muzakki`,`b`.`id_jeniswakaf` AS `id_jeniswakaf`,`b`.`nominal_wakaf` AS `nominal_wakaf`,`b`.`created_at` AS `created_at`,`b`.`updated_at` AS `updated_at`,`b`.`nama_lengkap` AS `nama_lengkap`,`b`.`no_kk` AS `no_kk`,`b`.`nik` AS `nik` from (`tb_jeniswakaf` `a` join `view_wakaf_to_muzakki` `b`) where (`a`.`id_jeniswakaf` = `b`.`id_jeniswakaf`) ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur untuk view `view_wakaf_to_muzakki`
+--
+DROP TABLE IF EXISTS `view_wakaf_to_muzakki`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_wakaf_to_muzakki`  AS  select `a`.`id_wakaf` AS `id_wakaf`,`a`.`id_muzakki` AS `id_muzakki`,`a`.`id_jeniswakaf` AS `id_jeniswakaf`,`a`.`nominal_wakaf` AS `nominal_wakaf`,`a`.`created_at` AS `created_at`,`a`.`updated_at` AS `updated_at`,`b`.`nama_lengkap` AS `nama_lengkap`,`b`.`no_kk` AS `no_kk`,`b`.`nik` AS `nik` from (`tb_wakaf` `a` join `view_muzakki` `b`) where (`a`.`id_muzakki` = `b`.`id_muzakki`) ;
 
 -- --------------------------------------------------------
 
@@ -869,7 +878,8 @@ ALTER TABLE `tb_anggotakk`
 -- Indeks untuk tabel `tb_fidyah`
 --
 ALTER TABLE `tb_fidyah`
-  ADD PRIMARY KEY (`id_fidyah`);
+  ADD PRIMARY KEY (`id_fidyah`),
+  ADD KEY `tb_fidyah_id_anggotakk_foreign` (`id_anggotakk`);
 
 --
 -- Indeks untuk tabel `tb_golongan`
@@ -893,7 +903,8 @@ ALTER TABLE `tb_hubkeluarga`
 -- Indeks untuk tabel `tb_insha`
 --
 ALTER TABLE `tb_insha`
-  ADD PRIMARY KEY (`id_insha`);
+  ADD PRIMARY KEY (`id_insha`),
+  ADD KEY `tb_insha_id_anggotakk_foreign` (`id_anggotakk`);
 
 --
 -- Indeks untuk tabel `tb_jenispekerjaan`
@@ -946,7 +957,8 @@ ALTER TABLE `tb_statusperkawinan`
 --
 ALTER TABLE `tb_wakaf`
   ADD PRIMARY KEY (`id_wakaf`),
-  ADD KEY `tb_wakaf_id_jeniswakaf_foreign` (`id_jeniswakaf`);
+  ADD KEY `tb_wakaf_id_jeniswakaf_foreign` (`id_jeniswakaf`),
+  ADD KEY `tb_wakaf_id_anggotakk_foreign` (`id_anggotakk`);
 
 --
 -- Indeks untuk tabel `tb_zakat_fitrah`
@@ -1122,6 +1134,18 @@ ALTER TABLE `tb_anggotakk`
   ADD CONSTRAINT `tb_anggotakk_id_status_kawin_foreign` FOREIGN KEY (`id_status_kawin`) REFERENCES `tb_statusperkawinan` (`id_status`) ON UPDATE CASCADE;
 
 --
+-- Ketidakleluasaan untuk tabel `tb_fidyah`
+--
+ALTER TABLE `tb_fidyah`
+  ADD CONSTRAINT `tb_fidyah_id_anggotakk_foreign` FOREIGN KEY (`id_anggotakk`) REFERENCES `tb_anggotakk` (`id_anggotakk`) ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `tb_insha`
+--
+ALTER TABLE `tb_insha`
+  ADD CONSTRAINT `tb_insha_id_anggotakk_foreign` FOREIGN KEY (`id_anggotakk`) REFERENCES `tb_anggotakk` (`id_anggotakk`) ON UPDATE CASCADE;
+
+--
 -- Ketidakleluasaan untuk tabel `tb_kartukeluarga`
 --
 ALTER TABLE `tb_kartukeluarga`
@@ -1144,6 +1168,7 @@ ALTER TABLE `tb_muzakki`
 -- Ketidakleluasaan untuk tabel `tb_wakaf`
 --
 ALTER TABLE `tb_wakaf`
+  ADD CONSTRAINT `tb_wakaf_id_anggotakk_foreign` FOREIGN KEY (`id_anggotakk`) REFERENCES `tb_anggotakk` (`id_anggotakk`) ON UPDATE CASCADE,
   ADD CONSTRAINT `tb_wakaf_id_jeniswakaf_foreign` FOREIGN KEY (`id_jeniswakaf`) REFERENCES `tb_jeniswakaf` (`id_jeniswakaf`) ON UPDATE CASCADE;
 
 --
