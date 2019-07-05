@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\WakafModel;
 use App\ViewWakafModel;
 use App\JenisWakafModel;
-use App\ViewMuzakkiModel;
+use App\ViewAnggotakkModel;
 use App\ViewTotalKasWakafModel;
 use DB;
 use PDF;
@@ -32,9 +32,9 @@ class WakafController extends Controller
      */
     public function create()
     {
-        $view_muzakki = ViewMuzakkiModel::all();
+        $anggotakk = ViewAnggotakkModel::all();
         $jenis_wakaf = JenisWakafModel::all();
-        return view('wakaf.create', compact('jenis_wakaf', 'view_muzakki'));
+        return view('wakaf.create', compact('jenis_wakaf', 'anggotakk'));
     }
 
     /**
@@ -46,12 +46,12 @@ class WakafController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama_muzakki' => 'required',
+            'nama_wakaf' => 'required',
             'jenis_wakaf' => 'required',
             'nominal_wakaf' => 'required|numeric'
         ]);
         $wakaf = new WakafModel;
-        $wakaf->id_muzakki = $request['nama_muzakki'];
+        $wakaf->id_anggotakk = $request['nama_wakaf'];
         $wakaf->id_jeniswakaf = $request['jenis_wakaf'];
         $wakaf->nominal_wakaf = $request['nominal_wakaf'];
         $wakaf->save();
@@ -78,10 +78,10 @@ class WakafController extends Controller
      */
     public function edit($id)
     {
-        $view_muzakki = ViewMuzakkiModel::all();
+        $anggotakk = ViewAnggotakkModel::all();
         $wakaf = WakafModel::find($id);
         $jenis_wakaf = JenisWakafModel::all();
-        return view('wakaf.edit', compact('jenis_wakaf', 'wakaf', 'view_muzakki'));
+        return view('wakaf.edit', compact('jenis_wakaf', 'wakaf', 'anggotakk'));
     }
 
     /**
@@ -94,12 +94,12 @@ class WakafController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nama_muzakki' => 'required',
+            'nama_wakaf' => 'required',
             'jenis_wakaf' => 'required',
             'nominal_wakaf' => 'required|numeric'
         ]);
         $wakaf = WakafModel::find($id);
-        $wakaf->id_muzakki = $request['nama_muzakki'];
+        $wakaf->id_anggotakk = $request['nama_wakaf'];
         $wakaf->id_jeniswakaf = $request['jenis_wakaf'];
         $wakaf->nominal_wakaf = $request['nominal_wakaf'];
         $wakaf->update();

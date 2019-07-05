@@ -24,14 +24,14 @@
         <form action="{{ route('wakaf.update', $wakaf->id_wakaf) }}" method="POST">
         {{ csrf_field() }} {{ method_field('PATCH') }}
         <div class="form-group">
-            <label for="sel1">Pilih Pewakaf:</label>
-            <select class="form-control search" name="nama_muzakki" id="nama_muzakki">
-              <option value="">-- Pilih Muzakki --</option>
-              @foreach($view_muzakki as $list)
-              <option value="{{ $list->id_muzakki }}">NIK : {{ $list->nik }} - {{ $list->nama_lengkap }} </option>
-              @endforeach
-            </select>
-          </div>
+          <label for="sel1">Pilih Fidyah:</label>
+          <select class="form-control search" name="nama_wakaf" id="nama_wakaf">
+            <option value="">-- Pilih Nama --</option>
+            @foreach($anggotakk as $list)
+            <option value="{{ $list->id_anggotakk }}">NIK : {{ $list->nik }} - {{ $list->nama_lengkap }}</option>
+            @endforeach
+          </select>
+        </div>
         <div class="form-group">
           <label for="jenis_wakaf">Jenis Wakaf:</label>
           <select class="form-control" name="jenis_wakaf" id="jenis_wakaf">
