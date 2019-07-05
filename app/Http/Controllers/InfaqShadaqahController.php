@@ -139,4 +139,5 @@ class InfaqShadaqahController extends Controller
         $pdf = PDF::loadView('infaqshodaqoh.invoice', compact('insha'))->setPaper('a4', 'landscape');
         return $pdf->stream();
     }
+
 }
