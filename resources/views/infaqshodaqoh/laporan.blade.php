@@ -24,7 +24,7 @@
 			@foreach($insha as $list)
 			<tr>
 				<td>{{ $i++ }}</td>
-				<td>{{ $list->nama_insha }}</td>
+				<td>{{ $list->nama_lengkap }}</td>
                 <td>
                 <?php
                     echo format_uang($list->nominal_insha);

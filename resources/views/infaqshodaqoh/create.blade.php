@@ -24,13 +24,13 @@
       <form action="{{ route('infaqshadaqah.store') }}" method="POST">
         {{ csrf_field() }}
         <div class="form-group">
-            <label for="sel1">Pilih Nama:</label>
-            <select class="form-control search" name="id_muzakki">
-              <option>-- Pilih Muzakki --</option>
-              @foreach($view_muzakki as $list)
-              <option value="{{ $list->id_muzakki }}">NIK : {{ $list->nik }} - {{ $list->nama_lengkap }} </option>
-              @endforeach
-            </select>
+          <label for="sel1">Pilih Insha:</label>
+          <select class="form-control search" name="nama_insha">
+            <option value="">-- Pilih Nama --</option>
+            @foreach($anggotakk as $list)
+            <option value="{{ $list->id_anggotakk }}">NIK : {{ $list->nik }} - {{ $list->nama_lengkap }}</option>
+            @endforeach
+          </select>
         </div>
         <div class="form-group">
           <label for="nominal">Nominal:</label>

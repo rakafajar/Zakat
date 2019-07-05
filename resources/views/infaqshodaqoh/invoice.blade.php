@@ -9,7 +9,7 @@
 	<h1>ZISWAF</h1>
 	<hr>
 	<h3>Invoice Infaq & Shodaqoh</h3>
-	<p>Nama Penginfaq : {{$insha->nama_insha}}</p>
+	<p>Nama Penginfaq : {{$insha->nama_lengkap}}</p>
 	<p>Shodaqoh & Infaq yang Dibayar : <?php echo "Rp. ".format_uang($insha->nominal_insha);?></p>
 	<p> Tanggal Bayar : <?php echo tanggal_indonesia($insha->created_at); ?></p>
 

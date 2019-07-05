@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\InfaqShadaqahModel;
 use App\ViewTotalKasInshaModel;
-use App\ViewMuzakkiModel;
+use App\ViewInshaModel;
+use App\ViewAnggotakkModel;
 use DB;
 use PDF;
 
@@ -18,7 +19,7 @@ class InfaqShadaqahController extends Controller
 
     public function index()
     {
-        $insha = InfaqShadaqahModel::all();
+        $insha = ViewInshaModel::all();
         $view_tot_insha = ViewTotalKasInshaModel::all();
         return view('infaqshodaqoh.index', compact('insha', 'view_tot_insha'));
     }
@@ -30,8 +31,8 @@ class InfaqShadaqahController extends Controller
      */
     public function create()
     {
-        $view_muzakki = ViewMuzakkiModel::all();
-        return view('infaqshodaqoh.create', compact('view_muzakki'));
+        $anggotakk = ViewAnggotakkModel::all();
+        return view('infaqshodaqoh.create', compact('anggotakk'));
     }
 
     /**
@@ -47,7 +48,7 @@ class InfaqShadaqahController extends Controller
             'nominal_insha' => 'required|numeric',
         ]);
         $insha = new InfaqShadaqahModel;
-        $insha->nama_insha = $request['nama_insha'];
+        $insha->id_anggotakk = $request['nama_insha'];
         $insha->nominal_insha = $request['nominal_insha'];
         $insha->save();
 
@@ -73,9 +74,9 @@ class InfaqShadaqahController extends Controller
      */
     public function edit($id)
     {
-        $view_muzakki = ViewMuzakkiModel::all();
+        $anggotakk = ViewAnggotakkModel::all();
         $insha = InfaqShadaqahModel::find($id);
-        return view('infaqshodaqoh.edit', compact('insha', $insha, 'view_muzakki'));
+        return view('infaqshodaqoh.edit', compact('insha', $insha, 'anggotakk'));
     }
 
     /**
@@ -92,7 +93,7 @@ class InfaqShadaqahController extends Controller
             'nominal_insha' => 'required|numeric',
         ]);
         $insha = InfaqShadaqahModel::find($id);
-        $insha->nama_insha = $request['nama_insha'];
+        $insha->id_anggotakk = $request['nama_insha'];
         $insha->nominal_insha = $request['nominal_insha'];
         $insha->update();
 
@@ -113,7 +114,7 @@ class InfaqShadaqahController extends Controller
 
     public function laporanInsa()
     {
-        $insha = InfaqShadaqahModel::all();
+        $insha = ViewInshaModel::all();
         $view_tot_insha = ViewTotalKasInshaModel::all();
         $no = 0;
         $pdf = PDF::loadView('infaqshodaqoh.laporan', compact('insha', 'no', 'view_tot_insha'));
@@ -124,7 +125,8 @@ class InfaqShadaqahController extends Controller
     public function buktiBayar($id)
     {
         //GET DATA BERDASARKAN ID
-        $insha = InfaqShadaqahModel::find($id);
+        $insha = InfaqShadaqahModel::leftJoin('view_insha', 'view_insha.id_anggotakk', '=', 'tb_insha.id_anggotakk')
+            ->orderBy('tb_insha.id_anggotakk')->find($id);
         //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
         //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
         $pdf = PDF::loadView('infaqshodaqoh.invoice', compact('insha'))->setPaper('a4', 'landscape');

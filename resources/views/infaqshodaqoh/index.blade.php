@@ -47,7 +47,7 @@
                   <?php $no++; ?>
                   <tr>
                     <td>{{ $no }}</td>
-                    <td>{{ $list->nama_insha }}</td>
+                    <td>{{ $list->nama_lengkap }}</td>
                     <td>
                       Rp. 
                       <?php
