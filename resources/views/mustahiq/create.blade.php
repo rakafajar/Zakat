@@ -28,7 +28,7 @@
             <select class="form-control search" name="nomor_kk">
                 <option value="">-- Pilih No. NIK --</option>
                 @foreach($anggotakk as $list)
-                <option value="{{ $list->id_anggotakk }}">{{ $list->nik}}</option>
+                <option value="{{ $list->id_anggotakk }}">NIK : {{ $list->nik }} - {{ $list->nama_lengkap }}</option>
                 @endforeach
             </select>
         </div>
