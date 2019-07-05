@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\InfaqShadaqahModel;
-use App\ViewTotalKasInshaModel;
+// use App\ViewTotalKasInshaModel;
 use App\ViewInshaModel;
 use App\ViewAnggotakkModel;
+use App\KasInshaModel;
 use DB;
 use PDF;
 
@@ -20,8 +21,9 @@ class InfaqShadaqahController extends Controller
     public function index()
     {
         $insha = ViewInshaModel::all();
-        $view_tot_insha = ViewTotalKasInshaModel::all();
-        return view('infaqshodaqoh.index', compact('insha', 'view_tot_insha'));
+        $kas_insha = KasInshaModel::all();
+        // $view_tot_insha = ViewTotalKasInshaModel::all();
+        return view('infaqshodaqoh.index', compact('insha', 'kas_insha'));
     }
 
     /**
@@ -32,7 +34,8 @@ class InfaqShadaqahController extends Controller
     public function create()
     {
         $anggotakk = ViewAnggotakkModel::all();
-        return view('infaqshodaqoh.create', compact('anggotakk'));
+        $kas_insha = KasInshaModel::all();
+        return view('infaqshodaqoh.create', compact('anggotakk', 'kas_insha'));
     }
 
     /**
@@ -51,6 +54,10 @@ class InfaqShadaqahController extends Controller
         $insha->id_anggotakk = $request['nama_insha'];
         $insha->nominal_insha = $request['nominal_insha'];
         $insha->save();
+
+        DB::table('tb_kas_insha')->where('id_kas_insha', '=', '1')->update([
+            'jml_kas_insha' => $request['nominal_insha'] + $request['jml_kas_insha']
+        ]);
 
         return redirect(route('infaqshadaqah.index'))->with('success', 'Data Berhasil Disimpan!');
     }
