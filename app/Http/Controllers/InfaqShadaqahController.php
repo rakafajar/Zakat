@@ -104,6 +104,15 @@ class InfaqShadaqahController extends Controller
         $insha->nominal_insha = $request['nominal_insha'];
         $insha->update();
 
+        // $insha = InfaqShadaqahModel::find($id);
+        // $insha->id_anggotakk = $request['nama_insha'];
+        // $insha->nominal_insha = $request['nominal_insha_baru'];
+        // $insha->update();
+
+        // DB::table('tb_kas_insha')->where('id_kas_insha', '=', '1')->update([
+        //     'jml_kas_insha' => ($request['jml_kas_insha'] - $request['nominal_insha']) + $request['nominal_insha_baru']
+        // ]);
+
         return redirect(route('infaqshadaqah.index'))->with('info','Data Berhasil Diubah!');
     }
 
