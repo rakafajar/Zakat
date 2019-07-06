@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Jul 2019 pada 11.36
--- Versi server: 10.1.38-MariaDB
--- Versi PHP: 7.3.2
+-- Generation Time: Jul 06, 2019 at 02:17 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_zakat`
+-- Database: `zakat`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `cities`
+-- Table structure for table `cities`
 --
 
 CREATE TABLE `cities` (
@@ -37,7 +37,7 @@ CREATE TABLE `cities` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `districts`
+-- Table structure for table `districts`
 --
 
 CREATE TABLE `districts` (
@@ -49,7 +49,7 @@ CREATE TABLE `districts` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -59,7 +59,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -85,12 +85,14 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (20, '2019_06_25_181219_create_jenis_wakaf_table', 1),
 (21, '2019_06_25_181240_create_wakaf_table', 1),
 (22, '2019_06_26_072552_create_zakat_fitrah_table', 1),
-(23, '2019_06_27_142442_create_zakat_maal_table', 1);
+(23, '2019_06_27_142442_create_zakat_maal_table', 1),
+(24, '2019_07_05_135724_create_table_kas_insha', 1),
+(25, '2019_07_05_135852_create_table_pengeluaran_insha', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `password_resets`
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -102,7 +104,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `provinces`
+-- Table structure for table `provinces`
 --
 
 CREATE TABLE `provinces` (
@@ -113,7 +115,7 @@ CREATE TABLE `provinces` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_agama`
+-- Table structure for table `tb_agama`
 --
 
 CREATE TABLE `tb_agama` (
@@ -126,7 +128,7 @@ CREATE TABLE `tb_agama` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_anggotakk`
+-- Table structure for table `tb_anggotakk`
 --
 
 CREATE TABLE `tb_anggotakk` (
@@ -154,7 +156,7 @@ CREATE TABLE `tb_anggotakk` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_fidyah`
+-- Table structure for table `tb_fidyah`
 --
 
 CREATE TABLE `tb_fidyah` (
@@ -168,7 +170,7 @@ CREATE TABLE `tb_fidyah` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_golongan`
+-- Table structure for table `tb_golongan`
 --
 
 CREATE TABLE `tb_golongan` (
@@ -181,7 +183,7 @@ CREATE TABLE `tb_golongan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_harga`
+-- Table structure for table `tb_harga`
 --
 
 CREATE TABLE `tb_harga` (
@@ -194,7 +196,7 @@ CREATE TABLE `tb_harga` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_hubkeluarga`
+-- Table structure for table `tb_hubkeluarga`
 --
 
 CREATE TABLE `tb_hubkeluarga` (
@@ -207,7 +209,7 @@ CREATE TABLE `tb_hubkeluarga` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_insha`
+-- Table structure for table `tb_insha`
 --
 
 CREATE TABLE `tb_insha` (
@@ -221,7 +223,7 @@ CREATE TABLE `tb_insha` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_jenispekerjaan`
+-- Table structure for table `tb_jenispekerjaan`
 --
 
 CREATE TABLE `tb_jenispekerjaan` (
@@ -234,7 +236,7 @@ CREATE TABLE `tb_jenispekerjaan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_jeniswakaf`
+-- Table structure for table `tb_jeniswakaf`
 --
 
 CREATE TABLE `tb_jeniswakaf` (
@@ -247,7 +249,7 @@ CREATE TABLE `tb_jeniswakaf` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_kartukeluarga`
+-- Table structure for table `tb_kartukeluarga`
 --
 
 CREATE TABLE `tb_kartukeluarga` (
@@ -265,7 +267,20 @@ CREATE TABLE `tb_kartukeluarga` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_mustahiq`
+-- Table structure for table `tb_kas_insha`
+--
+
+CREATE TABLE `tb_kas_insha` (
+  `id_kas_insha` char(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jml_kas_insha` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_mustahiq`
 --
 
 CREATE TABLE `tb_mustahiq` (
@@ -280,7 +295,7 @@ CREATE TABLE `tb_mustahiq` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_muzakki`
+-- Table structure for table `tb_muzakki`
 --
 
 CREATE TABLE `tb_muzakki` (
@@ -293,7 +308,7 @@ CREATE TABLE `tb_muzakki` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_pendidikan`
+-- Table structure for table `tb_pendidikan`
 --
 
 CREATE TABLE `tb_pendidikan` (
@@ -306,7 +321,20 @@ CREATE TABLE `tb_pendidikan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_statusperkawinan`
+-- Table structure for table `tb_pengeluaran_insha`
+--
+
+CREATE TABLE `tb_pengeluaran_insha` (
+  `id_peng_insha` int(10) UNSIGNED NOT NULL,
+  `jml_peng_insha` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_statusperkawinan`
 --
 
 CREATE TABLE `tb_statusperkawinan` (
@@ -319,7 +347,7 @@ CREATE TABLE `tb_statusperkawinan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_wakaf`
+-- Table structure for table `tb_wakaf`
 --
 
 CREATE TABLE `tb_wakaf` (
@@ -334,7 +362,7 @@ CREATE TABLE `tb_wakaf` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_zakat_fitrah`
+-- Table structure for table `tb_zakat_fitrah`
 --
 
 CREATE TABLE `tb_zakat_fitrah` (
@@ -349,7 +377,7 @@ CREATE TABLE `tb_zakat_fitrah` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_zakat_maal`
+-- Table structure for table `tb_zakat_maal`
 --
 
 CREATE TABLE `tb_zakat_maal` (
@@ -365,7 +393,7 @@ CREATE TABLE `tb_zakat_maal` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -382,8 +410,8 @@ CREATE TABLE `users` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_anggotakk`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_anggotakk`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_anggotakk` (
 `id_anggotakk` int(10) unsigned
@@ -414,8 +442,8 @@ CREATE TABLE `view_anggotakk` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_cities`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_cities`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_cities` (
 `id_cities` char(4)
@@ -428,8 +456,8 @@ CREATE TABLE `view_cities` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_districts`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_districts`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_districts` (
 `id_cities` char(4)
@@ -445,8 +473,8 @@ CREATE TABLE `view_districts` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_fidyah`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_fidyah`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_fidyah` (
 `id_fidyah` int(10) unsigned
@@ -475,8 +503,8 @@ CREATE TABLE `view_fidyah` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_insha`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_insha`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_insha` (
 `id_insha` int(10) unsigned
@@ -505,8 +533,8 @@ CREATE TABLE `view_insha` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_kartukeluarga`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_kartukeluarga`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_kartukeluarga` (
 `id_villages` char(10)
@@ -532,8 +560,8 @@ CREATE TABLE `view_kartukeluarga` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_mustahiq`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_mustahiq`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_mustahiq` (
 `id_mustahiq` int(10) unsigned
@@ -564,8 +592,8 @@ CREATE TABLE `view_mustahiq` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_muzakki`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_muzakki`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_muzakki` (
 `id_muzakki` int(10) unsigned
@@ -579,8 +607,8 @@ CREATE TABLE `view_muzakki` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_total_kas_fidyah`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_total_kas_fidyah`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_total_kas_fidyah` (
 `total_kas_fidyah` decimal(32,0)
@@ -589,8 +617,8 @@ CREATE TABLE `view_total_kas_fidyah` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_total_kas_insha`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_total_kas_insha`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_total_kas_insha` (
 `total_kas_insha` decimal(32,0)
@@ -599,8 +627,8 @@ CREATE TABLE `view_total_kas_insha` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_total_kas_wakaf`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_total_kas_wakaf`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_total_kas_wakaf` (
 `total_kas_wakaf` decimal(32,0)
@@ -609,8 +637,8 @@ CREATE TABLE `view_total_kas_wakaf` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_total_kas_zakat_fitrah`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_total_kas_zakat_fitrah`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_total_kas_zakat_fitrah` (
 `total_kas_zakat_fitrah` decimal(32,0)
@@ -619,8 +647,8 @@ CREATE TABLE `view_total_kas_zakat_fitrah` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_total_kas_zakat_maal`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_total_kas_zakat_maal`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_total_kas_zakat_maal` (
 `total_kas_zakat_maal` decimal(32,0)
@@ -629,8 +657,8 @@ CREATE TABLE `view_total_kas_zakat_maal` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_villages`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_villages`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_villages` (
 `id_villages` char(10)
@@ -649,8 +677,8 @@ CREATE TABLE `view_villages` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_wakaf`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_wakaf`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_wakaf` (
 `id_wakaf` int(10) unsigned
@@ -680,8 +708,8 @@ CREATE TABLE `view_wakaf` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_zakat_fitrah`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_zakat_fitrah`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_zakat_fitrah` (
 `id_zfitrah` int(10) unsigned
@@ -698,8 +726,8 @@ CREATE TABLE `view_zakat_fitrah` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_zakat_maal`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_zakat_maal`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_zakat_maal` (
 `id_zmaal` int(10) unsigned
@@ -717,7 +745,7 @@ CREATE TABLE `view_zakat_maal` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `villages`
+-- Table structure for table `villages`
 --
 
 CREATE TABLE `villages` (
@@ -729,7 +757,7 @@ CREATE TABLE `villages` (
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_anggotakk`
+-- Structure for view `view_anggotakk`
 --
 DROP TABLE IF EXISTS `view_anggotakk`;
 
@@ -738,7 +766,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_cities`
+-- Structure for view `view_cities`
 --
 DROP TABLE IF EXISTS `view_cities`;
 
@@ -747,7 +775,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_districts`
+-- Structure for view `view_districts`
 --
 DROP TABLE IF EXISTS `view_districts`;
 
@@ -756,7 +784,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_fidyah`
+-- Structure for view `view_fidyah`
 --
 DROP TABLE IF EXISTS `view_fidyah`;
 
@@ -765,7 +793,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_insha`
+-- Structure for view `view_insha`
 --
 DROP TABLE IF EXISTS `view_insha`;
 
@@ -774,7 +802,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_kartukeluarga`
+-- Structure for view `view_kartukeluarga`
 --
 DROP TABLE IF EXISTS `view_kartukeluarga`;
 
@@ -783,7 +811,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_mustahiq`
+-- Structure for view `view_mustahiq`
 --
 DROP TABLE IF EXISTS `view_mustahiq`;
 
@@ -792,7 +820,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_muzakki`
+-- Structure for view `view_muzakki`
 --
 DROP TABLE IF EXISTS `view_muzakki`;
 
@@ -801,7 +829,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_total_kas_fidyah`
+-- Structure for view `view_total_kas_fidyah`
 --
 DROP TABLE IF EXISTS `view_total_kas_fidyah`;
 
@@ -810,7 +838,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_total_kas_insha`
+-- Structure for view `view_total_kas_insha`
 --
 DROP TABLE IF EXISTS `view_total_kas_insha`;
 
@@ -819,7 +847,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_total_kas_wakaf`
+-- Structure for view `view_total_kas_wakaf`
 --
 DROP TABLE IF EXISTS `view_total_kas_wakaf`;
 
@@ -828,7 +856,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_total_kas_zakat_fitrah`
+-- Structure for view `view_total_kas_zakat_fitrah`
 --
 DROP TABLE IF EXISTS `view_total_kas_zakat_fitrah`;
 
@@ -837,7 +865,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_total_kas_zakat_maal`
+-- Structure for view `view_total_kas_zakat_maal`
 --
 DROP TABLE IF EXISTS `view_total_kas_zakat_maal`;
 
@@ -846,7 +874,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_villages`
+-- Structure for view `view_villages`
 --
 DROP TABLE IF EXISTS `view_villages`;
 
@@ -855,7 +883,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_wakaf`
+-- Structure for view `view_wakaf`
 --
 DROP TABLE IF EXISTS `view_wakaf`;
 
@@ -864,7 +892,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_zakat_fitrah`
+-- Structure for view `view_zakat_fitrah`
 --
 DROP TABLE IF EXISTS `view_zakat_fitrah`;
 
@@ -873,7 +901,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_zakat_maal`
+-- Structure for view `view_zakat_maal`
 --
 DROP TABLE IF EXISTS `view_zakat_maal`;
 
@@ -884,45 +912,45 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 
 --
--- Indeks untuk tabel `cities`
+-- Indexes for table `cities`
 --
 ALTER TABLE `cities`
   ADD PRIMARY KEY (`id`),
   ADD KEY `cities_province_id_foreign` (`province_id`);
 
 --
--- Indeks untuk tabel `districts`
+-- Indexes for table `districts`
 --
 ALTER TABLE `districts`
   ADD PRIMARY KEY (`id`),
   ADD KEY `districts_city_id_foreign` (`city_id`);
 
 --
--- Indeks untuk tabel `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `password_resets`
+-- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Indeks untuk tabel `provinces`
+-- Indexes for table `provinces`
 --
 ALTER TABLE `provinces`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tb_agama`
+-- Indexes for table `tb_agama`
 --
 ALTER TABLE `tb_agama`
   ADD PRIMARY KEY (`id_agama`);
 
 --
--- Indeks untuk tabel `tb_anggotakk`
+-- Indexes for table `tb_anggotakk`
 --
 ALTER TABLE `tb_anggotakk`
   ADD PRIMARY KEY (`id_anggotakk`),
@@ -934,58 +962,64 @@ ALTER TABLE `tb_anggotakk`
   ADD KEY `tb_anggotakk_id_status_hubkel_foreign` (`id_status_hubkel`);
 
 --
--- Indeks untuk tabel `tb_fidyah`
+-- Indexes for table `tb_fidyah`
 --
 ALTER TABLE `tb_fidyah`
   ADD PRIMARY KEY (`id_fidyah`),
   ADD KEY `tb_fidyah_id_anggotakk_foreign` (`id_anggotakk`);
 
 --
--- Indeks untuk tabel `tb_golongan`
+-- Indexes for table `tb_golongan`
 --
 ALTER TABLE `tb_golongan`
   ADD PRIMARY KEY (`id_golongan`);
 
 --
--- Indeks untuk tabel `tb_harga`
+-- Indexes for table `tb_harga`
 --
 ALTER TABLE `tb_harga`
   ADD PRIMARY KEY (`id_harga`);
 
 --
--- Indeks untuk tabel `tb_hubkeluarga`
+-- Indexes for table `tb_hubkeluarga`
 --
 ALTER TABLE `tb_hubkeluarga`
   ADD PRIMARY KEY (`id_hubkeluarga`);
 
 --
--- Indeks untuk tabel `tb_insha`
+-- Indexes for table `tb_insha`
 --
 ALTER TABLE `tb_insha`
   ADD PRIMARY KEY (`id_insha`),
   ADD KEY `tb_insha_id_anggotakk_foreign` (`id_anggotakk`);
 
 --
--- Indeks untuk tabel `tb_jenispekerjaan`
+-- Indexes for table `tb_jenispekerjaan`
 --
 ALTER TABLE `tb_jenispekerjaan`
   ADD PRIMARY KEY (`id_pekerjaan`);
 
 --
--- Indeks untuk tabel `tb_jeniswakaf`
+-- Indexes for table `tb_jeniswakaf`
 --
 ALTER TABLE `tb_jeniswakaf`
   ADD PRIMARY KEY (`id_jeniswakaf`);
 
 --
--- Indeks untuk tabel `tb_kartukeluarga`
+-- Indexes for table `tb_kartukeluarga`
 --
 ALTER TABLE `tb_kartukeluarga`
   ADD PRIMARY KEY (`id_kk`),
   ADD KEY `tb_kartukeluarga_villages_id_foreign` (`villages_id`);
 
 --
--- Indeks untuk tabel `tb_mustahiq`
+-- Indexes for table `tb_kas_insha`
+--
+ALTER TABLE `tb_kas_insha`
+  ADD PRIMARY KEY (`id_kas_insha`);
+
+--
+-- Indexes for table `tb_mustahiq`
 --
 ALTER TABLE `tb_mustahiq`
   ADD PRIMARY KEY (`id_mustahiq`),
@@ -993,26 +1027,32 @@ ALTER TABLE `tb_mustahiq`
   ADD KEY `tb_mustahiq_id_golongan_foreign` (`id_golongan`);
 
 --
--- Indeks untuk tabel `tb_muzakki`
+-- Indexes for table `tb_muzakki`
 --
 ALTER TABLE `tb_muzakki`
   ADD PRIMARY KEY (`id_muzakki`),
   ADD KEY `tb_muzakki_id_anggotakk_foreign` (`id_anggotakk`);
 
 --
--- Indeks untuk tabel `tb_pendidikan`
+-- Indexes for table `tb_pendidikan`
 --
 ALTER TABLE `tb_pendidikan`
   ADD PRIMARY KEY (`id_pendidikan`);
 
 --
--- Indeks untuk tabel `tb_statusperkawinan`
+-- Indexes for table `tb_pengeluaran_insha`
+--
+ALTER TABLE `tb_pengeluaran_insha`
+  ADD PRIMARY KEY (`id_peng_insha`);
+
+--
+-- Indexes for table `tb_statusperkawinan`
 --
 ALTER TABLE `tb_statusperkawinan`
   ADD PRIMARY KEY (`id_status`);
 
 --
--- Indeks untuk tabel `tb_wakaf`
+-- Indexes for table `tb_wakaf`
 --
 ALTER TABLE `tb_wakaf`
   ADD PRIMARY KEY (`id_wakaf`),
@@ -1020,169 +1060,175 @@ ALTER TABLE `tb_wakaf`
   ADD KEY `tb_wakaf_id_anggotakk_foreign` (`id_anggotakk`);
 
 --
--- Indeks untuk tabel `tb_zakat_fitrah`
+-- Indexes for table `tb_zakat_fitrah`
 --
 ALTER TABLE `tb_zakat_fitrah`
   ADD PRIMARY KEY (`id_zfitrah`),
   ADD KEY `tb_zakat_fitrah_id_muzakki_foreign` (`id_muzakki`);
 
 --
--- Indeks untuk tabel `tb_zakat_maal`
+-- Indexes for table `tb_zakat_maal`
 --
 ALTER TABLE `tb_zakat_maal`
   ADD PRIMARY KEY (`id_zmaal`),
   ADD KEY `tb_zakat_maal_id_muzakki_foreign` (`id_muzakki`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- Indeks untuk tabel `villages`
+-- Indexes for table `villages`
 --
 ALTER TABLE `villages`
   ADD PRIMARY KEY (`id`),
   ADD KEY `villages_district_id_foreign` (`district_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_agama`
+-- AUTO_INCREMENT for table `tb_agama`
 --
 ALTER TABLE `tb_agama`
   MODIFY `id_agama` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_anggotakk`
+-- AUTO_INCREMENT for table `tb_anggotakk`
 --
 ALTER TABLE `tb_anggotakk`
   MODIFY `id_anggotakk` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_fidyah`
+-- AUTO_INCREMENT for table `tb_fidyah`
 --
 ALTER TABLE `tb_fidyah`
   MODIFY `id_fidyah` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_golongan`
+-- AUTO_INCREMENT for table `tb_golongan`
 --
 ALTER TABLE `tb_golongan`
   MODIFY `id_golongan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_harga`
+-- AUTO_INCREMENT for table `tb_harga`
 --
 ALTER TABLE `tb_harga`
   MODIFY `id_harga` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_hubkeluarga`
+-- AUTO_INCREMENT for table `tb_hubkeluarga`
 --
 ALTER TABLE `tb_hubkeluarga`
   MODIFY `id_hubkeluarga` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_insha`
+-- AUTO_INCREMENT for table `tb_insha`
 --
 ALTER TABLE `tb_insha`
   MODIFY `id_insha` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_jenispekerjaan`
+-- AUTO_INCREMENT for table `tb_jenispekerjaan`
 --
 ALTER TABLE `tb_jenispekerjaan`
   MODIFY `id_pekerjaan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_jeniswakaf`
+-- AUTO_INCREMENT for table `tb_jeniswakaf`
 --
 ALTER TABLE `tb_jeniswakaf`
   MODIFY `id_jeniswakaf` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_kartukeluarga`
+-- AUTO_INCREMENT for table `tb_kartukeluarga`
 --
 ALTER TABLE `tb_kartukeluarga`
   MODIFY `id_kk` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_mustahiq`
+-- AUTO_INCREMENT for table `tb_mustahiq`
 --
 ALTER TABLE `tb_mustahiq`
   MODIFY `id_mustahiq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_muzakki`
+-- AUTO_INCREMENT for table `tb_muzakki`
 --
 ALTER TABLE `tb_muzakki`
   MODIFY `id_muzakki` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_pendidikan`
+-- AUTO_INCREMENT for table `tb_pendidikan`
 --
 ALTER TABLE `tb_pendidikan`
   MODIFY `id_pendidikan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_statusperkawinan`
+-- AUTO_INCREMENT for table `tb_pengeluaran_insha`
+--
+ALTER TABLE `tb_pengeluaran_insha`
+  MODIFY `id_peng_insha` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_statusperkawinan`
 --
 ALTER TABLE `tb_statusperkawinan`
   MODIFY `id_status` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_wakaf`
+-- AUTO_INCREMENT for table `tb_wakaf`
 --
 ALTER TABLE `tb_wakaf`
   MODIFY `id_wakaf` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_zakat_fitrah`
+-- AUTO_INCREMENT for table `tb_zakat_fitrah`
 --
 ALTER TABLE `tb_zakat_fitrah`
   MODIFY `id_zfitrah` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_zakat_maal`
+-- AUTO_INCREMENT for table `tb_zakat_maal`
 --
 ALTER TABLE `tb_zakat_maal`
   MODIFY `id_zmaal` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `cities`
+-- Constraints for table `cities`
 --
 ALTER TABLE `cities`
   ADD CONSTRAINT `cities_province_id_foreign` FOREIGN KEY (`province_id`) REFERENCES `provinces` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `districts`
+-- Constraints for table `districts`
 --
 ALTER TABLE `districts`
   ADD CONSTRAINT `districts_city_id_foreign` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `tb_anggotakk`
+-- Constraints for table `tb_anggotakk`
 --
 ALTER TABLE `tb_anggotakk`
   ADD CONSTRAINT `tb_anggotakk_id_agama_foreign` FOREIGN KEY (`id_agama`) REFERENCES `tb_agama` (`id_agama`) ON UPDATE CASCADE,
@@ -1193,57 +1239,57 @@ ALTER TABLE `tb_anggotakk`
   ADD CONSTRAINT `tb_anggotakk_id_status_kawin_foreign` FOREIGN KEY (`id_status_kawin`) REFERENCES `tb_statusperkawinan` (`id_status`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tb_fidyah`
+-- Constraints for table `tb_fidyah`
 --
 ALTER TABLE `tb_fidyah`
   ADD CONSTRAINT `tb_fidyah_id_anggotakk_foreign` FOREIGN KEY (`id_anggotakk`) REFERENCES `tb_anggotakk` (`id_anggotakk`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tb_insha`
+-- Constraints for table `tb_insha`
 --
 ALTER TABLE `tb_insha`
   ADD CONSTRAINT `tb_insha_id_anggotakk_foreign` FOREIGN KEY (`id_anggotakk`) REFERENCES `tb_anggotakk` (`id_anggotakk`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tb_kartukeluarga`
+-- Constraints for table `tb_kartukeluarga`
 --
 ALTER TABLE `tb_kartukeluarga`
   ADD CONSTRAINT `tb_kartukeluarga_villages_id_foreign` FOREIGN KEY (`villages_id`) REFERENCES `villages` (`id`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tb_mustahiq`
+-- Constraints for table `tb_mustahiq`
 --
 ALTER TABLE `tb_mustahiq`
   ADD CONSTRAINT `tb_mustahiq_id_anggotakk_foreign` FOREIGN KEY (`id_anggotakk`) REFERENCES `tb_anggotakk` (`id_anggotakk`) ON UPDATE CASCADE,
   ADD CONSTRAINT `tb_mustahiq_id_golongan_foreign` FOREIGN KEY (`id_golongan`) REFERENCES `tb_golongan` (`id_golongan`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tb_muzakki`
+-- Constraints for table `tb_muzakki`
 --
 ALTER TABLE `tb_muzakki`
   ADD CONSTRAINT `tb_muzakki_id_anggotakk_foreign` FOREIGN KEY (`id_anggotakk`) REFERENCES `tb_anggotakk` (`id_anggotakk`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tb_wakaf`
+-- Constraints for table `tb_wakaf`
 --
 ALTER TABLE `tb_wakaf`
   ADD CONSTRAINT `tb_wakaf_id_anggotakk_foreign` FOREIGN KEY (`id_anggotakk`) REFERENCES `tb_anggotakk` (`id_anggotakk`) ON UPDATE CASCADE,
   ADD CONSTRAINT `tb_wakaf_id_jeniswakaf_foreign` FOREIGN KEY (`id_jeniswakaf`) REFERENCES `tb_jeniswakaf` (`id_jeniswakaf`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tb_zakat_fitrah`
+-- Constraints for table `tb_zakat_fitrah`
 --
 ALTER TABLE `tb_zakat_fitrah`
   ADD CONSTRAINT `tb_zakat_fitrah_id_muzakki_foreign` FOREIGN KEY (`id_muzakki`) REFERENCES `tb_muzakki` (`id_muzakki`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tb_zakat_maal`
+-- Constraints for table `tb_zakat_maal`
 --
 ALTER TABLE `tb_zakat_maal`
   ADD CONSTRAINT `tb_zakat_maal_id_muzakki_foreign` FOREIGN KEY (`id_muzakki`) REFERENCES `tb_muzakki` (`id_muzakki`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `villages`
+-- Constraints for table `villages`
 --
 ALTER TABLE `villages`
   ADD CONSTRAINT `villages_district_id_foreign` FOREIGN KEY (`district_id`) REFERENCES `districts` (`id`);
