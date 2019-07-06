@@ -24,9 +24,9 @@
       <form action="{{ route('infaqshadaqah.store') }}" method="POST">
         {{ csrf_field() }}
        <div class="form-group">
-          <label for="kas_insha">Total Kas:</label>
+          {{-- <label for="kas_insha">Total Kas:</label> --}}
           @foreach($kas_insha as $list)
-          <input type="number" min="0" class="form-control" name="jml_kas_insha" value="{{ $list->jml_kas_insha }}" readonly>
+          <input type="hidden" min="0" class="form-control" name="jml_kas_insha" value="{{ $list->jml_kas_insha }}" readonly>
           @endforeach
         </div>
         <div class="form-group">
