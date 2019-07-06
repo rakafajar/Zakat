@@ -15,7 +15,7 @@ class CreateKartukeluargaTable extends Migration
     {
         Schema::create('tb_kartukeluarga', function (Blueprint $table) {
             $table->increments('id_kk');
-            $table->string('no_kk',20);
+            $table->string('no_kk',20)->unique();
             $table->text('alamat');
             $table->string('rt', 10);
             $table->string('rw', 10);

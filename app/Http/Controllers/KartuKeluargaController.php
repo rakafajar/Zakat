@@ -46,7 +46,7 @@ class KartuKeluargaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'no_kk' => 'required',
+            'no_kk' => 'required|unique:tb_kartukeluarga',
             'id_villages' => 'required',
             'district_id' => 'required',
             'id_cities' => 'required',

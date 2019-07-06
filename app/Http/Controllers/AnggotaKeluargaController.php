@@ -56,7 +56,7 @@ class AnggotaKeluargaController extends Controller
     {
         $this->validate($request, [
             'nama_lengkap' => 'required',
-            'nomor_nik' => 'required|numeric',
+            'nik' => 'required|numeric|unique:tb_anggotakk',
             'nomor_kk' => 'required',
             'jenis_kelamin' => 'required',
             'tempat_lahir' => 'required',
@@ -75,7 +75,7 @@ class AnggotaKeluargaController extends Controller
 
         $anggotakeluarga = new AnggotaKKModel;
         $anggotakeluarga->nama_lengkap = $request['nama_lengkap'];
-        $anggotakeluarga->nik = $request['nomor_nik'];
+        $anggotakeluarga->nik = $request['nik'];
         $anggotakeluarga->id_kk = $request['nomor_kk'];
         $anggotakeluarga->jk = $request['jenis_kelamin'];
         $anggotakeluarga->tmp_lahir = $request['tempat_lahir'];

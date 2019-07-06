@@ -30,7 +30,7 @@
           </div>
           <div class="form-group">
             <label for="nik">NIK:</label>
-            <input type="number" min="0" class="form-control" id="nomor_nik" name="nomor_nik" value="{{ old('nomor_nik') }}">
+            <input type="number" min="0" class="form-control" id="nik" name="nik" value="{{ old('nik') }}">
           </div>
           <div class="form-group">
             <label for="kk">No. Kartu Keluarga:</label>

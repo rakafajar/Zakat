@@ -16,7 +16,7 @@ class CreateAnggotakkTable extends Migration
         Schema::create('tb_anggotakk', function (Blueprint $table) {
             $table->increments('id_anggotakk');
             $table->string('nama_lengkap');
-            $table->char('nik');
+            $table->char('nik')->unique();
             $table->integer('id_kk')->unsigned();
             $table->enum('jk', ['Laki-laki', 'Perempuan']);
             $table->string('tmp_lahir');
