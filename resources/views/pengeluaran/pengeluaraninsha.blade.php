@@ -20,9 +20,8 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text bg-light">Total Kas</span>
                   </div>
-                  @foreach($kasinsha as $list)
-                  <input type="text" class="form-control" name="jml_kas_insha" value=" Rp.<?php echo format_uang($list->jml_kas_insha); ?>" readonly>
-                  @endforeach
+                  <input type="text" class="form-control" value=" Rp.<?php echo format_uang($kas->jml_kas); ?>" readonly>
+                  <input type="hidden" class="form-control" name="jml_kas" value="{{ $kas->jml_kas }}" readonly>
                 </div>
               </div>
               <div class="col-sm-6">

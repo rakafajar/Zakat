@@ -7,7 +7,7 @@ use App\InfaqShadaqahModel;
 // use App\ViewTotalKasInshaModel;
 use App\ViewInshaModel;
 use App\ViewAnggotakkModel;
-use App\KasInshaModel;
+// use App\KasModel;
 use DB;
 use PDF;
 
@@ -21,9 +21,9 @@ class InfaqShadaqahController extends Controller
     public function index()
     {
         $insha = ViewInshaModel::all();
-        $kas_insha = KasInshaModel::all();
+        $kas = DB::table('tb_kas')->where('id_kas', 1)->first();
         // $view_tot_insha = ViewTotalKasInshaModel::all();
-        return view('infaqshodaqoh.index', compact('insha', 'kas_insha'));
+        return view('infaqshodaqoh.index', compact('insha', 'kas'));
     }
 
     /**
@@ -34,8 +34,8 @@ class InfaqShadaqahController extends Controller
     public function create()
     {
         $anggotakk = ViewAnggotakkModel::all();
-        $kas_insha = KasInshaModel::all();
-        return view('infaqshodaqoh.create', compact('anggotakk', 'kas_insha'));
+        $kas = DB::table('tb_kas')->where('id_kas', 1)->first();
+        return view('infaqshodaqoh.create', compact('anggotakk', 'kas'));
     }
 
     /**
@@ -55,8 +55,8 @@ class InfaqShadaqahController extends Controller
         $insha->nominal_insha = $request['nominal_insha'];
         $insha->save();
 
-        DB::table('tb_kas_insha')->where('id_kas_insha', '=', '1')->update([
-            'jml_kas_insha' => $request['nominal_insha'] + $request['jml_kas_insha']
+        DB::table('tb_kas')->where('id_kas', '=', '1')->update([
+            'jml_kas' => $request['nominal_insha'] + $request['jml_kas']
         ]);
 
         return redirect(route('infaqshadaqah.index'))->with('success', 'Data Berhasil Disimpan!');

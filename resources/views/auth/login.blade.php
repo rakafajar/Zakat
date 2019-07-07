@@ -24,7 +24,7 @@
         </div>
         <div class="col-md-6 login-form">
         <div class="profile-img" id="my-content">
-            <img src="{{ asset('img/logo.png')}}" alt="profile_img" height="140px" width="140px;" class="img img-responsive">
+            <img src="{{ asset('img/logo_ziswaf.png')}}" alt="profile_img" height="140px" width="140px;" class="img img-responsive">
         </div>
         <h3 id="fl">Login Admin</h3>
         <form method="POST" action="{{ route('login') }}">

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableKasInsha extends Migration
+class CreateKasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateTableKasInsha extends Migration
      */
     public function up()
     {
-        Schema::create('tb_kas_insha', function (Blueprint $table) {
-            $table->char('id_kas_insha')->primary();
-            $table->integer('jml_kas_insha');
+        Schema::create('tb_kas', function (Blueprint $table) {
+            $table->char('id_kas')->primary();
+            $table->integer('jml_kas');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateTableKasInsha extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_kas_insha');
+        Schema::dropIfExists('tb_kas');
     }
 }

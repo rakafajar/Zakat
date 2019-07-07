@@ -11,7 +11,7 @@
 
   <title>Admin - ZISWAF</title>
 
-  <link rel="icon" href="{{ asset('img/logo.png') }}">
+  <link rel="icon" href="{{ asset('img/logo_ziswaf.png') }}">
 
   <!-- Custom fonts for this template-->
   <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -33,7 +33,7 @@
 
   <nav class="navbar navbar-expand navbar-dark bg-info static-top">
 
-    <a class="navbar-brand mr-1 font1" href="{{route('dashboard.index')}}">Aplikasi ZISWAF <img src="{{ asset('img/logo.png') }}" style="width: 30px;" class="img-responsive"></a>
+    <a class="navbar-brand mr-1 font1" href="{{route('dashboard.index')}}">Aplikasi ZISWAF <img src="{{ asset('img/logo_ziswaf.png') }}" style="width: 30px;" class="img-responsive"></a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>

@@ -24,9 +24,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text bg-light">Total Kas</span>
               </div>
-              @foreach($kas_insha as $list)
-              <input type="text" class="form-control" value="Rp. <?php echo format_uang($list->jml_kas_insha) ?>" disabled>
-              @endforeach
+              <input type="text" class="form-control" value="Rp. <?php echo format_uang($kas->jml_kas) ?>" disabled>
             </div>
           </div>
           <div class="card-body">
