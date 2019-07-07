@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\PengeluaranInshaModel;
+use App\PengeluaranWakafModel;
 use DB;
 
 class PengeluaranWakafController extends Controller
@@ -20,7 +20,7 @@ class PengeluaranWakafController extends Controller
     public function index()
     {
         $kas = DB::table('tb_kas')->where('id_kas', 2)->first();
-        $pengeluaran = PengeluaranInshaModel::all();
+        $pengeluaran = PengeluaranWakafModel::all();
         return view('pengeluaran.pengeluaranwakaf', compact('kas', 'pengeluaran'));
     }
 
@@ -42,12 +42,12 @@ class PengeluaranWakafController extends Controller
      */
     public function store(Request $request)
     {
-        $pengeluaran = new PengeluaranInshaModel();
-        $pengeluaran->jml_peng_insha = $request['jml_peng_insha'];
+        $pengeluaran = new PengeluaranWakafModel();
+        $pengeluaran->jml_peng_wakaf = $request['jml_peng_wakaf'];
         $pengeluaran->save();
 
         DB::table('tb_kas')->where('id_kas', 2)->update([
-            'jml_kas' => $request['jml_kas'] - $request['jml_peng_insha']
+            'jml_kas' => $request['jml_kas'] - $request['jml_peng_wakaf']
         ]);
 
         return back()->with('success', 'Pengeluaran Berhasil!');
