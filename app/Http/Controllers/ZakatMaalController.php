@@ -43,8 +43,14 @@ class ZakatMaalController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nama_muzakki' => 'required',
+            'jml' => 'required',
+            'harga_emas' => 'required',
+            'nisab' => 'required',
+        ]);
         $zakatmaal = new ZakatMaalModel();
-        $muzakki = $zakatmaal->id_muzakki = $request['id_muzakki'];
+        $muzakki = $zakatmaal->id_muzakki = $request['nama_muzakki'];
         $jml = $zakatmaal->jml = $request['jml'];
         $harga_emas = $zakatmaal->harga_emas = $request['harga_emas'];
         $nisab = $zakatmaal->nisab = $request['nisab'];
@@ -87,8 +93,14 @@ class ZakatMaalController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'nama_muzakki' => 'required',
+            'jml' => 'required',
+            'harga_emas' => 'required',
+            'nisab' => 'required',
+        ]);
         $zakatmaal = ZakatMaalModel::find($id);
-        $muzakki = $zakatmaal->id_muzakki = $request['id_muzakki'];
+        $muzakki = $zakatmaal->id_muzakki = $request['nama_muzakki'];
         $jml = $zakatmaal->jml = $request['jml'];
         $harga_emas = $zakatmaal->harga_emas = $request['harga_emas'];
         $nisab = $zakatmaal->nisab = $request['nisab'];

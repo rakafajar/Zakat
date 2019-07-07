@@ -12,12 +12,21 @@
   <div class="card-header">Form Zakat Maal</div>
   <div class="card-body">
     <div class="col-md-8">
+        @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
       <form action="{{ route('zakatmaal.store')}}" method="POST">
         {{ csrf_field() }}
         <div class="form-group">
           <label for="sel1">Pilih Muzakki:</label>
-          <select class="form-control search" name="id_muzakki">
-            <option>-- Pilih Muzakki --</option>
+          <select class="form-control search" name="nama_muzakki">
+            <option value="">-- Pilih Muzakki --</option>
             @foreach($view_muzakki as $list)
             <option value="{{ $list->id_muzakki }}">NIK : {{ $list->nik }} - {{ $list->nama_lengkap }} </option>
             @endforeach
@@ -69,7 +78,7 @@
             </div>
             <div class="form-group">
               <label for="jml"><strong>Jumlah Harta:</strong></label>
-              <input type="number" min="0" class="form-control" name="jml" id="jml" value="" readonly="">
+              <input type="number" min="0" class="form-control" name="jml" id="jml" value="" readonly="" required>
             </div>
           </div>
         </div><br>

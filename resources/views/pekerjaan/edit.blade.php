@@ -28,7 +28,7 @@
           <input type="text" class="form-control" id="nama_pekerjaan" name="nama_pekerjaan" value="{{ $jenis_pekerjaan->nama_pekerjaan}}">
         </div>
         <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
-        <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>
+        {{-- <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button> --}}
         <a href="{{ route('jenispekerjaan.index') }}" class="btn btn-danger btn-sm"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
       </form>
     </div>    

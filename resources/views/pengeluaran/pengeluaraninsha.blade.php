@@ -21,7 +21,7 @@
                     <span class="input-group-text bg-light">Total Kas</span>
                   </div>
                   @foreach($kasinsha as $list)
-                  <input type="text" class="form-control" name="jml_kas_insha" value="{{ $list->jml_kas_insha}} " readonly>
+                  <input type="text" class="form-control" name="jml_kas_insha" value=" Rp.<?php echo format_uang($list->jml_kas_insha); ?>" readonly>
                   @endforeach
                 </div>
               </div>
@@ -49,6 +49,7 @@
                   <tr>
                     <th>No.</th>
                     <th>Jumlah Pengeluaran</th>
+                    <th>Tanggal Pembayaran</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -58,7 +59,9 @@
                   <?php $no++; ?>
                   <tr>
                     <td>{{ $no }}</td>
-                    <td>{{ $list->jml_peng_insha }}</td>
+                    <td>
+                        Rp. <?php echo format_uang($list->jml_peng_insha); ?>
+                    <td>{{ $list->created_at }}</td>
                     <th style="text-align: center;">
                       <a href="" class="btn btn-success btn-sm"><i class="fas fa-print"></i></a>
                     	<a href="{{ URL::to('pengeluaraninsha/destroy/'.$list->id_peng_insha) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>

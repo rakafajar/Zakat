@@ -17,6 +17,12 @@ class WakafTableSeeder extends Seeder
                 'id_jeniswakaf' => '1',
                 'nominal_wakaf' => '500000',
                 'created_at' => '2019-06-28 05:47:03'
+            ],
+            [
+                'id_anggotakk' => '2',
+                'id_jeniswakaf' => '4',
+                'nominal_wakaf' => '500000',
+                'created_at' => '2017-06-28 05:47:03'
             ]
         ));
     }
