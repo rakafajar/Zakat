@@ -7,7 +7,7 @@
 	</li>
 	<li class="breadcrumb-item active">Pengeluaran Infaq & Shodaqoh</li>
 </ol>
-
+        
         <div class="card mb-3">
           <div class="card-header">
             Form Pengeluaran Infaq & Shodaqoh
@@ -48,7 +48,7 @@
                   <tr>
                     <th>No.</th>
                     <th>Jumlah Pengeluaran</th>
-                    <th>Tanggal Pembayaran</th>
+                    <th>Tanggal Pengeluaran</th>
                     <th>Action</th>
                   </tr>
                 </thead>

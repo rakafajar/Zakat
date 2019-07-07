@@ -16,11 +16,9 @@
                 <div class="card-body-icon">
                   <i class="fas fa-money-check"></i>
                 </div>
-                @foreach($view_tot_insha as $list)
                 <div class="mr-5">
-                  <strong>Kas Infaq : <br>Rp. <?php echo format_uang($list->total_kas_insha) ?></strong>
+                  <strong>Kas Infaq : <br>Rp. <?php echo format_uang($kas->jml_kas) ?></strong>
                 </div>
-                @endforeach
               </div>
               <a class="card-footer text-white clearfix small z-1" href="{{ route('infaqshadaqah.index')}}">
                 <span class="float-left">Lihat Detail</span>
