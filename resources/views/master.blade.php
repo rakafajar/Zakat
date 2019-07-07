@@ -117,7 +117,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <a class="dropdown-item" href="{{ route('pengeluaraninsha.index') }}">Pengeluaran Infaq</a>
-          <a class="dropdown-item" href="{{-- {{ route('anggotakeluarga.index') }} --}}">Pengeluaran Wakaf</a>
+          <a class="dropdown-item" href="{{ route('pengeluaranwakaf.index') }}">Pengeluaran Wakaf</a>
         </div>
       </li>
       <li class="nav-item dropdown">

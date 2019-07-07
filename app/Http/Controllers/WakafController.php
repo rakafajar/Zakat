@@ -22,7 +22,8 @@ class WakafController extends Controller
     {
         $view_wakaf = ViewWakafModel::all();
         $view_tot_wakaf = ViewTotalKasWakafModel::all();
-        return view('wakaf.index', compact('view_wakaf', 'view_tot_wakaf'));
+        $kas = DB::table('tb_kas')->where('id_kas', 2)->first();
+        return view('wakaf.index', compact('view_wakaf', 'view_tot_wakaf', 'kas'));
     }
 
     /**
@@ -34,7 +35,8 @@ class WakafController extends Controller
     {
         $anggotakk = ViewAnggotakkModel::all();
         $jenis_wakaf = JenisWakafModel::all();
-        return view('wakaf.create', compact('jenis_wakaf', 'anggotakk'));
+        $kas = DB::table('tb_kas')->where('id_kas', 2)->first();
+        return view('wakaf.create', compact('jenis_wakaf', 'anggotakk', 'kas'));
     }
 
     /**
@@ -55,6 +57,10 @@ class WakafController extends Controller
         $wakaf->id_jeniswakaf = $request['jenis_wakaf'];
         $wakaf->nominal_wakaf = $request['nominal_wakaf'];
         $wakaf->save();
+
+        DB::table('tb_kas')->where('id_kas', '=', '2')->update([
+            'jml_kas' => $request['nominal_wakaf'] + $request['jml_kas']
+        ]);
 
         return redirect(route('wakaf.index'))->with('success', 'Data Berhasil Disimpan');
     }
