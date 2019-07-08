@@ -22,9 +22,10 @@ class FidyahController extends Controller
     public function index()
     {
         $fidyah = ViewFidyahModel::all();
+        $kas = DB::table('tb_kas')->where('id_kas', 3)->first();
         $view_tot_fidyah = ViewTotalKasFidyahModel::all();
 
-        return view('fidyah.index', compact('fidyah', 'view_tot_fidyah'));
+        return view('fidyah.index', compact('fidyah', 'view_tot_fidyah', 'kas'));
     }
 
     /**
@@ -35,7 +36,8 @@ class FidyahController extends Controller
     public function create()
     {
         $anggotakk = AnggotaKKModel::all();
-        return view('fidyah.create', compact('anggotakk'));
+        $kas = DB::table('tb_kas')->where('id_kas', 3)->first();
+        return view('fidyah.create', compact('anggotakk','kas'));
     }
 
     /**
@@ -54,6 +56,10 @@ class FidyahController extends Controller
         $fidyah->id_anggotakk = $request['nama_fidyah'];
         $fidyah->nominal_fidyah = $request['nominal_fidyah'];
         $fidyah->save();
+
+        DB::table('tb_kas')->where('id_kas', '=', '3')->update([
+            'jml_kas' => $request['nominal_fidyah'] + $request['jml_kas']
+        ]);
 
         return redirect(route('fidyah.index'))->with('success', 'Data Berhasil Disimpan!');
     }

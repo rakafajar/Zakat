@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTablePengeluaranWakaf extends Migration
+class CreateTablePengeluaranFidyah extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateTablePengeluaranWakaf extends Migration
      */
     public function up()
     {
-        Schema::create('tb_pengeluaran_wakaf', function (Blueprint $table) {
-            $table->increments('id_peng_wakaf');
-            $table->integer('jml_peng_wakaf');
+        Schema::create('tb_pengeluaran_fidyah', function (Blueprint $table) {
+            $table->increments('id_peng_fidyah');
+            $table->integer('jml_peng_fidyah');
             $table->string('keterangan');
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ class CreateTablePengeluaranWakaf extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_pengeluaran_wakaf');
+        Schema::dropIfExists('tb_pengeluaran_fidyah');
     }
 }

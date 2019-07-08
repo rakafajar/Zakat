@@ -29,7 +29,13 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text bg-light">Pengeluaran</span>
                   </div>
-                  <input type="number" class="form-control" name="jml_peng_wakaf" value="" placeholder="Rp.">
+                  <input type="number" class="form-control" name="jml_peng_wakaf" value="" placeholder="Rp." required>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="keterangan">Keterangan:</label>
+                  <textarea class="form-control" rows="5" name="keterangan" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
                 <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>
@@ -48,6 +54,7 @@
                   <tr>
                     <th>No.</th>
                     <th>Jumlah Pengeluaran</th>
+                    <th>Keterangan</th>
                     <th>Tanggal Pembayaran</th>
                     <th>Action</th>
                   </tr>
@@ -58,8 +65,8 @@
                   <?php $no++; ?>
                   <tr>
                     <td>{{ $no }}</td>
-                    <td>
-                        Rp. <?php echo format_uang($list->jml_peng_wakaf); ?>
+                    <td>Rp. <?php echo format_uang($list->jml_peng_wakaf); ?></td>
+                    <td>{{$list->keterangan}}</td>
                     <td><?php echo tanggal_indonesia($list->created_at); ?></td>
                     <th style="text-align: center;">
                       <a href="" class="btn btn-success btn-sm"><i class="fas fa-print"></i></a>

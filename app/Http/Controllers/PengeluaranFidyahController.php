@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\PengeluaranWakafModel;
+use App\PengeluaranFidyahModel;
 use DB;
 
-class PengeluaranWakafController extends Controller
+class PengeluaranFidyahController extends Controller
 {
     public function __construct()
     {
@@ -19,9 +19,9 @@ class PengeluaranWakafController extends Controller
      */
     public function index()
     {
-        $kas = DB::table('tb_kas')->where('id_kas', 2)->first();
-        $pengeluaran = PengeluaranWakafModel::all();
-        return view('pengeluaran.pengeluaranwakaf', compact('kas', 'pengeluaran'));
+        $kas = DB::table('tb_kas')->where('id_kas', 3)->first();
+        $pengeluaran = PengeluaranFidyahModel::all();
+        return view('pengeluaran.pengeluaranfidyah', compact('kas', 'pengeluaran'));
     }
 
     /**
@@ -42,13 +42,13 @@ class PengeluaranWakafController extends Controller
      */
     public function store(Request $request)
     {
-        $pengeluaran = new PengeluaranWakafModel();
-        $pengeluaran->jml_peng_wakaf = $request['jml_peng_wakaf'];
+        $pengeluaran = new PengeluaranFidyahModel();
+        $pengeluaran->jml_peng_fidyah = $request['jml_peng_fidyah'];
         $pengeluaran->keterangan = $request['keterangan'];
         $pengeluaran->save();
 
-        DB::table('tb_kas')->where('id_kas', 2)->update([
-            'jml_kas' => $request['jml_kas'] - $request['jml_peng_wakaf']
+        DB::table('tb_kas')->where('id_kas', 3)->update([
+            'jml_kas' => $request['jml_kas'] - $request['jml_peng_fidyah']
         ]);
 
         return back()->with('success', 'Pengeluaran Berhasil!');

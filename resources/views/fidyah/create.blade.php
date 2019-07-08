@@ -25,6 +25,10 @@
       <form action="{{ route('fidyah.store') }}" method="POST">
         {{ csrf_field() }}
         <div class="form-group">
+          {{-- <label for="kas_insha">Total Kas:</label> --}}
+          <input type="hidden" min="0" class="form-control" name="jml_kas" value="{{ $kas->jml_kas }}" readonly>
+        </div>
+        <div class="form-group">
           <label for="sel1">Pilih Fidyah:</label>
           <select class="form-control search" name="nama_fidyah">
             <option value="">-- Pilih Nama --</option>

@@ -71,9 +71,13 @@ Route::get('infaqshadaqah/invoice/{id}', 'InfaqShadaqahController@buktiBayar');
 Route::resource('pengeluaraninsha', 'PengeluaranInshaController');
 Route::get('pengeluaraninsha/destroy/{id}', 'PengeluaranInshaController@destroy');
 
-//Untuk Controller dan View Pengeluaran Infaq & Shodaqoh
+//Untuk Controller dan View Pengeluaran Wakaf
 Route::resource('pengeluaranwakaf', 'PengeluaranWakafController');
 Route::get('pengeluaranwakaf/destroy/{id}', 'PengeluaranWakafController@destroy');
+
+//Untuk Controller dan View Pengeluaran Wakaf
+Route::resource('pengeluaranfidyah', 'PengeluaranFidyahController');
+Route::get('pengeluaranfidyah/destroy/{id}', 'PengeluaranFidyahController@destroy');
 
 
 // Untuk Controller dan View Fidyah
