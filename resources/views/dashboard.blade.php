@@ -17,7 +17,7 @@
                   <i class="fas fa-money-check"></i>
                 </div>
                 <div class="mr-5">
-                  <strong>Kas Infaq : <br>Rp. <?php echo format_uang($kas->jml_kas) ?></strong>
+                  <strong>Kas Infaq : <br>Rp. <?php echo format_uang($kas_infaq->jml_kas) ?></strong>
                 </div>
               </div>
               <a class="card-footer text-white clearfix small z-1" href="{{ route('infaqshadaqah.index')}}">
@@ -34,11 +34,9 @@
                 <div class="card-body-icon">
                   <i class="fas fa-money-check"></i>
                 </div>
-                @foreach($view_tot_wakaf as $list)
                 <div class="mr-5">
-                  <strong>Kas Wakaf : <br>Rp. <?php echo format_uang($list->total_kas_wakaf) ?></strong>
+                  <strong>Kas Wakaf : <br>Rp. <?php echo format_uang($kas_wakaf->jml_kas) ?></strong>
                 </div>
-                @endforeach
               </div>
               <a class="card-footer text-white clearfix small z-1" href="{{ route('wakaf.index')}}">
                 <span class="float-left">Lihat Detail</span>
@@ -54,11 +52,9 @@
                 <div class="card-body-icon">
                   <i class="fas fa-money-check"></i>
                 </div>
-                @foreach($view_tot_fidyah as $list)
                 <div class="mr-5">
-                  <strong>Kas Fidyah : <br>Rp. <?php echo format_uang($list->total_kas_fidyah) ?></strong>
+                  <strong>Kas Fidyah : <br>Rp. <?php echo format_uang($kas_fidyah->jml_kas) ?></strong>
                 </div>
-                @endforeach
               </div>
               <a class="card-footer text-white clearfix small z-1" href="{{ route('fidyah.index')}}">
                 <span class="float-left">Lihat Detail</span>
@@ -94,11 +90,9 @@
                 <div class="card-body-icon">
                   <i class="fas fa-money-check"></i>
                 </div>
-                @foreach($view_tot_fidyah as $list)
                 <div class="mr-5">
-                  <strong>Kas Zakat Maal : <br>Rp. <?php echo format_uang($list->total_kas_zmaal) ?></strong>
+                  <strong>Kas Zakat Maal : <br>Rp. <?php echo format_uang($kas_zmaal->jml_kas) ?></strong>
                 </div>
-                @endforeach
               </div>
               <a class="card-footer text-white clearfix small z-1" href="#">
                 <span class="float-left">View Details</span>

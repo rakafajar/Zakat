@@ -119,7 +119,7 @@
           <a class="dropdown-item" href="{{ route('pengeluaraninsha.index') }}">Pengeluaran Infaq</a>
           <a class="dropdown-item" href="{{ route('pengeluaranwakaf.index') }}">Pengeluaran Wakaf</a>
           <a class="dropdown-item" href="{{ route('pengeluaranfidyah.index') }}">Pengeluaran Fidyah</a>
-          <a class="dropdown-item" href="{{ route('pengeluaranzakatmaal.index') }}">Pengeluaran ZMaal</a>
+          <a class="dropdown-item" href="{{ route('pengeluaranzakatmaal.index') }}">Pengeluaran Z Maal</a>
         </div>
       </li>
       <li class="nav-item dropdown">
