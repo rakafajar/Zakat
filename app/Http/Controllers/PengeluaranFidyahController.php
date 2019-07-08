@@ -96,6 +96,7 @@ class PengeluaranFidyahController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('tb_pengeluaran_fidyah')->where('id_peng_fidyah', '=', $id)->delete();
+        return back()->with('warning', 'Data Berhasil Dihapus!');
     }
 }

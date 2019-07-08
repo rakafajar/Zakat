@@ -70,7 +70,7 @@
                     <td><?php echo tanggal_indonesia($list->created_at); ?></td>
                     <th style="text-align: center;">
                       <a href="" class="btn btn-success btn-sm"><i class="fas fa-print"></i></a>
-                    	<a href="{{ URL::to('pengeluaraninsha/destroy/'.$list->id_peng_insha) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
+                    	<a href="{{ URL::to('pengeluaranwakaf/destroy/'.$list->id_peng_wakaf) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
                     </th>
                   </tr>
                   @endforeach

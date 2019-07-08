@@ -94,6 +94,7 @@ class PengeluaranZakatMaalController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('tb_pengeluaran_zakat_maal')->where('id_peng_zmaal', '=', $id)->delete();
+        return back()->with('warning', 'Data Berhasil Dihapus!');
     }
 }
