@@ -29,7 +29,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text bg-light">Pengeluaran</span>
                   </div>
-                  <input type="number" class="form-control" name="jml_peng_insha" value="" placeholder="Rp.">
+                  <input type="number" class="form-control" name="jml_peng_wakaf" value="" placeholder="Rp.">
                 </div>
                 <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
                 <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>
@@ -59,7 +59,7 @@
                   <tr>
                     <td>{{ $no }}</td>
                     <td>
-                        Rp. <?php echo format_uang($list->jml_peng_insha); ?>
+                        Rp. <?php echo format_uang($list->jml_peng_wakaf); ?>
                     <td><?php echo tanggal_indonesia($list->created_at); ?></td>
                     <th style="text-align: center;">
                       <a href="" class="btn btn-success btn-sm"><i class="fas fa-print"></i></a>
