@@ -47,6 +47,7 @@ class PengeluaranInshaController extends Controller
     {
         $pengeluaran = new PengeluaranInshaModel();
         $pengeluaran->jml_peng_insha = $request['jml_peng_insha'];
+        $pengeluaran->keterangan = $request['keterangan'];
         $pengeluaran->save();
 
         DB::table('tb_kas')->where('id_kas', 1)->update([

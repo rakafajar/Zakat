@@ -16,6 +16,7 @@ class CreateTablePengeluaranInsha extends Migration
         Schema::create('tb_pengeluaran_insha', function (Blueprint $table) {
             $table->increments('id_peng_insha');
             $table->integer('jml_peng_insha');
+            $table->string('keterangan');
             $table->timestamps();
         });
     }

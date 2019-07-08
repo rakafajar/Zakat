@@ -31,9 +31,15 @@
                   </div>
                   <input type="number" class="form-control" name="jml_peng_insha" value="" placeholder="Rp.">
                 </div>
+              </div>              
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="keterangan">Keterangan:</label>
+                  <textarea class="form-control" rows="5" name="keterangan"></textarea>
+                </div>
                 <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
                 <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>
-              </div>              
+              </div>
             </form>
           </div>
         </div>
@@ -49,6 +55,7 @@
                     <th>No.</th>
                     <th>Jumlah Pengeluaran</th>
                     <th>Tanggal Pengeluaran</th>
+                    <th>Keterangan</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -62,6 +69,10 @@
                         Rp. <?php echo format_uang($list->jml_peng_insha); ?>
                     <td>
                         <?php echo tanggal_indonesia($list->created_at); ?>
+                    </td>
+                    <td>
+                        {{ $list->keterangan }}
+                    </td>                        
                     <th style="text-align: center;">
                       <a href="" class="btn btn-success btn-sm"><i class="fas fa-print"></i></a>
                     	<a href="{{ URL::to('pengeluaraninsha/destroy/'.$list->id_peng_insha) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
