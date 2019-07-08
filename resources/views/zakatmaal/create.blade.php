@@ -24,6 +24,10 @@
       <form action="{{ route('zakatmaal.store')}}" method="POST">
         {{ csrf_field() }}
         <div class="form-group">
+          {{-- <label for="kas_insha">Total Kas:</label> --}}
+          <input type="hidden" min="0" class="form-control" name="jml_kas" value="{{ $kas->jml_kas }}" readonly>
+        </div>
+        <div class="form-group">
           <label for="sel1">Pilih Muzakki:</label>
           <select class="form-control search" name="nama_muzakki">
             <option value="">-- Pilih Muzakki --</option>

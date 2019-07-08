@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(InfaqShadaqahTableSeeder::class);
         // $this->call(WakafTableSeeder::class);
         $this->call(ZakatFitrahTableSeeder::class);
-        $this->call(ZakatMaalTableSeeder::class);
+        // $this->call(ZakatMaalTableSeeder::class);
         $this->call(KasSeeder::class);
     }
 }

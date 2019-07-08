@@ -8,6 +8,7 @@ use App\ViewMuzakkiModel;
 use App\ViewZakatMaalModel;
 use App\ViewTotalKasZakatMaalModel;
 use PDF;
+use DB;
 
 class ZakatMaalController extends Controller
 {
@@ -19,8 +20,8 @@ class ZakatMaalController extends Controller
     public function index()
     {
         $view_zakat_maal = ViewZakatMaalModel::all();
-        $view_tot_kas_zakat_maal = ViewTotalKasZakatMaalModel::all();
-        return view('zakatmaal.index', compact('view_zakat_maal', 'view_tot_kas_zakat_maal'));
+        $kas = DB::table('tb_kas')->where('id_kas', 4)->first();
+        return view('zakatmaal.index', compact('view_zakat_maal', 'kas'));
     }
 
     /**
@@ -31,8 +32,8 @@ class ZakatMaalController extends Controller
     public function create()
     {
         $view_muzakki = ViewMuzakkiModel::all();
-
-        return view('zakatmaal.create', compact('view_muzakki'));
+        $kas = DB::table('tb_kas')->where('id_kas', 4)->first();
+        return view('zakatmaal.create', compact('view_muzakki', 'kas'));
     }
 
     /**
@@ -56,7 +57,11 @@ class ZakatMaalController extends Controller
         $nisab = $zakatmaal->nisab = $request['nisab'];
         $zakatmaal->save();
 
-        return view('zakatmaal.update',compact('zakatmaal'), ['jml' => $jml, 'harga_emas' => $harga_emas, 'nisab' => $nisab]);
+        DB::table('tb_kas')->where('id_kas', '=', '4')->update([
+            'jml_kas' => $request['nisab'] + $request['jml_kas']
+        ]);
+
+        return view('zakatmaal.update', compact('zakatmaal'), ['jml' => $jml, 'harga_emas' => $harga_emas, 'nisab' => $nisab]);
     }
 
     /**
