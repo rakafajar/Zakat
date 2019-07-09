@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use PDF;
 // use App\KasModel;
 use App\PengeluaranInshaModel;
 use DB;
@@ -22,8 +23,8 @@ class PengeluaranInshaController extends Controller
 
     public function index()
     {
-    	$kas = DB::table('tb_kas')->where('id_kas', 1)->first();
-    	$pengeluaran = PengeluaranInshaModel::all();
+        $kas = DB::table('tb_kas')->where('id_kas', 1)->first();
+        $pengeluaran = PengeluaranInshaModel::all();
         return view('pengeluaran.pengeluaraninsha', compact('kas', 'pengeluaran'));
     }
 
@@ -54,7 +55,7 @@ class PengeluaranInshaController extends Controller
             'jml_kas' => $request['jml_kas'] - $request['jml_peng_insha']
         ]);
 
-        return back()->with('success','Pengeluaran Berhasil!');
+        return back()->with('success', 'Pengeluaran Berhasil!');
     }
 
     /**
@@ -101,5 +102,14 @@ class PengeluaranInshaController extends Controller
     {
         DB::table('tb_pengeluaran_insha')->where('id_peng_insha', '=', $id)->delete();
         return back()->with('warning', 'Data Berhasil Dihapus!');
+    }
+    public function buktiBayar($id)
+    {
+        //GET DATA BERDASARKAN ID
+        $pengeluaran = PengeluaranInshaModel::find($id);
+        //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
+        //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
+        $pdf = PDF::loadView('pengeluaran.invoiceinsha', compact('pengeluaran'))->setPaper('a4', 'landscape');
+        return $pdf->stream();
     }
 }
