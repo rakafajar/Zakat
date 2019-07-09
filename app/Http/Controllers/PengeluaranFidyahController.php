@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\PengeluaranFidyahModel;
 use DB;
+use PDF;
 
 class PengeluaranFidyahController extends Controller
 {
@@ -98,5 +99,15 @@ class PengeluaranFidyahController extends Controller
     {
         DB::table('tb_pengeluaran_fidyah')->where('id_peng_fidyah', '=', $id)->delete();
         return back()->with('warning', 'Data Berhasil Dihapus!');
+    }
+
+    public function buktiBayar($id)
+    {
+        //GET DATA BERDASARKAN ID
+        $pengeluaran = PengeluaranFidyahModel::find($id);
+        //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
+        //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
+        $pdf = PDF::loadView('pengeluaran.invoicefidyah', compact('pengeluaran'))->setPaper('a4', 'landscape');
+        return $pdf->stream();
     }
 }
