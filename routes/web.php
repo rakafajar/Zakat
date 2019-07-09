@@ -77,7 +77,7 @@ Route::resource('pengeluaranwakaf', 'PengeluaranWakafController');
 Route::get('pengeluaranwakaf/destroy/{id}', 'PengeluaranWakafController@destroy');
 Route::get('pengeluaranwakaf/invoicewakaf/{id}', 'PengeluaranWakafController@buktiBayar');
 
-//Untuk Controller dan View Pengeluaran Wakaf
+//Untuk Controller dan View Pengeluaran Fidyah
 Route::resource('pengeluaranfidyah', 'PengeluaranFidyahController');
 Route::get('pengeluaranfidyah/destroy/{id}', 'PengeluaranFidyahController@destroy');
 Route::get('pengeluaranfidyah/invoicefidyah/{id}', 'PengeluaranFidyahController@buktiBayar');

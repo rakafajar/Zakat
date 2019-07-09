@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\PengeluaranWakafModel;
 use DB;
+use PDF;
 
 class PengeluaranWakafController extends Controller
 {
@@ -98,5 +99,14 @@ class PengeluaranWakafController extends Controller
     {
         DB::table('tb_pengeluaran_wakaf')->where('id_peng_wakaf', '=', $id)->delete();
         return back()->with('warning', 'Data Berhasil Dihapus!');
+    }
+    public function buktiBayar($id)
+    {
+        //GET DATA BERDASARKAN ID
+        $pengeluaran = PengeluaranWakafModel::find($id);
+        //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
+        //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
+        $pdf = PDF::loadView('pengeluaran.invoicewakaf', compact('pengeluaran'))->setPaper('a4', 'landscape');
+        return $pdf->stream();
     }
 }

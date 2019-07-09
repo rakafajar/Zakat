@@ -97,4 +97,13 @@ class PengeluaranZakatMaalController extends Controller
         DB::table('tb_pengeluaran_zakat_maal')->where('id_peng_zmaal', '=', $id)->delete();
         return back()->with('warning', 'Data Berhasil Dihapus!');
     }
+    public function buktiBayar($id)
+    {
+        //GET DATA BERDASARKAN ID
+        $pengeluaran = PengeluaranZakatMaalModel::find($id);
+        //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
+        //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
+        $pdf = PDF::loadView('pengeluaran.invoicezakatmaal', compact('pengeluaran'))->setPaper('a4', 'landscape');
+        return $pdf->stream();
+    }
 }
