@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\PengeluaranZakatMaalModel;
 use DB;
+use PDF;
 
 class PengeluaranZakatMaalController extends Controller
 {

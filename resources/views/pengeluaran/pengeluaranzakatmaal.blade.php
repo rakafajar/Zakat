@@ -69,7 +69,7 @@
                     <td>{{$list->keterangan}}</td>
                     <td><?php echo tanggal_indonesia($list->created_at); ?></td>
                     <th style="text-align: center;">
-                      <a href="{{ URL::to('pengeluaranzakatmaal/invoiceizakatmaal/'.$list->id_peng_zmaal) }}" class="btn btn-success btn-sm"><i class="fas fa-print"></i></a>
+                      <a href="{{ URL::to('pengeluaranzakatmaal/invoicezakatmaal/'.$list->id_peng_zmaal) }}" class="btn btn-success btn-sm"><i class="fas fa-print"></i></a>
                     	<a href="{{ URL::to('pengeluaranzakatmaal/destroy/'.$list->id_peng_zmaal) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
                     </th>
                   </tr>
