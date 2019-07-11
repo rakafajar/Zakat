@@ -48,8 +48,7 @@ class JenisPekerjaanController extends Controller
         $jenis_pekerjaan->nama_pekerjaan = $request['nama_pekerjaan'];
         $jenis_pekerjaan->save();
 
-        return redirect(route('jenispekerjaan.index'))->with('success','Data Berhasil Disimpan!'); 
-        
+        return redirect(route('jenispekerjaan.index'))->with('success', 'Data Berhasil Disimpan!');
     }
 
     /**
@@ -91,7 +90,7 @@ class JenisPekerjaanController extends Controller
         $jenis_pekerjaan->nama_pekerjaan = $request['nama_pekerjaan'];
         $jenis_pekerjaan->update();
 
-        return redirect(route('jenispekerjaan.index'))->with('info','Data Berhasil Diubah!'); 
+        return redirect(route('jenispekerjaan.index'))->with('info', 'Data Berhasil Diubah!');
     }
 
     /**
@@ -104,5 +103,13 @@ class JenisPekerjaanController extends Controller
     {
         DB::table('tb_jenispekerjaan')->where('id_pekerjaan', '=', $id)->delete();
         return back()->with('warning', 'Data Berhasil Dihapus!');
+    }
+    public function deleteSelected(Request $request)
+    {
+        foreach ($request['id'] as $id) {
+            $jenis_pekerjaan = JenisPekerjaanModel::find($id);
+            $jenis_pekerjaan->delete();
+        }
+        return response()->json(['warning' => "Products Deleted successfully."]);
     }
 }

@@ -126,6 +126,7 @@ Route::post('pendidikan/hapus', 'PendidikanController@deleteSelected');
 // Untuk Controller dan View JenisPendidikan
 Route::resource('jenispekerjaan', 'JenisPekerjaanController');
 Route::get('jenispekerjaan/destroy/{id}', 'JenisPekerjaanController@destroy');
+Route::post('jenispekerjaan/hapus', 'JenisPekerjaanController@deleteSelected');
 
 // Untuk Controller dan View StatusPerkawinan
 Route::resource('perkawinan', 'PerkawinanController');
