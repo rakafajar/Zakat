@@ -14,12 +14,18 @@
             <a href="{{ route('kartukeluarga.create') }}" class="btn btn-primary btn-sm">
               <i class="fas fa-user-plus"></i> Tambah
             </a>
-           </div>
+            <a onclick="deleteAll()" class="btn btn-danger btn-sm">
+                <i class="fa fa-trash"></i> Hapus
+            </a> 
+          </div>
           <div class="card-body">
             <div class="table-responsive">
+            <form method="post" id="form-kartukeluarga">
+                {!! csrf_field() !!}
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
+                    <th width="20"><input type="checkbox" value="1" id="select-all"></th>
                     <th width="10">No</th>
                     <th>Nomor KK</th>
                     <th>Alamat</th>
@@ -36,6 +42,7 @@
                   @foreach($kartukeluarga as $list)
                   <?php $no++ ; ?>
                   <tr>
+                    <td><input type="checkbox" name="id[]" value="{{ $list->id_kk }}"></td>
                     <td>{{ $no}} </td>
                     <td width="10">{{ $list->no_kk }}</td>
                     <td width="10">{{ $list->alamat}}</td>
@@ -56,6 +63,30 @@
             </div>
           </div>
         </div>
-
-
 @endsection
+@section('script')
+<!-- Script Untuk Ceklis Semua -->
+<script type="text/javascript">
+	$('#select-all').click(function(){
+		$('input[type="checkbox"]').prop('checked', this.checked);
+	});
+
+	//Menghapus Semua Data yang dicentang
+	function deleteAll(){
+		if ($('input:checked').length<1) {
+			alert('Pilih data yang akan di hapus!')
+		} else if (confirm("Apakah yakin akan menghapus semua data terpilih?")){
+			$.ajax({
+				url: "kartukeluarga/hapus",
+				type: "POST",
+				data: $('#form-kartukeluarga').serialize(),
+                success: function(data){
+					table.ajax.reload();
+				},
+
+			});
+		}
+	}
+</script>
+@endsection
+

@@ -24,6 +24,7 @@ Route::resource('dashboard', 'DashboardController');
 Route::resource('kartukeluarga', 'KartuKeluargaController');
 Route::post('kartukeluarga/fetch', 'KartuKeluargaController@fetch')->name('kartukeluarga.fetch');
 Route::get('kartukeluarga/destroy/{id}', 'KartuKeluargaController@destroy');
+Route::post('kartukeluarga/hapus', 'KartuKeluargaController@deleteSelected');
 
 // Untuk Controller dan View AnggotaKeluarga
 Route::resource('anggotakeluarga', 'AnggotaKeluargaController');
