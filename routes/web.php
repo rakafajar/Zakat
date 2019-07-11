@@ -70,6 +70,7 @@ Route::resource('infaqshadaqah', 'InfaqShadaqahController');
 Route::get('infaqshadaqah/destroy/{id}', 'InfaqShadaqahController@destroy');
 Route::get('laporaninsa', 'InfaqShadaqahController@laporanInsa');
 Route::get('infaqshadaqah/invoice/{id}', 'InfaqShadaqahController@buktiBayar');
+Route::post('infaqshadaqah/hapus', 'InfaqShadaqahController@deleteSelected');
 
 //Untuk Controller dan View Pengeluaran Infaq & Shodaqoh
 Route::resource('pengeluaraninsha', 'PengeluaranInshaController');

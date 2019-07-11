@@ -113,7 +113,7 @@ class InfaqShadaqahController extends Controller
         //     'jml_kas_insha' => ($request['jml_kas_insha'] - $request['nominal_insha']) + $request['nominal_insha_baru']
         // ]);
 
-        return redirect(route('infaqshadaqah.index'))->with('info','Data Berhasil Diubah!');
+        return redirect(route('infaqshadaqah.index'))->with('info', 'Data Berhasil Diubah!');
     }
 
     /**
@@ -134,7 +134,7 @@ class InfaqShadaqahController extends Controller
         $view_tot_insha = ViewTotalKasInshaModel::all();
         $no = 0;
         $pdf = PDF::loadView('infaqshodaqoh.laporan', compact('insha', 'no', 'view_tot_insha'));
-        $pdf->setPaper('a4','potrait');
+        $pdf->setPaper('a4', 'potrait');
 
         return $pdf->stream();
     }
@@ -148,5 +148,12 @@ class InfaqShadaqahController extends Controller
         $pdf = PDF::loadView('infaqshodaqoh.invoice', compact('insha'))->setPaper('a4', 'landscape');
         return $pdf->stream();
     }
-
+    public function deleteSelected(Request $request)
+    {
+        foreach ($request['id'] as $id) {
+            $insha = InfaqShadaqahModel::find($id);
+            $insha->delete();
+        }
+        return response()->json(['warning' => "Products Deleted successfully."]);
+    }
 }
