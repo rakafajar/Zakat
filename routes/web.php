@@ -129,6 +129,7 @@ Route::get('hubungankeluarga/destroy/{id}', 'HubunganKeluargaController@destroy'
 // Untuk Controller mustahiq dan View mustahiq
 Route::resource('mustahiq', 'MustahiqController');
 Route::get('mustahiq/destroy/{id}', 'MustahiqController@destroy');
+Route::post('mustahiq/hapus', 'MustahiqController@deleteSelected');
 
 // Untuk Controller muzakki dan View muzakki
 Route::resource('muzakki', 'MuzakkiController');

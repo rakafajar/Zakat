@@ -47,7 +47,7 @@ class MustahiqController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'nomor_kk' => 'required',
             'golongan' => 'required',
             'wilayah' => 'required'
@@ -58,7 +58,7 @@ class MustahiqController extends Controller
         $mustahiq->wilayah = $request['wilayah'];
         $mustahiq->save();
 
-        return redirect(route('mustahiq.index'))->with('success','Data Berhasil Disimpan!');   
+        return redirect(route('mustahiq.index'))->with('success', 'Data Berhasil Disimpan!');
     }
 
     /**
@@ -84,7 +84,6 @@ class MustahiqController extends Controller
         $anggotakk = AnggotaKKModel::all();
         $mustahiq = MustahiqModel::find($id);
         return view('mustahiq.edit', compact('mustahiq', 'anggotakk', 'golongan'));
-        
     }
 
     /**
@@ -96,7 +95,7 @@ class MustahiqController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'nomor_kk' => 'required',
             'golongan' => 'required',
             'wilayah' => 'required'
@@ -107,7 +106,7 @@ class MustahiqController extends Controller
         $mustahiq->wilayah = $request['wilayah'];
         $mustahiq->update();
 
-        return redirect(route('mustahiq.index'))->with('info','Data Berhasil Diubah!');   
+        return redirect(route('mustahiq.index'))->with('info', 'Data Berhasil Diubah!');
     }
 
     /**
@@ -120,5 +119,14 @@ class MustahiqController extends Controller
     {
         DB::table('tb_mustahiq')->where('id_mustahiq', '=', $id)->delete();
         return back()->with('warning', 'Data Berhasil Dihapus!');
+    }
+    //Delete All dengan CheckBox
+    public function deleteSelected(Request $request)
+    {
+        foreach ($request['id'] as $id) {
+            $mustahiq = MustahiqModel::find($id);
+            $mustahiq->delete();
+        }
+        return response()->json(['warning'=>"Products Deleted successfully."]);
     }
 }
