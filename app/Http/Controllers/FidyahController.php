@@ -37,7 +37,7 @@ class FidyahController extends Controller
     {
         $anggotakk = AnggotaKKModel::all();
         $kas = DB::table('tb_kas')->where('id_kas', 3)->first();
-        return view('fidyah.create', compact('anggotakk','kas'));
+        return view('fidyah.create', compact('anggotakk', 'kas'));
     }
 
     /**
@@ -139,5 +139,13 @@ class FidyahController extends Controller
         //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
         $pdf = PDF::loadView('fidyah.invoice', compact('fidyah'))->setPaper('a4', 'landscape');
         return $pdf->stream();
+    }
+    public function deleteSelected(Request $request)
+    {
+        foreach ($request['id'] as $id) {
+            $fidyah = FidyahModel::find($id);
+            $fidyah->delete();
+        }
+        return response()->json(['warning' => "Products Deleted successfully."]);
     }
 }

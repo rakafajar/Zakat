@@ -84,6 +84,7 @@ Route::resource('pengeluaranfidyah', 'PengeluaranFidyahController');
 Route::get('pengeluaranfidyah/destroy/{id}', 'PengeluaranFidyahController@destroy');
 Route::get('pengeluaranfidyah/invoicefidyah/{id}', 'PengeluaranFidyahController@buktiBayar');
 
+
 //Untuk Controller dan View Pengeluaran Zakat Maal
 Route::resource('pengeluaranzakatmaal', 'PengeluaranZakatMaalController');
 Route::get('pengeluaranzakatmaal/destroy/{id}', 'PengeluaranZakatMaalController@destroy');
@@ -95,6 +96,7 @@ Route::resource('fidyah', 'FidyahController');
 Route::get('fidyah/destroy/{id}', 'FidyahController@destroy');
 Route::get('laporanfidyah', 'FidyahController@laporanFidyah');
 Route::get('fidyah/invoice/{id}', 'FidyahController@buktiBayar');
+Route::post('fidyah/hapus', 'FidyahController@deleteSelected');
 
 // Untuk Controller dan View Provinsi
 Route::resource('provinsi', 'ProvinsiController');
