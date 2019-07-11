@@ -39,6 +39,7 @@ Route::get('user/destroy/{id}', 'UserController@destroy');
 Route::resource('golongan', 'GolonganController');
 Route::get('golongan/destroy/{id}', 'GolonganController@destroy');
 Route::post('golongan/hapus', 'GolonganController@deleteSelected');
+
 // Untuk Controller dan View Zakat Fitrah
 Route::resource('zakatfitrah', 'ZakatFitrahController');
 Route::get('zakatfitrah/destroy/{id}', 'ZakatFitrahController@destroy');
@@ -64,6 +65,7 @@ Route::post('wakaf/hapus', 'WakafController@deleteSelected');
 // Untuk Controller dan View Jenis Wakaf
 Route::resource('jeniswakaf', 'JenisWakafController');
 Route::get('jeniswakaf/destroy/{id}', 'JenisWakafController@destroy');
+Route::post('jeniswakaf/hapus', 'JenisWakafController@deleteSelected');
 
 // Untuk Controller dan View Infaq & Shodaqoh
 Route::resource('infaqshadaqah', 'InfaqShadaqahController');

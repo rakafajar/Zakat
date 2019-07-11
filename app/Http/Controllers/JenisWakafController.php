@@ -91,7 +91,7 @@ class JenisWakafController extends Controller
         $jenis_wakaf->jenis_wakaf = $request['jenis_wakaf'];
         $jenis_wakaf->update();
 
-        return redirect(route('jeniswakaf.index'))->with('info','Data Berhasil Diubah!');
+        return redirect(route('jeniswakaf.index'))->with('info', 'Data Berhasil Diubah!');
     }
 
     /**
@@ -103,6 +103,14 @@ class JenisWakafController extends Controller
     public function destroy($id)
     {
         DB::table('tb_jeniswakaf')->where('id_jeniswakaf', '=', $id)->delete();
-        return back()->with('warning','Data Berhasil Dihapus!');
+        return back()->with('warning', 'Data Berhasil Dihapus!');
+    }
+    public function deleteSelected(Request $request)
+    {
+        foreach ($request['id'] as $id) {
+            $jenis_wakaf = JenisWakafModel::find($id);
+            $jenis_wakaf->delete();
+        }
+        return response()->json(['warning' => "Products Deleted successfully."]);
     }
 }
