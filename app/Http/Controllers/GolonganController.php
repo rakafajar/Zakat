@@ -50,7 +50,6 @@ class GolonganController extends Controller
 
 
         return redirect(route('golongan.index'))->with('success', 'Data Berhasil Disimpan!');
-
     }
 
     /**
@@ -105,5 +104,13 @@ class GolonganController extends Controller
     {
         DB::table('tb_golongan')->where('id_golongan', '=', $id)->delete();
         return back()->with('warning', 'Data Berhasil Dihapus!');
+    }
+    public function deleteSelected(Request $request)
+    {
+        foreach ($request['id'] as $id) {
+            $golongan = GolonganModel::find($id);
+            $golongan->delete();
+        }
+        return response()->json(['warning' => "Products Deleted successfully."]);
     }
 }

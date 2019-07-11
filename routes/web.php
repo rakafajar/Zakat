@@ -31,14 +31,14 @@ Route::get('anggotakeluarga/destroy/{id}', 'AnggotaKeluargaController@destroy');
 Route::get('anggotakeluarga/show/{id}', 'AnggotaKeluargaController@show');
 Route::post('anggotakeluarga/hapus', 'AnggotaKeluargaController@deleteSelected');
 
-// Untuk Controller Golongan dan View Golongan
+// Untuk Controller User dan View User
 Route::resource('user', 'UserController');
 Route::get('user/destroy/{id}', 'UserController@destroy');
 
 // Untuk Controller Golongan dan View Golongan
 Route::resource('golongan', 'GolonganController');
 Route::get('golongan/destroy/{id}', 'GolonganController@destroy');
-
+Route::post('golongan/hapus', 'GolonganController@deleteSelected');
 // Untuk Controller dan View Zakat Fitrah
 Route::resource('zakatfitrah', 'ZakatFitrahController');
 Route::get('zakatfitrah/destroy/{id}', 'ZakatFitrahController@destroy');
