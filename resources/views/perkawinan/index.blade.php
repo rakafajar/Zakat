@@ -69,7 +69,7 @@
 				url: "perkawinan/hapus",
 				type: "POST",
 				data: $('#form-perkawinan').serialize(),
-				success: function(data){
+                success: function(data){
 					table.ajax.reload();
 				},
 

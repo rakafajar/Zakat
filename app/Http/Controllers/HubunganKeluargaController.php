@@ -48,7 +48,7 @@ class HubunganKeluargaController extends Controller
         $hub_keluarga->nama_hubkeluarga = $request['hubungan_keluarga'];
         $hub_keluarga->save();
 
-        return redirect(route('hubungankeluarga.index'))->with('success','Data Berhasil Disimpan!');
+        return redirect(route('hubungankeluarga.index'))->with('success', 'Data Berhasil Disimpan!');
     }
 
     /**
@@ -89,7 +89,7 @@ class HubunganKeluargaController extends Controller
         $hub_keluarga = HubunganKeluargaModel::find($id);
         $hub_keluarga->nama_hubkeluarga = $request['hubungan_keluarga'];
         $hub_keluarga->update();
-        return redirect(route('hubungankeluarga.index'))->with('info','Data Berhasil Diubah!');
+        return redirect(route('hubungankeluarga.index'))->with('info', 'Data Berhasil Diubah!');
     }
 
     /**
@@ -102,5 +102,13 @@ class HubunganKeluargaController extends Controller
     {
         DB::table('tb_hubkeluarga')->where('id_hubkeluarga', '=', $id)->delete();
         return back()->with('warning', 'Data Berhasil Dihapus!');
+    }
+    public function deleteSelected(Request $request)
+    {
+        foreach ($request['id'] as $id) {
+            $hub_keluarga = HubunganKeluargaModel::find($id);
+            $hub_keluarga->delete();
+        }
+        return response()->json(['warning' => "Products Deleted successfully."]);
     }
 }

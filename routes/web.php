@@ -136,6 +136,7 @@ Route::post('perkawinan/hapus', 'PerkawinanController@deleteSelected');
 // Untuk Controller dan View HubunganKeluarga
 Route::resource('hubungankeluarga', 'HubunganKeluargaController');
 Route::get('hubungankeluarga/destroy/{id}', 'HubunganKeluargaController@destroy');
+Route::post('hubungankeluarga/hapus', 'HubunganKeluargaController@deleteSelected');
 
 // Untuk Controller mustahiq dan View mustahiq
 Route::resource('mustahiq', 'MustahiqController');
