@@ -147,4 +147,13 @@ class ZakatMaalController extends Controller
         $pdf = PDF::loadView('zakatmaal.invoice', compact('zakatmaal'))->setPaper('a4', 'landscape');
         return $pdf->stream();
     }
+    //Delete All dengan CheckBox
+    public function deleteSelected(Request $request)
+    {
+        foreach ($request['id'] as $id) {
+            $zakatmaal = ZakatMaalModel::find($id);
+            $zakatmaal->delete();
+        }
+        return response()->json(['warning' => "Products Deleted successfully."]);
+    }
 }
