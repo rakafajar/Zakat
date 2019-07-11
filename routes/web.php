@@ -116,6 +116,7 @@ Route::resource('kelurahan', 'KelurahanController');
 // Untuk Controller dan View Agama
 Route::resource('agama', 'AgamaController');
 Route::get('agama/destroy/{id}', 'AgamaController@destroy');
+Route::post('agama/hapus', 'AgamaController@deleteSelected');
 
 // Untuk Controller dan View Pendidkan
 Route::resource('pendidikan', 'PendidikanController');

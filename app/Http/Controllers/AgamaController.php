@@ -42,14 +42,14 @@ class AgamaController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'nama_agama' => 'required'
         ]);
         $agama = new AgamaModel;
         $agama->nama_agama = $request['nama_agama'];
         $agama->save();
 
-        return redirect(route('agama.index'))->with('success','Data Berhasil Disimpan!');
+        return redirect(route('agama.index'))->with('success', 'Data Berhasil Disimpan!');
     }
 
     /**
@@ -84,14 +84,14 @@ class AgamaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'nama_agama' => 'required'
         ]);
         $agama = AgamaModel::find($id);
         $agama->nama_agama = $request['nama_agama'];
         $agama->update();
 
-        return redirect(route('agama.index'))->with('info','Data Berhasil Diubah!');
+        return redirect(route('agama.index'))->with('info', 'Data Berhasil Diubah!');
     }
 
     /**
@@ -103,6 +103,14 @@ class AgamaController extends Controller
     public function destroy($id)
     {
         DB::table('tb_agama')->where('id_agama', '=', $id)->delete();
-        return back()->with('warning','Data Berhasil Dihapus!');
+        return back()->with('warning', 'Data Berhasil Dihapus!');
+    }
+    public function deleteSelected(Request $request)
+    {
+        foreach ($request['id'] as $id) {
+            $agama = AgamaModel::find($id);
+            $agama->delete();
+        }
+        return response()->json(['warning' => "Products Deleted successfully."]);
     }
 }
