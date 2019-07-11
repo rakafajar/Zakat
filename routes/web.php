@@ -121,6 +121,7 @@ Route::post('agama/hapus', 'AgamaController@deleteSelected');
 // Untuk Controller dan View Pendidkan
 Route::resource('pendidikan', 'PendidikanController');
 Route::get('pendidikan/destroy/{id}', 'PendidikanController@destroy');
+Route::post('pendidikan/hapus', 'PendidikanController@deleteSelected');
 
 // Untuk Controller dan View JenisPendidikan
 Route::resource('jenispekerjaan', 'JenisPekerjaanController');

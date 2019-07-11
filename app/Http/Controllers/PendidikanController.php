@@ -41,7 +41,7 @@ class PendidikanController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'nama_pendidikan' => 'required',
         ]);
         $pendidikan = new PendidikanModel;
@@ -72,7 +72,6 @@ class PendidikanController extends Controller
     {
         $pendidikan = PendidikanModel::find($id);
         return view('pendidikan.edit', compact('pendidikan', $pendidikan));
-
     }
 
     /**
@@ -84,7 +83,7 @@ class PendidikanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'nama_pendidikan' => 'required',
         ]);
         $pendidikan = PendidikanModel::find($id);
@@ -92,7 +91,6 @@ class PendidikanController extends Controller
         $pendidikan->update();
 
         return redirect()->route('pendidikan.index')->with('info', 'Data Berhasil Disimpan!');
-        
     }
 
     /**
@@ -104,6 +102,14 @@ class PendidikanController extends Controller
     public function destroy($id)
     {
         DB::table('tb_pendidikan')->where('id_pendidikan', '=', $id)->delete();
-        return back()->with('warning','Data Berhasil Dihapus!');
+        return back()->with('warning', 'Data Berhasil Dihapus!');
+    }
+    public function deleteSelected(Request $request)
+    {
+        foreach ($request['id'] as $id) {
+            $pendidikan = PendidikanModel::find($id);
+            $pendidikan->delete();
+        }
+        return response()->json(['warning' => "Products Deleted successfully."]);
     }
 }
