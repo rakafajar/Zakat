@@ -145,4 +145,12 @@ class WakafController extends Controller
         $pdf = PDF::loadView('wakaf.invoice', compact('wakaf'))->setPaper('a4', 'landscape');
         return $pdf->stream();
     }
+    public function deleteSelected(Request $request)
+    {
+        foreach ($request['id'] as $id) {
+            $wakaf = WakafModel::find($id);
+            $wakaf->delete();
+        }
+        return response()->json(['warning' => "Products Deleted successfully."]);
+    }
 }
