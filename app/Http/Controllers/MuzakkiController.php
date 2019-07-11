@@ -46,7 +46,7 @@ class MuzakkiController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'id_kk' => 'required',
             'id_anggotakk' => 'required'
         ]);
@@ -92,7 +92,7 @@ class MuzakkiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'id_kk' => 'required',
             'id_anggotakk' => 'required',
         ]);
@@ -133,5 +133,14 @@ class MuzakkiController extends Controller
                 ' . $row->$nama . '</option>';
         }
         echo $output;
+    }
+
+    public function deleteSelected(Request $request)
+    {
+        foreach ($request['id'] as $id) {
+            $muzakki = MuzakkiModel::find($id);
+            $muzakki->delete();
+        }
+        return response()->json(['warning' => "Products Deleted successfully."]);
     }
 }
