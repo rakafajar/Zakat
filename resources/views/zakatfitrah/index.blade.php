@@ -17,6 +17,10 @@
             <a href="/Zakat/public/laporanzakatfitrah" class="btn btn-success btn-sm" target="_blank">
               <i class="fas fa-print"></i> Cetak
             </a>
+            <a onclick="deleteAll()" class="btn btn-danger btn-sm">
+                <i class="fa fa-trash"></i>
+                Hapus
+            </a>
           </div>
           <br>
           <div class="col-sm-6">
@@ -31,9 +35,12 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
+            <form method="post" id="form-zfitrah">
+                {!! csrf_field() !!}
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
+                    <th width="20"><input type="checkbox" value="1" id="select-all"></th>
                     <th width="10">No</th>
                     <th>Muzakki</th>
                     <th>Harga Beras</th>
@@ -47,6 +54,7 @@
                   @foreach($zakatfitrah as $list)
                   <?php $no++ ?>
                   <tr>
+                    <td><input type="checkbox" name="id[]" value="{{ $list->id_zfitrah }}"></td>
                     <td>{{ $no }}</td>
                     <td>{{ $list->nama_lengkap }}</td>
                     <td>
@@ -69,7 +77,34 @@
                   @endforeach
                 </tbody>
               </table>
+            </form>
             </div>
           </div>
         </div>
+@endsection
+
+@section('script')
+<!-- Script Untuk Ceklis Semua -->
+<script type="text/javascript">
+	$('#select-all').click(function(){
+		$('input[type="checkbox"]').prop('checked', this.checked);
+	});
+
+	//Menghapus Semua Data yang dicentang
+	function deleteAll(){
+		if ($('input:checked').length<1) {
+			alert('Pilih data yang akan di hapus!')
+		} else if (confirm("Apakah yakin akan menghapus semua data terpilih?")){
+			$.ajax({
+				url: "zakatfitrah/hapus",
+				type: "POST",
+				data: $('#form-zfitrah').serialize(),
+				success: function(data){
+					table.ajax.reload();
+				},
+
+			});
+		}
+	}
+</script>
 @endsection

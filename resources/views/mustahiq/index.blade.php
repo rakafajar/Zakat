@@ -21,7 +21,7 @@
     </div>
     <div class="card-body">
     <div class="table-responsive">
-    <form method="post" id="form-produk">
+    <form method="post" id="form-mustahiq">
         {!! csrf_field() !!}
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
@@ -74,7 +74,7 @@
 			$.ajax({
 				url: "mustahiq/hapus",
 				type: "POST",
-				data: $('#form-produk').serialize(),
+				data: $('#form-mustahiq').serialize(),
 				success: function(data){
 					table.ajax.reload();
 				},

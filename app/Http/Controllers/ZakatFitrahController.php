@@ -151,4 +151,14 @@ class ZakatFitrahController extends Controller
         $pdf = PDF::loadView('zakatfitrah.invoice', compact('zakatfitrah'))->setPaper('a4', 'landscape');
         return $pdf->stream();
     }
+
+    //Delete All dengan CheckBox
+    public function deleteSelected(Request $request)
+    {
+        foreach ($request['id'] as $id) {
+            $zakatfitrah = ZakatFitrahModel::find($id);
+            $zakatfitrah->delete();
+        }
+        return response()->json(['warning' => "Products Deleted successfully."]);
+    }
 }
