@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\HargaModel;
+use DB;
 
 class HargaController extends Controller
 {
@@ -102,5 +103,13 @@ class HargaController extends Controller
     {
         DB::table('tb_harga')->where('id_harga', '=', $id)->delete();
         return back()->with('warning', 'Data Berhasil Dihapus!');
+    }
+    public function deleteSelected(Request $request)
+    {
+        foreach ($request['id'] as $id) {
+            $harga = HargaModel::find($id);
+            $harga->delete();
+        }
+        return response()->json(['warning' => "Products Deleted successfully."]);
     }
 }

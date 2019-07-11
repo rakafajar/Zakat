@@ -153,6 +153,7 @@ Route::post('muzakki/hapus', 'MuzakkiController@deleteSelected');
 
 // Untuk Controller mustahiq dan View mustahiq
 Route::resource('harga', 'HargaController');
-Route::get('harga/destroy/{id}', 'mustahiqController@destroy');
+Route::get('harga/destroy/{id}', 'HargaController@destroy');
+Route::post('harga/hapus', 'HargaController@deleteSelected');
 
 Auth::routes();
