@@ -41,14 +41,14 @@ class PerkawinanController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'status_perkawinan' => 'required',
         ]);
         $status_perkawinan = new StatusPerkawinanModel;
         $status_perkawinan->nama_status = $request['status_perkawinan'];
         $status_perkawinan->save();
 
-        return redirect(route('perkawinan.index'))->with('success','Data Berhasil Disimpan!');
+        return redirect(route('perkawinan.index'))->with('success', 'Data Berhasil Disimpan!');
     }
 
     /**
@@ -71,7 +71,7 @@ class PerkawinanController extends Controller
     public function edit($id)
     {
         $status_perkawinan = StatusPerkawinanModel::find($id);
-        return view('perkawinan.edit',compact('status_perkawinan', $status_perkawinan));     
+        return view('perkawinan.edit', compact('status_perkawinan', $status_perkawinan));
     }
 
     /**
@@ -83,13 +83,13 @@ class PerkawinanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'status_perkawinan' => 'required',
         ]);
         $status_perkawinan = StatusPerkawinanModel::find($id);
         $status_perkawinan->nama_status = $request['status_perkawinan'];
         $status_perkawinan->update();
-        return redirect(route('perkawinan.index'))->with('info','Data Berhasil Diubah!');
+        return redirect(route('perkawinan.index'))->with('info', 'Data Berhasil Diubah!');
     }
 
     /**
@@ -102,5 +102,13 @@ class PerkawinanController extends Controller
     {
         DB::table('tb_statusperkawinan')->where('id_status', '=', $id)->delete();
         return back()->with('warning', 'Data Berhasil Dihapus!');
+    }
+    public function deleteSelected(Request $request)
+    {
+        foreach ($request['id'] as $id) {
+            $status_perkawinan = StatusPerkawinanModel::find($id);
+            $status_perkawinan->delete();
+        }
+        return response()->json(['warning' => "Products Deleted successfully."]);
     }
 }
