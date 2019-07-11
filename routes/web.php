@@ -29,6 +29,7 @@ Route::get('kartukeluarga/destroy/{id}', 'KartuKeluargaController@destroy');
 Route::resource('anggotakeluarga', 'AnggotaKeluargaController');
 Route::get('anggotakeluarga/destroy/{id}', 'AnggotaKeluargaController@destroy');
 Route::get('anggotakeluarga/show/{id}', 'AnggotaKeluargaController@show');
+Route::post('anggotakeluarga/hapus', 'AnggotaKeluargaController@deleteSelected');
 
 // Untuk Controller Golongan dan View Golongan
 Route::resource('user', 'UserController');

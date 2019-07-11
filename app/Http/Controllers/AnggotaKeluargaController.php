@@ -103,8 +103,8 @@ class AnggotaKeluargaController extends Controller
      */
     public function show($id)
     {
-        $anggotakeluarga = AnggotaKKModel::leftJoin('tb_kartukeluarga','tb_kartukeluarga.id_kk', '=', 'tb_anggotakk.id_kk')
-        ->orderBy('tb_anggotakk.id_kk')->find($id);
+        $anggotakeluarga = AnggotaKKModel::leftJoin('tb_kartukeluarga', 'tb_kartukeluarga.id_kk', '=', 'tb_anggotakk.id_kk')
+            ->orderBy('tb_anggotakk.id_kk')->find($id);
         return view('anggotakeluarga.show', compact($anggotakeluarga, 'anggotakeluarga'));
     }
 
@@ -186,5 +186,13 @@ class AnggotaKeluargaController extends Controller
     {
         DB::table('tb_anggotakk')->where('id_anggotakk', '=', $id)->delete();
         return back()->with('warning', 'Data Berhasil Dihapus!');
+    }
+    public function deleteSelected(Request $request)
+    {
+        foreach ($request['id'] as $id) {
+            $anggotakeluarga = AnggotaKKModel::find($id);
+            $anggotakeluarga->delete();
+        }
+        return response()->json(['warning' => "Products Deleted successfully."]);
     }
 }
