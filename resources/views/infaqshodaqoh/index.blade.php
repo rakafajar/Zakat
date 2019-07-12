@@ -68,7 +68,7 @@
                     <th style="text-align: center;">
                       <a href="{{ URL::to('infaqshadaqah/invoice/'.$list->id_insha) }}" class="btn btn-success btn-sm"><i class="fas fa-print"></i></a>
                     	{{-- <a href="" class="btn btn-info btn-sm"><i class="fas fa-search"></i></a> --}}
-                    	<a href="{{ route('infaqshadaqah.edit', $list->id_insha) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                    	<a href="{{ route('infaqshadaqah.edit', $list->id_insha) }}" class="btn btn-warning btn-sm disabled"><i class="fas fa-edit"></i></a>
                     	<a href="{{ URL::to('infaqshadaqah/destroy/'.$list->id_insha) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
                     </th>
                   </tr>

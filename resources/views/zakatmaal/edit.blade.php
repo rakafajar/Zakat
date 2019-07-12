@@ -33,6 +33,10 @@
           </select>
         </div>
         <div class="form-group">
+          <label for="tgl_pembayaran">Tanggal Pembayaran:</label>
+          <input type="date" class="form-control" id="tgl_pembayaran" name="tgl_pembayaran" value="{{ old('tgl_pembayaran') }}" required>
+        </div>
+        <div class="form-group">
           <label for="penghasilan">Penghasilan:</label>
           <input type="number" min="0" class="form-control" name="penghasilan" id="penghasilan" placeholder="Rp.">
         </div>

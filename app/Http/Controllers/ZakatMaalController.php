@@ -55,6 +55,7 @@ class ZakatMaalController extends Controller
         $jml = $zakatmaal->jml = $request['jml'];
         $harga_emas = $zakatmaal->harga_emas = $request['harga_emas'];
         $nisab = $zakatmaal->nisab = $request['nisab'];
+        $zakatmaal->created_at = $request['tgl_pembayaran'];
         $zakatmaal->save();
 
         DB::table('tb_kas')->where('id_kas', '=', '4')->update([
@@ -109,6 +110,8 @@ class ZakatMaalController extends Controller
         $jml = $zakatmaal->jml = $request['jml'];
         $harga_emas = $zakatmaal->harga_emas = $request['harga_emas'];
         $nisab = $zakatmaal->nisab = $request['nisab'];
+        $zakatmaal = ZakatMaalModel::find($id);
+        $zakatmaal->created_at = $request['tgl_pembayaran'];
         $zakatmaal->update();
 
         return redirect(route('zakatmaal.index'))->with('info', 'Data Berhasil Diubah!');

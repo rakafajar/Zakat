@@ -59,6 +59,7 @@ class ZakatFitrahController extends Controller
         $zakatfitrah = new ZakatFitrahModel();
         $muzakki = $zakatfitrah->id_muzakki = $request['id_muzakki'];
         $harga_beras = $zakatfitrah->harga_beras = $request['harga_beras'];
+        $zakatfitrah->created_at = $request['tgl_pembayaran'];
         $nominal = $zakatfitrah->nominal = 2.5 * $harga_beras;
         $zakatfitrah->save();
 
@@ -111,6 +112,7 @@ class ZakatFitrahController extends Controller
         $zakatfitrah = ZakatFitrahModel::find($id);
         $muzakki = $zakatfitrah->id_muzakki = $request['id_muzakki'];
         $harga_beras = $zakatfitrah->harga_beras = $request['harga_beras'];
+        $zakatfitrah->created_at = $request['tgl_pembayaran'];
         $nominal = $zakatfitrah->nominal = 2.5 * $harga_beras;
         $zakatfitrah->update();
 

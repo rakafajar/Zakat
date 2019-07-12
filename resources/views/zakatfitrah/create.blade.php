@@ -41,6 +41,10 @@
             @endforeach
           </select>
         </div>
+        <div class="form-group">
+          <label for="tgl_pembayaran">Tanggal Pembayaran:</label>
+          <input type="date" class="form-control" id="tgl_pembayaran" name="tgl_pembayaran" value="{{ old('tgl_pembayaran') }}" required>
+        </div>
 {{--         <div class="form-group">
           <label for="nominal">Nominal:</label>
           <input type="text" class="form-control" id="nominal" name="nominal" placeholder="Rp.">

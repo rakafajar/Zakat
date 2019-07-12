@@ -53,6 +53,7 @@ class InfaqShadaqahController extends Controller
         $insha = new InfaqShadaqahModel;
         $insha->id_anggotakk = $request['nama_insha'];
         $insha->nominal_insha = $request['nominal_insha'];
+        $insha->created_at = $request['tgl_pembayaran'];
         $insha->save();
 
         DB::table('tb_kas')->where('id_kas', '=', '1')->update([
@@ -102,6 +103,7 @@ class InfaqShadaqahController extends Controller
         $insha = InfaqShadaqahModel::find($id);
         $insha->id_anggotakk = $request['nama_insha'];
         $insha->nominal_insha = $request['nominal_insha'];
+        $insha->created_at = $request['tgl_pembayaran'];
         $insha->update();
 
         // $insha = InfaqShadaqahModel::find($id);

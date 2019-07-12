@@ -41,7 +41,11 @@
         <div class="form-group">
           <label for="nominal">Nominal:</label>
           <input type="number" min="0" class="form-control" name="nominal_insha" value="{{ $insha->nominal_insha }}">
-        </div>      
+        </div>  
+        <div class="form-group">
+          <label for="tgl_pembayaran">Tanggal Pembayaran:</label>
+          <input type="date" class="form-control" id="tgl_pembayaran" name="tgl_pembayaran" value="{{ old('tgl_pembayaran') }}" required>
+        </div>    
         <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
         {{-- <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button> --}}
         <a href="{{ route('infaqshadaqah.index') }}" class="btn btn-danger btn-sm"><i class="fas fa-arrow-circle-left"></i> Kembali</a>

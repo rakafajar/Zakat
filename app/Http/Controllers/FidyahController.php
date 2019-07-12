@@ -55,6 +55,7 @@ class FidyahController extends Controller
         $fidyah = new FidyahModel;
         $fidyah->id_anggotakk = $request['nama_fidyah'];
         $fidyah->nominal_fidyah = $request['nominal_fidyah'];
+        $fidyah->created_at = $request['tgl_pembayaran'];
         $fidyah->save();
 
         DB::table('tb_kas')->where('id_kas', '=', '3')->update([
@@ -104,6 +105,7 @@ class FidyahController extends Controller
         $fidyah = FidyahModel::find($id);
         $fidyah->id_anggotakk = $request['nama_fidyah'];
         $fidyah->nominal_fidyah = $request['nominal_fidyah'];
+        $fidyah->created_at = $request['tgl_pembayaran'];
         $fidyah->save();
 
         return redirect(route('fidyah.index'))->with('info', 'Data Berhasil Diubah!');

@@ -56,6 +56,7 @@ class WakafController extends Controller
         $wakaf->id_anggotakk = $request['nama_wakaf'];
         $wakaf->id_jeniswakaf = $request['jenis_wakaf'];
         $wakaf->nominal_wakaf = $request['nominal_wakaf'];
+        $wakaf->created_at = $request['tgl_pembayaran'];
         $wakaf->save();
 
         DB::table('tb_kas')->where('id_kas', '=', '2')->update([
@@ -108,6 +109,7 @@ class WakafController extends Controller
         $wakaf->id_anggotakk = $request['nama_wakaf'];
         $wakaf->id_jeniswakaf = $request['jenis_wakaf'];
         $wakaf->nominal_wakaf = $request['nominal_wakaf'];
+        $wakaf->created_at = $request['tgl_pembayaran'];
         $wakaf->update();
 
         return redirect(route('wakaf.index'))->with('info', 'Data Berhasil Diubah!');
