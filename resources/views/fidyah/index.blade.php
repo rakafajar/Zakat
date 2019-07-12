@@ -96,7 +96,9 @@
 				success: function(data){
 					table.ajax.reload();
 				},
-
+        error: function(data){
+          alert("Tidak Dapat Menghapus Data!");
+        }
 			});
 		}
 	}

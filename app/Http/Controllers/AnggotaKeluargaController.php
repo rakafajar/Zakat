@@ -193,6 +193,5 @@ class AnggotaKeluargaController extends Controller
             $anggotakeluarga = AnggotaKKModel::find($id);
             $anggotakeluarga->delete();
         }
-        return response()->json(['warning' => "Products Deleted successfully."]);
     }
 }

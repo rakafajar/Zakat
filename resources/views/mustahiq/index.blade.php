@@ -14,10 +14,10 @@
     <a href="{{ route('mustahiq.create') }}" class="btn btn-primary btn-sm">
         <i class="fas fa-user-plus"></i> Tambah
     </a>
-    <a onclick="deleteAll()" class="btn btn-danger btn-sm">
+    <button onclick="deleteAll()" class="btn btn-danger btn-sm">
         <i class="fa fa-trash"></i>
         Hapus
-    </a>
+    </button>
     </div>
     <div class="card-body">
     <div class="table-responsive">
@@ -77,8 +77,10 @@
 				data: $('#form-mustahiq').serialize(),
 				success: function(data){
 					table.ajax.reload();
-				},
-
+                },
+                error: function(data){
+                    alert("Tidak Dapat Menghapus Data!");
+                }
 			});
 		}
 	}
