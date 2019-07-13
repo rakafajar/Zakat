@@ -69,7 +69,7 @@
 				type: "POST",
 				data: $('#form-pendidikan').serialize(),
 				success: function(data){
-					table.ajax.reload();
+					location.reload();
 				},
                 error: function(data){
                     alert("Tidak Dapat Menghapus Data!");

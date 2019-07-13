@@ -161,6 +161,5 @@ class ZakatFitrahController extends Controller
             $zakatfitrah = ZakatFitrahModel::find($id);
             $zakatfitrah->delete();
         }
-        return response()->json(['warning' => "Products Deleted successfully."]);
     }
 }

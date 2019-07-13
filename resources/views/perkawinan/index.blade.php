@@ -70,7 +70,7 @@
 				type: "POST",
 				data: $('#form-perkawinan').serialize(),
                 success: function(data){
-					table.ajax.reload();
+					location.reload();
 				},
                 error: function(data){
                     alert("Tidak Dapat Menghapus Data!");
