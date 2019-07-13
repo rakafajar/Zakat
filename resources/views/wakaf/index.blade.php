@@ -17,10 +17,7 @@
             <a href="/Zakat/public/laporanwakaf" class="btn btn-success btn-sm" target="_blank">
               <i class="fas fa-print"></i> Cetak
             </a>
-            <a onclick="deleteAll()" class="btn btn-danger btn-sm">
-                <i class="fa fa-trash"></i>
-                Hapus
-            </a>  
+            <button onclick="deleteAll()" " class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</button>
           </div>
           <br>
           <div class="col-sm-6">

@@ -14,9 +14,7 @@
             <a href="{{ route('kartukeluarga.create') }}" class="btn btn-primary btn-sm">
               <i class="fas fa-user-plus"></i> Tambah
             </a>
-            <a onclick="deleteAll()" class="btn btn-danger btn-sm">
-                <i class="fa fa-trash"></i> Hapus
-            </a> 
+            <button onclick="deleteAll()" " class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</button>
           </div>
           <div class="card-body">
             <div class="table-responsive">
