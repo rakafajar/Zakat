@@ -31,17 +31,12 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // $view_jml_insha = ViewJmlInshaModel::all();
-        // $view_tot_insha = ViewTotalKasInshaModel::all();
-        $view_tot_fidyah = ViewTotalKasFidyahModel::all();
-        // $view_tot_wakaf = ViewTotalKasWakafModel::all();
-        // $view_tot_zfitrah = ViewTotalKasZakatFitrahModel::all();
-        // $view_tot_zmaal = ViewTotalKasZakatMaalModel::all();
         $kas_infaq = DB::table('tb_kas')->where('id_kas', 1)->first();
         $kas_wakaf = DB::table('tb_kas')->where('id_kas', 2)->first();
         $kas_fidyah = DB::table('tb_kas')->where('id_kas', 3)->first();
         $kas_zmaal = DB::table('tb_kas')->where('id_kas', 4)->first();
+        $kas_zfitrah = DB::table('tb_kas')->where('id_kas', 5)->first();
 
-        return view('dashboard', compact('view_tot_fidyah', 'kas_infaq', 'kas_wakaf', 'kas_fidyah', 'kas_zmaal'));
+        return view('dashboard', compact('kas_zfitrah', 'kas_infaq', 'kas_wakaf', 'kas_fidyah', 'kas_zmaal'));
     }
 }

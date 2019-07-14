@@ -17,7 +17,7 @@
     <a href="/Zakat/public/laporanzakatfitrah" class="btn btn-success btn-sm" target="_blank">
       <i class="fas fa-print"></i> Cetak
     </a>
-    <button onclick="deleteAll()" " class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</button>
+    <button onclick="deleteAll()" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</button>
   </div>
   <br>
   <div class="col-sm-6">
@@ -25,9 +25,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text bg-light">Total Kas</span>
       </div>
-      @foreach($view_tot_zakat_fitrah as $list)
-      <input type="text" class="form-control" value="Rp. <?php echo format_uang($list->total_kas_zakat_fitrah); ?>" disabled>
-      @endforeach
+      <input type="text" class="form-control" value="Rp. <?php echo format_uang($kas->jml_kas); ?>" disabled>
     </div>
   </div>
   <div class="card-body">

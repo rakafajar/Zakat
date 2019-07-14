@@ -70,11 +70,9 @@
                 <div class="card-body-icon">
                   <i class="fas fa-money-check"></i>
                 </div>
-                @foreach($view_tot_fidyah as $list)
                 <div class="mr-5">
-                  <strong>Kas Zakat Fitrah : <br>Rp. <?php echo format_uang($list->total_kas_zfitrah) ?></strong>
+                  <strong>Kas Zakat Fitrah : <br>Rp. <?php echo format_uang($kas_zfitrah->jml_kas) ?></strong>
                 </div>
-                @endforeach
               </div>
               <a class="card-footer text-white clearfix small z-1" href="#">
                 <span class="float-left">View Details</span>

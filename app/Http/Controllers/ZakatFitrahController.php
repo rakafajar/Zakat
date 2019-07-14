@@ -27,8 +27,8 @@ class ZakatFitrahController extends Controller
     public function index()
     {
         $zakatfitrah = ViewZakatFitrahModel::all();
-        $view_tot_zakat_fitrah = ViewTotalKasZakatFitrahModel::all();
-        return view('zakatfitrah.index', compact('zakatfitrah', 'view_tot_zakat_fitrah'));
+        $kas = DB::table('tb_kas')->where('id_kas', 5)->first();
+        return view('zakatfitrah.index', compact('zakatfitrah', 'kas'));
     }
 
     /**
@@ -40,8 +40,9 @@ class ZakatFitrahController extends Controller
     {
         $muzakki = ViewMuzakkiModel::all();
         $harga_beras = HargaModel::all();
+        $kas = DB::table('tb_kas')->where('id_kas', 5)->first();
 
-        return view('zakatfitrah.create', compact('harga_beras', 'muzakki'));
+        return view('zakatfitrah.create', compact('harga_beras', 'muzakki', 'kas'));
     }
 
     /**
@@ -63,9 +64,11 @@ class ZakatFitrahController extends Controller
         $nominal = $zakatfitrah->nominal = 2.5 * $harga_beras;
         $zakatfitrah->save();
 
-        return view(
-            'zakatfitrah.update',
-            compact('zakatfitrah'),
+        DB::table('tb_kas')->where('id_kas', '=', '5')->update([
+            'jml_kas' => $request['jml_kas'] + $nominal
+        ]);
+
+        return view('zakatfitrah.update', compact('zakatfitrah'),
             ['harga_beras' => $harga_beras, 'nominal' => $nominal],
             ['muzakki' => $muzakki]
         );
