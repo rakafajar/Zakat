@@ -124,6 +124,7 @@
           <a class="dropdown-item" href="{{ route('pengeluaranwakaf.index') }}">Pengeluaran Wakaf</a>
           <a class="dropdown-item" href="{{ route('pengeluaranfidyah.index') }}">Pengeluaran Fidyah</a>
           <a class="dropdown-item" href="{{ route('pengeluaranzakatmaal.index') }}">Pengeluaran Z Maal</a>
+          <a class="dropdown-item" href="{{ route('pengeluaranzakatfitrah.index') }}">Pengeluaran Z Fitrah</a>
         </div>
       </li>
       <li class="nav-item dropdown">
