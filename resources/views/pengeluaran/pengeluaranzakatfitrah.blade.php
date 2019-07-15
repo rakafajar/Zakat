@@ -8,87 +8,172 @@
     <li class="breadcrumb-item active">Pengeluaran Zakat Fitrah</li>
 </ol>
 
-        <div class="card mb-3">
-          <div class="card-header">
-            Form Pengeluaran Zakat Fitrah
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card mb-3">
+              <div class="card-header">
+                Form Pengeluaran Zakat Fitrah
+              </div>
+              <div class="card-body">
+                <form action="{{ route('pengeluaranzakatfitrah.store') }}" method="POST">
+                  {{ csrf_field() }}
+                  <div class="col-sm-12">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text bg-light">Total Kas</span>
+                      </div>
+                      <input type="text" class="form-control" value="Rp. <?php echo format_uang($kas->jml_kas); ?>" readonly>
+                      <input type="hidden" class="form-control" name="jml_kas" id="jml_kas" onkeyup="sum();" value="{{ $kas->jml_kas }}" readonly>
+                    </div>
+                  </div>
+                <div class="col-sm-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-light">Wilayah</span>
+                        </div>
+                        <select class="form-control search" name="wil">
+                            <option value="">-- Pilih Wilayah --</option>
+                            <option value="Internal">Internal</option>
+                            <option value="Eksternal">Eksternal</option>
+                        </select>
+                    </div>
+                </div>
+                  <div class="col-sm-12">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text bg-light">%</span>
+                      </div>
+                      <input type="number" class="form-control" name="persen_wil" id="persen_wil" onkeyup="sum();" value="" required>
+                      <input type="number" class="form-control" name="hsl_persen_wil" id="hsl_persen_wil" value="" readonly>
+                    </div>
+                  </div>
+                <div class="col-sm-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-light">Golongan</span>
+                        </div>
+                        <select class="form-control search" name="gol">
+                            <option value="">-- Pilih Golongan --</option>
+                            @foreach ($golongan as $list)
+                            <option value="{{ $list->id_golongan}}">{{ $list->nama_golongan }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>          
+                  <div class="col-sm-12">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text bg-light">%</span>
+                      </div>
+                      <input type="number" class="form-control" name="persen_gol" id="persen_gol" onkeyup="sum();" value="" required>
+                      <input type="number" class="form-control" name="hsl_persen_gol" id="hsl_persen_gol" value="" readonly>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text bg-light">Total Pengeluaran Zakat Fitrah</span>
+                      </div>
+                      <input type="number" class="form-control" name="jml_peng_zfitrah" id="jml_peng_zfitrah" value="" readonly>
+                    </div>
+                  </div>              
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="keterangan">Keterangan:</label>
+                      <textarea class="form-control" rows="5" name="keterangan" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
+                    <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>
+                  </div>              
+                </form>
+              </div>
+            </div>            
           </div>
-          <div class="card-body">
-            <form action="{{ route('pengeluaranzakatfitrah.store') }}" method="POST">
-              {{ csrf_field() }}
-              <div class="col-sm-6">
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text bg-light">Total Kas</span>
+          <div class="col-lg-6">
+            <div class="card mb-3">
+              <div class="card-header">Mustahik</div>
+              <div class="card-body">
+                <div class="col-sm-12">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-light">Total Seluruh Mustahik</span>
+                    </div>
+                    <input type="number" class="form-control" name="tot_mustahik" value="{{ $tot_mustahik }}" readonly>
                   </div>
-                  <input type="text" class="form-control" value="Rp. <?php echo format_uang($kas->jml_kas); ?>" readonly>
-                  <input type="hidden" class="form-control" name="jml_kas" id="jml_kas" onkeyup="sum();" value="{{ $kas->jml_kas }}" readonly>
+                </div>
+                <div class="col-sm-12">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-light">Fakir</span>
+                    </div>
+                    <input type="number" class="form-control" name="fakir" value="{{ $fakir }}" readonly>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-light">Miskin</span>
+                    </div>
+                    <input type="number" class="form-control" name="miskin" value="{{ $miskin }}" readonly>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-light">Riqab</span>
+                    </div>
+                    <input type="number" class="form-control" name="riqab" value="{{ $riqab }}" readonly>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-light">Gharim</span>
+                    </div>
+                    <input type="number" class="form-control" name="gharim" value="{{ $gharim }}" readonly>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-light">Mualaf</span>
+                    </div>
+                    <input type="number" class="form-control" name="mualaf" value="{{ $mualaf }}" readonly>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-light">Fisabiliah</span>
+                    </div>
+                    <input type="number" class="form-control" name="fisabiliah" value="{{ $fisabiliah }}" readonly>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-light">Ibnu Sabil</span>
+                    </div>
+                    <input type="number" class="form-control" name="ibnusabil" value="{{ $ibnusabil }}" readonly>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-light">Amil Zakat</span>
+                    </div>
+                    <input type="number" class="form-control" name="amil" value="{{ $amil }}" readonly>
+                  </div>
                 </div>
               </div>
-            <div class="col-sm-6">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-light">Wilayah</span>
-                    </div>
-                    <select class="form-control search" name="wil">
-                        <option value="">-- Pilih Wilayah --</option>
-                        <option value="Internal">Internal</option>
-                        <option value="Eksternal">Eksternal</option>
-                    </select>
-                </div>
             </div>
-              <div class="col-sm-6">
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text bg-light">%</span>
-                  </div>
-                  <input type="number" class="form-control" name="persen_wil" id="persen_wil" onkeyup="sum();" value="" required>
-                  <input type="number" class="form-control" name="hsl_persen_wil" id="hsl_persen_wil" value="" readonly>
-                </div>
-              </div>
-            <div class="col-sm-6">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-light">Golongan</span>
-                    </div>
-                    <select class="form-control search" name="gol">
-                        <option value="">-- Pilih Golongan --</option>
-                        @foreach ($golongan as $list)
-                        <option value="{{ $list->id_golongan}}">{{ $list->nama_golongan }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>          
-              <div class="col-sm-6">
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text bg-light">%</span>
-                  </div>
-                  <input type="number" class="form-control" name="persen_gol" id="persen_gol" onkeyup="sum();" value="" required>
-                  <input type="number" class="form-control" name="hsl_persen_gol" id="hsl_persen_gol" value="" readonly>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text bg-light">Total Pengeluaran Zakat Fitrah</span>
-                  </div>
-                  <input type="number" class="form-control" name="jml_peng_zfitrah" id="jml_peng_zfitrah" value="" readonly>
-                </div>
-              </div>              
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="keterangan">Keterangan:</label>
-                  <textarea class="form-control" rows="5" name="keterangan" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
-                <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>
-              </div>              
-            </form>
           </div>
         </div>
+        
+
         <div class="card mb-3">
           <div class="card-header">
-          	Data Pengeluaran Zakat Maal
+          	Data Pengeluaran Zakat Fitrah
           </div>
           <div class="card-body">
             <div class="table-responsive">
