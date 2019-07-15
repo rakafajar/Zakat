@@ -111,6 +111,5 @@ class JenisWakafController extends Controller
             $jenis_wakaf = JenisWakafModel::find($id);
             $jenis_wakaf->delete();
         }
-        return response()->json(['warning' => "Products Deleted successfully."]);
     }
 }
