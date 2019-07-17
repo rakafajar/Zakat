@@ -31,7 +31,8 @@ class PengeluaranZakatFitrahController extends Controller
         $mualaf = DB::table('tb_mustahiq')->where('id_golongan', 5)->count();
         $fisabiliah = DB::table('tb_mustahiq')->where('id_golongan', 6)->count();
         $ibnusabil = DB::table('tb_mustahiq')->where('id_golongan', 7)->count();
-        $amil = DB::table('tb_mustahiq')->where('id_golongan', 8)->count();
+        $amil = DB::table('tb_mustahiq')->where([['id_golongan', '=', '8'],
+                ['wilayah', '=', 'Internal']])->count();
         $golongan = GolonganModel::all();
         $pengeluaran = ViewPengeluaranZakatFitrahModel::all();
 
@@ -63,7 +64,8 @@ class PengeluaranZakatFitrahController extends Controller
         $pengeluaran->id_golongan = $request['gol'];
 
         //menentukan jumlah mustahiq setiap golongan
-        $jml_gol = DB::table('tb_mustahiq')->where('id_golongan', $request['gol'])->count();
+        $jml_gol = DB::table('tb_mustahiq')->where('id_golongan', $request['gol'])->where('wilayah', 
+                    $request['wil'])->count();
         $pengeluaran->jml_golongan = $jml_gol;
 
         //menentukan total pengeluaran zakat fitrah dan pembagian perorangnya

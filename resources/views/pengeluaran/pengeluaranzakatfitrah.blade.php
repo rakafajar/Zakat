@@ -90,87 +90,9 @@
             </div>            
           </div>
           <div class="col-lg-6">
-            <div class="card mb-3">
-              <div class="card-header">Mustahik</div>
-              <div class="card-body">
-                <div class="col-sm-12">
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text bg-light">Total Seluruh Mustahik</span>
-                    </div>
-                    <input type="number" class="form-control" name="tot_mustahik" value="{{ $tot_mustahik }}" readonly>
-                  </div>
-                </div>
-                <div class="col-sm-12">
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text bg-light">Fakir</span>
-                    </div>
-                    <input type="number" class="form-control" name="fakir" value="{{ $fakir }}" readonly>
-                  </div>
-                </div>
-                <div class="col-sm-12">
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text bg-light">Miskin</span>
-                    </div>
-                    <input type="number" class="form-control" name="miskin" value="{{ $miskin }}" readonly>
-                  </div>
-                </div>
-                <div class="col-sm-12">
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text bg-light">Riqab</span>
-                    </div>
-                    <input type="number" class="form-control" name="riqab" value="{{ $riqab }}" readonly>
-                  </div>
-                </div>
-                <div class="col-sm-12">
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text bg-light">Gharim</span>
-                    </div>
-                    <input type="number" class="form-control" name="gharim" value="{{ $gharim }}" readonly>
-                  </div>
-                </div>
-                <div class="col-sm-12">
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text bg-light">Mualaf</span>
-                    </div>
-                    <input type="number" class="form-control" name="mualaf" value="{{ $mualaf }}" readonly>
-                  </div>
-                </div>
-                <div class="col-sm-12">
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text bg-light">Fisabiliah</span>
-                    </div>
-                    <input type="number" class="form-control" name="fisabiliah" value="{{ $fisabiliah }}" readonly>
-                  </div>
-                </div>
-                <div class="col-sm-12">
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text bg-light">Ibnu Sabil</span>
-                    </div>
-                    <input type="number" class="form-control" name="ibnusabil" value="{{ $ibnusabil }}" readonly>
-                  </div>
-                </div>
-                <div class="col-sm-12">
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text bg-light">Amil Zakat</span>
-                    </div>
-                    <input type="number" class="form-control" name="amil" value="{{ $amil }}" readonly>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
         
-
         <div class="card mb-3">
           <div class="card-header">
           	Data Pengeluaran Zakat Fitrah
