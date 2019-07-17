@@ -23,22 +23,10 @@ class PengeluaranZakatFitrahController extends Controller
     public function index()
     {
         $kas = DB::table('tb_kas')->where('id_kas', 5)->first();
-        $tot_mustahik = DB::table('tb_mustahiq')->count();
-        $fakir = DB::table('tb_mustahiq')->where('id_golongan', 1)->count();
-        $miskin = DB::table('tb_mustahiq')->where('id_golongan', 2)->count();
-        $riqab = DB::table('tb_mustahiq')->where('id_golongan', 3)->count();
-        $gharim = DB::table('tb_mustahiq')->where('id_golongan', 4)->count();
-        $mualaf = DB::table('tb_mustahiq')->where('id_golongan', 5)->count();
-        $fisabiliah = DB::table('tb_mustahiq')->where('id_golongan', 6)->count();
-        $ibnusabil = DB::table('tb_mustahiq')->where('id_golongan', 7)->count();
-        $amil = DB::table('tb_mustahiq')->where([['id_golongan', '=', '8'],
-                ['wilayah', '=', 'Internal']])->count();
         $golongan = GolonganModel::all();
         $pengeluaran = ViewPengeluaranZakatFitrahModel::all();
 
-        return view('pengeluaran.pengeluaranzakatfitrah', compact('kas', 'golongan', 'pengeluaran',
-            'tot_mustahik', 'fakir', 'miskin', 'riqab', 'gharim', 'mualaf', 'fisabiliah', 'ibnusabil',
-            'amil'));
+        return view('pengeluaran.pengeluaranzakatfitrah', compact('kas', 'golongan', 'pengeluaran'));
     }
 
     /**
