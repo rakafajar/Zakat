@@ -110,4 +110,13 @@ class PengeluaranFidyahController extends Controller
         $pdf = PDF::loadView('pengeluaran.invoicefidyah', compact('pengeluaran'))->setPaper('a4', 'landscape');
         return $pdf->stream();
     }
+
+        //Delete All dengan CheckBox
+    public function deleteSelected(Request $request)
+    {
+        foreach ($request['id'] as $id) {
+            $pengeluaran = PengeluaranFidyahModel::find($id);
+            $pengeluaran->delete();
+        }
+    }
 }

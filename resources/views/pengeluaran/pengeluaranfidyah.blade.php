@@ -45,13 +45,16 @@
         </div>
         <div class="card mb-3">
           <div class="card-header">
-          	Data Pengeluaran Fidyah
+            <button onclick="deleteAll()" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</button> 
           </div>
           <div class="card-body">
             <div class="table-responsive">
+                <form method="post" id="form-pengeluaranfidyah">
+                  {!! csrf_field() !!}
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
+                    <th width="20"><input type="checkbox" value="1" id="select-all"></th>
                     <th>No.</th>
                     <th>Jumlah Pengeluaran</th>
                     <th>Keterangan</th>
@@ -64,6 +67,7 @@
                   @foreach($pengeluaran as $list)
                   <?php $no++; ?>
                   <tr>
+                    <td><input type="checkbox" name="id[]" value="{{ $list->id_peng_fidyah }}"></td>
                     <td>{{ $no }}</td>
                     <td>Rp. <?php echo format_uang($list->jml_peng_fidyah); ?></td>
                     <td>{{$list->keterangan}}</td>
@@ -76,7 +80,35 @@
                   @endforeach
                 </tbody>
               </table>
+            </form>
             </div>
           </div>
         </div>
+@endsection
+@section('script')
+<!-- Script Untuk Ceklis Semua -->
+<script type="text/javascript">
+  $('#select-all').click(function(){
+    $('input[type="checkbox"]').prop('checked', this.checked);
+  });
+
+  //Menghapus Semua Data yang dicentang
+  function deleteAll(){
+    if ($('input:checked').length<1) {
+      alert('Pilih data yang akan di hapus!')
+    } else if (confirm("Apakah yakin akan menghapus semua data terpilih?")){
+      $.ajax({
+        url: "pengeluaranfidyah/hapus",
+        type: "POST",
+        data: $('#form-pengeluaranfidyah').serialize(),
+        success: function(data){
+          location.reload();
+        },
+        error: function(data){
+          alert("Tidak Dapat Menghapus Data!");
+        }
+      });
+    }
+  }
+</script>
 @endsection

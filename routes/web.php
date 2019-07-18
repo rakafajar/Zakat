@@ -91,7 +91,7 @@ Route::post('pengeluaranwakaf/hapus', 'PengeluaranWakafController@deleteSelected
 Route::resource('pengeluaranfidyah', 'PengeluaranFidyahController');
 Route::get('pengeluaranfidyah/destroy/{id}', 'PengeluaranFidyahController@destroy');
 Route::get('pengeluaranfidyah/invoicefidyah/{id}', 'PengeluaranFidyahController@buktiBayar');
-
+Route::post('pengeluaranfidyah/hapus', 'PengeluaranFidyahController@deleteSelected');
 
 //Untuk Controller dan View Pengeluaran Zakat Maal
 Route::resource('pengeluaranzakatmaal', 'PengeluaranZakatMaalController');
