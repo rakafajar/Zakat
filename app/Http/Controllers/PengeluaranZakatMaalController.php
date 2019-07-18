@@ -107,4 +107,12 @@ class PengeluaranZakatMaalController extends Controller
         $pdf = PDF::loadView('pengeluaran.invoicezakatmaal', compact('pengeluaran'))->setPaper('a4', 'landscape');
         return $pdf->stream();
     }
+    //Delete All dengan CheckBox
+    public function deleteSelected(Request $request)
+    {
+        foreach ($request['id'] as $id) {
+            $pengeluaran = PengeluaranZakatMaalModel::find($id);
+            $pengeluaran->delete();
+        }
+    }
 }

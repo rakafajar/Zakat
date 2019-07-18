@@ -115,4 +115,12 @@ class PengeluaranZakatFitrahController extends Controller
     {
         //
     }
+        //Delete All dengan CheckBox
+    public function deleteSelected(Request $request)
+    {
+        foreach ($request['id'] as $id) {
+            $pengeluaran = PengeluaranZakatFitrahModel::find($id);
+            $pengeluaran->delete();
+        }
+    }
 }
