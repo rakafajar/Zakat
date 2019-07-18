@@ -109,4 +109,13 @@ class PengeluaranWakafController extends Controller
         $pdf = PDF::loadView('pengeluaran.invoicewakaf', compact('pengeluaran'))->setPaper('a4', 'landscape');
         return $pdf->stream();
     }
+
+    //Delete All dengan CheckBox
+    public function deleteSelected(Request $request)
+    {
+        foreach ($request['id'] as $id) {
+            $pengeluaran = PengeluaranWakafModel::find($id);
+            $pengeluaran->delete();
+        }
+    }
 }
