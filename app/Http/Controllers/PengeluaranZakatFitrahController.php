@@ -113,7 +113,17 @@ class PengeluaranZakatFitrahController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('tb_pengeluaran_zakat_fitrah')->where('id_peng_zfitrah', '=', $id)->delete();
+        return back()->with('warning', 'Data Berhasil Dihapus!');
+    }
+    public function buktiBayar($id)
+    {
+        //GET DATA BERDASARKAN ID
+        $pengeluaran = PengeluaranZakatFitrahModel::find($id);
+        //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
+        //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
+        $pdf = PDF::loadView('pengeluaran.invoicezakatfitrah', compact('pengeluaran'))->setPaper('a4', 'landscape');
+        return $pdf->stream();
     }
         //Delete All dengan CheckBox
     public function deleteSelected(Request $request)
