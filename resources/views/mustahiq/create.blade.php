@@ -25,7 +25,7 @@
         {{ csrf_field() }}
         <div class="form-group">
             <label for="anggotakk">No. NIK:</label>
-            <select class="form-control search" name="nomor_kk">
+            <select class="form-control search" name="id_anggotakk">
                 <option value="">-- Pilih No. NIK --</option>
                 @foreach($anggotakk as $list)
                 <option value="{{ $list->id_anggotakk }}">NIK : {{ $list->nik }} - {{ $list->nama_lengkap }}</option>

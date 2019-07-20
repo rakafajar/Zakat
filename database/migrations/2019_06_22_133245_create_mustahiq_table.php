@@ -15,7 +15,7 @@ class CreateMustahiqTable extends Migration
     {
         Schema::create('tb_mustahiq', function (Blueprint $table) {
             $table->increments('id_mustahiq');
-            $table->integer('id_anggotakk')->unsigned();
+            $table->integer('id_anggotakk')->unsigned()->unique();
             $table->integer('id_golongan')->unsigned();
             $table->enum('wilayah', ['Internal', 'Eksternal']);
             $table->timestamps();

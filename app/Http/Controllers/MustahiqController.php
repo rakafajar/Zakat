@@ -48,12 +48,12 @@ class MustahiqController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nomor_kk' => 'required',
+            'id_anggotakk' => 'required|unique:tb_mustahiq',
             'golongan' => 'required',
             'wilayah' => 'required'
         ]);
         $mustahiq = new MustahiqModel;
-        $mustahiq->id_anggotakk = $request['nomor_kk'];
+        $mustahiq->id_anggotakk = $request['id_anggotakk'];
         $mustahiq->id_golongan = $request['golongan'];
         $mustahiq->wilayah = $request['wilayah'];
         $mustahiq->save();
