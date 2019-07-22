@@ -45,6 +45,7 @@ class PengeluaranWakafController extends Controller
     {
         $pengeluaran = new PengeluaranWakafModel();
         $pengeluaran->jml_peng_wakaf = $request['jml_peng_wakaf'];
+        $pengeluaran->created_at = $request['tgl_pengeluaran'];
         $pengeluaran->keterangan = $request['keterangan'];
         $pengeluaran->save();
 

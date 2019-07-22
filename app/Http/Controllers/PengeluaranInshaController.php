@@ -48,6 +48,7 @@ class PengeluaranInshaController extends Controller
     {
         $pengeluaran = new PengeluaranInshaModel();
         $pengeluaran->jml_peng_insha = $request['jml_peng_insha'];
+        $pengeluaran->created_at = $request['tgl_pengeluaran'];
         $pengeluaran->keterangan = $request['keterangan'];
         $pengeluaran->save();
 

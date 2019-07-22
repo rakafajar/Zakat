@@ -29,13 +29,21 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text bg-light">Pengeluaran</span>
                   </div>
-                  <input type="number" class="form-control" name="jml_peng_insha" value="" placeholder="Rp.">
+                  <input type="number" class="form-control" name="jml_peng_insha" value="" placeholder="Rp." required>
+                </div>
+              </div> 
+              <div class="col-sm-6">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text bg-light">Tanggal Pengeluaran</span>
+                  </div>
+                  <input type="date" class="form-control" name="tgl_pengeluaran" required>
                 </div>
               </div>              
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="keterangan">Keterangan:</label>
-                  <textarea class="form-control" rows="5" name="keterangan"></textarea>
+                  <textarea class="form-control" rows="5" name="keterangan" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
                 <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>

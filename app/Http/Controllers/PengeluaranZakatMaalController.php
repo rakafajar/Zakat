@@ -43,6 +43,7 @@ class PengeluaranZakatMaalController extends Controller
     {
         $pengeluaran = new PengeluaranZakatMaalModel();
         $pengeluaran->jml_peng_zmaal = $request['jml_peng_zmaal'];
+        $pengeluaran->created_at = $request['tgl_pengeluaran'];
         $pengeluaran->keterangan = $request['keterangan'];
         $pengeluaran->save();
 

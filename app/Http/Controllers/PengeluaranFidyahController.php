@@ -45,6 +45,7 @@ class PengeluaranFidyahController extends Controller
     {
         $pengeluaran = new PengeluaranFidyahModel();
         $pengeluaran->jml_peng_fidyah = $request['jml_peng_fidyah'];
+        $pengeluaran->created_at = $request['tgl_pengeluaran'];
         $pengeluaran->keterangan = $request['keterangan'];
         $pengeluaran->save();
 
@@ -111,7 +112,7 @@ class PengeluaranFidyahController extends Controller
         return $pdf->stream();
     }
 
-        //Delete All dengan CheckBox
+    //Delete All dengan CheckBox
     public function deleteSelected(Request $request)
     {
         foreach ($request['id'] as $id) {

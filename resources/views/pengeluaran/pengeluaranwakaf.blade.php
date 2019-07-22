@@ -33,6 +33,14 @@
                 </div>
               </div>
               <div class="col-sm-6">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text bg-light">Tanggal Pengeluaran</span>
+                  </div>
+                  <input type="date" class="form-control" name="tgl_pengeluaran" required>
+                </div>
+              </div>   
+              <div class="col-sm-6">
                 <div class="form-group">
                   <label for="keterangan">Keterangan:</label>
                   <textarea class="form-control" rows="5" name="keterangan" required></textarea>
@@ -58,7 +66,7 @@
                     <th>No.</th>
                     <th>Jumlah Pengeluaran</th>
                     <th>Keterangan</th>
-                    <th>Tanggal Pembayaran</th>
+                    <th>Tanggal Pengeluaran</th>
                     <th>Action</th>
                   </tr>
                 </thead>
