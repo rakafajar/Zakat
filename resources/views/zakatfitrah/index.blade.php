@@ -65,7 +65,7 @@
               </td>
               <th style="text-align: center;">
                 <a href="{{ URL::to('zakatfitrah/invoice/'.$list->id_zfitrah) }}" class="btn btn-success btn-sm"><i class="fas fa-print"></i></a>
-                <a href="{{route('zakatfitrah.edit', $list->id_zfitrah)}}" class="btn btn-warning btn-sm disabled"><i class="fas fa-edit"></i></a>
+                {{-- <a href="{{route('zakatfitrah.edit', $list->id_zfitrah)}}" class="btn btn-warning btn-sm disabled"><i class="fas fa-edit"></i></a> --}}
                 <a href="{{ URL::to('zakatfitrah/destroy/'.$list->id_zfitrah) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
               </th>
             </tr>

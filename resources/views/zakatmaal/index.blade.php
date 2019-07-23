@@ -58,8 +58,8 @@
                     <td><?php echo "Rp. ".format_uang($list->nisab) ?></td>
                     <td><?php echo tanggal_indonesia($list->created_at) ?></td>
                     <th style="text-align: center;">
-                        <a href="{{ URL::to('zakatmaal/invoice/'.$list->id_zmaal) }}" class="btn btn-success btn-sm"><i class="fas fa-print"></i></a>
-                      <a href="{{route('zakatmaal.edit', $list->id_zmaal)}}" class="btn btn-warning btn-sm disabled"><i class="fas fa-edit"></i></a>
+                      <a href="{{ URL::to('zakatmaal/invoice/'.$list->id_zmaal) }}" class="btn btn-success btn-sm"><i class="fas fa-print"></i></a>
+                      {{-- <i href="{{route('zakatmaal.edit', $list->id_zmaal)}}" class="btn btn-warning btn-sm disabled"><i class="fas fa-edit"></i></i> --}}
                       <a href="{{ URL::to('zakatmaal/destroy/'.$list->id_zmaal) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                     </th>
                   </tr>
