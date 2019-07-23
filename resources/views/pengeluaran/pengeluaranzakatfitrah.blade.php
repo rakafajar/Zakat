@@ -23,7 +23,7 @@
                         <span class="input-group-text bg-light">Total Kas Fitrah</span>
                       </div>
                       <input type="text" class="form-control" value="Rp. <?php echo format_uang($kas->jml_kas); ?>" readonly>
-                      <input type="hidden" class="form-control" name="jml_kas" id="jml_kas" onkeyup="sum();" value="150000000" readonly>
+                      <input type="hidden" class="form-control" name="jml_kas" id="jml_kas" onkeyup="sum();" value="{{ $kas->jml_kas }}" readonly>
                       @foreach($kas_int as $list)
                       <input type="hidden" class="form-control" name="jml_kas_int" id="jml_kas_int" value="{{ $list->jml_kas_int }}" readonly>
                       @endforeach
