@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\PengeluaranZakatFitrahModel;
 use App\ViewPengeluaranZakatFitrahModel;
 use App\GolonganModel;
+use App\KasInternalModel;
+use App\KasEksternalModel;
 use DB;
 use PDF;
 
@@ -24,9 +26,11 @@ class PengeluaranZakatFitrahController extends Controller
     {
         $kas = DB::table('tb_kas')->where('id_kas', 5)->first();
         $golongan = GolonganModel::all();
+        $kas_int = KasInternalModel::all();
+        $kas_eks = KasEksternalModel::all();
         $pengeluaran = ViewPengeluaranZakatFitrahModel::all();
 
-        return view('pengeluaran.pengeluaranzakatfitrah', compact('kas', 'golongan', 'pengeluaran'));
+        return view('pengeluaran.pengeluaranzakatfitrah', compact('kas', 'golongan', 'pengeluaran', 'kas_int', 'kas_eks'));
     }
 
     /**
@@ -34,7 +38,7 @@ class PengeluaranZakatFitrahController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
     }
@@ -47,28 +51,47 @@ class PengeluaranZakatFitrahController extends Controller
      */
     public function store(Request $request)
     {
-        $pengeluaran = new PengeluaranZakatFitrahModel();
-        $pengeluaran->wilayah = $request['wil'];
-        $pengeluaran->id_golongan = $request['gol'];
+        // $pengeluaran = new PengeluaranZakatFitrahModel();
+        // $pengeluaran->wilayah = $request['wil'];
+        // $pengeluaran->id_golongan = $request['gol'];
 
-        //menentukan jumlah mustahiq setiap golongan
-        $jml_gol = DB::table('tb_mustahiq')->where('id_golongan', $request['gol'])->where('wilayah', 
-                    $request['wil'])->count();
-        $pengeluaran->jml_golongan = $jml_gol;
+        // //menentukan jumlah mustahiq setiap golongan
+        // $jml_gol = DB::table('tb_mustahiq')->where('id_golongan', $request['gol'])->where('wilayah', 
+        //             $request['wil'])->count();
+        // $pengeluaran->jml_golongan = $jml_gol;
 
-        //menentukan total pengeluaran zakat fitrah dan pembagian perorangnya
-        $jml_peng_zfitrah = $pengeluaran->jml_peng_zfitrah = $request['jml_peng_zfitrah'];
-        $perorang = $jml_peng_zfitrah / $jml_gol;
-        $pengeluaran->peng_zfitrah_org = $perorang;
+        // //menentukan total pengeluaran zakat fitrah dan pembagian perorangnya
+        // $jml_peng_zfitrah = $pengeluaran->jml_peng_zfitrah = $request['jml_peng_zfitrah'];
+        // $perorang = $jml_peng_zfitrah / $jml_gol;
+        // $pengeluaran->peng_zfitrah_org = $perorang;
 
-        $pengeluaran->keterangan = $request['keterangan'];
-        $pengeluaran->save();
+        // $pengeluaran->keterangan = $request['keterangan'];
+        // $pengeluaran->save();
+
+        // DB::table('tb_kas')->where('id_kas', 5)->update([
+        //     'jml_kas' => $request['jml_kas'] - $request['jml_peng_zfitrah']
+        // ]);
+
+        $jml_kas = $request['jml_kas'];
+        $jml_kas_int = $request['jml_kas_int'];
+        $jml_kas_eks = $request['jml_kas_eks'];
+        $hsl_persen_int = $request['hsl_persen_int'];
+        $hsl_persen_eks = $request['hsl_persen_eks'];
+        $tot_pembagian = $hsl_persen_int + $hsl_persen_eks;
 
         DB::table('tb_kas')->where('id_kas', 5)->update([
-            'jml_kas' => $request['jml_kas'] - $request['jml_peng_zfitrah']
+            'jml_kas' => $jml_kas - $tot_pembagian
         ]);
 
-        return back()->with('success', 'Pengeluaran Berhasil!');
+        DB::table('tb_kas_internal')->where('id_kas_int', 1)->update([
+            'jml_kas_int' => $jml_kas_int + $hsl_persen_int
+        ]);
+
+        DB::table('tb_kas_eksternal')->where('id_kas_eks', 1)->update([
+            'jml_kas_eks' => $jml_kas_eks + $hsl_persen_eks
+        ]);
+
+        return back()->with('success', 'Pembagian Wilayah Berhasil!');
     }
 
     /**

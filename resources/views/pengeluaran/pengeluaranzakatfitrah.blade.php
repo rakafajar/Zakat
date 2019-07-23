@@ -9,10 +9,10 @@
 </ol>
 
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-4">
             <div class="card mb-3">
               <div class="card-header">
-                Form Pengeluaran Zakat Fitrah
+                Pembagian Wilayah
               </div>
               <div class="card-body">
                 <form action="{{ route('pengeluaranzakatfitrah.store') }}" method="POST">
@@ -20,63 +20,85 @@
                   <div class="col-sm-12">
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
-                        <span class="input-group-text bg-light">Total Kas</span>
+                        <span class="input-group-text bg-light">Total Kas Fitrah</span>
                       </div>
                       <input type="text" class="form-control" value="Rp. <?php echo format_uang($kas->jml_kas); ?>" readonly>
-                      <input type="hidden" class="form-control" name="jml_kas" id="jml_kas" onkeyup="sum();" value="{{ $kas->jml_kas }}" readonly>
+                      <input type="hidden" class="form-control" name="jml_kas" id="jml_kas" onkeyup="sum();" value="150000000" readonly>
+                      @foreach($kas_int as $list)
+                      <input type="hidden" class="form-control" name="jml_kas_int" id="jml_kas_int" value="{{ $list->jml_kas_int }}" readonly>
+                      @endforeach
+                      @foreach($kas_eks as $list)
+                      <input type="hidden" class="form-control" name="jml_kas_eks" id="jml_kas_eks" value="{{ $list->jml_kas_eks }}" readonly>
+                      @endforeach
                     </div>
                   </div>
-                <div class="col-sm-12">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-light">Wilayah</span>
-                        </div>
-                        <select class="form-control search" name="wil">
-                            <option value="">-- Pilih Wilayah --</option>
-                            <option value="Internal">Internal</option>
-                            <option value="Eksternal">Eksternal</option>
-                        </select>
-                    </div>
-                </div>
                   <div class="col-sm-12">
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
-                        <span class="input-group-text bg-light">%</span>
+                        <span class="input-group-text bg-light">% Int</span>
                       </div>
-                      <input type="number" class="form-control" name="persen_wil" id="persen_wil" onkeyup="sum();" value="" required>
-                      <input type="number" class="form-control" name="hsl_persen_wil" id="hsl_persen_wil" value="" readonly>
+                      <input type="number" class="form-control" name="persen_int" id="persen_int" onkeyup="sum();" value="0" required>
+                      <input type="text" class="form-control" name="hsl_persen_int" id="hsl_persen_int" value="" readonly>
                     </div>
                   </div>
-                <div class="col-sm-12">
+                  <div class="col-sm-12">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text bg-light">% Eks</span>
+                      </div>
+                      <input type="number" class="form-control" name="persen_eks" id="persen_eks" onkeyup="sum();" value="0" required>
+                      <input type="text" class="form-control" name="hsl_persen_eks" id="hsl_persen_eks" value="" readonly>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-calculator"></i> Hitung</button>
+                    <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>
+                  </div>              
+                </form>
+              </div>
+            </div>            
+          </div>
+          <div class="col-lg-4">
+            <div class="card mb-3">
+              <div class="card-header">
+                Pengeluaran Zakat Fitrah Internal
+              </div>
+              <div class="card-body">
+                <form action="{{ route('pengeluaranzakatfitrahint.store') }}" method="POST">
+                {{ csrf_field() }}
+                  <div class="col-sm-12">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text bg-light">Total Kas Internal</span>
+                      </div>
+                      @foreach($kas_int as $list)
+                      <input type="text" class="form-control" value="Rp. <?php echo format_uang($list->jml_kas_int); ?>" readonly>
+                      <input type="hidden" class="form-control" name="jml_kas_int" id="jml_kas_int" onkeyup="sumInt();" value="{{ $list->jml_kas_int }}" readonly>
+                      @endforeach
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-light">Golongan</span>
                         </div>
-                        <select class="form-control search" name="gol">
+                        <select class="form-control search" name="gol_int">
                             <option value="">-- Pilih Golongan --</option>
                             @foreach ($golongan as $list)
                             <option value="{{ $list->id_golongan}}">{{ $list->nama_golongan }}</option>
                             @endforeach
                         </select>
                     </div>
-                </div>          
+                  </div>
                   <div class="col-sm-12">
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
                         <span class="input-group-text bg-light">%</span>
                       </div>
-                      <input type="number" class="form-control" name="persen_gol" id="persen_gol" onkeyup="sum();" value="" required>
-                      <input type="number" class="form-control" name="hsl_persen_gol" id="hsl_persen_gol" value="" readonly>
+                      <input type="number" class="form-control" name="persen_gol_int" id="persen_gol_int" onkeyup="sumInt();" value="0" required>
+                      <input type="text" class="form-control" name="hsl_gol_int" id="hsl_gol_int" value="" readonly>
                     </div>
                   </div>
-                  <div class="col-sm-12">
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text bg-light">Total Pengeluaran Zakat Fitrah</span>
-                      </div>
-                      <input type="number" class="form-control" name="jml_peng_zfitrah" id="jml_peng_zfitrah" value="" readonly>
-                    </div>
-                  </div>              
                   <div class="col-sm-12">
                     <div class="form-group">
                       <label for="keterangan">Keterangan:</label>
@@ -84,12 +106,63 @@
                     </div>
                     <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
                     <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>
-                  </div>              
+                  </div>             
                 </form>
               </div>
-            </div>            
+            </div>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-4">
+            <div class="card mb-3">
+              <div class="card-header">
+                Pengeluaran Zakat Fitrah Eksternal
+              </div>
+              <div class="card-body">
+                <form action="{{ route('pengeluaranzakatfitraheks.store') }}" method="POST">
+                {{ csrf_field() }}
+                  <div class="col-sm-12">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text bg-light">Total Kas Eksternal</span>
+                      </div>
+                      @foreach($kas_eks as $list)
+                      <input type="text" class="form-control" value="Rp. <?php echo format_uang($list->jml_kas_eks); ?>" readonly>
+                      <input type="hidden" class="form-control" name="jml_kas_eks" id="jml_kas_eks" onkeyup="sumEks();" value="{{ $list->jml_kas_eks }}" readonly>
+                      @endforeach
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-light">Golongan</span>
+                        </div>
+                        <select class="form-control search" name="gol_eks">
+                            <option value="">-- Pilih Golongan --</option>
+                            @foreach ($golongan as $list)
+                            <option value="{{ $list->id_golongan}}">{{ $list->nama_golongan }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text bg-light">%</span>
+                      </div>
+                      <input type="number" class="form-control" name="persen_gol_eks" id="persen_gol_eks" onkeyup="sumEks();" value="0" required>
+                      <input type="text" class="form-control" name="hsl_gol_eks" id="hsl_gol_eks" value="" readonly>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="keterangan">Keterangan:</label>
+                      <textarea class="form-control" rows="5" name="keterangan" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
+                    <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>
+                  </div>                     
+                </form>
+              </div>
+            </div>
           </div>
         </div>
         
@@ -151,28 +224,43 @@
         //perhitungan untuk wilayah
         var total_zfitrah = document.getElementById('jml_kas').value;
 
-        var persen_wil = parseInt(document.getElementById('persen_wil').value) / 100;
+        var persen_int = parseInt(document.getElementById('persen_int').value) / 100;
+        var persen_eks = parseInt(document.getElementById('persen_eks').value) / 100;
 
-        var hsl_persen_wil = parseFloat(total_zfitrah) * parseFloat(persen_wil);
-        if (!isNaN(hsl_persen_wil)) {
-            document.getElementById('hsl_persen_wil').value = hsl_persen_wil;
+        var hsl_persen_int = parseFloat(total_zfitrah) * parseFloat(persen_int);
+        if (!isNaN(hsl_persen_int)) {
+            document.getElementById('hsl_persen_int').value = parseInt(hsl_persen_int);
         }
 
-        //perhitungan untuk golongan
-        var persen_gol = parseInt(document.getElementById('persen_gol').value) / 100;
-
-        var hsl_persen_gol = parseFloat(hsl_persen_wil) * parseFloat(persen_gol);
-        if (!isNaN(hsl_persen_gol)) {
-            document.getElementById('hsl_persen_gol').value = hsl_persen_gol;
-        }
-
-        var jml_peng_zfitrah = parseInt(hsl_persen_gol);
-        if (!isNaN(jml_peng_zfitrah)) {
-            document.getElementById('jml_peng_zfitrah').value = jml_peng_zfitrah;
+        var hsl_persen_eks = parseFloat(total_zfitrah) * parseFloat(persen_eks);
+        if (!isNaN(hsl_persen_eks)) {
+            document.getElementById('hsl_persen_eks').value = parseInt(hsl_persen_eks);
         }
     }
 
-      $('#select-all').click(function(){
+    //perhitungan untuk golongan internal
+    function sumInt() {
+      var jml_kas_int = document.getElementById('jml_kas_int').value;
+      var persen_gol_int = parseInt(document.getElementById('persen_gol_int').value) / 100;
+
+      var hsl_gol_int = parseFloat(jml_kas_int) * parseFloat(persen_gol_int);
+        if (!isNaN(hsl_gol_int)) {
+          document.getElementById('hsl_gol_int').value = parseInt(hsl_gol_int);
+        }
+    }
+
+
+    function sumEks() {
+      var jml_kas_eks = document.getElementById('jml_kas_eks').value;
+      var persen_gol_eks = parseInt(document.getElementById('persen_gol_eks').value) / 100;
+
+      var hsl_gol_eks = parseFloat(jml_kas_eks) * parseFloat(persen_gol_eks);
+        if (!isNaN(hsl_gol_eks)) {
+          document.getElementById('hsl_gol_eks').value = parseInt(hsl_gol_eks);
+        }
+    }
+
+    $('#select-all').click(function(){
     $('input[type="checkbox"]').prop('checked', this.checked);
   });
 

@@ -102,10 +102,11 @@ Route::post('pengeluaranzakatmaal/hapus', 'PengeluaranZakatMaalController@delete
 
 //Untuk Controller dan View Pengeluaran Zakat Fitrah
 Route::resource('pengeluaranzakatfitrah', 'PengeluaranZakatFitrahController');
+Route::resource('pengeluaranzakatfitrahint', 'PengeluaranZakatFitrahIntController');
+Route::resource('pengeluaranzakatfitraheks', 'PengeluaranZakatFitrahEksController');
 Route::get('pengeluaranzakatfitrah/destroy/{id}', 'PengeluaranZakatFitrahController@destroy');
 Route::get('pengeluaranzakatfitrah/invoicezakatfitrah/{id}', 'PengeluaranZakatFitrahController@buktiBayar');
 Route::post('pengeluaranzakatfitrah/hapus', 'PengeluaranZakatFitrahController@deleteSelected');
-
 
 // Untuk Controller dan View Fidyah
 Route::resource('fidyah', 'FidyahController');
