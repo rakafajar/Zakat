@@ -57,6 +57,11 @@ class PengeluaranZakatFitrahIntController extends Controller
         $pengeluaran->keterangan = $request['keterangan'];
         $pengeluaran->save();
 
+        DB::table('tb_kas_internal')->where('id_kas_int', 2)->update([
+            'jml_kas_int' => $request['jml_kas_int'] - $request['hsl_gol_int']
+        ]);
+
+
         return back()->with('success', 'Pengeluaran Berhasil!');
     }
 

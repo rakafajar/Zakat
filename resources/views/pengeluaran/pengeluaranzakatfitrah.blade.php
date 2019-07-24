@@ -24,12 +24,8 @@
                       </div>
                       <input type="text" class="form-control" value="Rp. <?php echo format_uang($kas->jml_kas); ?>" readonly>
                       <input type="hidden" class="form-control" name="jml_kas" id="jml_kas" onkeyup="sum();" value="{{ $kas->jml_kas }}" readonly>
-                      @foreach($kas_int as $list)
-                      <input type="hidden" class="form-control" name="jml_kas_int" id="jml_kas_int" value="{{ $list->jml_kas_int }}" readonly>
-                      @endforeach
-                      @foreach($kas_eks as $list)
-                      <input type="hidden" class="form-control" name="jml_kas_eks" id="jml_kas_eks" value="{{ $list->jml_kas_eks }}" readonly>
-                      @endforeach
+                      <input type="hidden" class="form-control" name="jml_kas_int" id="jml_kas_int" value="{{ $kas_int->jml_kas_int }}" readonly>
+                      <input type="hidden" class="form-control" name="jml_kas_eks" id="jml_kas_eks" value="{{ $kas_eks->jml_kas_eks }}" readonly>
                     </div>
                   </div>
                   <div class="col-sm-12">
@@ -71,10 +67,8 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text bg-light">Total Kas Internal</span>
                       </div>
-                      @foreach($kas_int as $list)
-                      <input type="text" class="form-control" value="Rp. <?php echo format_uang($list->jml_kas_int); ?>" readonly>
-                      <input type="hidden" class="form-control" name="jml_kas_int" id="jml_kas_int" onkeyup="sumInt();" value="{{ $list->jml_kas_int }}" readonly>
-                      @endforeach
+                      <input type="text" class="form-control" value="Rp. <?php echo format_uang($kas_int->jml_kas_int); ?>" readonly>
+                      <input type="hidden" class="form-control" name="jml_kas_int" id="jml_kas_int" onkeyup="sumInt();" value="{{ $kas_int->jml_kas_int }}" readonly>
                     </div>
                   </div>
                   <div class="col-sm-12">
@@ -124,10 +118,8 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text bg-light">Total Kas Eksternal</span>
                       </div>
-                      @foreach($kas_eks as $list)
-                      <input type="text" class="form-control" value="Rp. <?php echo format_uang($list->jml_kas_eks); ?>" readonly>
-                      <input type="hidden" class="form-control" name="jml_kas_eks" id="jml_kas_eks" onkeyup="sumEks();" value="{{ $list->jml_kas_eks }}" readonly>
-                      @endforeach
+                      <input type="text" class="form-control" value="Rp. <?php echo format_uang($kas_eks->jml_kas_eks); ?>" readonly>
+                      <input type="hidden" class="form-control" name="jml_kas_eks" id="jml_kas_eks" onkeyup="sumEks();" value="{{ $kas_eks->jml_kas_eks }}" readonly>
                     </div>
                   </div>
                   <div class="col-sm-12">

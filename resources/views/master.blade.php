@@ -102,7 +102,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-wallet"></i>
-          <span>Zakat</span>
+          <span>ZISWAF</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <a class="dropdown-item" href="{{ route('zakatfitrah.index') }}">Zakat Fitrah</a>

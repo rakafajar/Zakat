@@ -26,8 +26,8 @@ class PengeluaranZakatFitrahController extends Controller
     {
         $kas = DB::table('tb_kas')->where('id_kas', 5)->first();
         $golongan = GolonganModel::all();
-        $kas_int = KasInternalModel::all();
-        $kas_eks = KasEksternalModel::all();
+        $kas_int = DB::table('tb_kas_internal')->where('id_kas_int', 1)->first();
+        $kas_eks = DB::table('tb_kas_eksternal')->where('id_kas_eks', 1)->first();
         $pengeluaran = ViewPengeluaranZakatFitrahModel::all();
 
         return view('pengeluaran.pengeluaranzakatfitrah', compact('kas', 'golongan', 'pengeluaran', 'kas_int', 'kas_eks'));
@@ -87,7 +87,15 @@ class PengeluaranZakatFitrahController extends Controller
             'jml_kas_int' => $jml_kas_int + $hsl_persen_int
         ]);
 
+        DB::table('tb_kas_internal')->where('id_kas_int', 2)->update([
+            'jml_kas_int' => $jml_kas_int + $hsl_persen_int
+        ]);
+
         DB::table('tb_kas_eksternal')->where('id_kas_eks', 1)->update([
+            'jml_kas_eks' => $jml_kas_eks + $hsl_persen_eks
+        ]);
+
+        DB::table('tb_kas_eksternal')->where('id_kas_eks', 2)->update([
             'jml_kas_eks' => $jml_kas_eks + $hsl_persen_eks
         ]);
 

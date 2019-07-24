@@ -57,6 +57,10 @@ class PengeluaranZakatFitrahEksController extends Controller
         $pengeluaran->keterangan = $request['keterangan'];
         $pengeluaran->save();
 
+        DB::table('tb_kas_eksternal')->where('id_kas_eks', 2)->update([
+            'jml_kas_eks' => $request['jml_kas_eks'] - $request['hsl_gol_eks']
+        ]);
+
         return back()->with('success', 'Pengeluaran Berhasil!');
     }
 

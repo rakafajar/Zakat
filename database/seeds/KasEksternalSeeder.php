@@ -15,6 +15,10 @@ class KasEksternalSeeder extends Seeder
             [
 	        	'id_kas_eks' => '1',
 	        	'jml_kas_eks' => '0'
+            ],
+            [
+	        	'id_kas_eks' => '2',
+	        	'jml_kas_eks' => '0'
             ]
         ));
     }

@@ -15,6 +15,10 @@ class KasInternalSeeder extends Seeder
             [
 	        	'id_kas_int' => '1',
 	        	'jml_kas_int' => '0'
+            ],
+            [
+	        	'id_kas_int' => '2',
+	        	'jml_kas_int' => '0'
             ]
         ));
     }
