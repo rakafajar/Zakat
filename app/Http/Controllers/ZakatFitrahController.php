@@ -68,7 +68,9 @@ class ZakatFitrahController extends Controller
             'jml_kas' => $request['jml_kas'] + $nominal
         ]);
 
-        return view('zakatfitrah.update', compact('zakatfitrah'),
+        return view(
+            'zakatfitrah.update',
+            compact('zakatfitrah'),
             ['harga_beras' => $harga_beras, 'nominal' => $nominal],
             ['muzakki' => $muzakki]
         );
@@ -94,9 +96,13 @@ class ZakatFitrahController extends Controller
     public function edit($id)
     {
         $zakatfitrah = ZakatFitrahModel::find($id);
-        $muzakki = ViewMuzakkiModel::all();
-        $harga_beras = HargaModel::all();
-        return view('zakatfitrah.edit', compact('zakatfitrah', $zakatfitrah, 'muzakki', $muzakki, 'harga_beras', $harga_beras));
+        // $muzakki = ViewMuzakkiModel::all();
+        // $harga_beras = HargaModel::all();
+        // Menampilkan Nama Lengkap dengan melakukan Join Terhadap id_muzakki  pada view_muzakki
+        //  dengan id_muzakki pada tb_zakat_fitrah
+        $muzakki = ZakatFitrahModel::leftJoin('view_muzakki', 'view_muzakki.id_muzakki', '=', 'tb_zakat_fitrah.id_muzakki')
+            ->orderBy('tb_zakat_fitrah.id_muzakki')->find($id);
+        return view('zakatfitrah.edit', compact('zakatfitrah', $zakatfitrah, 'muzakki', $muzakki));
     }
 
     /**
@@ -109,17 +115,14 @@ class ZakatFitrahController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'id_muzakki' => 'required',
-            'harga_beras' => 'required|numeric',
+            'tgl_pembayaran' => 'required',
+            // 'harga_beras' => 'required|numeric',
         ]);
         $zakatfitrah = ZakatFitrahModel::find($id);
-        $muzakki = $zakatfitrah->id_muzakki = $request['id_muzakki'];
-        $harga_beras = $zakatfitrah->harga_beras = $request['harga_beras'];
         $zakatfitrah->created_at = $request['tgl_pembayaran'];
-        $nominal = $zakatfitrah->nominal = 2.5 * $harga_beras;
         $zakatfitrah->update();
 
-        return redirect(route('zakatfitrah.index'))->with('info', 'Data Berhasil Diubah!');
+        return redirect(route('zakatfitrah.index'))->with('info', 'Tanggal Pembayaran Berhasil Diubah!');
     }
 
     /**
