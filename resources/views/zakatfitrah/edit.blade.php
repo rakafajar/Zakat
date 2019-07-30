@@ -42,17 +42,22 @@
             </select>
           </div> --}}
           <div class="form-group">
-            <label for="Muzaaki">Nama Muzakki:</label>
+            <label for="Muzaaki">Nama Muzakki :</label>
             <p>{{ $muzakki->nama_lengkap}}</p>
-            <input type="hidden" class="form-control" id="id_muzakki" name="id_muzakki" value="{{ $zakatfitrah->id_muzakki }}">
-          </div>
           <div class="form-group">
-            <label for="Muzaaki">Harga Beras:</label>
+            <label for="Muzaaki">Harga Beras :</label>
             <p>{{ $zakatfitrah->harga_beras}}</p>
-            <input type="hidden" class="form-control" id="id_muzakki" name="id_muzakki" value="{{ $zakatfitrah->harga_beras }}">
           </div>
           <div class="form-group">
-            <label for="tgl_pembayaran">Tanggal Pembayaran:</label>
+            <label for="Muzaaki">Tanggal Sebelum :</label>
+            <p>
+              <?php
+              echo tanggal_indonesia($zakatfitrah->created_at);
+              ?>
+            </p>
+          </div>
+          <div class="form-group">
+            <label for="tgl_pembayaran">Tanggal Pembayaran Baru:</label>
             <input type="date" class="form-control" id="tgl_pembayaran" name="tgl_pembayaran" value="{{ $zakatfitrah->created_at }}" required>
           </div>
   {{--         <div class="form-group">
