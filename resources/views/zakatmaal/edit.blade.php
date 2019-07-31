@@ -23,7 +23,7 @@
         @endif
       <form action="{{ route('zakatmaal.update', $zakatmaal->id_zmaal)}}" method="POST">
         {{ csrf_field() }} {{ method_field('PATCH')}}
-        <div class="form-group">
+        {{-- <div class="form-group">
           <label for="sel1">Pilih Muzakki:</label>
           <select class="form-control search" name="id_muzakki">
             <option>-- Pilih Muzakki --</option>
@@ -31,16 +31,52 @@
             <option value="{{ $list->id_muzakki }}">NIK : {{ $list->nik }} - {{ $list->nama_lengkap }} </option>
             @endforeach
           </select>
+        </div> --}}
+        <div class="form-group">
+          <label for="Muzaaki">Nama Muzakki :</label>
+          <p>{{ $muzakki->nama_lengkap}}</p>
         </div>
         <div class="form-group">
-          <label for="tgl_pembayaran">Tanggal Pembayaran:</label>
-          <input type="date" class="form-control" id="tgl_pembayaran" name="tgl_pembayaran" value="{{ old('tgl_pembayaran') }}" required>
+          <label for="jml_harta">Jumlah Harta :</label>
+          <p>Rp. 
+            <?php
+            echo format_uang($zakatmaal->jml);
+            ?>
+          </p>
         </div>
         <div class="form-group">
+          <label for="hrga_emas">Harga Emas :</label>
+          <p>Rp.
+            <?php
+            echo format_uang($zakatmaal->harga_emas);
+            ?>
+          </p>
+        </div>
+        <div class="form-group">
+          <label for="nisab">Nisab :</label>
+          <p>Rp.
+            <?php
+            echo format_uang($zakatmaal->nisab);
+            ?>
+          </p>
+        </div>
+        <div class="form-group">
+            <label for="tgl_sebelumnya">Tanggal Sebelumnya :</label>
+            <p>
+              <?php 
+                echo tanggal_indonesia($zakatmaal->created_at); 
+              ?>
+            </p>
+          </div>
+        <div class="form-group">
+          <label for="tgl_pembayaran">Tanggal Pembayaran Baru :</label>
+          <input type="date" class="form-control" id="tgl_pembayaran" name="tgl_pembayaran" value="{{{ $zakatmaal->created_at }}}" required>
+        </div>
+        {{-- <div class="form-group">
           <label for="penghasilan">Penghasilan:</label>
           <input type="number" min="0" class="form-control" name="penghasilan" id="penghasilan" placeholder="Rp.">
-        </div>
-        <div class="card">
+        </div> --}}
+        {{-- <div class="card">
           <div class="card-body">
             <strong>Zakat Maal</strong>
             <hr>
@@ -85,8 +121,8 @@
                 <input type="number" min="0" class="form-control" name="jml" id="jml" value="" readonly="">
             </div>
         </div>
-        </div><br>
-        <div class="card">
+        </div><br> --}}
+        {{-- <div class="card">
             <div class="card-body">
             <strong>Nisab Zakat Maal</strong>
             <hr>
@@ -112,7 +148,7 @@
                     <input type="number" min="0" class="form-control" name="nisab" id="nisab" value="" readonly>
                 </div>
             </div>
-        </div>
+        </div> --}}
         </div><br>
         <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
         <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button>

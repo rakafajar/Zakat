@@ -44,6 +44,7 @@
           <div class="form-group">
             <label for="Muzaaki">Nama Muzakki :</label>
             <p>{{ $muzakki->nama_lengkap}}</p>
+          </div>
           <div class="form-group">
             <label for="Muzaaki">Harga Beras :</label>
             <p>{{ $zakatfitrah->harga_beras}}</p>

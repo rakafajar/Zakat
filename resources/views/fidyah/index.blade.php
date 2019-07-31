@@ -62,7 +62,7 @@
                     <th style="text-align: center;">
                       <a href="{{ URL::to('fidyah/invoice/'.$list->id_fidyah) }}" class="btn btn-success btn-sm"><i class="fas fa-print"></i></a>
                       {{-- <i href="" class="btn btn-info btn-sm"><i class="fas fa-search"></i></i> --}}
-                      {{-- <i href="{{ route('fidyah.edit', $list->id_fidyah) }}" class="btn btn-warning btn-sm disabled"><i class="fas fa-edit"></i></i> --}}
+                      <a href="{{ route('fidyah.edit', $list->id_fidyah) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                       <a href="{{ URL::to('fidyah/destroy/'.$list->id_fidyah) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
                     </th>
                   </tr>

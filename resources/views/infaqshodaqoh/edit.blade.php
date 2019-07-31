@@ -29,7 +29,7 @@
           <input type="number" min="0" class="form-control" name="jml_kas_insha" value="{{ $list->jml_kas_insha }}" readonly>
           @endforeach
         </div> --}}
-        <div class="form-group">
+        {{-- <div class="form-group">
           <label for="sel1">Pilih Insha:</label>
           <select class="form-control search" name="nama_insha">
             <option value="">-- Pilih Nama --</option>
@@ -41,7 +41,25 @@
         <div class="form-group">
           <label for="nominal">Nominal:</label>
           <input type="number" min="0" class="form-control" name="nominal_insha" value="{{ $insha->nominal_insha }}">
-        </div>  
+        </div>   --}}
+        <div class="form-group">
+            <label for="anggotakk">Nama :</label>
+            <p>{{ $anggotakk->nama_lengkap}}</p>
+        </div>
+        <div class="form-group">
+            <label for="nominal_wakaf">Nominal Infaq & Shodaqoh :</label>
+            <p>Rp.
+              <?php
+                echo format_uang($insha->nominal_insha); 
+              ?>
+        </div>
+        <div class="form-group">
+            <label for="tgl_pembayarn">Tanggal Pembayaran Sebelumnya :</label>
+            <p>
+              <?php
+                echo tanggal_indonesia($insha->created_at); 
+              ?>
+        </div>
         <div class="form-group">
           <label for="tgl_pembayaran">Tanggal Pembayaran:</label>
           <input type="date" class="form-control" id="tgl_pembayaran" name="tgl_pembayaran" value="{{ old('tgl_pembayaran') }}" required>

@@ -85,10 +85,14 @@ class WakafController extends Controller
      */
     public function edit($id)
     {
-        $anggotakk = ViewAnggotakkModel::all();
+        // $anggotakk = ViewAnggotakkModel::all();
         $wakaf = WakafModel::find($id);
-        $jenis_wakaf = JenisWakafModel::all();
-        return view('wakaf.edit', compact('jenis_wakaf', 'wakaf', 'anggotakk'));
+        // $jenis_wakaf = JenisWakafModel::all();
+        $anggotakk = WakafModel::leftJoin('view_anggotakk', 'view_anggotakk.id_anggotakk', '=', 'tb_wakaf.id_anggotakk')
+            ->orderBy('tb_wakaf.id_anggotakk')->find($id);
+        $jeniswakaf = WakafModel::leftJoin('tb_jeniswakaf', 'tb_jeniswakaf.id_jeniswakaf', '=', 'tb_wakaf.id_jeniswakaf')
+            ->orderBy('tb_wakaf.id_jeniswakaf')->find($id);
+        return view('wakaf.edit', compact('jeniswakaf', 'wakaf', 'anggotakk'));
     }
 
     /**
@@ -100,19 +104,19 @@ class WakafController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'nama_wakaf' => 'required',
-            'jenis_wakaf' => 'required',
-            'nominal_wakaf' => 'required|numeric'
-        ]);
+        // $this->validate($request, [
+        //     'nama_wakaf' => 'required',
+        //     'jenis_wakaf' => 'required',
+        //     'nominal_wakaf' => 'required|numeric'
+        // ]);
         $wakaf = WakafModel::find($id);
-        $wakaf->id_anggotakk = $request['nama_wakaf'];
-        $wakaf->id_jeniswakaf = $request['jenis_wakaf'];
-        $wakaf->nominal_wakaf = $request['nominal_wakaf'];
+        // $wakaf->id_anggotakk = $request['nama_wakaf'];
+        // $wakaf->id_jeniswakaf = $request['jenis_wakaf'];
+        // $wakaf->nominal_wakaf = $request['nominal_wakaf'];
         $wakaf->created_at = $request['tgl_pembayaran'];
         $wakaf->update();
 
-        return redirect(route('wakaf.index'))->with('info', 'Data Berhasil Diubah!');
+        return redirect(route('wakaf.index'))->with('info', 'Tanggal Pembayaran Berhasil Diubah!');
     }
 
     /**

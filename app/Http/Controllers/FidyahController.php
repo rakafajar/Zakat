@@ -85,7 +85,8 @@ class FidyahController extends Controller
     public function edit($id)
     {
         $fidyah = FidyahModel::find($id);
-        $anggotakk = AnggotaKKModel::all();
+        $anggotakk = FidyahModel::leftJoin('view_anggotakk', 'view_anggotakk.id_anggotakk', '=', 'tb_fidyah.id_anggotakk')
+            ->orderBy('tb_fidyah.id_anggotakk')->find($id);
         return view('fidyah.edit', compact('fidyah', $fidyah, 'anggotakk'));
     }
 
@@ -98,17 +99,17 @@ class FidyahController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'nama_fidyah' => 'required',
-            'nominal_fidyah' => 'required|numeric',
-        ]);
+        // $this->validate($request, [
+        //     'nama_fidyah' => 'required',
+        //     'nominal_fidyah' => 'required|numeric',
+        // ]);
         $fidyah = FidyahModel::find($id);
-        $fidyah->id_anggotakk = $request['nama_fidyah'];
-        $fidyah->nominal_fidyah = $request['nominal_fidyah'];
+        // $fidyah->id_anggotakk = $request['nama_fidyah'];
+        // $fidyah->nominal_fidyah = $request['nominal_fidyah'];
         $fidyah->created_at = $request['tgl_pembayaran'];
         $fidyah->save();
 
-        return redirect(route('fidyah.index'))->with('info', 'Data Berhasil Diubah!');
+        return redirect(route('fidyah.index'))->with('info', 'Tanggal Pembayaran Berhasil Diubah!');
     }
 
     /**

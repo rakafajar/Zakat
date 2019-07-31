@@ -64,7 +64,7 @@
             <th style="text-align: center;">
               <a href="{{ URL::to('wakaf/invoice/'.$list->id_wakaf) }}" class="btn btn-success btn-sm"><i class="fas fa-print"></i></a>
               {{-- <i href="" class="btn btn-info btn-sm"><i class="fas fa-search"></i></i> --}}
-              {{-- <i href="{{route('wakaf.edit', $list->id_wakaf)}}" class="btn btn-warning btn-sm disabled"><i class="fas fa-edit"></i></i> --}}
+              <a href="{{route('wakaf.edit', $list->id_wakaf)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
               <a href="{{ URL::to('wakaf/destroy/'.$list->id_wakaf) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
             </th>
           </tr>

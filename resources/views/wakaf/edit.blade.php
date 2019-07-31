@@ -23,7 +23,7 @@
         @endif
         <form action="{{ route('wakaf.update', $wakaf->id_wakaf) }}" method="POST">
         {{ csrf_field() }} {{ method_field('PATCH') }}
-        <div class="form-group">
+        {{-- <div class="form-group">
           <label for="sel1">Pilih Fidyah:</label>
           <select class="form-control search" name="nama_wakaf" id="nama_wakaf">
             <option value="">-- Pilih Nama --</option>
@@ -44,9 +44,31 @@
         <div class="form-group">
           <label for="nominal">Nominal:</label>
           <input type="number" min="0" class="form-control" id="nominal_wakaf" placeholder="Rp." name="nominal_wakaf" value="{{$wakaf->nominal_wakaf}}">
+        </div> --}}
+        <div class="form-group">
+            <label for="anggotakk">Nama :</label>
+            <p>{{ $anggotakk->nama_lengkap}}</p>
         </div>
         <div class="form-group">
-          <label for="tgl_pembayaran">Tanggal Pembayaran:</label>
+            <label for="jenis_wakaf">Jenis Wakaf :</label>
+            <p>{{ $jeniswakaf->jenis_wakaf}}</p>
+        </div>
+        <div class="form-group">
+            <label for="nominal_wakaf">Nominal Wakaf :</label>
+            <p>Rp.
+              <?php
+                echo format_uang($wakaf->nominal_wakaf); 
+              ?>
+        </div>
+        <div class="form-group">
+            <label for="nominal_wakaf">Tanggal Pembayaran Lama :</label>
+            <p>
+              <?php
+                echo tanggal_indonesia($wakaf->created_at); 
+              ?>
+        </div>
+        <div class="form-group">
+          <label for="tgl_pembayaran">Tanggal Pembayaran Baru:</label>
           <input type="date" class="form-control" id="tgl_pembayaran" name="tgl_pembayaran" value="{{ old('tgl_pembayaran') }}" required>
         </div>
         <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>

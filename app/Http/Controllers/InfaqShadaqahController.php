@@ -82,7 +82,8 @@ class InfaqShadaqahController extends Controller
      */
     public function edit($id)
     {
-        $anggotakk = ViewAnggotakkModel::all();
+        $anggotakk = InfaqShadaqahModel::leftJoin('view_anggotakk', 'view_anggotakk.id_anggotakk', '=', 'tb_insha.id_anggotakk')
+            ->orderBy('tb_insha.id_anggotakk')->find($id);
         $insha = InfaqShadaqahModel::find($id);
         return view('infaqshodaqoh.edit', compact('insha', $insha, 'anggotakk'));
     }
@@ -96,13 +97,13 @@ class InfaqShadaqahController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'nama_insha' => 'required',
-            'nominal_insha' => 'required|numeric',
-        ]);
+        // $this->validate($request, [
+        //     'nama_insha' => 'required',
+        //     'nominal_insha' => 'required|numeric',
+        // ]);
         $insha = InfaqShadaqahModel::find($id);
-        $insha->id_anggotakk = $request['nama_insha'];
-        $insha->nominal_insha = $request['nominal_insha'];
+        // $insha->id_anggotakk = $request['nama_insha'];
+        // $insha->nominal_insha = $request['nominal_insha'];
         $insha->created_at = $request['tgl_pembayaran'];
         $insha->update();
 
@@ -115,7 +116,7 @@ class InfaqShadaqahController extends Controller
         //     'jml_kas_insha' => ($request['jml_kas_insha'] - $request['nominal_insha']) + $request['nominal_insha_baru']
         // ]);
 
-        return redirect(route('infaqshadaqah.index'))->with('info', 'Data Berhasil Diubah!');
+        return redirect(route('infaqshadaqah.index'))->with('info', 'Tanggal Pembayaran Berhasil Diubah!');
     }
 
     /**

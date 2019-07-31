@@ -24,7 +24,7 @@
       @endif
       <form action="{{ route('fidyah.update', $fidyah->id_fidyah) }}" method="POST">
         {{ csrf_field() }} {{ method_field('PATCH')}}
-        <div class="form-group">
+        {{-- <div class="form-group">
           <label for="sel1">Pilih Fidyah:</label>
           <select class="form-control search" name="nama_fidyah">
             <option value="">-- Pilih Nama --</option>
@@ -32,13 +32,31 @@
             <option value="{{ $list->id_anggotakk }}">NIK : {{ $list->nik }} - {{ $list->nama_lengkap }}</option>
             @endforeach
           </select>
+        </div> --}}
+        <div class="form-group">
+            <label for="anggotakk">Nama :</label>
+            <p>{{ $anggotakk->nama_lengkap}}</p>
         </div>
         <div class="form-group">
+            <label for="nominal_wakaf">Nominal Fidyah :</label>
+            <p>Rp.
+              <?php
+                echo format_uang($fidyah->nominal_fidyah); 
+              ?>
+        </div>
+        {{-- <div class="form-group">
           <label for="nominal">Nominal:</label>
           <input type="number" min="0" class="form-control" name="nominal_fidyah" value="{{ $fidyah->nominal_fidyah }}">
+        </div> --}}
+        <div class="form-group">
+            <label for="tgl_pembayarn">Tanggal Pembayaran Sebelumnya :</label>
+            <p>
+              <?php
+                echo tanggal_indonesia($fidyah->created_at); 
+              ?>
         </div>
         <div class="form-group">
-          <label for="tgl_pembayaran">Tanggal Pembayaran:</label>
+          <label for="tgl_pembayaran">Tanggal Pembayaran Baru:</label>
           <input type="date" class="form-control" id="tgl_pembayaran" name="tgl_pembayaran" value="{{ old('tgl_pembayaran') }}" required>
         </div>          
         <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>

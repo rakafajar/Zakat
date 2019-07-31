@@ -86,8 +86,9 @@ class ZakatMaalController extends Controller
     {
         $zakatmaal = ZakatMaalModel::find($id);
         $view_muzakki = ViewMuzakkiModel::all();
-
-        return view('zakatmaal.edit', compact('zakatmaal', 'view_muzakki'));
+        $muzakki = ZakatMaalModel::leftJoin('view_muzakki', 'view_muzakki.id_muzakki', '=', 'tb_zakat_maal.id_muzakki')
+            ->orderBy('tb_zakat_maal.id_muzakki')->find($id);
+        return view('zakatmaal.edit', compact('zakatmaal', 'view_muzakki', 'muzakki', $muzakki));
     }
 
     /**
@@ -99,12 +100,12 @@ class ZakatMaalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'nama_muzakki' => 'required',
-            'jml' => 'required',
-            'harga_emas' => 'required',
-            'nisab' => 'required',
-        ]);
+        // $this->validate($request, [
+        //     'nama_muzakki' => 'required',
+        //     'jml' => 'required',
+        //     'harga_emas' => 'required',
+        //     'nisab' => 'required',
+        // ]);
         $zakatmaal = ZakatMaalModel::find($id);
         $muzakki = $zakatmaal->id_muzakki = $request['nama_muzakki'];
         $jml = $zakatmaal->jml = $request['jml'];
@@ -114,7 +115,7 @@ class ZakatMaalController extends Controller
         $zakatmaal->created_at = $request['tgl_pembayaran'];
         $zakatmaal->update();
 
-        return redirect(route('zakatmaal.index'))->with('info', 'Data Berhasil Diubah!');
+        return redirect(route('zakatmaal.index'))->with('info', 'Tanggal Pembayaran Berhasil Diubah!');
     }
 
     /**
