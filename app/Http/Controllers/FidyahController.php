@@ -107,7 +107,7 @@ class FidyahController extends Controller
         // $fidyah->id_anggotakk = $request['nama_fidyah'];
         // $fidyah->nominal_fidyah = $request['nominal_fidyah'];
         $fidyah->created_at = $request['tgl_pembayaran'];
-        $fidyah->save();
+        $fidyah->update();
 
         return redirect(route('fidyah.index'))->with('info', 'Tanggal Pembayaran Berhasil Diubah!');
     }

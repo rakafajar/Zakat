@@ -75,7 +75,8 @@ class PengeluaranFidyahController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pengeluaran = PengeluaranFidyahModel::find($id);
+        return view('pengeluaran.editfidyah', compact('pengeluaran'));
     }
 
     /**
@@ -87,7 +88,11 @@ class PengeluaranFidyahController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pengeluaran = PengeluaranFidyahModel::find($id);
+        $pengeluaran->created_at = $request['tgl_pengeluaran'];
+        $pengeluaran->update();
+
+        return redirect(route('pengeluaranfidyah.index'))->with('info', 'Tanggal Pembayaran Berhasil Diubah!');
     }
 
     /**

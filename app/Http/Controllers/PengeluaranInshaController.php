@@ -78,7 +78,8 @@ class PengeluaranInshaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pengeluaran = PengeluaranInshaModel::find($id);
+        return view('pengeluaran.editinsha', compact('pengeluaran'));
     }
 
     /**
@@ -90,7 +91,11 @@ class PengeluaranInshaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pengeluaran = PengeluaranInshaModel::find($id);
+        $pengeluaran->created_at = $request['tgl_pengeluaran'];
+        $pengeluaran->update();
+
+        return redirect(route('pengeluaraninsha.index'))->with('info', 'Tanggal Pembayaran Berhasil Diubah!');
     }
 
     /**

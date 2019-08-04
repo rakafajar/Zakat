@@ -82,6 +82,7 @@
                     <td><?php echo tanggal_indonesia($list->created_at); ?></td>
                     <th style="text-align: center;">
                       <a href="{{ URL::to('pengeluaranwakaf/invoicewakaf/'.$list->id_peng_wakaf) }}" class="btn btn-success btn-sm"><i class="fas fa-print"></i></a>
+                      <a href="{{ route('pengeluaranwakaf.edit', $list->id_peng_wakaf) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                     	<a href="{{ URL::to('pengeluaranwakaf/destroy/'.$list->id_peng_wakaf) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
                     </th>
                   </tr>

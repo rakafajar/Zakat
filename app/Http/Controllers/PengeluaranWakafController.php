@@ -75,7 +75,8 @@ class PengeluaranWakafController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pengeluaran = PengeluaranWakafModel::find($id);
+        return view('pengeluaran.editwakaf', compact('pengeluaran'));
     }
 
     /**
@@ -87,7 +88,11 @@ class PengeluaranWakafController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pengeluaran = PengeluaranWakafModel::find($id);
+        $pengeluaran->created_at = $request['tgl_pengeluaran'];
+        $pengeluaran->update();
+
+        return redirect(route('pengeluaranwakaf.index'))->with('info', 'Tanggal Pembayaran Berhasil Diubah!');
     }
 
     /**
