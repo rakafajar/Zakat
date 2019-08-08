@@ -5,11 +5,11 @@
 	<li class="breadcrumb-item">
 		<a href="#">Dashboard</a>
 	</li>
-	<li class="breadcrumb-item active">Pengeluaran Wakaf</li>
+	<li class="breadcrumb-item active">Pengeluaran Zakat Fitrah</li>
 </ol>
 
 <div class="card">
-  <div class="card-header">Form Edit Pengeluaran Wakaf</div>
+  <div class="card-header">Form Edit Pengeluaran Zakat Fitrah</div>
   <div class="card-body">
     <div class="col-md-8">
       {{-- menampilkan error validasi --}}
@@ -22,13 +22,13 @@
           </ul>
       </div>
       @endif
-      <form action="{{ route('pengeluaranwakaf.update', $pengeluaran->id_peng_wakaf) }}" method="POST">
+      <form action="{{ route('pengeluaranzakatfitrah.update', $pengeluaran->id_peng_zfitrah) }}" method="POST">
         {{ csrf_field() }} {{ method_field('PATCH')}}
         <div class="form-group">
             <label for="jml_pengeluaran">Total Pengeluaran :</label>
             <p>Rp.
                 <?php
-                echo format_uang($pengeluaran->jml_peng_wakaf); 
+                echo format_uang($pengeluaran->jml_peng_zfitrah); 
               ?>
             </p>
         </div>
@@ -50,7 +50,7 @@
         </div>          
         <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
         {{-- <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-redo-alt"></i> Reset</button> --}}
-        <a href="{{ route('pengeluaranwakaf.index') }}" class="btn btn-danger btn-sm"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
+        <a href="{{ route('pengeluaranzakatfitrah.index') }}" class="btn btn-danger btn-sm"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
       </form>
     </div>    
   </div>

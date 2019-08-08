@@ -121,7 +121,8 @@ class PengeluaranZakatFitrahController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pengeluaran = PengeluaranZakatFitrahModel::find($id);
+        return view('pengeluaran.editzfitrah', compact('pengeluaran'));
     }
 
     /**
@@ -133,7 +134,11 @@ class PengeluaranZakatFitrahController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pengeluaran = PengeluaranZakatFitrahModel::find($id);
+        $pengeluaran->created_at = $request['tgl_pengeluaran'];
+        $pengeluaran->update();
+
+        return redirect(route('pengeluaranzakatfitrah.index'))->with('info', 'Tanggal Pembayaran Berhasil Diubah!');
     }
 
     /**

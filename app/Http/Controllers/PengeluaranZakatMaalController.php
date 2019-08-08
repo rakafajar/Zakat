@@ -73,7 +73,8 @@ class PengeluaranZakatMaalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pengeluaran = PengeluaranZakatMaalModel::find($id);
+        return view('pengeluaran.editzmaal', compact('pengeluaran'));
     }
 
     /**
@@ -85,7 +86,11 @@ class PengeluaranZakatMaalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pengeluaran = PengeluaranZakatMaalModel::find($id);
+        $pengeluaran->created_at = $request['tgl_pengeluaran'];
+        $pengeluaran->update();
+
+        return redirect(route('pengeluaranzakatmaal.index'))->with('info', 'Tanggal Pembayaran Berhasil Diubah!');
     }
 
     /**
