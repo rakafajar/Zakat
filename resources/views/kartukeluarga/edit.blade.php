@@ -29,7 +29,8 @@
         </div>
         <div class="form-group">
           <label for="alamat">Alamat:</label>
-          <textarea class="form-control" rows="5" id="alamat" name="alamat" ></textarea>
+          <textarea class="form-control" rows="5" id="alamat" name="alamat" >{{ $kartukeluarga->alamat}}
+          </textarea>
         </div>
         <div class="form-group">
           <label for="rtrw">RT/RW:</label>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\KartuKeluargaModel;
 use App\ViewKartuKeluargaModel;
+use App\ViewAnggotaKKModel;
 use DB;
 
 class KartuKeluargaController extends Controller
@@ -73,8 +74,12 @@ class KartuKeluargaController extends Controller
      */
     public function show($id)
     {
-        $kartukeluarga =  KartuKeluargaModel::find($id);
-        return view('anggotakeluarga.show', compact('kartukeluarga'));
+        // $kartukeluarga =  AnggotaKKModel::find($id);
+        // $kartukeluarga = KartuKeluargaModel::Join('tb_anggotakk', 'tb_anggotakk.id_kk', '=', 'tb_kartukeluarga.id_kk')
+        //     ->orderBy('tb_kartukeluarga.id_kk')->find($id);
+        $kartukeluarga = ViewAnggotaKKModel::where('id_kk', $id)->get();
+        // dd($kartukeluarga);
+        return view('kartukeluarga.show', compact('kartukeluarga'));
     }
 
     /**

@@ -50,7 +50,7 @@
                     <td>{{ $list->name_villages }}</td>
                     <td>{{ $list->kode_pos}}</td>
                     <th style="text-align: center;">
-                      <a href="{{ route('anggotakeluarga.show', $list->id_kk)}}" class="btn btn-info btn-sm"><i class="fas fa-search"></i></a>
+                      <a href="{{ route('kartukeluarga.show', $list->id_kk)}}" class="btn btn-info btn-sm"><i class="fas fa-search"></i></a>
                       <a href="{!! route('kartukeluarga.edit', [$list->id_kk]) !!}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                       <a href="{{ URL::to('kartukeluarga/destroy/'.$list->id_kk) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                     </th>
