@@ -46,7 +46,7 @@ class KartuKeluargaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'no_kk' => 'required|unique:tb_kartukeluarga',
+            'no_kk' => 'required|unique:tb_kartukeluarga|min:16|max:16',
             'id_villages' => 'required',
             'district_id' => 'required',
             'id_cities' => 'required',
@@ -102,7 +102,7 @@ class KartuKeluargaController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'no_kk' => 'required',
+            'no_kk' => 'required|min:16|max:16',
             'id_villages' => 'required',
             'district_id' => 'required',
             'id_cities' => 'required',
