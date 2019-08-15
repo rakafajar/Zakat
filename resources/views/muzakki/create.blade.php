@@ -11,6 +11,15 @@
   <div class="card-header">Form Muzakki</div>
   <div class="card-body">
     <div class="col-md-8">
+        @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
       <form action="{{ route('muzakki.store') }}" method="POST">
         {{ csrf_field() }}
         <div class="form-group{{$errors->has('id_kk') ? ' has-error' : ''}}">
@@ -24,13 +33,10 @@
           <span class="help-block">{{$errors->first('id_kk')}}</span>
           @endif
         </div>
-        <div class="form-group{{$errors->has('id_anggotakk') ? ' has-error' : ''}}">
+        <div class="form-group">
             <select name="id_anggotakk" id="id_anggotakk" class="form-control input-lg search">
             <option value="">-- Pilih NIK --</option>
           </select>
-          @if($errors->has('id_anggotakk'))
-          <span class="help-block">{{$errors->first('id_anggotakk')}}</span>
-          @endif
         </div>
         {{ csrf_field() }}
         <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-save"></i> Simpan</button>
