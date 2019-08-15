@@ -67,7 +67,8 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text bg-light">Total Kas Internal</span>
                       </div>
-                      <input type="text" class="form-control" value="Rp. <?php echo format_uang($kas_int->jml_kas_int); ?>" readonly>
+                      <input type="text" class="form-control" value="Rp. <?php echo format_uang($kas_int_update->jml_kas_int); ?>" readonly>
+                      <input type="hidden" class="form-control" name="jml_kas_int_update" id="jml_kas_int" onkeyup="" value="{{ $kas_int_update->jml_kas_int }}" readonly>
                       <input type="hidden" class="form-control" name="jml_kas_int" id="jml_kas_int" onkeyup="sumInt();" value="{{ $kas_int->jml_kas_int }}" readonly>
                     </div>
                   </div>
@@ -118,8 +119,9 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text bg-light">Total Kas Eksternal</span>
                       </div>
-                      <input type="text" class="form-control" value="Rp. <?php echo format_uang($kas_eks->jml_kas_eks); ?>" readonly>
+                      <input type="text" class="form-control" value="Rp. <?php echo format_uang($kas_eks_update->jml_kas_eks); ?>" readonly>
                       <input type="hidden" class="form-control" name="jml_kas_eks" id="jml_kas_eks" onkeyup="sumEks();" value="{{ $kas_eks->jml_kas_eks }}" readonly>
+                      <input type="hidden" class="form-control" name="jml_kas_eks_update" id="jml_kas_eks" onkeyup="" value="{{ $kas_eks_update->jml_kas_eks }}" readonly>
                     </div>
                   </div>
                   <div class="col-sm-12">
