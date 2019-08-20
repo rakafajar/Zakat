@@ -52,7 +52,12 @@
                   </div>              
                 </form>
               </div>
-            </div>            
+            </div>
+            
+            <form action="{{ URL::to('pengeluaranzakatfitrah/reset') }}" method="POST">
+              {{ csrf_field() }}
+              <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-sync-alt"></i> Reset Kas</button>
+            </form>
           </div>
           <div class="col-lg-4">
             <div class="card mb-3">

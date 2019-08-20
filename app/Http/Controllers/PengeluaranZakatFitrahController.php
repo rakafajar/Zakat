@@ -171,4 +171,29 @@ class PengeluaranZakatFitrahController extends Controller
             $pengeluaran->delete();
         }
     }
+
+    public function resetKas()
+    {
+        DB::table('tb_kas')->where('id_kas', 5)->update([
+            'jml_kas' => 0
+        ]);
+
+        DB::table('tb_kas_internal')->where('id_kas_int', 1)->update([
+            'jml_kas_int' => 0
+        ]);
+
+        DB::table('tb_kas_internal')->where('id_kas_int', 2)->update([
+            'jml_kas_int' => 0
+        ]);
+
+        DB::table('tb_kas_eksternal')->where('id_kas_eks', 1)->update([
+            'jml_kas_eks' => 0
+        ]);
+
+        DB::table('tb_kas_eksternal')->where('id_kas_eks', 2)->update([
+            'jml_kas_eks' => 0
+        ]);
+
+        return redirect(route('pengeluaranzakatfitrah.index'))->with('success', 'Kas Pengeluaran Zakat Fitrah Berhasil Direset!');
+    }
 }

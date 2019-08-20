@@ -107,6 +107,7 @@ Route::resource('pengeluaranzakatfitraheks', 'PengeluaranZakatFitrahEksControlle
 Route::get('pengeluaranzakatfitrah/destroy/{id}', 'PengeluaranZakatFitrahController@destroy');
 Route::get('pengeluaranzakatfitrah/invoicezakatfitrah/{id}', 'PengeluaranZakatFitrahController@buktiBayar');
 Route::post('pengeluaranzakatfitrah/hapus', 'PengeluaranZakatFitrahController@deleteSelected');
+Route::post('pengeluaranzakatfitrah/reset', 'PengeluaranZakatFitrahController@resetKas');
 
 // Untuk Controller dan View Fidyah
 Route::resource('fidyah', 'FidyahController');
